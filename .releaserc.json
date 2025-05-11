@@ -1,0 +1,54 @@
+{
+    "branches":[
+      "main",
+      "master"
+    ],
+    "ci":false,
+    "plugins":[
+      [
+        "@semantic-release/commit-analyzer",
+        {
+          "preset":"ESLint",
+          "releaseRules":[
+            {"tag": "breaking", "release": "major"},
+            {"tag": "chore", "release": false},
+            {"tag": "ci", "release": false},
+            {"tag": "docs", "release": false},
+            {"tag": "feat", "release": "minor"},
+            {"tag": "fix", "release": "patch"},
+            {"tag": "refactor", "release": "patch"},
+            {"tag": "security", "release": "patch"},
+            {"tag": "style", "release": "patch"},
+            {"tag": "test", "release": false}
+          ]
+        }
+      ],
+      [
+        "@semantic-release/release-notes-generator",
+        {
+          "preset":"ESLint"
+        }
+      ],
+      [
+        "@semantic-release/github",
+        {
+          "successComment":"This ${issue.pull_request ? 'PR is included' : 'issue has been resolved'} in version ${nextRelease.version} :tada:",
+          "labels":true,
+          "releasedLabels":true
+        }
+      ],
+      [
+        "@semantic-release/changelog",
+        {
+          "changelogFile":"CHANGELOG.md"
+        }
+      ],
+      [
+        "@semantic-release/git",
+        {
+          "assets": ["CHANGELOG.md"],
+          "message":"chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+        }
+      ]
+    ]
+  }
