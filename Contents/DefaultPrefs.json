@@ -1,0 +1,87 @@
+[ {
+    "id": "api_key",
+    "label": "Ключ kinopoiskapiunofficial.tech:",
+    "type":"text",
+    "default":""
+  },
+  {
+    "id":"show2names",
+    "label":"Поиск: отображать и русское наименование, и английское",
+    "type":"bool",
+    "default":"false"
+  },
+  {
+    "id":"showTypes",
+    "label":"Поиск: отображать тип: F:фильм, M:многосерийный, V:видео, S:сериал, T:tv-шоу",
+    "type":"bool",
+    "default":"true"
+  },
+  {
+    "id":"showCountry",
+    "label":"Поиск: отображать страну произодства",
+    "type":"bool",
+    "default":"false"
+  },
+  {
+    "id":"showGenre",
+    "label":"Поиск: отображать жанр (первый, если несколько)",
+    "type":"bool",
+    "default":"false"
+  },
+  {
+    "id":"showDescr",
+    "label":"Поиск: отображать первое предложение описания",
+    "type":"bool",
+    "default":"false"
+  },
+  {
+    "id": "desc_show_slogan",
+    "label": "Описание: отображать краткое описание фильма",
+    "type":"bool",
+    "default":"false"
+  },
+  {
+    "id": "desc_rating_kp",
+    "label": "Описание: отображать рейтинг Кинопоиск",
+    "type":"bool",
+    "default":"false"
+  },
+  {
+    "id": "desc_rating_imdb",
+    "label": "Описание: отображать рейтинг IMDB",
+    "type":"bool",
+    "default":"false"
+  },
+
+
+  {
+    "id":"trace",
+    "label":"Включить подробную отладку",
+    "type":"bool",
+    "default":"false"
+  },
+  {
+    "id":"update_channel",
+    "label":"Канал обновления (none - отключение автообновления)",
+    "type": "enum",
+    "values": [
+      "none",
+      "stable",
+      "beta"
+    ],
+    "default": "none"
+  },
+  {
+    "id": "update_interval",
+    "label": "Интервал проверки обновлений (в минутах)",
+    "type": "text",
+    "default": "60"
+  },
+
+  {
+    "id": "poster_limit",
+    "label": "Лимит постеров",
+    "type": "text",
+    "default": "5"
+  }
+]
