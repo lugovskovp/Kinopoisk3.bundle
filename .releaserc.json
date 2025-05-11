@@ -16,4 +16,4 @@
         "message": "chore: Release ${nextRelease.version} [skip ci]"
         }]
     ]
-}
+} 
