@@ -1,0 +1,20 @@
+[flake8]
+# it's not a bug that we aren't using all of hacking
+max-line-length = 120,
+
+# trailing whitespaceFlake8(W291)
+# blank line contains whitespaceFlake8(W293)
+
+ignore =
+    # F401 'vdo_env' imported but unusedFlake8(F401)
+    #F401,
+    # W293 blank line contains whitespaceFlake8(W293)
+    W293, 
+    # E123 closing bracket does not match indentation of opening bracket's lineFlake8(E123)
+    E123,
+    # E303 too many blank lines (2)Flake8(E303)
+    E303,
+    # line too long (105 > 79 characters)Flake8(E501)
+    E501,
+    # indentation is not a multiple of 4Flake8(E111)
+    E111
