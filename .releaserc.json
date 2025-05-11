@@ -1,6 +1,7 @@
 {
     "branches":[
       "main",
+      "beta",
       "master"
     ],
     "ci":false,
