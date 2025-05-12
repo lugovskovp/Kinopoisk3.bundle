@@ -6,10 +6,10 @@ on:
     branches:
       - master
       - beta
-    paths:
-      - '**/*.tpl'
-      - '**/*.tf'
-      - '.github/workflows/release.yml'
+    #paths:
+    #  - '**/*.tpl'
+    #  - '**/*.tf'
+    #  - '.github/workflows/release.yml'
 
 jobs:
     release:
@@ -25,7 +25,7 @@ jobs:
             fetch-depth: 0
     
         - name: Release
-          uses: cycjimmy/semantic-release-action@v3.1.1
+          uses: cycjimmy/semantic-release-action@v4.2.0
           with:
             semantic_version: 18
             extra_plugins: |
@@ -33,5 +33,5 @@ jobs:
                 @semantic-release/git@10.0.1
                 conventional-changelog-conventionalcommits@5.0.0
                 conventional-changelog-eslint@3.0.9
-            env:
-            GITHUB_TOKEN: ${{ secrets.SEMANTIC_RELEASE_TOKEN }}
+            #env:
+            #GITHUB_TOKEN: ${{ secrets.SEMANTIC_RELEASE_TOKEN }}
