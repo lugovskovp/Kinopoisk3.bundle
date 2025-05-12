@@ -1,3 +1,15 @@
+# [1.1.0](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.0.2...v1.1.0) (2025-05-12)
+
+
+### feat
+
+* Merge pull request #8 from lugovskovp/beta 1.1.0 ([f60c401](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/f60c401aaa722308e00066503fd349eab81cb549)), closes [#8](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/8)
+* Try ver up ([8966a10](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/8966a10d609ad84bd9d62ddd6a089191677d79eb))
+
+### fix
+
+* release ([10e212f](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/10e212f52437297a2b44b34a4d7ff8e588700161))
+
 # [1.1.0-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.0.3-beta.1...v1.1.0-beta.1) (2025-05-12)
 
 
