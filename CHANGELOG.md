@@ -1,5 +1,5 @@
-# 1.0.0 (2025-05-12)
 
+# 1.0.0 (2025-05-12)
 
 ### chore
 
@@ -10,6 +10,10 @@
 * Add .releaserc.json ([b5d38fc](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/b5d38fcd0af4a4bf06245a9397e97c088f280454))
 * Add .releaserc.json ([e30559b](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/e30559ba1091a1654697040a8521537e2c01f1d6))
 * Del .releaserc.json ([d2264e8](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/d2264e8405a15444c26d5a90c0d2e2f2647995b5))
+
+### ed
+
+* github_token ([6084dae](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/6084daeb83815829785eb86791b5ac80a6d3c363))
 * Fix release ([6bd6f15](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/6bd6f1505edef19c045ebe811a6b732a73bac27a))
 
 ### feat
@@ -33,3 +37,8 @@
 ### style
 
 * Add issue templates ([5a3e3d3](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/5a3e3d31a1e3f38c2d52ab556110325a83617995))
+
+### try
+
+* tests actions ([cf4b9ea](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/cf4b9eaced8e1df734b6b580ccb30891f0bd2401))
+
