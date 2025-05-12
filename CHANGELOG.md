@@ -1,9 +1,5 @@
-# 1.0.0-beta.1 (2025-05-12)
 
-
-### add
-
-* GITHUB_TOKEN ([918a669](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/918a66950422c1059acec21c72f37c867e8e703e))
+# 1.0.0 (2025-05-12)
 
 ### chore
 
@@ -18,6 +14,7 @@
 ### ed
 
 * github_token ([6084dae](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/6084daeb83815829785eb86791b5ac80a6d3c363))
+* Fix release ([6bd6f15](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/6bd6f1505edef19c045ebe811a6b732a73bac27a))
 
 ### feat
 
@@ -44,3 +41,4 @@
 ### try
 
 * tests actions ([cf4b9ea](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/cf4b9eaced8e1df734b6b580ccb30891f0bd2401))
+
