@@ -33,5 +33,7 @@ jobs:
                 @semantic-release/git@10.0.1
                 conventional-changelog-conventionalcommits@5.0.0
                 conventional-changelog-eslint@3.0.9
-            env:
+          env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+            
