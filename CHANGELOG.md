@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.0.1...v1.0.2) (2025-05-12)
+
+
+### fix
+
+* permissions pull-requests write ([2f80b6c](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/2f80b6cd465bc4ee61e7ef6b58999b5e08734b34))
+
 ## [1.0.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.0.0...v1.0.1) (2025-05-12)
 
 
