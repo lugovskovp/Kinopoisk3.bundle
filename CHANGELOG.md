@@ -1,3 +1,21 @@
+## [1.0.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.0.0...v1.0.1) (2025-05-12)
+
+
+### add
+
+* GITHUB_TOKEN ([918a669](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/918a66950422c1059acec21c72f37c867e8e703e))
+
+### ed
+
+* github_token ([6084dae](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/6084daeb83815829785eb86791b5ac80a6d3c363))
+
+### fix
+
+* Validate PR title ([6246268](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/62462685d8073b5650a54d831bb67957263e8240))
+
+### try
+
+* tests actions ([cf4b9ea](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/cf4b9eaced8e1df734b6b580ccb30891f0bd2401))
 
 # 1.0.0 (2025-05-12)
 
@@ -41,4 +59,3 @@
 ### try
 
 * tests actions ([cf4b9ea](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/cf4b9eaced8e1df734b6b580ccb30891f0bd2401))
-
