@@ -37,11 +37,13 @@ jobs:
           uses: cycjimmy/semantic-release-action@v4.2.0
           with:
             semantic_version: 18
+            #@semantic-release/exec
             extra_plugins: |
+                conventional-changelog-eslint@3.0.9
                 @semantic-release/changelog@6
                 @semantic-release/git@10
                 conventional-changelog-conventionalcommits@5.0.0
-                conventional-changelog-eslint@3.0.9
+                
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
