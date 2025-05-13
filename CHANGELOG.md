@@ -1,3 +1,11 @@
+# [1.2.0-beta.6](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.2.0-beta.5...v1.2.0-beta.6) (2025-05-13)
+
+
+### fix
+
+* 18 ([c4a5f9b](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/c4a5f9b952baacb8eaefa53b433520d6e4867dbb))
+* tst 6 ([1c3ac05](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/1c3ac0533b39a69110fb27b730f4498724b581f3))
+
 # [1.2.0-beta.4](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.2.0-beta.3...v1.2.0-beta.4) (2025-05-13)
 
 
