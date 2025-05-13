@@ -12,7 +12,7 @@
       [
         "@semantic-release/commit-analyzer",
         {
-          "preset":"ESLint",
+          "preset":"angular",
           "releaseRules":[
             {"tag": "breaking", "release": "major"},
             {"tag": "chore", "release": false},
@@ -30,15 +30,13 @@
       [
         "@semantic-release/release-notes-generator",
         {
-          "preset":"ESLint"
+          "preset":"angular"
         }
       ],
       [
         "@semantic-release/github",
         {
-          "successComment":"This ${issue.pull_request ? 'PR is included' : 'issue has been resolved'} in version ${nextRelease.version} :tada:",
-          "labels":true,
-          "releasedLabels":true
+          "successComment":"This ${issue.pull_request ? 'PR is included' : 'issue has been resolved'} in version ${nextRelease.version} :tada:"
         }
       ],
       [
