@@ -25,7 +25,7 @@ jobs:
           pull-requests: write  # to be able to comment on released pull requests
           issues: write         # to be able to comment on released issues
         # Skip running release workflow on forks
-        # if: github.repository_owner == 'patsevanton'
+        if: github.repository_owner == 'lugovskovp'
         steps:
         - name: Checkout
           uses: actions/checkout@v4
@@ -38,8 +38,8 @@ jobs:
           with:
             semantic_version: 18
             extra_plugins: |
-                @semantic-release/changelog@6.0.1
-                @semantic-release/git@10.0.1
+                @semantic-release/changelog@6
+                @semantic-release/git@10
                 conventional-changelog-conventionalcommits@5.0.0
                 conventional-changelog-eslint@3.0.9
           env:
