@@ -22,7 +22,7 @@ This project is released under the [MIT License][license-url].
 
 
 <!-- Links: -->
-[changelog-url]: https://github.com/lugovskovp/Kinopoisk3.bundle/master/docs/CHANGELOG.md
+[changelog-url]: https://github.com/lugovskovp/Kinopoisk3.bundle/blob/master/docs/CHANGELOG.md
 
 
 [version-image]: https://img.shields.io/github/package-json/v/lugovskovp/Kinopoisk3.bundle
