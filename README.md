@@ -4,7 +4,6 @@
 [![][version-image]][changelog-url]
 [![Release date][release-date-image]][release-url]
 [![][version-beta-image]][changelog-url]
-
 [![npm license][license-image]][license-url]
 
 ## Зачем.
