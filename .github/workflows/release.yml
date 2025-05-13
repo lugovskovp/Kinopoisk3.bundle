@@ -40,14 +40,7 @@ jobs:
             extra_plugins: |
                 @semantic-release/changelog@6.0.1
                 @semantic-release/git@10.0.1
-                [
-                  "@semantic-release/exec",
-                  {
-                    "verifyConditionsCmd": "echo 11>> 11",
-                    "publishCmd": "./publish.sh ${nextRelease.version} ${branch.name} ${commits.length} ${Date.now()}"
-                    #"publishCmd": "./publish.sh ${nextRelease.version} ${branch.name} ${commits.length} ${Date.now()}"
-                  }
-                ]
+                @semantic-release/exec@v7.1.0
                 conventional-changelog-conventionalcommits@5.0.0
                 conventional-changelog-eslint@3.0.9
           env:
