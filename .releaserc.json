@@ -12,7 +12,7 @@
       [
         "@semantic-release/commit-analyzer",
         {
-          "preset":"ESLint",
+          "preset":"eslint",
           "releaseRules":[
             {"tag": "breaking", "release": "major"},
             {"tag": "chore", "release": false},
