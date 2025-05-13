@@ -4,8 +4,7 @@
 [![][version-image]][changelog-url]
 [![Release date][release-date-image]][release-url]
 [![][version-beta-image]][changelog-url]
-
-[![npm license][license-image]][license-url]
+[![][license-image]][license-url]
 
 ## Зачем.
 
@@ -28,8 +27,6 @@ This project is released under the [MIT License][license-url].
 [release-date-image]: https://img.shields.io/github/release-date/lugovskovp/Kinopoisk3.bundle
 
 [license-url]: https://github.com/lugovskovp/Kinopoisk3.bundle/blob/main/LICENSE
+[license-image]: https://img.shields.io/github/license/lugovskovp/Kinopoisk3.bundle
 
-
-
-[license-image]: https://img.shields.io/npm/l/@cycjimmy/semantic-release-action.svg
 
