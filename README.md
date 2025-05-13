@@ -3,7 +3,7 @@
 ![CI][release-image]
 [![][version-image]][changelog-url]
 [![Release date][release-date-image]][release-url]
-
+[![][version-beta-image]][changelog-url]
 
 [![npm license][license-image]][license-url]
 
@@ -24,6 +24,7 @@ This project is released under the [MIT License][license-url].
 [release-url]: https://github.com/lugovskovp/Kinopoisk3.bundle/actions/workflows/release.yml
 
 [version-image]: https://img.shields.io/github/v/release/lugovskovp/Kinopoisk3.bundle
+[version-beta-image]: https://img.shields.io/github/v/release/lugovskovp/Kinopoisk3.bundle?include_prereleases
 [release-date-image]: https://img.shields.io/github/release-date/lugovskovp/Kinopoisk3.bundle
 
 [license-url]: https://github.com/lugovskovp/Kinopoisk3.bundle/blob/main/LICENSE
