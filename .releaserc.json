@@ -34,11 +34,9 @@
         }
       ],
       [
-        "@semantic-release/github",
+        "@semantic-release/github@v9",
         {
-          "successComment":"This ${issue.pull_request ? 'PR is included' : 'issue has been resolved'} in version ${nextRelease.version} :tada:",
-          "labels":true,
-          "releasedLabels":true
+          "successComment":"This ${issue.pull_request ? 'PR is included' : 'issue has been resolved'} in version ${nextRelease.version} :tada:"
         }
       ],
       [
