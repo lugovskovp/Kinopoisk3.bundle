@@ -1,3 +1,32 @@
+# [1.2.0-beta.7](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.2.0-beta.6...v1.2.0-beta.7) (2025-05-13)
+
+
+### Bug Fixes
+
+* 19 ([aa7780a](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/aa7780ae33468321bf2f993c0e61c5af51516514))
+* 20 ([9ab4ad3](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/9ab4ad34b4a751bb12a4cf17ff14e1dab1102545))
+* 21 ([46f4277](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/46f42770d10d1a013d9fb44a58b2df1ffc14218d))
+* 22 ([97c2255](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/97c225595b15326f352334bcd90c2567b42de1c1))
+* 22 ([6837f49](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/6837f497dc36dd4323072761e3774b930000bfe2))
+* 23 ([60e5796](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/60e57961c9a74d9cfb538d9c0d5b09ada495049c))
+* 24 ([1bd4edb](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/1bd4edb91229e0f63f8c4c1e2298decb4a99aa72))
+* 24 ([53a6b94](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/53a6b94e1ea0ea3efcafd211f241a78685ced7cb))
+* angular ([7eed6cc](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/7eed6cc17c27d0fe2654de9c7c926bc4a76aadaa))
+* labels ([d04d36f](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/d04d36f838824a9c8ba5a5a84f2bd0414ef2db6a))
+* releasedLabels ([72b44c1](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/72b44c17724f25a9f2ee690920e8b5272f3cb35c))
+* test ([ae5c8a7](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/ae5c8a7161f41ecce5dcafd1d691441ff5ad76a6))
+* tst7 ([2900e4f](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/2900e4f284b60b7ba453ecc195ba8f79c7181f49))
+* tst8 ([7526231](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/7526231c0ae848c1ec270f7207cef8c160912896))
+* v10 ([f4d7908](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/f4d79087c1cacf51a6c5e1addf075afd4d95549e))
+* v4 ([572b94e](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/572b94e0cd9f29770c1550504a41f4c46cd5848d))
+* v9 ([b406f30](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/b406f30cfe4bdf65c0678f0ec4bcdd83530b4cac))
+
+
+### Features
+
+* angular2 ([89e08d9](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/89e08d9216f0c3d1082ff628152a60c9f3d008af))
+* eslint ([6e68b98](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/6e68b98a93aa42fee98590a1bafe495bef32639b))
+
 # [1.2.0-beta.6](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.2.0-beta.5...v1.2.0-beta.6) (2025-05-13)
 
 
