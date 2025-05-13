@@ -1,9 +1,9 @@
 # Кинопоиск3 - плагин для Plex
 
-[![Release][release-image]]
-
+![CI][release-image]
 
 ![][version-image]
+
 ![][workflows-badge-image]
 [![Release date][release-date-image]][release-url]
 [![semantic-release][semantic-image]][semantic-url]
