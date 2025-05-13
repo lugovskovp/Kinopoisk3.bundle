@@ -6,7 +6,7 @@ on:                     #Секция условий выполнения тек
     branches: [main] #Ветка, в которой запускается первый workflow
     types: #Тип результата выполнения первого workflow
       - completed #Триггер статуса выполнения первого workflow
-  workflow_dispatch:    #Условия запуска текущего workflow
+  workflow_dispatch:    #Условия запуска текущего workflow 
   push: 
     branches:
       - master
