@@ -1,3 +1,14 @@
+## [1.1.3](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.1.2...v1.1.3) (2025-05-13)
+
+
+### ci
+
+* remark in pr-title.yml ([312f479](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/312f4796e85331362604470c921e72979484fdcb))
+
+### fix
+
+* workflows release ([4ae1a4f](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/4ae1a4f1a7395406c7b542d9d2c5641de2d262ba))
+
 ## [1.1.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.1.1...v1.1.2) (2025-05-13)
 
 
