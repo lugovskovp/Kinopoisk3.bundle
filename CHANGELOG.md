@@ -1,3 +1,10 @@
+## [1.1.4-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.1.3...v1.1.4-beta.1) (2025-05-13)
+
+
+### fix
+
+* Try precommin dependences ([0f61973](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/0f6197373a31c39bfe4a073101afeb25ddb3b875))
+
 ## [1.1.3](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.1.2...v1.1.3) (2025-05-13)
 
 
