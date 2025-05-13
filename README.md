@@ -2,7 +2,7 @@
 
 ![CI][release-image]
 
-![][version-image]
+[![][version-image]][changelog-url]
 [![Release date][release-date-image]][release-url]
 
 
