@@ -53,12 +53,6 @@
         {
           "changelogFile":"CHANGELOG.md"
         }
-      ],
-      [
-        "@semantic-release/git",
-        {
-          
-        }
       ]
     ]
   }
