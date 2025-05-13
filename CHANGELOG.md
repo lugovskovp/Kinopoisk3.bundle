@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.1.0...v1.1.1) (2025-05-13)
+
+
+### fix
+
+* update pr-title.yml ([6c405c2](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/6c405c293781472945b3df6a928fab0f409e1a53))
+
 # [1.1.0](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.0.2...v1.1.0) (2025-05-12)
 
 
