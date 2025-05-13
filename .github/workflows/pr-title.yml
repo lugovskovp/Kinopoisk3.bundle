@@ -1,3 +1,4 @@
+# validate PR title. Trigger - pull request to master branch
 name: 'Validate PR title'
 
 on:
