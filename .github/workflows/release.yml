@@ -38,8 +38,9 @@ jobs:
           with:
             semantic_version: 18
             extra_plugins: |
-                @semantic-release/changelog@6.0.1
+                @semantic-release/changelog@6
                 @semantic-release/git@10.0.1
+                @semantic-release/exec@7.1.0
                 conventional-changelog-conventionalcommits@5.0.0
                 conventional-changelog-eslint@3.0.9
           env:
