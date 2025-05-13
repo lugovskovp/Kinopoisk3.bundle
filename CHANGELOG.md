@@ -1,3 +1,18 @@
+# [1.2.0-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.2.0-beta.1...v1.2.0-beta.2) (2025-05-13)
+
+
+### fit
+
+* release ([46b4d74](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/46b4d74bba673ea5d2a43418aa8e5d80fe96493b))
+
+### fix
+
+* 1 ([61df8ea](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/61df8ea0a184004010f35e40dac61d0548b06186))
+* add semantic-release/exec ([ab12663](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/ab126631defc7a9ce9be2d16300d554824d8a387))
+* release ([a70cf07](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/a70cf0746fd6e7d7c441e6fcdaaac86ae3dc60c6))
+* release ([93884cd](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/93884cd607abff6c6d2cae1fa4f272527ba911e5))
+* release ([ab0e445](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/ab0e4456cf50af593b71fc57980dd942a304561e))
+
 # [1.2.0-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.1.5...v1.2.0-beta.1) (2025-05-13)
 
 
