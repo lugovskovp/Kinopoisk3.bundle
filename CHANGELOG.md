@@ -1,3 +1,29 @@
+# [1.2.0](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.1.5...v1.2.0) (2025-05-13)
+
+
+### feat
+
+* exec ([31d5336](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/31d5336704d701ede4367ac007f6ebe6850edb1c))
+* Merge pull request #14 from lugovskovp/beta ([655df9e](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/655df9e1cc02c3bdcdad48475137ea05487619ba)), closes [#14](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/14)
+* semantic-release/exec ([347c209](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/347c2097052c9338a2986f5409fcd9f59ae8e931))
+
+### fit
+
+* release ([46b4d74](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/46b4d74bba673ea5d2a43418aa8e5d80fe96493b))
+
+### fix
+
+* -exec ([2236e46](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/2236e46842a65e9cfbf5a1793616a7a00651ddce))
+* 1 ([61df8ea](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/61df8ea0a184004010f35e40dac61d0548b06186))
+* 7/1/0 ([0d7ea36](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/0d7ea367f7a0074cc3bb6500096da51e9f5cacdc))
+* add semantic-release/exec ([ab12663](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/ab126631defc7a9ce9be2d16300d554824d8a387))
+* del exec ([3305b32](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/3305b320792f28244a05ca46990a95b4555458e8))
+* exec ([6d6bbb0](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/6d6bbb026ed339a2be49f7f1a763b711c92b83da))
+* release ([66cc814](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/66cc814c4d2c9bf7d7804010448ba5b9f7a11066))
+* release ([a70cf07](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/a70cf0746fd6e7d7c441e6fcdaaac86ae3dc60c6))
+* release ([93884cd](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/93884cd607abff6c6d2cae1fa4f272527ba911e5))
+* release ([ab0e445](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/ab0e4456cf50af593b71fc57980dd942a304561e))
+
 # [1.2.0-beta.3](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.2.0-beta.2...v1.2.0-beta.3) (2025-05-13)
 
 
