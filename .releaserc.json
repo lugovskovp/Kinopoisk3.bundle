@@ -38,7 +38,7 @@
         {
           "successComment":"This ${issue.pull_request ? 'PR is included' : 'issue has been resolved'} in version ${nextRelease.version} :tada:",
           "labels":true,
-          "releasedLabels":true
+          "releasedLabels": "42"
         }
       ],
       [
