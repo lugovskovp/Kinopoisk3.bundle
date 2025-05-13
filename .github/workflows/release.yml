@@ -40,7 +40,6 @@ jobs:
             extra_plugins: |
                 @semantic-release/changelog@6
                 @semantic-release/git@10.0.1
-                @semantic-release/exec@7.1.0
                 conventional-changelog-conventionalcommits@5.0.0
                 conventional-changelog-eslint@3.0.9
           env:
