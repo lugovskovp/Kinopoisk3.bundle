@@ -1,3 +1,10 @@
+## [1.1.5](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.1.4...v1.1.5) (2025-05-13)
+
+
+### fix
+
+* add readme ([3743efd](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/3743efdc9b570e9291c1e69ee4be3e37e0b13695))
+
 ## [1.1.5-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.1.4...v1.1.5-beta.1) (2025-05-13)
 
 
