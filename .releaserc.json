@@ -30,7 +30,7 @@
       [
         "@semantic-release/release-notes-generator",
         {
-          "preset":"ESLint"
+          "preset":"angular"
         }
       ],
       [
