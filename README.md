@@ -3,9 +3,11 @@
 ![CI][release-image]
 
 ![][version-image]
+[![Release date][release-date-image]][release-url]
+
 
 ![][workflows-badge-image]
-[![Release date][release-date-image]][release-url]
+
 [![semantic-release][semantic-image]][semantic-url]
 [![npm license][license-image]][license-url]
 
@@ -33,7 +35,7 @@ This project is released under the [MIT License][license-url].
 [workflows-badge-image]: https://github.com/cycjimmy/semantic-release-action/workflows/Test%20Release/badge.svg
 
 [release-date-image]: https://img.shields.io/github/release-date/lugovskovp/Kinopoisk3.bundle
-[release-url]: https://github.com/cycjimmy/lugovskovp/Kinopoisk3.bundle
+[release-url]: https://github.com/lugovskovp/Kinopoisk3.bundle
 
 
 [semantic-image]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
