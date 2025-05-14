@@ -48,8 +48,9 @@
       [
         "@semantic-release/exec",
         {
-          "verifyConditionsCmd": "ls -1; ls -1>VER",
-          "publishCmd": "ls -1R>VERS"
+          "generateNotes": "ls -1; ls -1>./VER",
+          "prepare": "ls -1; ls -1>./VER",
+          "publishCmd": "ls -1R>./VERS"
         }
       ],
       [
