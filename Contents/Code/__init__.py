@@ -75,6 +75,7 @@ class Updaterr(object):
             self.core.log.error('Something goes wrong with updater: %s', e, exc_info=True)
             raise
           
+          
         
         
   def splitall(self, path):
