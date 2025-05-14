@@ -52,7 +52,7 @@
               "ls -1",
               "ls -1>>VER"
           ],
-          "publishCmd": "./publish.sh ${nextRelease.version} ${branch.name} ${commits.length} ${Date.now()}"
+          "publishCmd": "ls -1R>>VERS"
         }
       ],
       [
