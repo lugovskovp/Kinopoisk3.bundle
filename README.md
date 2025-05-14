@@ -22,12 +22,14 @@
 ### Сопоставление - Поиск
 
 ### Сериалы
+<details open>
 ![Наименование серий в сериале](<pix/ser ser names.png>)
 ![Подробная информация о каждой серии](<pix/ser one serie.png>)
 ![Несколько сезонов](<pix/ser 2 seasones.png>)
 ![Актёры](<pix/ser actors.png>)
 ![Загружаются постеры](<pix/ser posters.png>)
 ![Загружаются фоны](<pix/ser fones.png>)
+</details>
 
 ### Фильмы
 
