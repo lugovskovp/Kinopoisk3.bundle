@@ -1,3 +1,10 @@
+## [1.3.1-beta.7](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.3.1-beta.6...v1.3.1-beta.7) (2025-05-14)
+
+
+### Bug Fixes
+
+* Update .releaserc.json ([cfe6b14](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/cfe6b140387836cb7a5353b761f3cd8869cb9b45))
+
 ## [1.3.1-beta.6](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.3.1-beta.5...v1.3.1-beta.6) (2025-05-14)
 
 
