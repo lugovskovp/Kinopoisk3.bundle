@@ -8,7 +8,33 @@
 
 
 ## Зачем.
+Искренняя благодарность Artem Mirotin aka @amirotin, Aleksey Ganuta aka @ziemenz и @Jenstel и Vladimir Sharapov aka @EvelRus, которые являются авторами плагина для Plex Media Server (PMS) [Kinopoisk.bundle|https://github.com/Jenstel/Kinopoisk.bundle]
+Увы, последнее обновление которого - март 2021, и изменения в API сделали этот плагин малопригодным для использования.
+В данной реализации, архитектурно значительно более простой, и рассчитанной только на работу с Кинопоиском, удалось добавить некоторые фишки, отсутствующие в оригинальном Kinopoisk.bundle. При этом, очень многое взято из оригинального.
 
+## Установка
+
+###
+### Распаковка в папку плагинов
+Расположение папки плагинов Plex (папки Plug-ins) в разных операционных системах:
+* '%LOCALAPPDATA%\Plex Media Server\'                                        # Windows Vista/7/8
+* '%USERPROFILE%\Local Settings\Application Data\Plex Media Server\'         # Windows XP, 2003, Home Server
+* '$HOME/Library/Application Support/Plex Media Server/'                     # Mac OS
+* '$PLEX_HOME/Library/Application Support/Plex Media Server/',               # Linux
+* '/var/lib/plexmediaserver/Library/Application Support/Plex Media Server/', # Debian,Fedora,CentOS,Ubuntu
+* '/usr/local/plexdata/Plex Media Server/',                                  # FreeBSD
+* '/usr/pbi/plexmediaserver-amd64/plexdata/Plex Media Server/',              # FreeNAS
+* '${JAIL_ROOT}/var/db/plexdata/Plex Media Server/',                         # FreeNAS
+* '/c/.plex/Library/Application Support/Plex Media Server/',                 # ReadyNAS
+* '/share/MD0_DATA/.qpkg/PlexMediaServer/Library/Plex Media Server/',        # QNAP
+* '/volume1/Plex/Library/Application Support/Plex Media Server/',            # Synology, Asustor
+* '/raid0/data/module/Plex/sys/Plex Media Server/',                          # Thecus
+* '/raid0/data/PLEX_CONFIG/Plex Media Server/'                               # Thecus Plex community
+* '/Volume1/Plex/Library/Application Support/Plex Media Server'              # TOS 5.0 | TOS 6.0
+
+
+
+## Настройки
 
 ## Changelog
 See [CHANGELOG][changelog-url].
