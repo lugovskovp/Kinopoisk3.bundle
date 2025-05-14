@@ -1,3 +1,10 @@
+## [1.5.1-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.5.0...v1.5.1-beta.1) (2025-05-14)
+
+
+### Bug Fixes
+
+* автозакрытие issue [#16](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/16) ([867b1e1](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/867b1e17b3e35894ccad6866b267f3612bf74d95))
+
 # [1.5.0](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.4.0...v1.5.0) (2025-05-14)
 
 
