@@ -8,22 +8,21 @@
 [![GitHub issues][issues-opened]][issue-url]
 
 # Зачем.
-Искренняя благодарность Artem Mirotin aka @amirotin(https://github.com/amirotin), Aleksey Ganuta aka @Jenstel(https://github.com/Jenstel) и Vladimir Sharapov aka @EvelRus, которые являются авторами плагина для Plex Media Server (PMS) [Kinopoisk.bundle](https://github.com/Jenstel/Kinopoisk.bundle).
+Искренняя благодарность Artem Mirotin aka [@amirotin](https://github.com/amirotin), Aleksey Ganuta aka [@Jenstel](https://github.com/Jenstel) и Vladimir Sharapov aka @EvelRus, которые являются авторами плагина для Plex Media Server (PMS) [Kinopoisk.bundle](https://github.com/Jenstel/Kinopoisk.bundle).
 Увы, последнее обновление которого - март 2021, и изменения в API сделали этот плагин малопригодным для использования.
-В данной реализации, архитектурно значительно более простой, и рассчитанной только на работу с Кинопоиском, удалось добавить некоторые фишки, отсутствующие в оригинальном Kinopoisk.bundle. При этом, очень многое взято из оригинального.
+В данной реализации, архитектурно значительно более простой, и рассчитанной только на работу с Кинопоиском, удалось добавить некоторые фишки, отсутствующие в оригинальном Kinopoisk.bundle. При этом, хотя очень многое взято из оригинального, в данном случае исходник полностью переработан, архитектурно он значительно проще великолепного оригинала.
 
 # Установка
-Исходим из того, что [Plex Media Server](https://www.plex.tv/media-server-downloads/?cat=computer&plat=windows) для вашей операционной системы уже установлен.
+Исходим из того, что [Plex Media Server](https://www.plex.tv/media-server-downloads/) для вашей операционной системы уже установлен.
 Иначе зачем мог понадобиться плагин к нему.
 
 ## Latest версия
 Скачать актуальную версию [Kinopoisk3.bundle](https://github.com/lugovskovp/Kinopoisk3.bundle/releases/latest).
-Плагин в активной доработке, подэтому в настройках (см.ниже) рекомендую включить автообновление.
+Плагин в активной доработке, практически каждый коммит автоматически генерит новую версию, поэтому в настройках (см.ниже) рекомендую включить автообновление.
 
 ## Распаковка в папку плагинов
 Расположение папки плагинов Plex (папки Plug-ins) в разных операционных системах:
-'''
-* '%LOCALAPPDATA%\Plex Media Server\'                                        # Windows Vista/7/8
+'''* '%LOCALAPPDATA%\Plex Media Server\'                                        # Windows Vista/7/8
 * '%USERPROFILE%\Local Settings\Application Data\Plex Media Server\'         # Windows XP, 2003, Home Server
 * '$HOME/Library/Application Support/Plex Media Server/'                     # Mac OS
 * '$PLEX_HOME/Library/Application Support/Plex Media Server/',               # Linux
@@ -36,8 +35,7 @@
 * '/volume1/Plex/Library/Application Support/Plex Media Server/',            # Synology, Asustor
 * '/raid0/data/module/Plex/sys/Plex Media Server/',                          # Thecus
 * '/raid0/data/PLEX_CONFIG/Plex Media Server/'                               # Thecus Plex community
-* '/Volume1/Plex/Library/Application Support/Plex Media Server'              # TOS 5.0 | TOS 6.0
-'''
+* '/Volume1/Plex/Library/Application Support/Plex Media Server'              # TOS 5.0 | TOS 6.0'''
 
 # Использование
 ## Преимущества
