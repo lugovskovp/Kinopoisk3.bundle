@@ -48,16 +48,13 @@
       [
         "@semantic-release/exec",
         {
-          "generateNotes": "ls -1; ls -1>./VER",
-          "prepareCmd": "ls -1>./VERS",
-          "publishCmd": "ls -1R>./VERSI; echo some>VERsome",
-          "successCmd": "ls -1a"
+          "prepareCmd": "echo ${nextRelease.version}\ndate >./Contents/VERSION",
         }
       ],
       [
         "@semantic-release/git",
         {
-          "assets": ["CHANGELOG.md", "VERS"],
+          "assets": ["CHANGELOG.md", "./Contents/VERSION"],
           "message":"chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
         }
       ]
