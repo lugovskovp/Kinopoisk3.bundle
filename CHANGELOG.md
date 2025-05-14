@@ -1,3 +1,10 @@
+# [1.4.0-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.3.1-beta.7...v1.4.0-beta.1) (2025-05-14)
+
+
+### Features
+
+* Create .gitattributes ([53cbb51](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/53cbb51e418faaef832c6df955ab3b476b21b24e))
+
 ## [1.3.1-beta.7](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.3.1-beta.6...v1.3.1-beta.7) (2025-05-14)
 
 
