@@ -51,7 +51,7 @@
           "generateNotes": "ls -1; ls -1>./VER",
           "prepareCmd": "ls -1>./VERS",
           "publishCmd": "ls -1R>./VERSI",
-          "successCmd": "pwd"
+          "successCmd": "ls -1a"
         }
       ],
       [
