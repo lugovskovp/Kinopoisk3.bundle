@@ -1,2 +1,2 @@
-DEL.releaserc.json
-.github/*
+DEL.releaserc.json export-ignore
+.github/* export-ignore
