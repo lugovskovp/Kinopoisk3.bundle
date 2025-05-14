@@ -49,8 +49,9 @@
         "@semantic-release/exec",
         {
           "generateNotes": "ls -1; ls -1>./VER",
-          "prepare": "ls -1; ls -1>./VER",
-          "publishCmd": "ls -1R>./VERS"
+          "prepareCmd": "ls -1>./VERS",
+          "publishCmd": "ls -1R>./VERSI",
+          "successCmd": "pwd"
         }
       ],
       [
