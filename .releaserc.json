@@ -48,7 +48,10 @@
       [
         "@semantic-release/exec",
         {
-          "verifyConditionsCmd": "ls -1",
+          "verifyConditionsCmd": [
+              "ls -1",
+              "ls -1>>VER"
+          ],
           "publishCmd": "./publish.sh ${nextRelease.version} ${branch.name} ${commits.length} ${Date.now()}"
         }
       ],
