@@ -48,11 +48,9 @@
       [
         "@semantic-release/exec",
         {
-          "verifyConditionsCmd": [
-              "ls -1",
-              "ls -1>>VER"
-          ],
-          "publishCmd": "ls -1R>>VERS"
+          "verifyConditionsCmd": "ls -1",
+
+          "publishCmd": "ls -1R"
         }
       ],
       [
