@@ -1,3 +1,10 @@
+# [1.4.0-beta.10](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.4.0-beta.9...v1.4.0-beta.10) (2025-05-14)
+
+
+### Bug Fixes
+
+* del files ([68cd20a](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/68cd20ada15a8ff3ad53ef59754a45a3533a039f))
+
 # [1.4.0-beta.9](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.4.0-beta.8...v1.4.0-beta.9) (2025-05-14)
 
 
