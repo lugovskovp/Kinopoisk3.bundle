@@ -1,2 +1,4 @@
+# List files removed from release .zip
 DEL.releaserc.json export-ignore
 .github/* export-ignore
+./.* export-ignore
