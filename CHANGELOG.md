@@ -1,3 +1,16 @@
+# [1.5.0](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.4.0...v1.5.0) (2025-05-14)
+
+
+### Bug Fixes
+
+* issue [#17](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/17) ([04872df](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/04872dfc92f008d135641070e98b34279d0b3a67))
+* доработка документации ([7c06a90](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/7c06a90e1d446cd039773059fb6e7fb831f61a4c))
+
+
+### Features
+
+* Merge pull request [#19](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/19) from lugovskovp/beta  Beta autoclose issue [#17](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/17) ([0cdeea6](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/0cdeea6f1fba9f8ddaa0461de7b8aa8209d2fd93))
+
 ## [1.4.1-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.4.1-beta.1...v1.4.1-beta.2) (2025-05-14)
 
 
