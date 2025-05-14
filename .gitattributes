@@ -3,3 +3,5 @@ DEL.releaserc.json export-ignore
 LICENSE export-ignore
 .github/* export-ignore
 .* export-ignore
+pix/* export-ignore
+docs/* export-ignore
