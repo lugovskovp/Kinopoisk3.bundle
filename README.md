@@ -5,10 +5,10 @@
 [![Release date][release-date-image]][release-url]
 [![][version-beta-image]][changelog-url]
 [![][license-image]][license-url]
-![GitHub issues](https://img.shields.io/github/lugovskovp/Kinopoisk3.bundle)
+![GitHub issues](https://img.shields.io/github/issues/lugovskovp/Kinopoisk3.bundle)
 
 # Зачем.
-Искренняя благодарность Artem Mirotin aka @amirotin, Aleksey Ganuta aka @ziemenz и @Jenstel и Vladimir Sharapov aka @EvelRus, которые являются авторами плагина для Plex Media Server (PMS) [Kinopoisk.bundle](https://github.com/Jenstel/Kinopoisk.bundle).
+Искренняя благодарность Artem Mirotin aka @amirotin(https://github.com/amirotin), Aleksey Ganuta aka @Jenstel(https://github.com/Jenstel) и Vladimir Sharapov aka @EvelRus, которые являются авторами плагина для Plex Media Server (PMS) [Kinopoisk.bundle](https://github.com/Jenstel/Kinopoisk.bundle).
 Увы, последнее обновление которого - март 2021, и изменения в API сделали этот плагин малопригодным для использования.
 В данной реализации, архитектурно значительно более простой, и рассчитанной только на работу с Кинопоиском, удалось добавить некоторые фишки, отсутствующие в оригинальном Kinopoisk.bundle. При этом, очень многое взято из оригинального.
 
