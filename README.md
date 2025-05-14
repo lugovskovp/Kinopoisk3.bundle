@@ -69,5 +69,5 @@ This project is released under the [MIT License][license-url].
 [license-url]: https://github.com/lugovskovp/Kinopoisk3.bundle/blob/main/LICENSE
 [license-image]: https://img.shields.io/github/license/lugovskovp/Kinopoisk3.bundle
 
-[issue-opener]: https://img.shields.io/github/issues/lugovskovp/Kinopoisk3.bundle
+[issues-opened]: https://img.shields.io/github/issues/lugovskovp/Kinopoisk3.bundle
 [issue-url]: https://github.com/lugovskovp/Kinopoisk3.bundle/issues
