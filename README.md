@@ -8,7 +8,13 @@
 
 
 ## Зачем.
+Искренняя благодарность Artem Mirotin aka @amirotin, Aleksey Ganuta aka @ziemenz и @Jenstel и Vladimir Sharapov aka @EvelRus, которые являются авторами плагина для Plex Media Server (PMS) [Kinopoisk.bundle|https://github.com/Jenstel/Kinopoisk.bundle]
+Увы, последнее обновление которого - март 2021, и изменения в API сделали этот плагин малопригодным для использования.
+В данной реализации, архитектурно значительно более простой, и рассчитанной только на работу с Кинопоиском, удалось добавить некоторые фишки, отсутствующие в оригинальном Kinopoisk.bundle. При этом, очень многое взято из оригинального.
 
+## Установка
+
+## Настройки
 
 ## Changelog
 See [CHANGELOG][changelog-url].
