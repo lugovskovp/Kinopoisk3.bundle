@@ -1,3 +1,125 @@
+# [1.4.0-beta.10](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.4.0-beta.9...v1.4.0-beta.10) (2025-05-14)
+
+
+### Bug Fixes
+
+* del files ([68cd20a](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/68cd20ada15a8ff3ad53ef59754a45a3533a039f))
+
+# [1.4.0-beta.9](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.4.0-beta.8...v1.4.0-beta.9) (2025-05-14)
+
+
+### Bug Fixes
+
+* Update .releaserc.json ([de13bb2](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/de13bb28260e58084c1ac0726a9e4699fbaa7bd8))
+
+# [1.4.0-beta.8](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.4.0-beta.7...v1.4.0-beta.8) (2025-05-14)
+
+
+### Bug Fixes
+
+* Update .releaserc.json ([0cfe41a](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/0cfe41a99e98fad1ac93f74c7b5bf255f6132b0d))
+
+# [1.4.0-beta.7](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.4.0-beta.6...v1.4.0-beta.7) (2025-05-14)
+
+
+### Bug Fixes
+
+* Update .releaserc.json ([e31776d](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/e31776d1ef7bb65bda8fe1ffc57a42d1a54bfbd8))
+
+# [1.4.0-beta.6](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.4.0-beta.5...v1.4.0-beta.6) (2025-05-14)
+
+
+### Bug Fixes
+
+* Update .releaserc.json ([6aea6ba](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/6aea6ba23b20049e68baae5b09991ee7c8c899a3))
+
+# [1.4.0-beta.5](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.4.0-beta.4...v1.4.0-beta.5) (2025-05-14)
+
+
+### Bug Fixes
+
+* Update .releaserc.json ([3009a3b](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/3009a3bd3e17e3e7af8c2e0d1b0a1b1fe608802d))
+
+# [1.4.0-beta.4](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.4.0-beta.3...v1.4.0-beta.4) (2025-05-14)
+
+
+### Bug Fixes
+
+* Update .releaserc.json ([9168549](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/9168549f7aa9fbc79a96186fcdc4b3ff1c8b1755))
+* Update .releaserc.json ([9c0d728](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/9c0d728e633eeb853914540ec90f9c439c67f059))
+
+# [1.4.0-beta.3](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.4.0-beta.2...v1.4.0-beta.3) (2025-05-14)
+
+
+### Bug Fixes
+
+* Update .gitattributes ([12c91fb](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/12c91fb3078e737f56aa1776fe1e8c794e62d351))
+
+# [1.4.0-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.4.0-beta.1...v1.4.0-beta.2) (2025-05-14)
+
+
+### Bug Fixes
+
+* Update .gitattributes ([7aa4f37](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/7aa4f37ce58c102cb1ad6ce5a027b84820faa4b7))
+
+# [1.4.0-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.3.1-beta.7...v1.4.0-beta.1) (2025-05-14)
+
+
+### Features
+
+* Create .gitattributes ([53cbb51](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/53cbb51e418faaef832c6df955ab3b476b21b24e))
+
+## [1.3.1-beta.7](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.3.1-beta.6...v1.3.1-beta.7) (2025-05-14)
+
+
+### Bug Fixes
+
+* Update .releaserc.json ([cfe6b14](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/cfe6b140387836cb7a5353b761f3cd8869cb9b45))
+
+## [1.3.1-beta.6](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.3.1-beta.5...v1.3.1-beta.6) (2025-05-14)
+
+
+### Bug Fixes
+
+* Update .releaserc.json ([397d6f8](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/397d6f8793ea7d8a3da7fa82c6d553371533396b))
+
+## [1.3.1-beta.5](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.3.1-beta.4...v1.3.1-beta.5) (2025-05-14)
+
+
+### Bug Fixes
+
+* Update .releaserc.json ([c859cca](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/c859cca18b912365238d2e50d2c8504301776e4a))
+
+## [1.3.1-beta.4](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.3.1-beta.3...v1.3.1-beta.4) (2025-05-14)
+
+
+### Bug Fixes
+
+* Update .releaserc.json ([7fdaa83](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/7fdaa8394fc6a8bbe4d1018ebccd4c8554c323a2))
+
+## [1.3.1-beta.3](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.3.1-beta.2...v1.3.1-beta.3) (2025-05-14)
+
+
+### Bug Fixes
+
+* Update .releaserc.json ([0867dd0](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/0867dd09b79c3109e454be4a0a4cc1bc279ee042))
+* Update .releaserc.json ([0fa3d34](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/0fa3d343fae6f37ff40eedaac61a2c9c890bfa6b))
+
+## [1.3.1-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.3.1-beta.1...v1.3.1-beta.2) (2025-05-14)
+
+
+### Bug Fixes
+
+* Update .releaserc.json ([c4ccde0](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/c4ccde086f79eee6e471039e7ad121721a27da46))
+* Update .releaserc.json ([42e0d78](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/42e0d786f1de5c00fa7f58f6b16c3800e9025a16))
+
+## [1.3.1-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.3.0...v1.3.1-beta.1) (2025-05-14)
+
+
+### Bug Fixes
+
+* Update .releaserc.json ([bce7bb5](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/bce7bb53d674fc901829c34c1a520ecab21fee60))
+
 # [1.3.0](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.2.0...v1.3.0) (2025-05-13)
 
 
