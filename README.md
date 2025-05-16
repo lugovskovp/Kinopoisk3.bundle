@@ -33,9 +33,12 @@
 
 <details>
 <summary>Умеет работать с несколькими сезонами</summary>
-![Несколько сезонов](<"pix/ser 2 seasones.png">)
-![Несколько сезонов](<"/pix/ser 2 seasones.png">)
+
+![Несколько сезонов][pix-url]
+![Несколько сезонов](https://github.com/lugovskovp/Kinopoisk3.bundle/pix/ser 2 seasones.png)
 ![Несколько сезонов](<"../blob/main/pix/ser 2 seasones.png">)
+
+[pix-url]: https://github.com/lugovskovp/Kinopoisk3.bundle/pix/ser 2 seasones.png
 </details>
 <details>
 <summary>Загружет наименования серий</summary>
