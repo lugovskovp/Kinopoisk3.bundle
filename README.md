@@ -10,9 +10,9 @@
 [![GitHub issues][issues-opened]][issue-url]
 
 # Зачем.
-Искренняя благодарность Artem Mirotin aka [@amirotin](https://github.com/amirotin), Aleksey Ganuta aka [@Jenstel](https://github.com/Jenstel) и Vladimir Sharapov aka @EvelRus, которые являются авторами плагина для Plex Media Server (PMS) [Kinopoisk.bundle](https://github.com/Jenstel/Kinopoisk.bundle).
-Увы, последнее обновление которого - март 2021, и изменения в API kinopoiskapiunofficial.tech сделали этот плагин малопригодным для использования.
-В данной реализации, архитектурно значительно более простой, и рассчитанной только на работу с Кинопоиском. Удалось добавить некоторые фишки, отсутствующие в оригинальном Kinopoisk.bundle. При этом, хотя очень многое взято из оригинального, в данном случае архитектура полностью переработана, плагин значительно проще великолепного оригинала. И, несмотря на морфологическую конвергенцию, между собой они не совместимы совершенно.
+Искренняя благодарность Artem Mirotin aka [@amirotin](https://github.com/amirotin), Aleksey Ganuta aka [@Jenstel](https://github.com/Jenstel) и Vladimir Sharapov aka @EvelRus, которые являются авторами плагина для Plex Media Server (PMS) [Kinopoisk.bundle](https://github.com/Jenstel/Kinopoisk.bundle).</br>
+Увы, последнее обновление которого - март 2021, и изменения в API kinopoiskapiunofficial.tech сделали этот плагин малопригодным для использования.</br>
+Данная реализация архитектурно более проста и рассчитанна на работу только с Кинопоиском. Удалось добавить некоторые фишки, отсутствующие в оригинальном Kinopoisk.bundle. При этом, хотя очень многое взято из оригинального, в плагине архитектура полностью переработана, он значительно проще великолепного оригинала. И, несмотря на морфологическую конвергенцию, между собой они не совместимы совершенно.
 
 
 # Использование
@@ -30,7 +30,7 @@
 
 <details>
 <summary>Умеет работать с несколькими сезонами</summary>
-![Несколько сезонов](<pix/ser 2 seasones.png>)
+![Несколько сезонов](<"pix/ser 2 seasones.png">)
 </details>
 <details>
 <summary>Загружет наименования серий</summary>
@@ -47,7 +47,7 @@
 <details>
 <summary>Загружает постеры и фоны</summary>
 ![Загружаются постеры](<pix/ser posters.png>)
-![Загружаются фоны](<pix/ser fones.png>)
+![Загружаются фоны](<"pix/ser fones.png">)
 </details>
 
 <details open>
