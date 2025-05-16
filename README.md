@@ -27,7 +27,7 @@
 
 ### Сериалы
 
-![Несколько сезонов](<"pix/ser 2 seasones.png">)
+![Несколько сезонов](<pix/ser 2 seasones.png>)
 
 /assets/images
 
