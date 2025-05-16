@@ -27,10 +27,15 @@
 
 ### Сериалы
 
+![Несколько сезонов](<"pix/ser 2 seasones.png">)
+
+/assets/images
 
 <details>
 <summary>Умеет работать с несколькими сезонами</summary>
 ![Несколько сезонов](<"pix/ser 2 seasones.png">)
+![Несколько сезонов](<"/pix/ser 2 seasones.png">)
+![Несколько сезонов](<"../blob/main/pix/ser 2 seasones.png">)
 </details>
 <details>
 <summary>Загружет наименования серий</summary>
