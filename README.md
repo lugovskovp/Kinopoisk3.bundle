@@ -73,18 +73,18 @@
 
 <details>
 <summary>Подробная информация и синопсис каждой серии</summary>
-<img src="https://github.com/lugovskovp/Kinopoisk3.bundle/blob/master/pix/ser_one_serie.png.png" alt="Подробная информация о каждой серии">
+<img src="https://github.com/lugovskovp/Kinopoisk3.bundle/blob/master/pix/ser_one_serie.png" alt="Подробная информация о каждой серии">
 </details>
 
 <details>
 <summary>Список актеров</summary>
-<img src="https://github.com/lugovskovp/Kinopoisk3.bundle/blob/master/pix/ser_actors.png.png" alt="Актерский состав">
+<img src="https://github.com/lugovskovp/Kinopoisk3.bundle/blob/master/pix/ser_actors.png" alt="Актерский состав">
 </details>
 
 <details>
 <summary>Постеры и фоны</summary>
 По умолчанию назначается первый попавшийся, но можно изменить в настройках, выбрав тот, что нравится более.
-<img src="https://github.com/lugovskovp/Kinopoisk3.bundle/blob/master/pix/ser_posters.png.png" alt="Постеры и фоны">
+<img src="https://github.com/lugovskovp/Kinopoisk3.bundle/blob/master/pix/ser_posters.png" alt="Постеры и фоны">
 </details>
 
 
@@ -187,7 +187,8 @@ https://kinopoiskapiunofficial.tech/documentation/api/#/films/get_api_v2_1_films
 
 
 # Разработчикам
-Для самостоятельного внесения изменений необходимо выполнить ```git clone git@github.com:lugovskovp/Kinopoisk3.bundle.git```. <br/>
+Для самостоятельного внесения изменений необходимо выполнить 
+```git clone git@github.com:lugovskovp/Kinopoisk3.bundle.git```. <br/>
 Скачивание ZIP архива стабильной версии не годится - в архиве будет только сам плагин, без GH workflows, файлов настроек и папки документации.
 
 
@@ -204,7 +205,7 @@ This project is released under the [GPLv3 License][license-url].
 
 
 ## Контрибуторам
-Как то не ожидаются такие.
+Как-то не ожидаются такие.
 
 
 <!-- Links: -->
