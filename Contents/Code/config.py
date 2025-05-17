@@ -50,7 +50,7 @@ def get_json(url):
     rj = requests.get(url, headers=headers).json()   # data = r.content  # Content of response
   except:
     Log("\n\n err::Except in get_json - requests.get(url=%s)" % url) # type: ignore
-    Log(traceback.format_exc())
+    Log(traceback.format_exc())       # type: ignore
     return                 # в случае ошибки, вернуть пустую строку
   if 'message' in rj:    # признак ошибки
     Log("\n\n err::Попытка поиска без ключа: %s" % rj['message']) # type: ignore

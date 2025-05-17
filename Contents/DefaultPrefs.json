@@ -5,16 +5,16 @@
     "default":""
   },
   {
-    "id":"show2names",
-    "label":"Поиск: отображать и русское наименование, и английское",
-    "type":"bool",
-    "default":"false"
-  },
-  {
     "id":"showTypes",
     "label":"Поиск: отображать тип: F:фильм, M:многосерийный, V:видео, S:сериал, T:tv-шоу",
     "type":"bool",
     "default":"true"
+  },
+  {
+    "id":"show2names",
+    "label":"Поиск: отображать и русское наименование, и английское",
+    "type":"bool",
+    "default":"false"
   },
   {
     "id":"showCountry",
@@ -52,8 +52,6 @@
     "type":"bool",
     "default":"false"
   },
-
-
   {
     "id":"trace",
     "label":"Включить подробную отладку",
