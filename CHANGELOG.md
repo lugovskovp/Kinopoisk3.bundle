@@ -1,3 +1,10 @@
+# [1.6.0-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.5.1...v1.6.0-beta.1) (2025-05-17)
+
+
+### Features
+
+* autostart with new media ([de11111](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/de1111177dee5efecd74e70b34161962260f1099))
+
 ## [1.5.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.5.0...v1.5.1) (2025-05-14)
 
 
