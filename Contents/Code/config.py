@@ -6,8 +6,12 @@
 import requests             # type: ignore # [а к нему еще chardet, urllib3, certifi, idna]
 
 # константы
-NAME = 'Кинопоиск Unofficial' # % VER
-VER = '3.0.4'
+NAME = 'Кинопоиск3' # % VER
+VER = '0.0.1'
+version_path = Core.storage.join_path(Core.bundle_path, 'Contents', 'VERSION')
+if Core.storage.file_exists(version_path):
+  str_version = Core.storage.load(version_path)
+  VER = str_version.split()[0]
 LANGUAGES = [Locale.Language.Russian, Locale.Language.English, Locale.Language.NoLanguage]  # type: ignore # [Locale.Language.Russian, Locale.Language.English, Locale.Language.NoLanguage,]
 
 # Update vars

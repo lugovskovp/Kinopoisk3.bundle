@@ -112,7 +112,7 @@ def ValidatePrefs():
 ##################################################################
 
 class KinoPoiskUnoficialAgent(Agent.TV_Shows): # type: ignore
-  name              = '%s %s Serials' % (NAME, VER) 
+  name              = '%s (%s) Serials' % (NAME, VER) 
   primary_provider  = True 
   fallback_agent    = False 
   contributes_to    = ['com.plexapp.plugins.kinopoisk3', 'com.plexapp.agents.local', 'com.plexapp.agents.themoviedb', 'com.plexapp.agents.imdb'] 
@@ -187,7 +187,7 @@ class KinoPoiskUnoficialAgent(Agent.TV_Shows): # type: ignore
   
 
 class KinoPoiskUnoficialAgent(Agent.Movies): # type: ignore
-  name              = '%s %s Movies' % (NAME, VER) 
+  name              = '%s (%s) Movies' % (NAME, VER) 
   primary_provider  = True 
   fallback_agent    = False 
   contributes_to    = ['com.plexapp.plugins.kinopoisk3', 'com.plexapp.agents.local', 'com.plexapp.agents.themoviedb', 'com.plexapp.agents.imdb'] 
