@@ -34,12 +34,15 @@
 <details>
 <summary>Умеет работать с несколькими сезонами</summary>
 
+<img src="/blob/master/pix/ser_2_seasones.png" alt="Screenshot">
 ![Несколько сезонов][pix-url]
-![Несколько сезонов]("https://github.com/lugovskovp/Kinopoisk3.bundle/pix/ser 2 seasones.png")
-![Несколько сезонов](<"../blob/main/pix/ser 2 seasones.png">)
+![Несколько сезонов]("https://github.com/lugovskovp/Kinopoisk3.bundle/pix/ser_2_seasones.png")
+![Несколько сезонов](<"../blob/main/pix/ser_2_seasones.png">)
+<img src="https://github.com/lugovskovp/Kinopoisk3.bundle/pix/ser_2_seasones.png" alt="Screenshot">
 
-[pix-url]: https://github.com/lugovskovp/Kinopoisk3.bundle/pix/ser 2 seasones.png
+[pix-url]: https://github.com/lugovskovp/Kinopoisk3.bundle/pix/ser_2_seasones.png
 </details>
+
 <details>
 <summary>Загружет наименования серий</summary>
 ![Наименование серий в сериале](<pix/ser ser names.png>)
