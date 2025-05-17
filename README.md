@@ -1,6 +1,6 @@
-[!CAUTION]
-БЕТА, РЕЛИЗА ЕЩЕ НЕ БЫЛО
-
+> [!CAUTION]
+> БЕТА, РЕЛИЗА ЕЩЕ НЕ БЫЛО
+<!-- https://github.com/orgs/community/discussions/16925 -->
 
 # Кинопоиск3 - плагин для Plex
 <!-- https://shields.io/badges/git-hub-release -->
@@ -51,7 +51,8 @@
 #### Дисклеймер
 В некоторых фильмах и сериалах в API отдается лишь часть информации, например, нет наименований отдельных серий и синопсиса сериалов, или нет года выхода. или нет оценок Кинопоиска или файлов с постерами и фонами. Естественно, в этом случае их не будет и в предоставлении информации плагина в PMS.
 
-<a name="myfootnote1">1</a>: Задаётся в [Настройки](https://github.com/lugovskovp/Kinopoisk3.bundle/tree/beta#настройки) 
+> [!TIP]
+> <a name="myfootnote1">1</a>: Задаётся в [Настройки](https://github.com/lugovskovp/Kinopoisk3.bundle/tree/beta#настройки) 
 
 
 ### Фильмы
