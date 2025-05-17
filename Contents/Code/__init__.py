@@ -2,7 +2,7 @@
 # coding=utf-8
 import re, datetime
 from config import *        # константы
-from kputils import srch_params        # type: ignore # extended json и параметры поиска
+from utils import srch_params        # type: ignore # extended json и параметры поиска
 #from kinoplex.updater import Updater   # type: ignore
 
 #!!!!!!!!!!! Start(), auto_update_thread update time
@@ -56,7 +56,7 @@ class Updaterr(object):
           git_data = self.core.data.json.from_string(req.content)
           map = {'beta': ('object', 'sha'), 'stable': {'tag_name'}} 
           try:
-            self.update_version = reduce(dict.get, map[self.channel], git_data)
+            self.update_version = reduce(dict.get, map[self.channel], git_data)     # type: ignore
             if not self.update_version:
               self.core.log.debug('No updates for channel %s', self.channel)
               return
@@ -70,6 +70,7 @@ class Updaterr(object):
                 self.core.log.debug('Current version is actual')
                 return
 
+            return
             self.install_zip_from_url(self.archive_url % (self.repo, self.update_version))
           except Exception as e:
             self.core.log.error('Something goes wrong with updater: %s', e, exc_info=True)
@@ -104,10 +105,11 @@ def Start():
     Log("\n\n  Start update interval ==  %s " % UpdateInterval)   # type: ignore
     Thread.CreateTimer(UpdateInterval, Updaterr.auto_update_thread, core=Core, pref=Prefs)   # type: ignore
     
-
-
 def ValidatePrefs():
   Log('ValidatePrefs function call')          # type: ignore
+
+
+##################################################################
 
 class KinoPoiskUnoficialAgent(Agent.TV_Shows): # type: ignore
   name              = '%s %s Serials' % (NAME, VER) 
@@ -207,6 +209,7 @@ class KinoPoiskUnoficialAgent(Agent.Movies): # type: ignore
     '''   
     #   1 - initializing search parameters
     srch = srch_params(media, manual)     
+    
     d("\n\n----- KinoPoisk.SEARCH %s, %s, %s %s start\n" % (srch.str_titles, srch.year, srch.match_type, srch.search_type))
     '''if manual and not isNewMatch:
       #return   # можно автопопытку поиска отключить
