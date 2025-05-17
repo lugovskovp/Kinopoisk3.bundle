@@ -9,46 +9,40 @@
 [![][license-image]][license-url]
 [![GitHub issues][issues-opened]][issue-url]
 
-# Зачем.
+# Почему и зачем.
 Искренняя благодарность Artem Mirotin aka [@amirotin](https://github.com/amirotin), Aleksey Ganuta aka [@Jenstel](https://github.com/Jenstel) и Vladimir Sharapov aka @EvelRus, которые являются авторами плагина для Plex Media Server (PMS) [Kinopoisk.bundle](https://github.com/Jenstel/Kinopoisk.bundle).</br>
 Увы, последнее обновление которого - март 2021, и изменения в API kinopoiskapiunofficial.tech сделали этот плагин малопригодным для использования.</br>
-Данная реализация архитектурно более проста и рассчитанна на работу только с Кинопоиском. Удалось добавить некоторые фишки, отсутствующие в оригинальном Kinopoisk.bundle. При этом, хотя очень многое взято из оригинального, в плагине архитектура полностью переработана, он значительно проще великолепного оригинала. И, несмотря на морфологическую конвергенцию, между собой они не совместимы совершенно.
+Данная реализация архитектурно более проста, единственный источник данных - неофициальное API Кинопоиска.</br>
+Удалось добавить некоторые фишки, отсутствующие в оригинальном Kinopoisk.bundle. При этом, хотя очень многое в коде и алгоритмах взято из оригинального, архитектура полностью переработана, плагин значительно проще великолепного оригинала.</br>
+И, несмотря на морфологическую конвергенцию, между собой данный плагин и Kinopoisk.bundle не совместимы принципиально.
 
 
 # Использование
-Торрент клиент у меня скачивает фильмы и сериалы в папки соответсвенно Films и Serials.
-Эти же папки использованы в настройках PMS для фильмов и сериалов. 
-После закачки ВРУЧНУЮ запускаю данный агент (см. [Настройки](https://github.com/lugovskovp/Kinopoisk3.bundle/tree/beta#настройки))
+Торрент клиент у меня скачивает фильмы и сериалы в папки соответсвенно Films и Serials.</br>
+Эти же папки использованы в настройках PMS для фильмов и сериалов.</br> 
+После закачки ВРУЧНУЮ запускаю данный агент (см. [Настройки](https://github.com/lugovskovp/Kinopoisk3.bundle/tree/beta#настройки))</br>
 Похоже, PMS с какого-то времени убрал автозапуск неродных плагинов.
 
 ## Преимущества
+
+В некоторых фильмах и сериалах в API отдается лишь часть информации, например, нет наименований отдельных серий и синопсиса сериалов, или нет года выхода. или нет оценок Кинопоиска или файлов с постерами и фонами. Естественно, в этом случае их не будет и в предоставлении информации плагина в PMS.
 
 ### Сопоставление - Поиск
 
 ### Сериалы
 
-![Несколько сезонов][pix-url]
-
-/assets/images
-
 <details>
 <summary>Умеет работать с несколькими сезонами</summary>
-
-<img src="https://github.com/lugovskovp/Kinopoisk3.bundle/blob/master/pix/ser_2_seasones.png" alt="Screenshot">
-![Несколько сезонов][pix-url]
-![Несколько сезонов]("https://github.com/lugovskovp/Kinopoisk3.bundle/pix/ser_2_seasones.png")
-![Несколько сезонов](<"../blob/main/pix/ser_2_seasones.png">)
-<img src="https://github.com/lugovskovp/Kinopoisk3.bundle/pix/ser_2_seasones.png" alt="Screenshot">
-
-[pix-url]: https://github.com/lugovskovp/Kinopoisk3.bundle/pix/ser_2_seasones.png
+<img src="https://github.com/lugovskovp/Kinopoisk3.bundle/blob/master/pix/ser_2_seasones.png" alt="Несколько сезонов сериала">
 </details>
 
 <details>
-<summary>Загружет наименования серий</summary>
-![Наименование серий в сериале](<pix/ser ser names.png>)
+<summary>Отображение наименований отдельных серий</summary>
+<img src="https://github.com/lugovskovp/Kinopoisk3.bundle/blob/master/pix/ser_ser_names.png" alt="В списке серий сезона - наименования серий">
 </details>
+
 <details>
-<summary>Подробная информация о каждой серии</summary>
+<summary>Подробная информация и синопсис каждой серии</summary>
 ![Подробная информация о каждой серии](<pix/ser one serie.png>)
 </details>
 <details>
