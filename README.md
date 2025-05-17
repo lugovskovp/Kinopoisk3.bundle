@@ -88,7 +88,6 @@
 </details>
 
 
-
 ## Недостатки и особенности
 
 R&D:
@@ -105,7 +104,7 @@ R&D:
 Сравнение с Kinopoisk.bundle:
 ! Загрузка рейтингов для фильмов
 +  * Kinopoisk
-*  * Rotten Tomatoes
+-  * Rotten Tomatoes
 +  * IMDb
 -  * The Movies Database
 + Источники рецензий на фильмы
