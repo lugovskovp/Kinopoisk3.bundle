@@ -1,3 +1,10 @@
+## [1.6.1-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.6.0...v1.6.1-beta.1) (2025-05-17)
+
+
+### Bug Fixes
+
+* ver from file version ([3d8008d](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/3d8008dd771fb167da1c04f9934bf09936e6c613))
+
 # [1.6.0](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.5.1...v1.6.0) (2025-05-17)
 
 
