@@ -25,54 +25,14 @@
 
 ## Преимущества
 
-В некоторых фильмах и сериалах в API отдается лишь часть информации, например, нет наименований отдельных серий и синопсиса сериалов, или нет года выхода. или нет оценок Кинопоиска или файлов с постерами и фонами. Естественно, в этом случае их не будет и в предоставлении информации плагина в PMS.
+Поиск при сопоставлении:
+- В списке результатов наименования могут<sup>[1](#myfootnote1)</sup> отображать:
+  - тип: F:фильм, M:многосерийный, V:видео, S:сериал, T:tv-шоу
+  - оригинальное название, кроме русского
+  - страну производства
+  - жанр(ы)
+- Поиск одновременно и по оригинальному имени файла, и по его транслителированному значению. (например, "Missiya_Serenity_(2005).BDRip-AVC.aac_[All.Films][RG].mkv" в результате объеденит поиски по "Missiya Serenity" и по "Миссия Серенити", заменив на пробел "_" и "."в имени)
 
-### Сопоставление - Поиск
-
-### Сериалы
-
-<details>
-<summary>Умеет работать с несколькими сезонами</summary>
-<img src="https://github.com/lugovskovp/Kinopoisk3.bundle/blob/master/pix/ser_2_seasones.png" alt="Несколько сезонов сериала">
-</details>
-
-<details>
-<summary>Отображение наименований отдельных серий</summary>
-<img src="https://github.com/lugovskovp/Kinopoisk3.bundle/blob/master/pix/ser_ser_names.png" alt="В списке серий сезона - наименования серий">
-</details>
-
-<details>
-<summary>Подробная информация и синопсис каждой серии</summary>
-![Подробная информация о каждой серии](<pix/ser one serie.png>)
-</details>
-<details>
-<summary>Список актеров</summary>
-![Актёры](<pix/ser actors.png>)
-</details>
-<details>
-<summary>Загружает постеры и фоны</summary>
-![Загружаются постеры](<pix/ser posters.png>)
-![Загружаются фоны](<"pix/ser fones.png">)
-</details>
-
-<details open>
-
-
-
-
-
-
-
-</details>
-
-### Фильмы
-
-
-Поиск:
-- Поиск при сопоставлении отображает и оригинальное название, год, жанр, первое предложение описания
-- замена на пробел "_" и "."в имени
-- массив - поиск по неск вариантам названия
-- описать начальные условия для запуска поиска - разные варианты - апдейт, новый файл, сброшены метаданные
 Скоринг:
 - скоринг по наименованию 
 - скоринг учитывает по типу - фильм/сериал
@@ -93,6 +53,44 @@
 - в сериалах - эпизоды
 - копию библиотеки с NAS - мелкий mp4 копировать и называть, как большие реальные файлы, доработать по прогону
 - [TV_SERIES].[FILM] в результатах поиска?
+
+В некоторых фильмах и сериалах в API отдается лишь часть информации, например, нет наименований отдельных серий и синопсиса сериалов, или нет года выхода. или нет оценок Кинопоиска или файлов с постерами и фонами. Естественно, в этом случае их не будет и в предоставлении информации плагина в PMS.
+
+### Сопоставление - Поиск
+
+### Сериалы
+
+<details>
+<summary>Умеет работать с несколькими сезонами</summary>
+<img src="https://github.com/lugovskovp/Kinopoisk3.bundle/blob/master/pix/ser_2_seasones.png" alt="Несколько сезонов сериала">
+</details>
+
+<details>
+<summary>Отображение наименований отдельных серий</summary>
+<img src="https://github.com/lugovskovp/Kinopoisk3.bundle/blob/master/pix/ser_ser_names.png" alt="В списке серий сезона - наименования серий">
+</details>
+
+<details>
+<summary>Подробная информация и синопсис каждой серии</summary>
+<img src="https://github.com/lugovskovp/Kinopoisk3.bundle/blob/master/pix/ser_one_serie.png.png" alt="Подробная информация о каждой серии">
+</details>
+
+<details>
+<summary>Список актеров</summary>
+<img src="https://github.com/lugovskovp/Kinopoisk3.bundle/blob/master/pix/ser_actors.png.png" alt="Актерский состав">
+</details>
+
+<details>
+<summary>Постеры и фоны</summary>
+По умолчанию назначается первый попавшийся, но можно изменить в настройках, выбрав тот, что нравится более.
+<img src="https://github.com/lugovskovp/Kinopoisk3.bundle/blob/master/pix/ser_posters.png.png" alt="Постеры и фоны">
+</details>
+
+
+### Фильмы
+
+
+
 
 ## Недостатки
 
@@ -196,6 +194,8 @@ This project is released under the [GPLv3 License][license-url].
 
 [issues-opened]: https://img.shields.io/github/issues/lugovskovp/Kinopoisk3.bundle
 [issue-url]: https://github.com/lugovskovp/Kinopoisk3.bundle/issues
+
+<a name="myfootnote1">1</a>: Footnote content goes here
 
 -----------
 Текщие значения настроек:
