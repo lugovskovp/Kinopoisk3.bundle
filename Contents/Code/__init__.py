@@ -70,6 +70,7 @@ class Updaterr(object):
                 self.core.log.debug('Current version is actual')
                 return
 
+            return
             self.install_zip_from_url(self.archive_url % (self.repo, self.update_version))
           except Exception as e:
             self.core.log.error('Something goes wrong with updater: %s', e, exc_info=True)
