@@ -34,7 +34,7 @@
 <details>
 <summary>Умеет работать с несколькими сезонами</summary>
 
-<img src="/blob/master/pix/ser_2_seasones.png" alt="Screenshot">
+<img src="https://github.com/lugovskovp/Kinopoisk3.bundle/blob/master/pix/ser_2_seasones.png" alt="Screenshot">
 ![Несколько сезонов][pix-url]
 ![Несколько сезонов]("https://github.com/lugovskovp/Kinopoisk3.bundle/pix/ser_2_seasones.png")
 ![Несколько сезонов](<"../blob/main/pix/ser_2_seasones.png">)
