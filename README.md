@@ -12,7 +12,7 @@
 [![GitHub issues][issues-opened]][issue-url]
 
 # Почему и зачем.
-Искренняя благодарность Artem Mirotin aka [@amirotin](https://github.com/amirotin), Aleksey Ganuta aka [@Jenstel](https://github.com/Jenstel) и Vladimir Sharapov aka @EvelRus, которые являются авторами плагина для Plex Media Server (PMS) [Kinopoisk.bundle](https://github.com/Jenstel/Kinopoisk.bundle).</br>
+В первую очередь хочу выразить искреннюю благодарность и восхищение Artem Mirotin aka [@amirotin](https://github.com/amirotin), Aleksey Ganuta aka [@Jenstel](https://github.com/Jenstel) и Vladimir Sharapov aka @EvelRus, которые являются авторами плагина для Plex Media Server (PMS) [Kinopoisk.bundle](https://github.com/Jenstel/Kinopoisk.bundle).</br>
 Увы, последнее обновление которого - март 2021, и изменения в API kinopoiskapiunofficial.tech сделали этот плагин малопригодным для использования.</br>
 Данная реализация архитектурно более проста, единственный источник данных - неофициальное API Кинопоиска.</br>
 Удалось добавить некоторые фишки, отсутствующие в оригинальном Kinopoisk.bundle. При этом, хотя очень многое в коде и алгоритмах взято из оригинального, архитектура полностью переработана, плагин значительно проще великолепного оригинала.</br>
@@ -195,7 +195,7 @@ https://kinopoiskapiunofficial.tech/documentation/api/#/films/get_api_v2_1_films
 Для самостоятельного внесения изменений необходимо выполнить 
 ```git clone git@github.com:lugovskovp/Kinopoisk3.bundle.git```. <br/>
 Скачивание ZIP архива стабильной версии не годится - в архиве будет только сам плагин, без GH workflows, файлов настроек и папки документации.
-
+Отладка и профайлинг отключаются настройкой.
 
 ## Пожелания к доработке
 Если есть пожелания к доработке какой-то функции, или необходимо сообщить о проблеме - достаточно завести [обсуждение](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/new/choose) на странице проекта.

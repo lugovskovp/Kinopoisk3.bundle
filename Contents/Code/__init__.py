@@ -125,7 +125,7 @@ class KinoPoiskUnoficialAgent(Agent.TV_Shows): # type: ignore
   @log_timing  
   def search(self, results, media, lang, manual=False):
     srch = srch_params(media, manual)
-    d("\n\n----- KinoPoisk.SEARCH %s, %s, %s %s start\n" % (srch.str_titles, srch.year, srch.match_type, srch.search_type))
+    d("\n\n----- %s.SEARCH %s, %s, %s %s start\n" % (self.name, srch.str_titles, srch.year, srch.match_type, srch.search_type))
     finded = {'films':[]}        # найденные 'films'
     srch_and_score(srch, finded, results) 
     srch_mkres(finded, results)
@@ -210,7 +210,7 @@ class KinoPoiskUnoficialAgent(Agent.Movies): # type: ignore
     #   1 - initializing search parameters
     srch = srch_params(media, manual)     
     
-    d("\n\n----- KinoPoisk.SEARCH %s, %s, %s %s start\n" % (srch.str_titles, srch.year, srch.match_type, srch.search_type))
+    d("\n\n----- %s.SEARCH %s, %s, %s %s start\n" % (self.name, srch.str_titles, srch.year, srch.match_type, srch.search_type))
     '''if manual and not isNewMatch:
       #return   # можно автопопытку поиска отключить
       pass'''
