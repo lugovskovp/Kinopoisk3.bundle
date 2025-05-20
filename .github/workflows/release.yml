@@ -3,10 +3,10 @@ name: Release     #Наименования текущего workflow
 on:                     #Секция условий выполнения текущего workflow
   workflow_run: #Условия запуска текущего workflow
     workflows: ["Pre-commit"] #Workflow, который запускается первым 
-    branches: [main] #Ветка, в которой запускается первый workflow
-    types: #Тип результата выполнения первого workflow
-      - completed #Триггер статуса выполнения первого workflow
-  workflow_dispatch:    #Условия запуска текущего workflow 
+    branches: [main]          #Ветка, в которой запускается первый workflow
+    types:                    #Тип результата выполнения первого workflow
+      - completed             #Триггер статуса выполнения первого workflow
+  workflow_dispatch:          #Условия запуска текущего workflow 
   push: 
     branches:
       - master
