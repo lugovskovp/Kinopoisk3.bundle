@@ -14,7 +14,7 @@ from config import UPDATER_REPO, UPDATER_STABLE_URL, UPDATER_BETA_URL
 
 class Updaterr(object):
   def __init__(self, core, channel, repo=UPDATER_REPO):
-    Log("\n^^^^^^^  Updater init repo: %s" % repo)    # type: ignore
+    Log(":::  Updaterr init repo: %s" % repo)    # type: ignore
     self.core = core
     self.channel = channel
     self.repo = repo
@@ -27,12 +27,10 @@ class Updaterr(object):
     self.inactive_path = self.core.storage.join_path(self.inactive, self.identifier)
     self.version_path = self.core.storage.join_path(self.core.bundle_path, 'Contents', 'VERSION')
     self.update_version = None
-
     self.stable_url = UPDATER_STABLE_URL % self.repo
     self.beta_url = UPDATER_BETA_URL % self.repo
     self.archive_url = UPDATER_ARCHIVE_URL % self.repo
-    #Log("\n^^^^^^^  Updater init stage: %s" % self.stage)
-  
+    
       
   @classmethod
   def auto_update_thread(cls, core, pref):
@@ -102,7 +100,7 @@ def Start():
   HTTP.CacheTime = 0                                  # type: ignore #CACHE_1HOUR
   if Prefs['update_channel'] != 'none':                           # type: ignore
     UpdateInterval =  int(Prefs['update_interval'] or 1)*60       # type: ignore
-    Log("\n\n  Start update interval ==  %s " % UpdateInterval)   # type: ignore
+    Log("\n\n  Start update interval ==  %s sec" % UpdateInterval)   # type: ignore
     Thread.CreateTimer(UpdateInterval, Updaterr.auto_update_thread, core=Core, pref=Prefs)   # type: ignore
     
     
@@ -110,7 +108,7 @@ def ValidatePrefs():
   ''' This function is called when the user modifies their preferences.'''
   UpdateInterval =  int(Prefs['update_interval'] or 1) * 60       # type: ignore
   Chanel = Prefs['update_channel']                                # type: ignore
-  Log('::: ValidatePrefs: prefs changed, chanel=%s, interval=%i' % (Chanel, UpdateInterval))  # type: ignore
+  Log('::: ValidatePrefs: prefs CHANGED, chanel=%s, interval=%i sec' % (Chanel, UpdateInterval))  # type: ignore
   if Chanel != 'none':                                            # type: ignore
     Log(" Start update interval ==  %s " % UpdateInterval)        # type: ignore
     Thread.CreateTimer(UpdateInterval, Updaterr.auto_update_thread, core=Core, pref=Prefs)   # type: ignore
