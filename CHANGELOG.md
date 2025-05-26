@@ -1,3 +1,10 @@
+## [1.6.1-beta.3](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.6.1-beta.2...v1.6.1-beta.3) (2025-05-26)
+
+
+### Bug Fixes
+
+* add ValidatePrefs function ([541e44b](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/541e44bd2fba353cf9b234cc38a1e4c70134d035))
+
 ## [1.6.1-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.6.1-beta.1...v1.6.1-beta.2) (2025-05-19)
 
 
