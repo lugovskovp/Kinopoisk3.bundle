@@ -1,3 +1,10 @@
+## [1.6.1-beta.4](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.6.1-beta.3...v1.6.1-beta.4) (2025-05-26)
+
+
+### Bug Fixes
+
+* формулировка в настройках ([a55821b](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/a55821b42aca1f9a51845d18889285d4b0827d1a))
+
 ## [1.6.1-beta.3](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.6.1-beta.2...v1.6.1-beta.3) (2025-05-26)
 
 
