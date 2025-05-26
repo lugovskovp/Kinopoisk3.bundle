@@ -105,12 +105,18 @@ def Start():
     Log("\n\n  Start update interval ==  %s " % UpdateInterval)   # type: ignore
     Thread.CreateTimer(UpdateInterval, Updaterr.auto_update_thread, core=Core, pref=Prefs)   # type: ignore
     
+    
 def ValidatePrefs():
-  Log('ValidatePrefs function call')          # type: ignore
+  ''' This function is called when the user modifies their preferences.'''
+  UpdateInterval =  int(Prefs['update_interval'] or 1) * 60       # type: ignore
+  Chanel = Prefs['update_channel']                                # type: ignore
+  Log('::: ValidatePrefs: prefs changed, chanel=%s, interval=%i' % (Chanel, UpdateInterval))  # type: ignore
+  if Chanel != 'none':                                            # type: ignore
+    Log(" Start update interval ==  %s " % UpdateInterval)        # type: ignore
+    Thread.CreateTimer(UpdateInterval, Updaterr.auto_update_thread, core=Core, pref=Prefs)   # type: ignore
 
 
 ##################################################################
-
 class KinoPoiskUnoficialAgent(Agent.TV_Shows): # type: ignore
   name              = '%s (%s) Serials' % (NAME, VER) 
   primary_provider  = True 
