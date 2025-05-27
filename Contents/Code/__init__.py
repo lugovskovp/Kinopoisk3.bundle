@@ -10,7 +10,7 @@ from utils import srch_params        # type: ignore # extended json и пара�
 #from up import Updaterr
 
 from os.path import split as split_path
-from config import UPDATER_REPO, UPDATER_STABLE_URL, UPDATER_BETA_URL
+from config import UPDATER_REPO, UPDATER_STABLE_URL, UPDATER_BETA_URL, MIN_UPDATE_INTERVAL
 
 class Updaterr(object):
   def __init__(self, core, channel, repo=UPDATER_REPO):
@@ -41,7 +41,11 @@ class Updaterr(object):
       #c:\Users\plugo\AppData\Local\Plex Media Server\Plug-in Support\Data\com.plexapp.plugins.kinopoisk3\DataItems\
     except Exception as e:
       core.storage.save_data_item('error_update', str(e))
-    core.runtime.create_timer(20, Updaterr.auto_update_thread, True, core.sandbox, True, core=core, pref=pref)
+    UpdateInterval = int(Prefs['update_interval'])      # type: ignore
+    if MIN_UPDATE_INTERVAL > UpdateInterval:
+      UpdateInterval = MIN_UPDATE_INTERVAL
+    UpdateInterval = UpdateInterval * 60
+    core.runtime.create_timer(UpdateInterval, Updaterr.auto_update_thread, True, core.sandbox, True, core=core, pref=pref)
         
   
   def checker(self):
@@ -106,9 +110,14 @@ def Start():
     
 def ValidatePrefs():
   ''' This function is called when the user modifies their preferences.'''
-  UpdateInterval =  int(Prefs['update_interval'] or 1) * 60       # type: ignore
+  UpdateInterval = int(Prefs['update_interval'])      # type: ignore
+  if MIN_UPDATE_INTERVAL > UpdateInterval:
+    Log('ValidatePrefs: UpdateInterval changed from %i to minimal %i (minutes)' % (UpdateInterval, MIN_UPDATE_INTERVAL))  # type: ignore
+    UpdateInterval = MIN_UPDATE_INTERVAL
+  Log('ValidatePrefs: UpdateInterval = %i minutes' % UpdateInterval)    # type: ignore
+  UpdateInterval = UpdateInterval * 60
   Chanel = Prefs['update_channel']                                # type: ignore
-  Log('::: ValidatePrefs: prefs CHANGED, chanel=%s, interval=%i sec' % (Chanel, UpdateInterval))  # type: ignore
+  Log('ValidatePrefs: prefs CHANGED, chanel=%s, interval=%i sec' % (Chanel, UpdateInterval))  # type: ignore
   if Chanel != 'none':                                            # type: ignore
     Log(" Start update interval ==  %s " % UpdateInterval)        # type: ignore
     Thread.CreateTimer(UpdateInterval, Updaterr.auto_update_thread, core=Core, pref=Prefs)   # type: ignore

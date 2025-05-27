@@ -19,7 +19,7 @@ UPDATER_REPO = 'lugovskovp'
 UPDATER_STABLE_URL = 'https://api.github.com/repos/%s/Kinopoisk3.bundle/releases/latest'
 UPDATER_BETA_URL = 'https://api.github.com/repos/%s/Kinopoisk3.bundle/git/refs/heads/beta'
 UPDATER_ARCHIVE_URL = 'https://github.com/%s/Kinopoisk3.bundle/archive/s.zip'
-
+MIN_UPDATE_INTERVAL = 10
 
 # URLS      FILM_xxxx - для функций получения инфо с кинопоиска для update
 API_BASE_URL      = 'https://kinopoiskapiunofficial.tech'
