@@ -1,3 +1,10 @@
+## [1.6.1-beta.5](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.6.1-beta.4...v1.6.1-beta.5) (2025-05-27)
+
+
+### Bug Fixes
+
+* в конфиг добавлен MIN_UPDATE_INTERVAL, в инит - логика работы с ним [#24](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/24) ([c94e1a9](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/c94e1a9dd56c6b62db0646a00bea55c00e26779a))
+
 ## [1.6.1-beta.4](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.6.1-beta.3...v1.6.1-beta.4) (2025-05-26)
 
 
