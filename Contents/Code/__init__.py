@@ -44,7 +44,7 @@ class Updaterr(object):
     if MIN_UPDATE_INTERVAL > UpdateInterval:
       UpdateInterval = MIN_UPDATE_INTERVAL
     UpdateInterval = UpdateInterval * 60
-    UpdateInterval = 20 
+    #UpdateInterval = 20 
     core.runtime.create_timer(UpdateInterval, Updaterr.auto_update_thread, True, core.sandbox, True, core=core, pref=pref)
         
   
@@ -82,8 +82,7 @@ class Updaterr(object):
             if current_version == self.update_version:
                 self.core.log.debug('Updater:checker: Current version is actual')
                 return
-            return
-            self.install_zip_from_url(self.archive_url % (self.repo, self.update_version))  
+            self.install_zip_from_url(self.archive_url + self.update_version + ".zip")  
               
             return
         except Exception as e:
@@ -114,6 +113,7 @@ class Updaterr(object):
       
   def install_zip_from_url(self, url):
     stage_path = self.setup_stage 
+    self.core.log.debug('Path=\n%s\n%s' % (stage_path, url))
           
 ##################################################################
 def Start():
@@ -122,7 +122,7 @@ def Start():
   if Prefs['update_channel'] != 'none':                           # type: ignore
     UpdateInterval = int(Prefs['update_interval'] or 1)*60       # type: ignore
     #Log("\n\n  Start update interval ==  %s sec" % UpdateInterval)   # type: ignore
-    UpdateInterval = 20
+    #UpdateInterval = 20
     Thread.CreateTimer(UpdateInterval, Updaterr.auto_update_thread, core=Core, pref=Prefs)   # type: ignore
     
     
@@ -138,8 +138,8 @@ def ValidatePrefs():
   Log('ValidatePrefs: prefs CHANGED, chanel=%s, interval=%i sec' % (Chanel, UpdateInterval))  # type: ignore
   if Chanel != 'none':                                            # type: ignore
     Log("ValidatePrefs:  Start update interval ==  %s " % UpdateInterval)        # type: ignore
-    #Thread.CreateTimer(UpdateInterval, Updaterr.auto_update_thread, core=Core, pref=Prefs)   # type: ignore
-    Thread.CreateTimer(1, Updaterr.auto_update_thread, core=Core, pref=Prefs)   # type: ignore
+    Thread.CreateTimer(UpdateInterval, Updaterr.auto_update_thread, core=Core, pref=Prefs)   # type: ignore
+    #Thread.CreateTimer(1, Updaterr.auto_update_thread, core=Core, pref=Prefs)   # type: ignore
 
 
 ##################################################################

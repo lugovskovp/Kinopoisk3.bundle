@@ -20,7 +20,7 @@ UPDATER_STABLE_URL = 'https://api.github.com/repos/%s/Kinopoisk3.bundle/releases
   #https://api.github.com/repos/lugovskovp/Kinopoisk3.bundle/releases/latest
 UPDATER_BETA_URL = 'https://api.github.com/repos/%s/Kinopoisk3.bundle/tags?per_page=1'
   #https://api.github.com/repos/lugovskovp/Kinopoisk3.bundle/tags?per_page=1
-UPDATER_ARCHIVE_URL = 'https://github.com/%s/Kinopoisk3.bundle/archive/refs/tags/s.zip'
+UPDATER_ARCHIVE_URL = 'https://github.com/%s/Kinopoisk3.bundle/archive/refs/tags/'
   #https://github.com/lugovskovp/Kinopoisk3.bundle/archive/refs/tags/v1.6.0.zip
   #https://github.com/lugovskovp/Kinopoisk3.bundle/archive/refs/tags/v1.6.1-beta.5.zip
 MIN_UPDATE_INTERVAL = 10
