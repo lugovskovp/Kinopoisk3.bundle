@@ -1,3 +1,11 @@
+## [1.6.1-beta.6](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.6.1-beta.5...v1.6.1-beta.6) (2025-05-27)
+
+
+### Bug Fixes
+
+* Получение tag, сравнение с первой строкой VERSION, вызов загрузки zip [#24](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/24) ([213e44e](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/213e44ec04f8025ff3f3d3922960684b7ba19398))
+* Убрал дебаговые строки ([07a4815](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/07a48155fe130d6920513ff18f01d5fdd49b93c9))
+
 ## [1.6.1-beta.5](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.6.1-beta.4...v1.6.1-beta.5) (2025-05-27)
 
 
