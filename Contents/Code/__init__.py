@@ -6,8 +6,7 @@ from utils import srch_params        # type: ignore # extended json и пара�
 #from kinoplex.updater import Updater   # type: ignore
 
 #!!!!!!!!!!! Start(), auto_update_thread update time
-
-#from up import Updaterr
+#!!!!!!!!!!! UpdateInterval = 20 
 
 from os.path import split as split_path
 from config import UPDATER_REPO, UPDATER_STABLE_URL, UPDATER_BETA_URL, MIN_UPDATE_INTERVAL
@@ -29,58 +28,75 @@ class Updaterr(object):
     self.update_version = None
     self.stable_url = UPDATER_STABLE_URL % self.repo
     self.beta_url = UPDATER_BETA_URL % self.repo
-    self.archive_url = UPDATER_ARCHIVE_URL % self.repo
-    
+    self.archive_url = UPDATER_ARCHIVE_URL % self.repo    
       
   @classmethod
   def auto_update_thread(cls, core, pref):
-    Log("Updater auto_update_thread, chanel: %s." % pref['update_channel'])     # type: ignore
+    Log("Updaterr:auto_update_thread:: chanel: %s." % pref['update_channel'])     # type: ignore
     try:
       cls(core, pref['update_channel'], UPDATER_REPO).checker()
       core.storage.remove_data_item('error_update')
       #c:\Users\plugo\AppData\Local\Plex Media Server\Plug-in Support\Data\com.plexapp.plugins.kinopoisk3\DataItems\
     except Exception as e:
       core.storage.save_data_item('error_update', str(e))
+      core.log.error("Updaterr:auto_update_thread::err %s." % str(e))     # type: ignore
     UpdateInterval = int(Prefs['update_interval'])      # type: ignore
     if MIN_UPDATE_INTERVAL > UpdateInterval:
       UpdateInterval = MIN_UPDATE_INTERVAL
     UpdateInterval = UpdateInterval * 60
+    UpdateInterval = 20 
     core.runtime.create_timer(UpdateInterval, Updaterr.auto_update_thread, True, core.sandbox, True, core=core, pref=pref)
         
   
   def checker(self):
-    self.core.log.debug('Updater checker: Check for channel %s updates', self.channel)  
-    Log('Updater checker: Check for channel %s updates', self.channel)   # type: ignore
+    ''' Проверка необходимости обновления
+      - self.channel = [ none, stable, beta], none - никаких действий
+      - stable - ver from GH последний стабильный релиз получить тег: "name": "v1.6.0"
+          https://api.github.com/repos/lugovskovp/Kinopoisk3.bundle/releases/latest
+      - beta - ver from GH - самый-самый последний тег релиза из в т.ч. и prereleases "name": "v1.6.1-beta.5"
+          https://api.github.com/repos/lugovskovp/Kinopoisk3.bundle/tags?per_page=1
+      
+    '''
+    self.core.log.debug('Updater:checker: Check for %s channel updates' % self.channel)  
     if self.channel != 'none': 
+      Log('Updater:checker: Check for channel %s ' % self.channel)   # type: ignore
       url = getattr(self, '%s_url' % self.channel)
       req = self.core.networking.http_request(url)
       if req:
-          git_data = self.core.data.json.from_string(req.content)
-          map = {'beta': ('object', 'sha'), 'stable': {'tag_name'}} 
-          try:
-            self.update_version = reduce(dict.get, map[self.channel], git_data)     # type: ignore
-            if not self.update_version:
-              self.core.log.debug('No updates for channel %s', self.channel)
-              return
-            else:
-              self.update_version = self.update_version[:7]
-            self.core.log.debug('Current actual version for channel %s = %s', self.channel, self.update_version)
+        git_data = self.core.data.json.from_string(req.content)
+        try:
+          if self.channel == 'beta':                                #stable - obj, beta - [obj]
+            self.update_version = reduce(dict.get, {'name'}, git_data[0])     # type: ignore
+          else:
+            self.update_version = reduce(dict.get, {'name'}, git_data)     # type: ignore
+          if not self.update_version:
+            self.core.log.debug('Updater checker: Unsuccessful trying get tag info for channel %s', self.channel)
+            return
+          else:
+            self.core.log.debug('Updater:checker: Github version for channel %s = %s', self.channel, self.update_version)     # type: ignore
+            current_version = ''
             if self.core.storage.file_exists(self.version_path):
               current_version = self.core.storage.load(self.version_path)
-              self.core.log.debug('Current actual version %s = %s', current_version, self.update_version)
-              if current_version == self.update_version:
-                self.core.log.debug('Current version is actual')
+              current_version = str.split(current_version)[0]
+              self.core.log.debug('Updater:checker: Current actual version "%s" vs "%s"', current_version, self.update_version)
+            if current_version == self.update_version:
+                self.core.log.debug('Updater:checker: Current version is actual')
                 return
-
             return
-            self.install_zip_from_url(self.archive_url % (self.repo, self.update_version))
-          except Exception as e:
-            self.core.log.error('Something goes wrong with updater: %s', e, exc_info=True)
-            raise
-          
-          
-        
-        
+            self.install_zip_from_url(self.archive_url % (self.repo, self.update_version))  
+              
+            return
+        except Exception as e:
+          self.core.log.error('Updater:checker: Something goes wrong with updater: %s', e, exc_info=True)
+          raise
+  
+  @property
+  def setup_stage(self):
+    self.core.log.debug(u"Updater:setup_stage Setting up staging area for {} at {}".format(self.identifier, self.stage_path))
+    self.core.storage.remove_tree(self.stage_path)
+    self.core.storage.make_dirs(self.stage_path)
+    return self.stage_path
+
   def splitall(self, path):
     allparts = list()
     while True:
@@ -96,15 +112,17 @@ class Updaterr(object):
         allparts.insert(0, parts[1])
     return allparts
       
-      
+  def install_zip_from_url(self, url):
+    stage_path = self.setup_stage 
           
 ##################################################################
 def Start():
   Log("\n\n========== START %s ver = %s =============" % (NAME, VER)) # type: ignore 
   HTTP.CacheTime = 0                                  # type: ignore #CACHE_1HOUR
   if Prefs['update_channel'] != 'none':                           # type: ignore
-    UpdateInterval =  int(Prefs['update_interval'] or 1)*60       # type: ignore
-    Log("\n\n  Start update interval ==  %s sec" % UpdateInterval)   # type: ignore
+    UpdateInterval = int(Prefs['update_interval'] or 1)*60       # type: ignore
+    #Log("\n\n  Start update interval ==  %s sec" % UpdateInterval)   # type: ignore
+    UpdateInterval = 20
     Thread.CreateTimer(UpdateInterval, Updaterr.auto_update_thread, core=Core, pref=Prefs)   # type: ignore
     
     
@@ -119,8 +137,9 @@ def ValidatePrefs():
   Chanel = Prefs['update_channel']                                # type: ignore
   Log('ValidatePrefs: prefs CHANGED, chanel=%s, interval=%i sec' % (Chanel, UpdateInterval))  # type: ignore
   if Chanel != 'none':                                            # type: ignore
-    Log(" Start update interval ==  %s " % UpdateInterval)        # type: ignore
-    Thread.CreateTimer(UpdateInterval, Updaterr.auto_update_thread, core=Core, pref=Prefs)   # type: ignore
+    Log("ValidatePrefs:  Start update interval ==  %s " % UpdateInterval)        # type: ignore
+    #Thread.CreateTimer(UpdateInterval, Updaterr.auto_update_thread, core=Core, pref=Prefs)   # type: ignore
+    Thread.CreateTimer(1, Updaterr.auto_update_thread, core=Core, pref=Prefs)   # type: ignore
 
 
 ##################################################################
