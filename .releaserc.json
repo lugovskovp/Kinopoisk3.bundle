@@ -48,7 +48,7 @@
       [
         "@semantic-release/exec",
         {
-          "prepareCmd": "echo \"${nextRelease.version}\n\">./Contents/VERSION; date>>./Contents/VERSION;"
+          "prepareCmd": "echo \"v${nextRelease.version}\">./Contents/VERSION; date>>./Contents/VERSION;"
         }
       ],
       [
