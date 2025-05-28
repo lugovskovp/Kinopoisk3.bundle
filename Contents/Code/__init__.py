@@ -29,10 +29,15 @@ class Updaterr(object):
     self.stable_url = UPDATER_STABLE_URL % self.repo
     self.beta_url = UPDATER_BETA_URL % self.repo
     self.archive_url = UPDATER_ARCHIVE_URL % self.repo    
+    self.install_zip_from_url((UPDATER_ARCHIVE_URL % 'lugovskovp') + "v1.6.0.zip") 
+    Log(":::  Updaterr init repo: %s end" % repo)    # type: ignore
+    
+    
       
   @classmethod
   def auto_update_thread(cls, core, pref):
     Log("Updaterr:auto_update_thread:: chanel: %s." % pref['update_channel'])     # type: ignore
+    
     try:
       cls(core, pref['update_channel'], UPDATER_REPO).checker()
       core.storage.remove_data_item('error_update')
@@ -44,7 +49,7 @@ class Updaterr(object):
     if MIN_UPDATE_INTERVAL > UpdateInterval:
       UpdateInterval = MIN_UPDATE_INTERVAL
     UpdateInterval = UpdateInterval * 60
-    #UpdateInterval = 20 
+    UpdateInterval = 120 
     core.runtime.create_timer(UpdateInterval, Updaterr.auto_update_thread, True, core.sandbox, True, core=core, pref=pref)
         
   
@@ -91,10 +96,15 @@ class Updaterr(object):
   
   @property
   def setup_stage(self):
-    self.core.log.debug(u"Updater:setup_stage Setting up staging area for {} at {}".format(self.identifier, self.stage_path))
+    self.core.log.debug(u"Updater:setup_stage Setting up staging area for {} at \n{}".format(self.identifier, self.stage_path))
+    #C:\Users\plugo\AppData\Local\Plex Media Server\Plug-in Support\Data\com.plexapp.plugins.kinopoisk3\DataItems\Stage\com.plexapp.plugins.kinopoisk3
     self.core.storage.remove_tree(self.stage_path)
     self.core.storage.make_dirs(self.stage_path)
     return self.stage_path
+  
+  def unstage(self):
+    self.core.log.debug(u"Updater: Unstaging files for {} (removing {})".format(self.identifier, self.stage_path))
+    #self.core.storage.remove_tree(self.stage_path)
 
   def splitall(self, path):
     allparts = list()
@@ -114,6 +124,48 @@ class Updaterr(object):
   def install_zip_from_url(self, url):
     stage_path = self.setup_stage 
     self.core.log.debug('Path=\n%s\n%s' % (stage_path, url))
+    try:
+      archive = self.core.data.archiving.zip_archive(self.core.networking.http_request(url).content)
+    except:
+      self.core.log.debug(u"install_zip_from_url: Unable to download archive for {}".format(self.identifier))
+      self.unstage()
+      return False
+    if archive.Test() != None:
+      self.core.log.debug(u"install_zip_from_url: The archive of {} is invalid - unable to continue".format(self.identifier))
+      self.unstage()
+      return False
+    try:
+      for archive_name in archive:
+        parts = archive_name.split('/')[1:]
+
+        if parts[0] == '' and len(parts) > 1:
+          parts = parts[1:]
+
+        if len(parts) > 1 and parts[0] == 'Contents' and len(parts[-1]) > 0 and parts[-1][0] != '.':
+          file_path = self.core.storage.join_path(stage_path, *parts)
+          dir_path = self.core.storage.join_path(stage_path, *parts[:-1])
+
+          if not self.core.storage.dir_exists(dir_path):
+            self.core.storage.make_dirs(dir_path)
+          self.core.storage.save(file_path, archive[archive_name])
+          self.core.log.debug(u"install_zip_from_url: Extracted {} to {} for {}".format(parts[-1], dir_path, self.identifier))
+        else:
+          self.core.log.debug(U"install_zip_from_url: Not extracting {}".format(archive_name))
+
+      version_file_path = self.core.storage.join_path(stage_path, 'Contents', 'VERSION')
+      if not self.core.storage.file_exists(version_file_path):
+        self.core.storage.save(version_file_path, self.update_version)
+    except:
+      self.core.log.error(u"install_zip_from_url: Error extracting archive of {}".format(self.identifier), exc_info=True)
+      self.unstage()
+      return False
+
+    finally:
+      archive.Close()
+      
+    plist_path = self.core.storage.join_path(stage_path, 'Contents', 'Info.plist')
+    plist_data = self.core.storage.load(plist_path, binary=False)
+    self.core.storage.save(plist_path, plist_data.replace('{{version}}', self.update_version), binary=False)
           
 ##################################################################
 def Start():
@@ -138,6 +190,7 @@ def ValidatePrefs():
   Log('ValidatePrefs: prefs CHANGED, chanel=%s, interval=%i sec' % (Chanel, UpdateInterval))  # type: ignore
   if Chanel != 'none':                                            # type: ignore
     Log("ValidatePrefs:  Start update interval ==  %s " % UpdateInterval)        # type: ignore
+    UpdateInterval = 5
     Thread.CreateTimer(UpdateInterval, Updaterr.auto_update_thread, core=Core, pref=Prefs)   # type: ignore
     #Thread.CreateTimer(1, Updaterr.auto_update_thread, core=Core, pref=Prefs)   # type: ignore
 
