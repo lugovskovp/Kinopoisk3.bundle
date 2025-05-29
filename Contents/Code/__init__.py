@@ -127,15 +127,15 @@ class Updaterr(object):
       
   def install_zip_from_url(self, url):
     stage_path = self.setup_stage 
-    self.core.log.debug('Path=\n%s\n%s' % (stage_path, url))
+    self.core.log.debug(u"Updater:install_zip_from_url Path=\n%s\n%s" % (stage_path, url))
     try:
       archive = self.core.data.archiving.zip_archive(self.core.networking.http_request(url).content)
     except:
-      self.core.log.debug(u"install_zip_from_url: Unable to download archive for {}".format(self.identifier))
+      self.core.log.debug(u"Updater:install_zip_from_url Unable to download archive for {}".format(self.identifier))
       self.unstage()
       return False
     if archive.Test() != None:
-      self.core.log.debug(u"install_zip_from_url: The archive of {} is invalid - unable to continue".format(self.identifier))
+      self.core.log.debug(u"Updater:install_zip_from_url The archive of {} is invalid - unable to continue".format(self.identifier))
       self.unstage()
       return False
     try:
@@ -173,66 +173,82 @@ class Updaterr(object):
     self.core.log.debug(plist_data)
     self.core.storage.save(plist_path, plist_data, binary=False)
     
+    self.deactivate()
+    if not self.activate():
+      self.core.log.error(u"Updater:install_zip_from_url Unable to activate {}".format(self.identifier), exc_info=True)
+      self.reactivate()
+      self.unstage()
+      return False
+
+    try:
+      self.core.storage.utime(self.core.plist_path, None)
+    except:
+      self.core.log.error(u"Updater:install_zip_from_url Error with utime function", exc_info=True)
+
+    self.unstage()
+    self.cleanup()
+
+    return True
     
     
     
-    def reactivate(self):
-      try:
-        self.core.log.debug(u"Updater: Reactivating the old installation of %s (moving from %s)" % (self.identifier, self.inactive_path))
-        self.core.storage.rename(self.inactive_path, self.core.storage.join_path(self.plugins_path, self.bundle_name))
-      except:
-        self.core.log.exception(u"Updater:reactivate Unable to reactivate the old installation of %s", self.identifier)
+  def reactivate(self):
+    try:
+      self.core.log.debug(u"Updater:reactivate Reactivating the old installation of %s (moving from %s)" % (self.identifier, self.inactive_path))
+      self.core.storage.rename(self.inactive_path, self.core.storage.join_path(self.plugins_path, self.bundle_name))
+    except:
+      self.core.log.exception(u"Updater:reactivate Unable to reactivate the old installation of %s", self.identifier)
 
 
-    def deactivate(self):
-      self.core.log.debug(u"Updater:deactivate Deactivating an old installation of %s (moving to %s)" % (self.identifier, self.inactive_path))
-      self.cleanup()
-      self.core.storage.make_dirs(self.inactive_path)
-      self.core.storage.rename(self.core.storage.join_path(self.plugins_path, self.bundle_name), self.inactive_path)
+  def deactivate(self):
+    self.core.log.debug(u"Updater:deactivate Deactivating an old installation of %s (moving to %s)" % (self.identifier, self.inactive_path))
+    self.cleanup()
+    self.core.storage.make_dirs(self.inactive_path)
+    self.core.storage.rename(self.core.storage.join_path(self.plugins_path, self.bundle_name), self.inactive_path)
 
 
-    def activate(self, fail_count=0):
-      final_path = self.core.storage.join_path(self.plugins_path, self.bundle_name)
+  def activate(self, fail_count=0):
+    final_path = self.core.storage.join_path(self.plugins_path, self.bundle_name)
 
-      if not self.core.storage.dir_exists(self.stage_path):
-          self.core.log.debug(u"Updater:activate Unable to find stage for {}".format(self.identifier))
-          return False
+    if not self.core.storage.dir_exists(self.stage_path):
+        self.core.log.debug(u"Updater:activate Unable to find stage for {}".format(self.identifier))
+        return False
 
-      self.core.log.debug(u"Updater:activate Activating a new installation of {}".format(self.identifier))
-      try:
-          if not self.core.storage.dir_exists(final_path):
-              self.core.storage.rename(self.stage_path, final_path)
-          else:
-              self.copytree(self.stage_path, final_path)
-      except:
-          self.core.log.exception(u"Updater:activate Unable to activate {} at {}".format(self.identifier, final_path))
-          if fail_count < 5:
-              self.core.log.info(u"Updater:activate Waiting 2s and trying again")
-              time.sleep(2)                               # type: ignore
-              return self.activate(fail_count + 1)
-          else:
-              self.core.log.info(u"Updater:activate Too many failures - returning")
-              return False
-      return True
-    
-    
-    def copytree(self, src, dst):
-      if not self.core.storage.file_exists(dst):
-        self.core.log.debug(u"Updater:copytree reating dir at '{}'".format(dst))
-        self.core.storage.make_dirs(dst)
-      self.core.log.debug(u"Updater:copytree copying contents of '{}' into '{}'".format(src, dst))
-      for item in self.core.storage.list_dir(src):
-        s = self.core.storage.join_path(src, item)
-        d = self.core.storage.join_path(dst, item)
-        if self.core.storage.dir_exists(s):
-          self.core.log.debug(u"Updater:copytree Copying '{}' into '{}'".format(s, d))
-          self.copytree(s, d)
+    self.core.log.debug(u"Updater:activate Activating a new installation of {}".format(self.identifier))
+    try:
+        if not self.core.storage.dir_exists(final_path):
+            self.core.storage.rename(self.stage_path, final_path)
         else:
-          self.core.log.debug(u"Updater:copytree Copying with copy2 '{}' into '{}'".format(s, d))
-          try:
-            shutil.copy2(s, d)
-          except IOError as err:
-            self.core.log.error(u'Updater:copytree Something wrong while file copy %s', err, exc_info=True)
+            self.copytree(self.stage_path, final_path)
+    except:
+        self.core.log.exception(u"Updater:activate Unable to activate {} at {}".format(self.identifier, final_path))
+        if fail_count < 5:
+            self.core.log.info(u"Updater:activate Waiting 2s and trying again")
+            time.sleep(2)                               # type: ignore
+            return self.activate(fail_count + 1)
+        else:
+            self.core.log.info(u"Updater:activate Too many failures - returning")
+            return False
+    return True
+  
+  
+  def copytree(self, src, dst):
+    if not self.core.storage.file_exists(dst):
+      self.core.log.debug(u"Updater:copytree reating dir at '{}'".format(dst))
+      self.core.storage.make_dirs(dst)
+    self.core.log.debug(u"Updater:copytree copying contents of '{}' into '{}'".format(src, dst))
+    for item in self.core.storage.list_dir(src):
+      s = self.core.storage.join_path(src, item)
+      d = self.core.storage.join_path(dst, item)
+      if self.core.storage.dir_exists(s):
+        self.core.log.debug(u"Updater:copytree Copying '{}' into '{}'".format(s, d))
+        self.copytree(s, d)
+      else:
+        self.core.log.debug(u"Updater:copytree Copying with copy2 '{}' into '{}'".format(s, d))
+        try:
+          shutil.copy2(s, d)
+        except IOError as err:
+          self.core.log.error(u'Updater:copytree Something wrong while file copy %s', err, exc_info=True)
 
               
 ##################################################################
