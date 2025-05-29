@@ -104,6 +104,12 @@ class Updaterr(object):
     return self.stage_path
   
   
+  def cleanup(self):
+    if self.core.storage.dir_exists(self.inactive_path):
+      self.core.log.debug(u"Updater:cleanup Cleaning up after {} (removing {})".format(self.identifier, self.inactive_path))
+      self.core.storage.remove_tree(self.inactive_path)
+            
+  
   def unstage(self):
     self.core.log.debug(u"Updater: Unstaging files for {} (removing {})".format(self.identifier, self.stage_path))
     self.core.storage.remove_tree(self.stage_path)
