@@ -6,16 +6,24 @@
 import requests             # type: ignore # [а к нему еще chardet, urllib3, certifi, idna]
 
 # константы
-NAME = 'Кинопоиск Unofficial' # % VER
-VER = '3.0.4'
+NAME = 'Кинопоиск3' # % VER
+VER = '0.0.1'
+version_path = Core.storage.join_path(Core.bundle_path, 'Contents', 'VERSION') # type: ignore
+if Core.storage.file_exists(version_path): # type: ignore
+  str_version = Core.storage.load(version_path) # type: ignore
+  VER = str_version.split()[0]
 LANGUAGES = [Locale.Language.Russian, Locale.Language.English, Locale.Language.NoLanguage]  # type: ignore # [Locale.Language.Russian, Locale.Language.English, Locale.Language.NoLanguage,]
 
 # Update vars
 UPDATER_REPO = 'lugovskovp'
 UPDATER_STABLE_URL = 'https://api.github.com/repos/%s/Kinopoisk3.bundle/releases/latest'
-UPDATER_BETA_URL = 'https://api.github.com/repos/%s/Kinopoisk3.bundle/git/refs/heads/beta'
-UPDATER_ARCHIVE_URL = 'https://github.com/%s/Kinopoisk3.bundle/archive/s.zip'
-
+  #https://api.github.com/repos/lugovskovp/Kinopoisk3.bundle/releases/latest
+UPDATER_BETA_URL = 'https://api.github.com/repos/%s/Kinopoisk3.bundle/tags?per_page=1'
+  #https://api.github.com/repos/lugovskovp/Kinopoisk3.bundle/tags?per_page=1
+UPDATER_ARCHIVE_URL = 'https://github.com/%s/Kinopoisk3.bundle/archive/refs/tags/'
+  #https://github.com/lugovskovp/Kinopoisk3.bundle/archive/refs/tags/v1.6.0.zip
+  #https://github.com/lugovskovp/Kinopoisk3.bundle/archive/refs/tags/v1.6.1-beta.5.zip
+MIN_UPDATE_INTERVAL = 2
 
 # URLS      FILM_xxxx - для функций получения инфо с кинопоиска для update
 API_BASE_URL      = 'https://kinopoiskapiunofficial.tech'

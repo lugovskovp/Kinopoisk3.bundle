@@ -1,3 +1,82 @@
+## [1.6.1-beta.11](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.6.1-beta.10...v1.6.1-beta.11) (2025-05-29)
+
+
+### Bug Fixes
+
+* Updaterr in another file ([dac11cb](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/dac11cbd075cd4544d3df10bef87a84e12bc082a))
+
+## [1.6.1-beta.10](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.6.1-beta.9...v1.6.1-beta.10) (2025-05-29)
+
+
+### Bug Fixes
+
+* Updater:cleanup [#24](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/24) ([9dcc492](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/9dcc49267ac6c2db78160e77b5796b4f41e45c84))
+
+## [1.6.1-beta.9](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.6.1-beta.8...v1.6.1-beta.9) (2025-05-29)
+
+
+### Bug Fixes
+
+* add Updater:activate and copytree ([b739216](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/b739216fc5ca26be62a3721834cb02dd55ea5ebb))
+* доперенес Updater:install_zip_from_url ([6314ada](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/6314adab54b7652495278b6e8a0e29a6c18b5db0))
+
+## [1.6.1-beta.8](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.6.1-beta.7...v1.6.1-beta.8) (2025-05-29)
+
+
+### Bug Fixes
+
+* add Updater:reactivate and deactivate ([f3a386c](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/f3a386ccbd3db7075c4ebe46988a3bd53b3a2c58))
+
+## [1.6.1-beta.7](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.6.1-beta.6...v1.6.1-beta.7) (2025-05-28)
+
+
+### Bug Fixes
+
+* распаковка zip в Stage, +'{{version}}' в Info.plist - заменяемый при обновлении. ([ce6f400](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/ce6f400a7143fe27b5ebd8a8c0b53c390e7fba4c))
+
+## [1.6.1-beta.6](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.6.1-beta.5...v1.6.1-beta.6) (2025-05-27)
+
+
+### Bug Fixes
+
+* Получение tag, сравнение с первой строкой VERSION, вызов загрузки zip [#24](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/24) ([213e44e](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/213e44ec04f8025ff3f3d3922960684b7ba19398))
+* Убрал дебаговые строки ([07a4815](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/07a48155fe130d6920513ff18f01d5fdd49b93c9))
+
+## [1.6.1-beta.5](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.6.1-beta.4...v1.6.1-beta.5) (2025-05-27)
+
+
+### Bug Fixes
+
+* в конфиг добавлен MIN_UPDATE_INTERVAL, в инит - логика работы с ним [#24](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/24) ([c94e1a9](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/c94e1a9dd56c6b62db0646a00bea55c00e26779a))
+
+## [1.6.1-beta.4](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.6.1-beta.3...v1.6.1-beta.4) (2025-05-26)
+
+
+### Bug Fixes
+
+* формулировка в настройках ([a55821b](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/a55821b42aca1f9a51845d18889285d4b0827d1a))
+
+## [1.6.1-beta.3](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.6.1-beta.2...v1.6.1-beta.3) (2025-05-26)
+
+
+### Bug Fixes
+
+* add ValidatePrefs function ([541e44b](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/541e44bd2fba353cf9b234cc38a1e4c70134d035))
+
+## [1.6.1-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.6.1-beta.1...v1.6.1-beta.2) (2025-05-19)
+
+
+### Bug Fixes
+
+* Версия из VERSION для stable ([d4e48ef](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/d4e48efcbc7ebd0a568e2075093365adcf8c3da2))
+
+## [1.6.1-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.6.0...v1.6.1-beta.1) (2025-05-17)
+
+
+### Bug Fixes
+
+* ver from file version ([3d8008d](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/3d8008dd771fb167da1c04f9934bf09936e6c613))
+
 # [1.6.0](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.5.1...v1.6.0) (2025-05-17)
 
 

@@ -6,7 +6,8 @@
 		<string>com.plexapp.plugins.kinopoisk3</string>
         <key>PlexAgentAttributionText</key>
         <string>
-            Агент для получения информации о медиа файлах&lt;br&gt;с русского сайта
+            &lt;b&gt;Кинопоиск3&lt;/b&gt; {{version}}&lt;br&gt;
+			Агент для получения информации о Кинофильмах и Сериалах&lt;br&gt;с русского сайта
             &lt;a href=&quot;http://kinopoiskapiunofficial.tech/&quot;&gt;Kinopoisk API Unofficial&lt;/a&gt;.
             &lt;br&gt;
         </string>

@@ -3,116 +3,28 @@
 import re, datetime
 from config import *        # константы
 from utils import srch_params        # type: ignore # extended json и параметры поиска
-#from kinoplex.updater import Updater   # type: ignore
+from updater import Updater   
 
-#!!!!!!!!!!! Start(), auto_update_thread update time
-
-#from up import Updaterr
-
-from os.path import split as split_path
-from config import UPDATER_REPO, UPDATER_STABLE_URL, UPDATER_BETA_URL
-
-class Updaterr(object):
-  def __init__(self, core, channel, repo=UPDATER_REPO):
-    Log("\n^^^^^^^  Updater init repo: %s" % repo)    # type: ignore
-    self.core = core
-    self.channel = channel
-    self.repo = repo
-    self.identifier = self.core.identifier
-    self.stage = self.core.storage.data_item_path('Stage')
-    self.stage_path = self.core.storage.join_path(self.stage, self.identifier)
-    self.plugins_path = self.core.storage.join_path(self.core.app_support_path, 'Plug-ins')
-    self.bundle_name = self.splitall(self.core.bundle_path)[-1]     #
-    self.inactive = self.core.storage.data_item_path('Deactivated')
-    self.inactive_path = self.core.storage.join_path(self.inactive, self.identifier)
-    self.version_path = self.core.storage.join_path(self.core.bundle_path, 'Contents', 'VERSION')
-    self.update_version = None
-
-    self.stable_url = UPDATER_STABLE_URL % self.repo
-    self.beta_url = UPDATER_BETA_URL % self.repo
-    self.archive_url = UPDATER_ARCHIVE_URL % self.repo
-    #Log("\n^^^^^^^  Updater init stage: %s" % self.stage)
-  
-      
-  @classmethod
-  def auto_update_thread(cls, core, pref):
-    Log("Updater auto_update_thread, chanel: %s." % pref['update_channel'])     # type: ignore
-    try:
-      cls(core, pref['update_channel'], UPDATER_REPO).checker()
-      core.storage.remove_data_item('error_update')
-      #c:\Users\plugo\AppData\Local\Plex Media Server\Plug-in Support\Data\com.plexapp.plugins.kinopoisk3\DataItems\
-    except Exception as e:
-      core.storage.save_data_item('error_update', str(e))
-    core.runtime.create_timer(20, Updaterr.auto_update_thread, True, core.sandbox, True, core=core, pref=pref)
-        
-  
-  def checker(self):
-    self.core.log.debug('Updater checker: Check for channel %s updates', self.channel)  
-    Log('Updater checker: Check for channel %s updates', self.channel)   # type: ignore
-    if self.channel != 'none': 
-      url = getattr(self, '%s_url' % self.channel)
-      req = self.core.networking.http_request(url)
-      if req:
-          git_data = self.core.data.json.from_string(req.content)
-          map = {'beta': ('object', 'sha'), 'stable': {'tag_name'}} 
-          try:
-            self.update_version = reduce(dict.get, map[self.channel], git_data)     # type: ignore
-            if not self.update_version:
-              self.core.log.debug('No updates for channel %s', self.channel)
-              return
-            else:
-              self.update_version = self.update_version[:7]
-            self.core.log.debug('Current actual version for channel %s = %s', self.channel, self.update_version)
-            if self.core.storage.file_exists(self.version_path):
-              current_version = self.core.storage.load(self.version_path)
-              self.core.log.debug('Current actual version %s = %s', current_version, self.update_version)
-              if current_version == self.update_version:
-                self.core.log.debug('Current version is actual')
-                return
-
-            return
-            self.install_zip_from_url(self.archive_url % (self.repo, self.update_version))
-          except Exception as e:
-            self.core.log.error('Something goes wrong with updater: %s', e, exc_info=True)
-            raise
-          
-          
-        
-        
-  def splitall(self, path):
-    allparts = list()
-    while True:
-      parts = split_path(path)
-      if parts[0] == path:  # sentinel for absolute paths
-        allparts.insert(0, parts[0])
-        break
-      elif parts[1] == path: # sentinel for relative paths
-        allparts.insert(0, parts[1])
-        break
-      else:
-        path = parts[0]
-        allparts.insert(0, parts[1])
-    return allparts
-      
-      
-          
+              
 ##################################################################
 def Start():
-  Log("\n\n========== START %s ver = %s =============" % (NAME, VER)) # type: ignore 
+  Log("\n\n========== START %s %s =============" % (NAME, VER)) # type: ignore 
   HTTP.CacheTime = 0                                  # type: ignore #CACHE_1HOUR
-  if Prefs['update_channel'] != 'none':                           # type: ignore
-    UpdateInterval =  int(Prefs['update_interval'] or 1)*60       # type: ignore
-    Log("\n\n  Start update interval ==  %s " % UpdateInterval)   # type: ignore
-    Thread.CreateTimer(UpdateInterval, Updaterr.auto_update_thread, core=Core, pref=Prefs)   # type: ignore
+  ValidatePrefs()                 # start autoupdate
+    
     
 def ValidatePrefs():
-  Log('ValidatePrefs function call')          # type: ignore
+  ''' This function is called when the user modifies their preferences.'''
+  UpdateInterval = int(Prefs['update_interval'] or 1)*60       # type: ignore
+  Chanel = Prefs['update_channel']                                # type: ignore
+  Log('ValidatePrefs: update chanel=%s, interval=%i sec' % (Chanel, UpdateInterval))  # type: ignore
+  if Chanel != 'none':                            # type: ignore
+    Thread.CreateTimer(UpdateInterval, Updater.auto_update_thread, core=Core, pref=Prefs)  # type: ignore
 
 
 ##################################################################
-
 class KinoPoiskUnoficialAgent(Agent.TV_Shows): # type: ignore
-  name              = '%s %s Serials' % (NAME, VER) 
+  name              = '%s (%s) Serials' % (NAME, VER) 
   primary_provider  = True 
   fallback_agent    = False 
   contributes_to    = ['com.plexapp.plugins.kinopoisk3', 'com.plexapp.agents.local', 'com.plexapp.agents.themoviedb', 'com.plexapp.agents.imdb'] 
@@ -125,7 +37,7 @@ class KinoPoiskUnoficialAgent(Agent.TV_Shows): # type: ignore
   @log_timing  
   def search(self, results, media, lang, manual=False):
     srch = srch_params(media, manual)
-    d("\n\n----- KinoPoisk.SEARCH %s, %s, %s %s start\n" % (srch.str_titles, srch.year, srch.match_type, srch.search_type))
+    d("\n\n----- %s.SEARCH %s, %s, %s %s start\n" % (self.name, srch.str_titles, srch.year, srch.match_type, srch.search_type))
     finded = {'films':[]}        # найденные 'films'
     srch_and_score(srch, finded, results) 
     srch_mkres(finded, results)
@@ -187,14 +99,13 @@ class KinoPoiskUnoficialAgent(Agent.TV_Shows): # type: ignore
   
 
 class KinoPoiskUnoficialAgent(Agent.Movies): # type: ignore
-  name              = '%s %s Movies' % (NAME, VER) 
+  name              = '%s (%s) Movies' % (NAME, VER) 
   primary_provider  = True 
   fallback_agent    = False 
   contributes_to    = ['com.plexapp.plugins.kinopoisk3', 'com.plexapp.agents.local', 'com.plexapp.agents.themoviedb', 'com.plexapp.agents.imdb'] 
   languages         = LANGUAGES  #languages=[['ru', 'en', 'xn']]
   accepts_from      = ['com.plexapp.agents.localmedia'] 
   #agent_type        = 'Movies'
-  #version           = 301      # self.version=0
   
      
   @log_timing
@@ -210,7 +121,7 @@ class KinoPoiskUnoficialAgent(Agent.Movies): # type: ignore
     #   1 - initializing search parameters
     srch = srch_params(media, manual)     
     
-    d("\n\n----- KinoPoisk.SEARCH %s, %s, %s %s start\n" % (srch.str_titles, srch.year, srch.match_type, srch.search_type))
+    d("\n\n----- %s.SEARCH %s, %s, %s %s start\n" % (self.name, srch.str_titles, srch.year, srch.match_type, srch.search_type))
     '''if manual and not isNewMatch:
       #return   # можно автопопытку поиска отключить
       pass'''
@@ -294,14 +205,14 @@ def srch_and_score(srch, finded, results):
     if resp_json:
       if 'message' in resp_json:
         # Проблема: {"message":"You don't have permissions. See https://kinopoiskapiunofficial.tech"}
-        AppendSearchResult(results=results, id=0, score=100, name=("Поиск без ключа? https://kinopoiskapiunofficial.tech"), lang='ru')
-        d("\nsrch_and_score: Попытка поиска без ключа. %s" % resp_json["message"])
+        AppendSearchResult(results=results, id=0, score=100, name=(u"Поиск без ключа? https://kinopoiskapiunofficial.tech"), lang='ru')
+        d(u"\nsrch_and_score: Попытка поиска без ключа. %s" % resp_json["message"])
         return
     if resp_json is None:
       continue
     try:
       i = resp_json['searchFilmsCountResult']
-      d("---- По [%s] найдено %s фильмов" % (title, i))
+      d(u"---- По [%s] найдено %s фильмов" % (title, i))
     except: 
       i = 0
     if 'films' in resp_json and i:
@@ -479,7 +390,7 @@ def load_metadata(metadata, valid_names):
       val1 = movie_data.get('ratingKinopoiskVoteCount')
       if val1:
         summary_add += ' (%s)' % val1
-      d( "   'КиноПоиск: %s(%s) " % (val, val1))
+      d(u"   'КиноПоиск: %s(%s) " % (val, val1))
       summary_add += '\n'
   # "Описание: отображать рейтинг IMDB"
   if Prefs['desc_rating_imdb']: # type: ignore
@@ -559,7 +470,7 @@ def load_episodes(metadata, media):
   if not seasons_json:
     return
   if 'message' in seasons_json:
-    d("\nsrch_and_score: Попытка поиска без ключа. %s" % seasons_json["message"])
+    d(u"\nsrch_and_score: Попытка поиска без ключа. %s" % seasons_json["message"])
     return
   #seasons_qty = seasons_json.get('total')
   for season_num, season_data in enumerate(seasons_json.get('items'), 1):    # 1,2...
