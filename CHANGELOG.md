@@ -1,3 +1,10 @@
+## [1.6.1-beta.11](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.6.1-beta.10...v1.6.1-beta.11) (2025-05-29)
+
+
+### Bug Fixes
+
+* Updaterr in another file ([dac11cb](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/dac11cbd075cd4544d3df10bef87a84e12bc082a))
+
 ## [1.6.1-beta.10](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.6.1-beta.9...v1.6.1-beta.10) (2025-05-29)
 
 
