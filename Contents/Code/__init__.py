@@ -29,7 +29,7 @@ class Updaterr(object):
     self.stable_url = UPDATER_STABLE_URL % self.repo
     self.beta_url = UPDATER_BETA_URL % self.repo
     self.archive_url = UPDATER_ARCHIVE_URL % self.repo    
-    self.install_zip_from_url((UPDATER_ARCHIVE_URL % 'lugovskovp') + "v1.6.0.zip") 
+    #self.install_zip_from_url((UPDATER_ARCHIVE_URL % 'lugovskovp') + "v1.6.1-beta.7.zip") 
     Log(":::  Updaterr init repo: %s end" % repo)    # type: ignore
     
     
@@ -49,7 +49,8 @@ class Updaterr(object):
     if MIN_UPDATE_INTERVAL > UpdateInterval:
       UpdateInterval = MIN_UPDATE_INTERVAL
     UpdateInterval = UpdateInterval * 60
-    UpdateInterval = 120 
+    
+    UpdateInterval = int(Prefs['update_interval'] or 1)*60       # type: ignore
     core.runtime.create_timer(UpdateInterval, Updaterr.auto_update_thread, True, core.sandbox, True, core=core, pref=pref)
         
   
@@ -165,8 +166,27 @@ class Updaterr(object):
       
     plist_path = self.core.storage.join_path(stage_path, 'Contents', 'Info.plist')
     plist_data = self.core.storage.load(plist_path, binary=False)
-    self.core.storage.save(plist_path, plist_data.replace('{{version}}', self.update_version), binary=False)
-          
+    plist_data = plist_data.replace('{{version}}', self.update_version)
+    self.core.log.debug(plist_data)
+    self.core.storage.save(plist_path, plist_data, binary=False)
+    
+    
+    
+    
+    def reactivate(self):
+      try:
+        self.core.log.debug(u"Updater: Reactivating the old installation of %s (moving from %s)" % (self.identifier, self.inactive_path))
+        self.core.storage.rename(self.inactive_path, self.core.storage.join_path(self.plugins_path, self.bundle_name))
+      except:
+        self.core.log.exception(u"Updater:reactivate Unable to reactivate the old installation of %s", self.identifier)
+
+    def deactivate(self):
+        self.core.log.debug(u"Updater:deactivate Deactivating an old installation of %s (moving to %s)" % (self.identifier, self.inactive_path))
+        self.cleanup()
+        self.core.storage.make_dirs(self.inactive_path)
+        self.core.storage.rename(self.core.storage.join_path(self.plugins_path, self.bundle_name), self.inactive_path)
+
+              
 ##################################################################
 def Start():
   Log("\n\n========== START %s ver = %s =============" % (NAME, VER)) # type: ignore 
@@ -180,19 +200,12 @@ def Start():
     
 def ValidatePrefs():
   ''' This function is called when the user modifies their preferences.'''
-  UpdateInterval = int(Prefs['update_interval'])      # type: ignore
-  if MIN_UPDATE_INTERVAL > UpdateInterval:
-    Log('ValidatePrefs: UpdateInterval changed from %i to minimal %i (minutes)' % (UpdateInterval, MIN_UPDATE_INTERVAL))  # type: ignore
-    UpdateInterval = MIN_UPDATE_INTERVAL
-  Log('ValidatePrefs: UpdateInterval = %i minutes' % UpdateInterval)    # type: ignore
-  UpdateInterval = UpdateInterval * 60
+  UpdateInterval = int(Prefs['update_interval'] or 1)*60       # type: ignore
   Chanel = Prefs['update_channel']                                # type: ignore
-  Log('ValidatePrefs: prefs CHANGED, chanel=%s, interval=%i sec' % (Chanel, UpdateInterval))  # type: ignore
-  if Chanel != 'none':                                            # type: ignore
-    Log("ValidatePrefs:  Start update interval ==  %s " % UpdateInterval)        # type: ignore
-    UpdateInterval = 5
+  Log('ValidatePrefs: prefs CHANGED, update chanel=%s, interval=%i sec' % (Chanel, UpdateInterval))  # type: ignore
+  if Chanel != 'none':                            # type: ignore
+    UpdateInterval = int(Prefs['update_interval'] or 1)*60       # type: ignore
     Thread.CreateTimer(UpdateInterval, Updaterr.auto_update_thread, core=Core, pref=Prefs)   # type: ignore
-    #Thread.CreateTimer(1, Updaterr.auto_update_thread, core=Core, pref=Prefs)   # type: ignore
 
 
 ##################################################################
@@ -379,14 +392,14 @@ def srch_and_score(srch, finded, results):
     if resp_json:
       if 'message' in resp_json:
         # Проблема: {"message":"You don't have permissions. See https://kinopoiskapiunofficial.tech"}
-        AppendSearchResult(results=results, id=0, score=100, name=("Поиск без ключа? https://kinopoiskapiunofficial.tech"), lang='ru')
-        d("\nsrch_and_score: Попытка поиска без ключа. %s" % resp_json["message"])
+        AppendSearchResult(results=results, id=0, score=100, name=(u"Поиск без ключа? https://kinopoiskapiunofficial.tech"), lang='ru')
+        d(u"\nsrch_and_score: Попытка поиска без ключа. %s" % resp_json["message"])
         return
     if resp_json is None:
       continue
     try:
       i = resp_json['searchFilmsCountResult']
-      d("---- По [%s] найдено %s фильмов" % (title, i))
+      d(u"---- По [%s] найдено %s фильмов" % (title, i))
     except: 
       i = 0
     if 'films' in resp_json and i:
@@ -564,7 +577,7 @@ def load_metadata(metadata, valid_names):
       val1 = movie_data.get('ratingKinopoiskVoteCount')
       if val1:
         summary_add += ' (%s)' % val1
-      d( "   'КиноПоиск: %s(%s) " % (val, val1))
+      d(u"   'КиноПоиск: %s(%s) " % (val, val1))
       summary_add += '\n'
   # "Описание: отображать рейтинг IMDB"
   if Prefs['desc_rating_imdb']: # type: ignore
@@ -644,7 +657,7 @@ def load_episodes(metadata, media):
   if not seasons_json:
     return
   if 'message' in seasons_json:
-    d("\nsrch_and_score: Попытка поиска без ключа. %s" % seasons_json["message"])
+    d(u"\nsrch_and_score: Попытка поиска без ключа. %s" % seasons_json["message"])
     return
   #seasons_qty = seasons_json.get('total')
   for season_num, season_data in enumerate(seasons_json.get('items'), 1):    # 1,2...
