@@ -8,7 +8,7 @@ from updater import Updater
               
 ##################################################################
 def Start():
-  Log("\n\n========== START %s ver = %s =============" % (NAME, VER)) # type: ignore 
+  Log("\n\n========== START %s %s =============" % (NAME, VER)) # type: ignore 
   HTTP.CacheTime = 0                                  # type: ignore #CACHE_1HOUR
   ValidatePrefs()                 # start autoupdate
     
@@ -106,7 +106,6 @@ class KinoPoiskUnoficialAgent(Agent.Movies): # type: ignore
   languages         = LANGUAGES  #languages=[['ru', 'en', 'xn']]
   accepts_from      = ['com.plexapp.agents.localmedia'] 
   #agent_type        = 'Movies'
-  #version           = 301      # self.version=0
   
      
   @log_timing

@@ -6,7 +6,7 @@ from config import UPDATER_REPO, UPDATER_STABLE_URL, UPDATER_BETA_URL, UPDATER_A
 
 class Updater(object):
   def __init__(self, core, channel, repo=UPDATER_REPO):
-    Log(":::  Updaterr init repo: %s" % repo)    # type: ignore
+    Log("Updaterr:_init_ repo: %s" % repo)    # type: ignore
     self.core = core
     self.channel = channel
     self.repo = repo
@@ -22,7 +22,7 @@ class Updater(object):
     self.stable_url = UPDATER_STABLE_URL % self.repo
     self.beta_url = UPDATER_BETA_URL % self.repo
     self.archive_url = UPDATER_ARCHIVE_URL % self.repo    
-    Log(":::  Updaterr:_init_ end, core: %s " % self.core)    # type: ignore
+    Log("Updaterr:_init_ end, core: %s " % self.core)    # type: ignore
     
       
   @classmethod
@@ -54,9 +54,9 @@ class Updater(object):
           https://api.github.com/repos/lugovskovp/Kinopoisk3.bundle/tags?per_page=1
       
     '''
-    self.core.log.debug('Updater:checker: Check for %s channel updates' % self.channel)  
+    self.core.log.debug('Updater:checker')  
     if self.channel != 'none': 
-      Log('Updater:checker: Check for channel %s ' % self.channel)   # type: ignore
+      Log('Updater:checker: Check for %s channel updates' % self.channel)   # type: ignore
       url = getattr(self, '%s_url' % self.channel)
       req = self.core.networking.http_request(url)
       if req:
