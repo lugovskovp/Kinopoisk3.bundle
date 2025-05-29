@@ -1,0 +1,92 @@
+План работ
+
+1. Плагин - просто стартует, лого, рестартует.
+https://github.com/plexinc-plugins
+
+2. Настройки - устанавливает, хранит
+3. -- сопоставление?
+4. Вывод наименования и описания (!!!)
+5. Запрос поиска по ключевым словам
+https://kinopoiskapiunofficial.tech/documentation/api/#/
+6. Автосопоставление
+7. 
+
+
+-------------------------------
+https://kinopoiskapiunofficial.tech/documentation/api/#/
+97e4a841-1837-4cc0-89fd-25a51562db94
+
+https://kinopoiskapiunofficial.tech/documentation/api/#/
+https://kinopoiskapiunofficial.tech/profile
+
+https://www.thetvdb.com/?tab=apiregister
+
+https://www.plexopedia.com/plex-media-server/api/library/add/
+https://github.com/adamgot/python-plexlibrary/blob/master/README.rst
+https://github.com/adamgot
+
+
+--------------------------------
+
+
+KNHOUONCK
+
+- установить Plex Media Server v.1.41.2.9200.
+C:\Program Files\Plex\Plex Media Server
+http://127.0.0.1:32400
+Папка с плагинами
+https://support.plex.tv/articles/201106098-how-do-i-find-the-plug-ins-folder/
+%LOCALAPPDATA%\Plex Media Server\Plug-ins
+
+
+
+
+https://github.com/adamgot/python-plexlibrary/blob/master/README.rst
+
+
+
+Если есть сомнения - ищем потенциальный сериал на thetvdb.com
+https://support.plex.tv/articles/
+https://support.plex.tv/articles/200241548-scanners/
+https://support.plex.tv/articles/200241558-agents/
+
+
+
+https://pypi.org/project/plex.py/
+https://github.com/pkkid/python-plexapi
+https://github.com/Arcanemagus/plex-api/wiki
+
+
+https://github.com/amirotin/Kinopoisk.bundle
+
+шсщт 340*340
+
+
+
+----------------------
+https://github.com/squaresmile/Plex-Plug-Ins
+
+https://github.com/topics/plex-agent
+
+https://github.com/mrzhenya/plex-plugins
+
+https://github.com/LizardByte/plexhints/commit/0a7428037af73e201108f7bdd8a1f0f7b0d8f1e1#diff-bc37d034bad564583790a46f19d807abfe519c5671395fd494d8cce506c42947R155
+
+https://forums.plex.tv/c/the-world-is-flat/russian/75
+
+https://forums.plex.tv/c/third-party/development/61
+
+https://forums.plex.tv/t/rel-extended-personal-media-shows-agent/44831/487
+
+https://bitbucket.org/mjarends/plex-scanners/src/master/
+
+
+агент 'Кинопоиск 2.0'
+
+
+This is the best way to developp you plugin. Watch the IMDB or THETVDB bundlle. The API is very easy to understand. Other clue : watch in system bundle the python file. This is the source of the Plex Media Server core.
+
+
+
+
+

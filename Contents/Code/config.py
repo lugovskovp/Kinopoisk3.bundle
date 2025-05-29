@@ -6,7 +6,7 @@
 import requests             # type: ignore # [а к нему еще chardet, urllib3, certifi, idna]
 
 # константы
-NAME = 'Кинопоиск3' # % VER
+NAME = u'Кинопоиск3' # % VER
 VER = '0.0.1'
 version_path = Core.storage.join_path(Core.bundle_path, 'Contents', 'VERSION') # type: ignore
 if Core.storage.file_exists(version_path): # type: ignore
