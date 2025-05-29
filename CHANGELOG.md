@@ -1,3 +1,11 @@
+## [1.6.1-beta.9](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.6.1-beta.8...v1.6.1-beta.9) (2025-05-29)
+
+
+### Bug Fixes
+
+* add Updater:activate and copytree ([b739216](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/b739216fc5ca26be62a3721834cb02dd55ea5ebb))
+* доперенес Updater:install_zip_from_url ([6314ada](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/6314adab54b7652495278b6e8a0e29a6c18b5db0))
+
 ## [1.6.1-beta.8](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.6.1-beta.7...v1.6.1-beta.8) (2025-05-29)
 
 
