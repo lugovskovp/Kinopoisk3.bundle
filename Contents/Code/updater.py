@@ -168,6 +168,10 @@ class Updater(object):
     plist_path = self.core.storage.join_path(stage_path, 'Contents', 'Info.plist')
     plist_data = self.core.storage.load(plist_path, binary=False)
     plist_data = plist_data.replace('{{version}}', self.update_version)
+    #TODO - добавить туда же путь к логам.
+    Logs_path = self.core.storage.join_path(self.core.app_support_path, 'Logs', 'PMS Plugin Logs')
+    plist_data = plist_data.replace('{{logs}}', Logs_path)
+    #self.plugins_path = 
     self.core.log.debug(plist_data)
     self.core.storage.save(plist_path, plist_data, binary=False)
     
