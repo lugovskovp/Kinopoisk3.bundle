@@ -1,3 +1,10 @@
+## [1.6.1-beta.8](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.6.1-beta.7...v1.6.1-beta.8) (2025-05-29)
+
+
+### Bug Fixes
+
+* add Updater:reactivate and deactivate ([f3a386c](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/f3a386ccbd3db7075c4ebe46988a3bd53b3a2c58))
+
 ## [1.6.1-beta.7](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.6.1-beta.6...v1.6.1-beta.7) (2025-05-28)
 
 
