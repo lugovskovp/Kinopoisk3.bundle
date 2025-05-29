@@ -1,3 +1,10 @@
+## [1.6.1-beta.10](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.6.1-beta.9...v1.6.1-beta.10) (2025-05-29)
+
+
+### Bug Fixes
+
+* Updater:cleanup [#24](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/24) ([9dcc492](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/9dcc49267ac6c2db78160e77b5796b4f41e45c84))
+
 ## [1.6.1-beta.9](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.6.1-beta.8...v1.6.1-beta.9) (2025-05-29)
 
 
