@@ -1,3 +1,10 @@
+## [1.6.1-beta.12](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.6.1-beta.11...v1.6.1-beta.12) (2025-05-29)
+
+
+### Bug Fixes
+
+* log paths in About ([df0cc9f](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/df0cc9f894f430341b10489eb8bbdfd9a5d6af3f))
+
 ## [1.6.1-beta.11](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.6.1-beta.10...v1.6.1-beta.11) (2025-05-29)
 
 
