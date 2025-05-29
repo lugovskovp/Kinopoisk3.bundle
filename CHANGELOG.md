@@ -1,3 +1,10 @@
+## [1.6.1-beta.7](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.6.1-beta.6...v1.6.1-beta.7) (2025-05-28)
+
+
+### Bug Fixes
+
+* распаковка zip в Stage, +'{{version}}' в Info.plist - заменяемый при обновлении. ([ce6f400](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/ce6f400a7143fe27b5ebd8a8c0b53c390e7fba4c))
+
 ## [1.6.1-beta.6](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.6.1-beta.5...v1.6.1-beta.6) (2025-05-27)
 
 
