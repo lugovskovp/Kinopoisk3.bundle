@@ -3,6 +3,7 @@ from os.path import split as split_path
 import shutil, time
 from config import UPDATER_REPO, UPDATER_STABLE_URL, UPDATER_BETA_URL, UPDATER_ARCHIVE_URL, MIN_UPDATE_INTERVAL
 
+
 class Updater(object):
   def __init__(self, core, channel, repo=UPDATER_REPO):
     Log(":::  Updaterr init repo: %s" % repo)    # type: ignore
