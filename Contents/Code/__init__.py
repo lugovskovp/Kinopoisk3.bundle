@@ -150,7 +150,6 @@ class KinoPoiskUnoficialAgent(Agent.TV_Shows): # type: ignore
   @log_timing  
   def update(self, metadata, media, lang):
     # В search media - Movie|TV_Show, а вот в update media это Framework.api.agentkit.MediaTree
-    # metadata - Movie|TV_Show
     '''
     Framework.api.agentkit.MediaTree 
       [] Framework.api.agentkit.MediaPart
