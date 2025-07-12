@@ -1,16 +1,29 @@
 # [1.7.0-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.6.1-beta.12...v1.7.0-beta.1) (2025-05-29)
 
-
 ### Features
 
 * change tv and movie place ([55cae1f](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/55cae1fd9a87fb188bc07fd6cced1a77ce7dde6f))
 
 ## [1.6.1-beta.12](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.6.1-beta.11...v1.6.1-beta.12) (2025-05-29)
+## [1.6.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.6.0...v1.6.1) (2025-05-29)
 
 
 ### Bug Fixes
 
 * log paths in About ([df0cc9f](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/df0cc9f894f430341b10489eb8bbdfd9a5d6af3f))
+* add Updater:activate and copytree ([b739216](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/b739216fc5ca26be62a3721834cb02dd55ea5ebb))
+* add Updater:reactivate and deactivate ([f3a386c](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/f3a386ccbd3db7075c4ebe46988a3bd53b3a2c58))
+* add ValidatePrefs function ([541e44b](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/541e44bd2fba353cf9b234cc38a1e4c70134d035))
+* Updater:cleanup [#24](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/24) ([9dcc492](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/9dcc49267ac6c2db78160e77b5796b4f41e45c84))
+* Updaterr in another file ([dac11cb](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/dac11cbd075cd4544d3df10bef87a84e12bc082a))
+* ver from file version ([3d8008d](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/3d8008dd771fb167da1c04f9934bf09936e6c613))
+* в конфиг добавлен MIN_UPDATE_INTERVAL, в инит - логика работы с ним [#24](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/24) ([c94e1a9](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/c94e1a9dd56c6b62db0646a00bea55c00e26779a))
+* Версия из VERSION для stable ([d4e48ef](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/d4e48efcbc7ebd0a568e2075093365adcf8c3da2))
+* доперенес Updater:install_zip_from_url ([6314ada](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/6314adab54b7652495278b6e8a0e29a6c18b5db0))
+* Получение tag, сравнение с первой строкой VERSION, вызов загрузки zip [#24](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/24) ([213e44e](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/213e44ec04f8025ff3f3d3922960684b7ba19398))
+* распаковка zip в Stage, +'{{version}}' в Info.plist - заменяемый при обновлении. ([ce6f400](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/ce6f400a7143fe27b5ebd8a8c0b53c390e7fba4c))
+* Убрал дебаговые строки ([07a4815](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/07a48155fe130d6920513ff18f01d5fdd49b93c9))
+* формулировка в настройках ([a55821b](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/a55821b42aca1f9a51845d18889285d4b0827d1a))
 
 ## [1.6.1-beta.11](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.6.1-beta.10...v1.6.1-beta.11) (2025-05-29)
 
