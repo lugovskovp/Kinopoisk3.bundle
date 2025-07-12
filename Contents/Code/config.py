@@ -65,7 +65,54 @@ def get_json(url):
     return rj
   return rj
 
-      
+
+def APItokenRemains():
+  '''
+  Return False if token err happened
+  Return int - Qty remains dailyQuota for use.
+  '''
+  #/api/v1/api_keys/{apiKey}  #получить данные об api key  
+  valid = False
+  key = Prefs['api_key']                                                                # type: ignore
+  url = '%s/api/v1/api_keys/%s' % (API_BASE_URL, key)
+  #Log("\n\n >>>>>>> isAPItokenGood::  key=%s  url=%s    " % (key, url))                  # type: ignore
+  headers={
+    'Accept': 'application/json',
+    'X-API-KEY': key, # type: ignore
+    'User-Agent' : 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.2; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0)'
+    }
+  try:
+    response = requests.get(url, headers=headers)  # data = r.content  # Content of response
+  except:
+    pass
+  status_code = response.status_code
+  Log(u"isAPItokenGood::response code:%s json:%s" % (status_code, response.json()))
+  if status_code != 200:
+    # что-то пошло не так
+    Log("isAPItokenGood::ERROR %s что-то пошло не так %s" % (status_code, response.json()))
+    if status_code == 401:        # There are not valid token
+      Log("isAPItokenGood::ERROR   message: You don't have permissions. See https://kinopoiskapiunofficial.tech")
+    elif status_code == 429:
+      Log("isAPItokenGood::ERROR   message: Rate limit exceeded")
+    return False
+  else:
+    # ключ есть, ответ есть. Может, даже остались в квоте попытки.
+    json = response.json()
+    accountType = json["accountType"]
+    dailyQuota = json["dailyQuota"]["value"]
+    used = json["dailyQuota"]["used"]
+    if accountType == 'UNLIMITED':
+      remains = 1000
+    else:
+      if used >= dailyQuota:
+        return False    #You exceeded the quota. You have sent 517 request, but available 500 per day
+      else:
+        remains = dailyQuota - used
+    Log(u"isAPItokenGood:: accountType:%s dailyQuota:%s used:%s\n" % (accountType, dailyQuota, used))
+  return remains
+
+     
+    
 def lev_ratio(s1, s2):
   '''levR  = abs( Util.LevenshteinDistance(search_title.lower(), foundTitle.lower()) )'''
   distance = Util.LevenshteinDistance(s1, s2) # type: ignore

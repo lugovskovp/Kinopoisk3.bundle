@@ -26,7 +26,7 @@ class srch_params():
     search_year = 0
     Log("File %s, manual = %s" % (media.name, manual))    # type: ignore
     #if not manual:
-    if not manual:    #TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   not manual after debug
+    if not manual:    
       # т.е. значение - не из строки поиска, а из media.year, media.id, media.name
       self.titles[0] = re.sub(r'_', ' ', self.titles[0])     # в наименовании _ заменяем на пробелы
       self.titles[0] = re.sub(r'\.', ' ', self.titles[0])    # in result . to ' '

@@ -1,3 +1,73 @@
+
+
+
+
+c:\Users\plugo\AppData\Local\Plex Media Server\Plug-in Support\Data\com.plexapp.plugins.kinopoisk3\
+c:\Users\plugo\AppData\Local\Plex Media Server\Plug-in Support\Preferences\
+c:\Users\plugo\AppData\Local\Plex Media Server\Plug-in Support\Metadata Combination\
+
+/Volume1/public/Media/Movies/Белое солнце пустыни 1969.avi
+
+Что касается структуры кода в файле __init__.py, то в основе своей она довольно проста, но на практике может быть несколько запутанной. В самом простом плагине у вас будет функция Start(), которая отвечает за настройку некоторых параметров плагина по умолчанию, и функция MainMenu(), которая либо представляет список видео (или аудиодорожек и т. д.), либо список подменю, которые, в свою очередь, представляют собственные списки медиаобъектов. Чаще всего метаданные для медиаобъектов извлекаются с веб-сайта с помощью xpath в цикле FOR. 
+
+Пример службы URL в Services.bundle
+https://github.com/plexinc-plugins/Services.bundle/tree/master/Contents/Service%20Sets/com.plexapp.plugins.vimeo
+
+Пример службы URL, включенной в пакет плагинов:
+https://github.com/plexinc-plugins/HGTV.bundle/tree/master/Contents/Services
+
+Пример службы поиска в пакете плагинов:
+https://github.com/plexinc-plugins/Devour.bundle/tree/master/Contents/Services
+
+https://forums.plex.tv/t/channel-development-setup/22343/15
+
+рассмотрим файл Info.plist из плагина TWiT TV:
+
+Первые две строки — это просто строки форматирования. 
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"><br />
+<plist version="1.0"><br />
+<dict><br />
+
+Первая важная пара «ключ-значение» — это 
+
+CFBundleIdentifier. Значение — это элемент «строка», который PMS использует в качестве уникального идентификатора для плагина и его журналов.
+Соглашение выглядит так: «com.plexapp.plugins», где имя плагина используется без заглавных букв, пробелов или специальных символов. 
+	<key>CFBundleIdentifier</key><br />
+	<string>com.plexapp.plugins.twitlive</string><br />
+
+Ключи «PlexAudioCodec», «PlexMediaContainer» и «PlexVideoCodec» необязательны и используются для того, чтобы подсказать PMS, какой тип мультимедиа предоставляет канал.
+	<key>PlexAudioCodec</key><br />
+	<array><br />
+		<string>AAC</string><br />
+	</array><br />
+	<key>PlexMediaContainer</key><br />
+	<array><br />
+		<string>MP4</string><br />
+	</array><br />
+	<key>PlexVideoCodec</key><br />
+	<array><br />
+		<string>H.264</string><br />
+	</array><br />
+	
+Ключ «PlexClientPlatforms» представляет все клиенты Plex, на которых поддерживается плагин. Обычно значение «*» используется для всех платформ. Если одна или две платформы не поддерживаются, используется ключ «PlexClientExclusions». 
+	<key>PlexClientPlatformExclusions</key><br />
+	<string>Roku</string><br />
+	<key>PlexClientPlatforms</key><br />
+	<string>*</string><br />
+	
+Ключ «PlexFrameworkVersion» обычно имеет значение «2», представляющее основную версию платформы плагинов, для которой был написан плагин. Несмотря на довольно существенные различия в коде между версией 2 и версией 2.1, важна только основная версия, поэтому мы просто используем «2».	
+	<key>PlexFrameworkVersion</key><br />
+	<string>2</string><br />
+	
+	
+	
+	
+	
+	
+</dict><br />
+</plist>	
+
+--------------------
 План работ
 
 1. Плагин - просто стартует, лого, рестартует.
