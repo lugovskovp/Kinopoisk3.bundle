@@ -25,6 +25,10 @@ def ValidatePrefs():
 ##################################################################
 
 class KinoPoiskUnoficialAgent(Agent.Movies): # type: ignore
+  '''
+  search
+  update
+  '''
   name              = '%s (%s) Movies' % (NAME, VER) 
   primary_provider  = True  # могут быть выбраны в качестве основного источника метаданных
   fallback_agent    = False # идентификатор другого агента для использования в качестве резервного
@@ -47,12 +51,17 @@ class KinoPoiskUnoficialAgent(Agent.Movies): # type: ignore
         • lang (str - A string identifying the users currently selected language. This will be one of the constants added to the agents languages attribute.
         • manual (bool - A boolean value identifying whether the search was issued automatically during scanning, or manually by the user (in order to fix an incorrect match)  
     '''   
-    #   1 - initializing search parameters
-    srch = srch_params(media, manual)     
-    d("\n\n----- %s.SEARCH %s, %s, %s %s start\n" % (self.name, srch.str_titles, srch.year, srch.match_type, srch.search_type))
+    #   0 - initializing search parameters
     '''if manual and not isNewMatch:
       #return   # можно автопопытку поиска отключить
       pass'''
+    srch = srch_params(media, manual)
+    d("\n\n========== %s.SEARCH %s, %s, %s %s start\n" % (self.name, srch.str_titles, srch.year, srch.match_type, srch.search_type))
+    #   2 - MUST to have a valid token for continue
+    HaveToken = APItokenRemains()
+    if not HaveToken:
+      Log(u">>>SEARCH STOPPED: has no valid key or not remains daily attempts")
+      return
     #    2 - Поиск и скоринг
     finded = {'films':[]}        # найденные 'films'
     srch_and_score(srch, finded, results)   
@@ -67,7 +76,11 @@ class KinoPoiskUnoficialAgent(Agent.Movies): # type: ignore
     metadata  Framework.models.metadata.com_plexapp_plugins_kinopoisk3.Movie
     media     MediaTree   (search - Movie|TV_Show)
     '''
-    d("\n\n ************* KinoPoiskUnnoficialAgent.UPDATE start: m.id=%s " % (metadata.id))
+    HaveToken = APItokenRemains()
+    if not HaveToken:
+      Log(u">>>UPDATE STOPPED: has no valid key or not remains daily attempts")
+      return    
+    d("\n\n ---------- %s.UPDATE start: m.id=%s tokenQuota=%s" % (self.name, metadata.id, HaveToken))
     Log("\n metadata-metadata type: %s %s " % (metadata.title, metadata.year)) # type: ignore
     # Log("\n media-MediaTree id: %s, tree: %s, name" % (media.id, media.tree, media.name))
 
@@ -119,12 +132,19 @@ class KinoPoiskUnoficialAgent(Agent.TV_Shows): # type: ignore
 
   @log_timing  
   def search(self, results, media, lang, manual=False):
+    #   1 - initializing search parameters
     srch = srch_params(media, manual)
-    d("\n\n----- %s.SEARCH %s, %s, %s %s start\n" % (self.name, srch.str_titles, srch.year, srch.match_type, srch.search_type))
+    d("\n\n========== %s.SEARCH %s, %s, %s %s start\n" % (self.name, srch.str_titles, srch.year, srch.match_type, srch.search_type))
     finded = {'films':[]}        # найденные 'films'
+    #   2 - MUST to have a valid token for continue
+    HaveToken = APItokenRemains()
+    if not HaveToken:
+      Log(u">>>SEARCH STOPPED: has no valid key or not remains daily attempts")
+      return
+    #
     srch_and_score(srch, finded, results) 
     srch_mkres(finded, results)
-    d("\n>>>KinoPoisk_TV_Show.search END\n")
+    d("\n>>>KinoPoisk_TV_Show.search %s %s END\n" % (srch.str_titles, srch.year))
 
 
   @log_timing  
@@ -135,7 +155,11 @@ class KinoPoiskUnoficialAgent(Agent.TV_Shows): # type: ignore
     Framework.api.agentkit.MediaTree 
       [] Framework.api.agentkit.MediaPart
     '''
-    d("\n\n ************* KinoPoisk_TV_Show.UPDATE start: m.id=%s " % (metadata.id))
+    HaveToken = APItokenRemains()
+    if not HaveToken:
+      Log(u">>>UPDATE STOPPED: has no valid key or not remains daily attempts")
+      return
+    d("\n\n ---------- %s.UPDATE start: m.id=%s tokenQuota=%s" % (self.name, metadata.id, HaveToken))
     d( 'media.all_parts parts: %s' % media.all_parts()[0] )     # MediaPart
     # 'MediaPart' object has no attribute  filename name path
     d( 'media.all_parts[0] size: %s' % media.all_parts()[0] )

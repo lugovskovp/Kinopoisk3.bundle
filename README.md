@@ -170,9 +170,9 @@ sudo systemctl restart plexmediaserver
 ## Ключ kinopoiskapiunofficial.tech
 Для функционирования плагину требуется токен API сервиса [kinopoiskapiunofficial](https://kinopoiskapiunofficial.tech/).
 Для получения токена необходимо зарегистрироваться на [Kinopoisk API Unofficial
-](https://kinopoiskapiunofficial.tech/rates) и выбрать тарифный план.
-Базовый доступ бесплатен: до 500 запросов в сутки.
-Расширенный доступ за 500 руб. / месяц уже позволяет выполнять до 10 000 запросов в сутки.
+](https://kinopoiskapiunofficial.tech/rates) и выбрать тарифный план.<br/>
+Базовый доступ бесплатен: до 500 запросов в сутки.<br/>
+Расширенный доступ за 500 руб. / месяц уже позволяет выполнять до 10<nbsp/>000 запросов в сутки.<br/>
 На получение информации по одному фильму потребуется порядка 10-15 запросов. 
 
 https://kinopoiskapiunofficial.tech/documentation/api/#/films/get_api_v2_1_films_search_by_keyword
@@ -186,7 +186,7 @@ https://kinopoiskapiunofficial.tech/documentation/api/#/films/get_api_v2_1_films
 # Разработчикам
 Для самостоятельного внесения изменений необходимо выполнить 
 ```git clone git@github.com:lugovskovp/Kinopoisk3.bundle.git```. <br/>
-Скачивание ZIP архива стабильной версии **не подходит** - в архиве будет только сам плагин, без GH workflows, файлов настроек и папки документации.
+Скачивание ZIP архива стабильной версии  **для разработки не подходит** - в архиве будет только сам плагин, без GH workflows, файлов настроек и папки документации.
 Отладка и профайлинг отключаются настройкой.
 
 ## Пожелания к доработке
@@ -194,7 +194,7 @@ https://kinopoiskapiunofficial.tech/documentation/api/#/films/get_api_v2_1_films
 
 
 ## Changelog
-Файл изменений версий [CHANGELOG][changelog-url] формируется автоматически CI, настроенным в GitHub Actions, поэтому, боюсь, он может показаться достаточно неудобным для пользователя.
+Файл изменений версий [CHANGELOG][changelog-url] формируется автоматически CI, настроенным в GitHub Actions, поэтому, вероятно, он может показаться достаточно неудобным для пользователя.
 
 
 ## License
