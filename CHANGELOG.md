@@ -1,3 +1,10 @@
+# [1.8.0-beta.3](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.8.0-beta.2...v1.8.0-beta.3) (2025-07-12)
+
+
+### Bug Fixes
+
+* В лог - сколько осталось попыток на сегодня ([563e78d](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/563e78deb8b001e2cc3c3bd6fa8fb696373e3f88))
+
 # [1.8.0-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.8.0-beta.1...v1.8.0-beta.2) (2025-07-12)
 
 
