@@ -1,3 +1,10 @@
+# [1.8.0-beta.4](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.8.0-beta.3...v1.8.0-beta.4) (2025-07-12)
+
+
+### Performance Improvements
+
+* Проверка ci angular preset ([4570255](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/4570255905dc3e5d619f33f88730f7793fab60cc))
+
 # [1.8.0-beta.3](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.8.0-beta.2...v1.8.0-beta.3) (2025-07-12)
 
 
