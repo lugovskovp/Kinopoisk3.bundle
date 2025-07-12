@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.7.0...v1.8.0) (2025-07-12)
+
+
+### Features
+
+* Проверка на валидный токен до попыток поиска и апдейта. ([3a6edb9](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/3a6edb914e0369c6c59d0cef67b14598d1127b11))
+
 # [1.8.0-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.7.0...v1.8.0-beta.1) (2025-07-12)
 
 
