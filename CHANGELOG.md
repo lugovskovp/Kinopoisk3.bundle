@@ -1,8 +1,16 @@
+# [1.7.0-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.6.1-beta.12...v1.7.0-beta.1) (2025-05-29)
+
+### Features
+
+* change tv and movie place ([55cae1f](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/55cae1fd9a87fb188bc07fd6cced1a77ce7dde6f))
+
+## [1.6.1-beta.12](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.6.1-beta.11...v1.6.1-beta.12) (2025-05-29)
 ## [1.6.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.6.0...v1.6.1) (2025-05-29)
 
 
 ### Bug Fixes
 
+* log paths in About ([df0cc9f](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/df0cc9f894f430341b10489eb8bbdfd9a5d6af3f))
 * add Updater:activate and copytree ([b739216](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/b739216fc5ca26be62a3721834cb02dd55ea5ebb))
 * add Updater:reactivate and deactivate ([f3a386c](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/f3a386ccbd3db7075c4ebe46988a3bd53b3a2c58))
 * add ValidatePrefs function ([541e44b](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/541e44bd2fba353cf9b234cc38a1e4c70134d035))

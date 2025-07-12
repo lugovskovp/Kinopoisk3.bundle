@@ -9,7 +9,8 @@
             &lt;b&gt;Кинопоиск3&lt;/b&gt; {{version}}&lt;br&gt;
 			Агент для получения информации о Кинофильмах и Сериалах&lt;br&gt;с русского сайта
             &lt;a href=&quot;http://kinopoiskapiunofficial.tech/&quot;&gt;Kinopoisk API Unofficial&lt;/a&gt;.
-            &lt;br&gt;
+            &lt;br&gt;&lt;br&gt;
+			Путь к логам: {{logs}}
         </string>
 	<key>PlexClientPlatforms</key>
 	<string>*</string>
