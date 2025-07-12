@@ -1,3 +1,10 @@
+# [1.8.0-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.8.0-beta.1...v1.8.0-beta.2) (2025-07-12)
+
+
+### Bug Fixes
+
+* Причесал код, варнинги линтера, логирование профайлера ([31664de](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/31664de76cccb886be71b799332bbf763f365c46))
+
 # [1.8.0-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.7.0...v1.8.0-beta.1) (2025-07-12)
 
 
