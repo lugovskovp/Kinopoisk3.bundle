@@ -60,7 +60,7 @@ class KinoPoiskUnoficialAgent(Agent.Movies): # type: ignore
     #   2 - MUST to have a valid token for continue
     HaveToken = APItokenRemains()
     if not HaveToken:
-      Log(u">>>SEARCH STOPPED: has no valid key or not remains daily attempts")
+      Log(u">>>SEARCH STOPPED: has no valid key or not remains daily attempts")                  # type: ignore
       return
     #    2 - Поиск и скоринг
     finded = {'films':[]}        # найденные 'films'
@@ -78,7 +78,7 @@ class KinoPoiskUnoficialAgent(Agent.Movies): # type: ignore
     '''
     HaveToken = APItokenRemains()
     if not HaveToken:
-      Log(u">>>UPDATE STOPPED: has no valid key or not remains daily attempts")
+      Log(u">>>UPDATE STOPPED: has no valid key or not remains daily attempts")                  # type: ignore
       return    
     d("\n\n ---------- %s.UPDATE start: m.id=%s tokenQuota=%s" % (self.name, metadata.id, HaveToken))
     Log("\n metadata-metadata type: %s %s " % (metadata.title, metadata.year)) # type: ignore
@@ -139,7 +139,7 @@ class KinoPoiskUnoficialAgent(Agent.TV_Shows): # type: ignore
     #   2 - MUST to have a valid token for continue
     HaveToken = APItokenRemains()
     if not HaveToken:
-      Log(u">>>SEARCH STOPPED: has no valid key or not remains daily attempts")
+      Log(u">>>SEARCH STOPPED: has no valid key or not remains daily attempts")                  # type: ignore
       return
     #
     srch_and_score(srch, finded, results) 
@@ -150,14 +150,13 @@ class KinoPoiskUnoficialAgent(Agent.TV_Shows): # type: ignore
   @log_timing  
   def update(self, metadata, media, lang):
     # В search media - Movie|TV_Show, а вот в update media это Framework.api.agentkit.MediaTree
-    # metadata - Movie|TV_Show
     '''
     Framework.api.agentkit.MediaTree 
       [] Framework.api.agentkit.MediaPart
     '''
     HaveToken = APItokenRemains()
     if not HaveToken:
-      Log(u">>>UPDATE STOPPED: has no valid key or not remains daily attempts")
+      Log(u">>>UPDATE STOPPED: has no valid key or not remains daily attempts")                  # type: ignore
       return
     d("\n\n ---------- %s.UPDATE start: m.id=%s tokenQuota=%s" % (self.name, metadata.id, HaveToken))
     d( 'media.all_parts parts: %s' % media.all_parts()[0] )     # MediaPart
