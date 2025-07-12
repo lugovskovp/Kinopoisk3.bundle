@@ -2,7 +2,7 @@
 > БЕТА, РЕЛИЗА ЕЩЕ НЕ БЫЛО
 <!-- https://github.com/orgs/community/discussions/16925 -->
 
-# Кинопоиск3 - плагин для Plex
+# Кинопоиск3 - плагин для Plex Media Server (PMS)
 <!-- https://shields.io/badges/git-hub-release -->
 ![CI][release-image]
 [![][version-image]][changelog-url]
@@ -14,8 +14,10 @@
 # Почему и зачем.
 В первую очередь хочу выразить искреннюю благодарность и восхищение Artem Mirotin aka [@amirotin](https://github.com/amirotin), Aleksey Ganuta aka [@Jenstel](https://github.com/Jenstel) и Vladimir Sharapov aka @EvelRus, которые являются авторами плагина для Plex Media Server (PMS) [Kinopoisk.bundle](https://github.com/Jenstel/Kinopoisk.bundle).</br>
 Увы, последнее обновление которого - март 2021, и изменения в API kinopoiskapiunofficial.tech сделали этот плагин малопригодным для использования.</br>
-Данная реализация архитектурно более проста, единственный источник данных - неофициальное API Кинопоиска.</br>
-Удалось добавить некоторые фишки, отсутствующие в оригинальном Kinopoisk.bundle. При этом, хотя очень многое в коде и алгоритмах взято из оригинального, архитектура полностью переработана, плагин значительно проще великолепного оригинала.</br>
+## Назначение .
+Плагин для [Plex Media Server (PMS)](https://www.plex.tv/) - медиасервера для NAS - позволяющий получить метаданные для файлов фильмов и сериалов через  [неофициальное API](https://kinopoiskapiunofficial.tech/) к информации по фильмам и сериалам сайта [Кинопоиск](https://www.kinopoisk.ru/).
+Данная реализация архитектурно более проста, чем [Kinopoisk.bundle](https://github.com/Jenstel/Kinopoisk.bundle), здесь Кинопоиск единственный источник данных.</br>
+Удалось добавить некоторые фишки, отсутствующие в оригинальном [Kinopoisk.bundle](https://github.com/Jenstel/Kinopoisk.bundle). При этом, хотя очень многое в коде и алгоритмах взято из оригинального плагина, архитектура полностью переработана, плагин значительно проще великолепного оригинала.</br>
 И, несмотря на морфологическую конвергенцию, между собой данный плагин и Kinopoisk.bundle не совместимы принципиально.
 
 
