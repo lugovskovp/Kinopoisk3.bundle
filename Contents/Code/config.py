@@ -70,12 +70,11 @@ def APItokenRemains():
   '''
   Return False if token err happened
   Return int - Qty remains dailyQuota for use.
+  #/api/v1/api_keys/{apiKey}  #получить данные об api key 
   '''
-  #/api/v1/api_keys/{apiKey}  #получить данные об api key  
   valid = False
   key = Prefs['api_key']                                                                # type: ignore
   url = '%s/api/v1/api_keys/%s' % (API_BASE_URL, key)
-  #Log("\n\n >>>>>>> isAPItokenGood::  key=%s  url=%s    " % (key, url))                  # type: ignore
   headers={
     'Accept': 'application/json',
     'X-API-KEY': key, # type: ignore
@@ -86,14 +85,13 @@ def APItokenRemains():
   except:
     pass
   status_code = response.status_code
-  Log(u"isAPItokenGood::response code:%s json:%s" % (status_code, response.json()))
+  Log(u"APItokenRemains::response code:%s json:%s" % (status_code, response.json()))                  # type: ignore
   if status_code != 200:
     # что-то пошло не так
-    Log("isAPItokenGood::ERROR %s что-то пошло не так %s" % (status_code, response.json()))
-    if status_code == 401:        # There are not valid token
-      Log("isAPItokenGood::ERROR   message: You don't have permissions. See https://kinopoiskapiunofficial.tech")
-    elif status_code == 429:
-      Log("isAPItokenGood::ERROR   message: Rate limit exceeded")
+    #status_code == 401:    You don't have permissions There are not valid token  
+    #status_code == 402:    You exceeded the quota.
+    #status_code == 429:    Rate limit exceeded
+    Log("APItokenRemains::ERROR %s: %s" % (status_code, response.json()["message"]))                  # type: ignore
     return False
   else:
     # ключ есть, ответ есть. Может, даже остались в квоте попытки.
@@ -108,7 +106,7 @@ def APItokenRemains():
         return False    #You exceeded the quota. You have sent 517 request, but available 500 per day
       else:
         remains = dailyQuota - used
-    Log(u"isAPItokenGood:: accountType:%s dailyQuota:%s used:%s\n" % (accountType, dailyQuota, used))
+    Log(u"APItokenRemains:: accountType:%s dailyQuota:%s used:%s\n" % (accountType, dailyQuota, used))                  # type: ignore
   return remains
 
      
@@ -176,8 +174,11 @@ def log_timing(func):
       # "Действие перед выполнением функции"
       msStart = getMilliseconds(Datetime.Now()) # type: ignore
       func_name = ("%s" % func).split(" ")[1] #- тут имя функции 
+      # strArgs (<__code__.KinoPoiskUnoficialAgent object at 0x00000000049466d0>, 
+      # MediaContainer(art=None, noHistory=False, title1=None, title2=None, replaceParent=False), 
+      # <Framework.api.agentkit.TV_Show object at 0x00000000046680d0>, ru)
       strArgs = ', '.join(map(str, list(args)))
-      d("<<<<<<< start::%s (%s)" % (func_name, strArgs))
+      d("<<<<<<< start::%s (%s)" % (func_name, args[1]))   #strArgs
       func(*args, **kwargs)
       # ("Действие после выполнения функции")
       d(">>>>>>> end::%s, duration=%s\n"  % (func_name, (getMilliseconds(Datetime.Now()) - msStart))) # type: ignore
