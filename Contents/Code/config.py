@@ -103,11 +103,11 @@ def APItokenRemains():
       remains = 1000
     else:
       if used >= dailyQuota:
-        Log(u"APItokenRemains::exceeded quota:%s used:%s\n" % (dailyQuota, used))                   # type: ignore
+        Log(u"APItokenRemains::exceeded quota:%s used:%s" % (dailyQuota, used))                   # type: ignore
         return False    #You exceeded the quota. You have sent 517 request, but available 500 per day
       else:
         remains = dailyQuota - used
-    Log(u"APItokenRemains:: accountType:%s remains:%s\n" % (accountType, remains))                  # type: ignore
+    Log(u"APItokenRemains:: accountType:%s remains:%s" % (accountType, remains))                  # type: ignore
   return remains
 
      
