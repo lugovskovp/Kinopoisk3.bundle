@@ -1,4 +1,15 @@
+## [1.8.1-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.8.0...v1.8.1-beta.1) (2025-07-12)
 
+
+### Bug Fixes
+
+* В лог - сколько осталось попыток на сегодня ([563e78d](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/563e78deb8b001e2cc3c3bd6fa8fb696373e3f88))
+* Причесал код, варнинги линтера, логирование профайлера ([31664de](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/31664de76cccb886be71b799332bbf763f365c46))
+
+
+### Performance Improvements
+
+* Проверка ci angular preset ([4570255](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/4570255905dc3e5d619f33f88730f7793fab60cc))
 
 ### Performance Improvements
 
