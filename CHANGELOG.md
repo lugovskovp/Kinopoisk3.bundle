@@ -1,3 +1,10 @@
+## [1.8.1-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.8.1-beta.1...v1.8.1-beta.2) (2025-07-20)
+
+
+### Bug Fixes
+
+* Настройка, установка, запуск - отлажено на свежеустановленном Plex [#26](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/26) ([312041c](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/312041cf3e375641b27895fe7aedbe545602dcbb))
+
 ## [1.8.1-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.8.0...v1.8.1-beta.1) (2025-07-12)
 
 
