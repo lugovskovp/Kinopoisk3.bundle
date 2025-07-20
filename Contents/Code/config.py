@@ -4,8 +4,11 @@
 
 # find in \Contents\Library\Shared
 import requests             # type: ignore # [а к нему еще chardet, urllib3, certifi, idna]
+import traceback            # для get_json()
 
-# константы
+
+# константы ===============================================================================
+# 
 NAME = u'Кинопоиск3' # % VER
 VER = '0.0.1'
 version_path = Core.storage.join_path(Core.bundle_path, 'Contents', 'VERSION') # type: ignore
@@ -17,12 +20,8 @@ LANGUAGES = [Locale.Language.Russian, Locale.Language.English, Locale.Language.N
 # Update vars
 UPDATER_REPO = 'lugovskovp'
 UPDATER_STABLE_URL = 'https://api.github.com/repos/%s/Kinopoisk3.bundle/releases/latest'
-  #https://api.github.com/repos/lugovskovp/Kinopoisk3.bundle/releases/latest
 UPDATER_BETA_URL = 'https://api.github.com/repos/%s/Kinopoisk3.bundle/tags?per_page=1'
-  #https://api.github.com/repos/lugovskovp/Kinopoisk3.bundle/tags?per_page=1
 UPDATER_ARCHIVE_URL = 'https://github.com/%s/Kinopoisk3.bundle/archive/refs/tags/'
-  #https://github.com/lugovskovp/Kinopoisk3.bundle/archive/refs/tags/v1.6.0.zip
-  #https://github.com/lugovskovp/Kinopoisk3.bundle/archive/refs/tags/v1.6.1-beta.5.zip
 MIN_UPDATE_INTERVAL = 2
 
 # URLS      FILM_xxxx - для функций получения инфо с кинопоиска для update
@@ -45,8 +44,7 @@ TITLE = 'Агент Кинопоиск Unofficial'
 ART = 'art-default.png'
 ICON = 'icon-default.png'
 
-
-import traceback
+# ===============================================================================
 
 def get_json(url):
   headers={
@@ -94,7 +92,7 @@ def APItokenRemains():
     Log("APItokenRemains::ERROR %s: %s" % (status_code, response.json()["message"]))                  # type: ignore
     return False
   else:
-    # ключ есть, ответ есть. Может, даже остались в квоте попытки.
+    # 200, ключ есть, ответ есть. Может, даже остались в квоте попытки.
     json = response.json()
     accountType = json["accountType"]
     dailyQuota = json["dailyQuota"]["value"]

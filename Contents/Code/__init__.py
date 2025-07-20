@@ -32,12 +32,13 @@ class KinoPoiskUnoficialAgent(Agent.Movies): # type: ignore
   name              = '%s (%s) Movies' % (NAME, VER) 
   primary_provider  = True  # могут быть выбраны в качестве основного источника метаданных
   fallback_agent    = False # идентификатор другого агента для использования в качестве резервного
-  # contributes_to идентификаторы первичных агентов, которым агент может передавать вторичные данные
+  #     contributes_to идентификаторы первичных агентов, которым агент может передавать вторичные данные
+  contributes_to    = ['com.plexapp.plugins.kinopoisk3', 'com.plexapp.agents.local']
   # contributes_to    = ['com.plexapp.plugins.kinopoisk3', 'com.plexapp.agents.local', 'com.plexapp.agents.themoviedb', 'com.plexapp.agents.imdb'] 
-  contributes_to    = ['com.plexapp.agents.themoviedb']
+  # contributes_to    = ['com.plexapp.plugins.kinopoisk3', 'com.plexapp.agents.themoviedb']
   languages         = LANGUAGES  #languages=[['ru', 'en', 'xn']]
-  # accepts_from идентификаторы агентов, которые могут добавлять вторичные данные к первичным данным, предоставляемым этим агентом
-  accepts_from      = ['com.plexapp.agents.localmedia'] 
+  #     accepts_from идентификаторы агентов, которые могут добавлять вторичные данные к первичным данным, предоставляемым этим агентом
+  accepts_from      = ['com.plexapp.plugins.kinopoisk3', 'com.plexapp.agents.local'] 
   agent_type        = 'Movies'
   
      
@@ -124,6 +125,7 @@ class KinoPoiskUnoficialAgent(Agent.TV_Shows): # type: ignore
   name              = '%s (%s) Serials' % (NAME, VER) 
   primary_provider  = True 
   fallback_agent    = False 
+  # contributes_to    = ['com.plexapp.plugins.kinopoisk3', 'com.plexapp.agents.local']
   # contributes_to    = ['com.plexapp.plugins.kinopoisk3', 'com.plexapp.agents.local', 'com.plexapp.agents.themoviedb', 'com.plexapp.agents.imdb'] 
   languages         = LANGUAGES  #languages=['ru', 'en', 'xn']
   #accepts_from      = ['com.plexapp.agents.localmedia'] 
@@ -144,7 +146,7 @@ class KinoPoiskUnoficialAgent(Agent.TV_Shows): # type: ignore
     #
     srch_and_score(srch, finded, results) 
     srch_mkres(finded, results)
-    d("\n>>>KinoPoisk_TV_Show.search %s %s END\n" % (srch.str_titles, srch.year))
+    d("\n>>>%s.search %s %s END\n" % (self.name, srch.str_titles, srch.year))
 
 
   @log_timing  

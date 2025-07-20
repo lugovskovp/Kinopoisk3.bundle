@@ -6,11 +6,12 @@
 		<string>com.plexapp.plugins.kinopoisk3</string>
         <key>PlexAgentAttributionText</key>
         <string>
-            &lt;b&gt;Кинопоиск3&lt;/b&gt; {{version}}&lt;br&gt;
-			Агент для получения информации о Кинофильмах и Сериалах&lt;br&gt;с русского сайта
+            &lt;b&gt;Кинопоиск3&lt;/b&gt; &lt;br&gt;
+			Агент PlexMediaServer для получения информации о Кинофильмах и Сериалах&lt;br&gt;с русского сайта
             &lt;a href=&quot;http://kinopoiskapiunofficial.tech/&quot;&gt;Kinopoisk API Unofficial&lt;/a&gt;.
             &lt;br&gt;&lt;br&gt;
-			Путь к логам: {{logs}}
+			&lt;br&gt;&lt;br&gt;
+			GitHub страница плагина: &lt;a href=&quot;https://github.com/lugovskovp/Kinopoisk3.bundle&quot;&gt;Kinopoisk3&lt;/a&gt;.
         </string>
 	<key>PlexClientPlatforms</key>
 	<string>*</string>
