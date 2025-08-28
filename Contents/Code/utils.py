@@ -8,7 +8,7 @@ MAX_VALID_YEAR  = 2035
 
 # -------------------------------------------------------------
 class srch_params():
-  '''Просто поскладём все параметры поиска в сюда'''
+  ''' Просто поскладём все параметры поиска в сюда, srch_params '''
   isAgentMovies = True    #   1. Agent.Movies или Agent.TV_Shows
   isNewMatch    = True    #   2. Определить режим - сопоставление или исправление
   isManual      = False

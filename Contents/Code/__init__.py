@@ -67,7 +67,7 @@ class KinoPoiskUnoficialAgent(Agent.Movies): # type: ignore
     finded = {'films':[]}        # найденные 'films'
     srch_and_score(srch, finded, results)   
     #    3 - Формирование результатов для отображения (если ручной) или (найденные имена) - если автомат.
-    srch_mkres(finded, results)
+    srch_mkres(srch, finded, results)
     d("\n>>>KinoPoisk_Movie.search END\n")
 
   @log_timing
@@ -122,6 +122,10 @@ class KinoPoiskUnoficialAgent(Agent.Movies): # type: ignore
 
 
 class KinoPoiskUnoficialAgent(Agent.TV_Shows): # type: ignore
+  '''
+  search - при ручном поиске в результаты выводит сезоны сериала для выбора верного
+  update
+  '''
   name              = '%s (%s) Serials' % (NAME, VER) 
   primary_provider  = True 
   fallback_agent    = False 
@@ -134,6 +138,9 @@ class KinoPoiskUnoficialAgent(Agent.TV_Shows): # type: ignore
 
   @log_timing  
   def search(self, results, media, lang, manual=False):
+    '''
+    manual = [True|False]
+    '''
     #   1 - initializing search parameters
     srch = srch_params(media, manual)
     d("\n\n========== %s.SEARCH %s, %s, %s %s start\n" % (self.name, srch.str_titles, srch.year, srch.match_type, srch.search_type))
@@ -145,7 +152,7 @@ class KinoPoiskUnoficialAgent(Agent.TV_Shows): # type: ignore
       return
     #
     srch_and_score(srch, finded, results) 
-    srch_mkres(finded, results)
+    srch_mkres(srch, finded, results)
     d("\n>>>%s.search %s %s END\n" % (self.name, srch.str_titles, srch.year))
 
 
@@ -318,7 +325,7 @@ def srch_and_score(srch, finded, results):
      
 
 #@log_timing      
-def srch_mkres(finded, results):      # >>>>>>> end::srch_mkres, duration=15
+def srch_mkres(srch, finded, results):      # >>>>>>> end::srch_mkres, duration=15
   d("\n---------------------- начинаем формировать отображение найденного")
   if len(finded['films']) == 0:
     # ничего не найдено
@@ -329,13 +336,13 @@ def srch_mkres(finded, results):      # >>>>>>> end::srch_mkres, duration=15
     title = ""
     if Prefs['showTypes']:                # type: ignore # Отображать тип: F:фильм, M:многосерийный, V:видео, S:сериал, T:tv-шоу
       b=''
-      TypeFinded = {'FILM':'F', 'VIDEO':'V', 'TV_SERIES':'S', 'MINI_SERIES':'M', 'TV_SHOW':'s'}
+      TypeFinded = {'FILM':'F', 'VIDEO':'V', 'TV_SERIES':'S', 'MINI_SERIES':'M', 'TV_SHOW':'T'}
       try:
         b = TypeFinded[movie['type']]     # подставить букву, соответствующую типу
       except: pass
       if b:                               # если не упал в эксепшн
          title += u"%s: " % b
-    if Prefs['show2names']:             # type: ignore #"В найденных отображать и русское наименование, и английское"
+    if Prefs['show2names']:             # type: ignore # "В найденных отображать и русское наименование, и английское"
       if 'nameRu' in movie:
         title += movie['nameRu']
       if len(title) > 0 and 'nameEn' in movie:
