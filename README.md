@@ -135,8 +135,9 @@ R&D:
 Иначе зачем мог бы понадобиться плагин к нему?
 
 ## Latest версия
-Скачать актуальную стабильную версию [Kinopoisk3.bundle](https://github.com/lugovskovp/Kinopoisk3.bundle/releases/latest) (Раздел Assets).
-Плагин в активной доработке, практически почти каждый коммит автоматически генерит новую версию, поэтому в настройках (см.[Настройки](https://github.com/lugovskovp/Kinopoisk3.bundle/tree/beta#настройки)) рекомендую включить автообновление на стабильную версию.
+Скачать актуальную **стабильную** версию [Kinopoisk3.bundle](https://github.com/lugovskovp/Kinopoisk3.bundle/releases/latest) <- вот именно по этой ссылке. (Раздел Assets).
+Для использования beta версии совершенно точно не подходят, никаких гарантий, что вообще заработает, или будет работат где-то правильно.
+Плагин в активной доработке, практически почти каждый коммит автоматически генерит новую версию, поэтому в настройках (см.[Настройки](https://github.com/lugovskovp/Kinopoisk3.bundle/tree/master#настройки)) рекомендую включить автообновление на стабильную версию.
 
 ## Распаковка в папку плагинов
 Расположение папки плагинов Plex (папки Plug-ins) в разных операционных системах:
@@ -156,16 +157,32 @@ R&D:
 * '/raid0/data/PLEX_CONFIG/Plex Media Server/'                               # Thecus Plex community
 * '/Volume1/Plex/Library/Application Support/Plex Media Server'              # TOS 5.0 | TOS 6.0
 ```
+Как пример, у меня на NAS TOS 6.0, плагин расположен по пути '/Volume1/Plex/Library/Application Support/Plex Media Server/Plug-ins/Kinopoisk3.bundle'
+<img src="https://github.com/lugovskovp/Kinopoisk3.bundle/blob/master/pix/plugin_path.png" alt="Пример расположения плагина">
 
-## Права в unix ОС
-На примере Debian / Ubuntu проверка наличия необходимых библиотек и/или установки всего необходимого
+## Установка и права в unix ОС
+На примере Debian / Ubuntu установка всего необходимого. Пользователь, под которым запускается - plex
 ```
 sudo apt update && sudo apt install -y git
 cd /var/lib/plexmediaserver/Library/Application\ Support/Plex\ Media\ Server/Plug-ins/
-sudo git clone https://github.com/Jenstel/Kinopoisk.bundle.git
-sudo chown -R plex:plex Kinopoisk.bundle/
+sudo git clone https://github.com/lugovskovp/Kinopoisk3.bundle.git
+sudo chown -R plex:plex Kinopoisk3.bundle/
 sudo systemctl restart plexmediaserver
 ```
+На примере Synology DSM | XPEnology DSM (спасибо @Demidovant)
+```
+# распаковать latest версию в /volume1/PlexMediaServer/AppData/Plex Media Server/Plug-ins/Kinopoisk3.bundle
+chown -R PlexMediaServer:PlexMediaServer "/volume1/PlexMediaServer/AppData/Plex Media Server/Plug-ins/Kinopoisk3.bundle"
+chmod -R 755 "/volume1/PlexMediaServer/AppData/Plex Media Server/Plug-ins/Kinopoisk3.bundle"
+synopkg restart PlexMediaServer
+```
+
+<details>
+<summary>После рестарта может случиться так, что плагин не виден в интерфейсе Plex.</summary>
+Может помочь "Настройки - Управлять - Очистка пакетов"
+<img src="https://github.com/lugovskovp/Kinopoisk3.bundle/blob/master/pix/clear.png" alt="Настройки - Управлять - Очистка пакетов">
+</details>
+
 
 ## Ключ kinopoiskapiunofficial.tech
 Для функционирования плагину требуется токен API сервиса [kinopoiskapiunofficial](https://kinopoiskapiunofficial.tech/).
@@ -179,7 +196,7 @@ https://kinopoiskapiunofficial.tech/documentation/api/#/films/get_api_v2_1_films
 
 
 ## Настройки
-
+После установки плагина и перезапуска Plex Media Server устанавливаем значения настроек.
 
 
 
