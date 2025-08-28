@@ -1,3 +1,9 @@
+# logs from prod
+docs/logs/
+
+# test-debug py scripts
+deb0*.py
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

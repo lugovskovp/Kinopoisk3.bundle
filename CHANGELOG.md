@@ -1,8 +1,29 @@
-## [1.8.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.8.0...v1.8.1) (2025-07-12)
+# [1.9.0-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.9.0-beta.1...v1.9.0-beta.2) (2025-08-28)
 
 
 ### Bug Fixes
 
+* упс, мелкая ошибка-опечатка ([5f84c2a](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/5f84c2a4f3fedeabd737e5607b4c51d82bbce420))
+
+
+### Features
+
+* +Загружать отзывы по значению настройки. ([982a26f](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/982a26fb95c0d7c9e9570ce0369f576e434e43e1))
+
+# [1.9.0-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.8.1-beta.2...v1.9.0-beta.1) (2025-08-28)
+
+
+### Features
+
+* Добавил отображение плагина в Управлять-Плагины [#26](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/26) [#27](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/27) ([fdd09a8](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/fdd09a845f9660dd2deb35b46fc618af6ca4dfa0))
+
+## [1.8.1-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.8.1-beta.1...v1.8.1-beta.2) (2025-07-20)
+
+
+### Bug Fixes
+
+* Настройка, установка, запуск - отлажено на свежеустановленном Plex [#26](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/26) ([312041c](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/312041cf3e375641b27895fe7aedbe545602dcbb))
+=======
 * В лог - сколько осталось попыток на сегодня ([563e78d](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/563e78deb8b001e2cc3c3bd6fa8fb696373e3f88))
 * Причесал код, варнинги линтера, логирование профайлера ([31664de](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/31664de76cccb886be71b799332bbf763f365c46))
 
@@ -13,6 +34,8 @@
 
 ## [1.8.1-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.8.0...v1.8.1-beta.1) (2025-07-12)
 
+
+## [1.8.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.8.0...v1.8.1) (2025-07-12)
 
 ### Bug Fixes
 

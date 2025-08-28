@@ -1,28 +1,26 @@
 # -*- coding: utf-8 -*-
 # coding=utf-8
-# import re
 
 # find in \Contents\Library\Shared
-import requests             # type: ignore # [а к нему еще chardet, urllib3, certifi, idna]
+import requests             # [а к нему еще chardet, urllib3, certifi, idna]      # type: ignore 
+import traceback            # для get_json()
 
-# константы
+
+# константы ===============================================================================
+# 
 NAME = u'Кинопоиск3' # % VER
 VER = '0.0.1'
 version_path = Core.storage.join_path(Core.bundle_path, 'Contents', 'VERSION') # type: ignore
-if Core.storage.file_exists(version_path): # type: ignore
-  str_version = Core.storage.load(version_path) # type: ignore
+if Core.storage.file_exists(version_path):                                    # type: ignore
+  str_version = Core.storage.load(version_path)                               # type: ignore
   VER = str_version.split()[0]
 LANGUAGES = [Locale.Language.Russian, Locale.Language.English, Locale.Language.NoLanguage]  # type: ignore # [Locale.Language.Russian, Locale.Language.English, Locale.Language.NoLanguage,]
 
 # Update vars
 UPDATER_REPO = 'lugovskovp'
 UPDATER_STABLE_URL = 'https://api.github.com/repos/%s/Kinopoisk3.bundle/releases/latest'
-  #https://api.github.com/repos/lugovskovp/Kinopoisk3.bundle/releases/latest
 UPDATER_BETA_URL = 'https://api.github.com/repos/%s/Kinopoisk3.bundle/tags?per_page=1'
-  #https://api.github.com/repos/lugovskovp/Kinopoisk3.bundle/tags?per_page=1
 UPDATER_ARCHIVE_URL = 'https://github.com/%s/Kinopoisk3.bundle/archive/refs/tags/'
-  #https://github.com/lugovskovp/Kinopoisk3.bundle/archive/refs/tags/v1.6.0.zip
-  #https://github.com/lugovskovp/Kinopoisk3.bundle/archive/refs/tags/v1.6.1-beta.5.zip
 MIN_UPDATE_INTERVAL = 2
 
 # URLS      FILM_xxxx - для функций получения инфо с кинопоиска для update
@@ -45,8 +43,7 @@ TITLE = 'Агент Кинопоиск Unofficial'
 ART = 'art-default.png'
 ICON = 'icon-default.png'
 
-
-import traceback
+# ===============================================================================
 
 def get_json(url):
   headers={
@@ -57,11 +54,11 @@ def get_json(url):
   try:
     rj = requests.get(url, headers=headers).json()   # data = r.content  # Content of response
   except:
-    Log("\n\n err::Except in get_json - requests.get(url=%s)" % url) # type: ignore
-    Log(traceback.format_exc())       # type: ignore
+    Log("\n\n err::Except in get_json - requests.get(url=%s)" % url)      # type: ignore
+    Log(traceback.format_exc())                                           # type: ignore
     return                 # в случае ошибки, вернуть пустую строку
   if 'message' in rj:    # признак ошибки
-    Log("\n\n err::Попытка поиска без ключа: %s" % rj['message']) # type: ignore
+    Log("\n\n err::Попытка поиска без ключа: %s" % rj['message'])         # type: ignore
     return rj
   return rj
 
@@ -94,7 +91,7 @@ def APItokenRemains():
     Log("APItokenRemains::ERROR %s: %s" % (status_code, response.json()["message"]))                  # type: ignore
     return False
   else:
-    # ключ есть, ответ есть. Может, даже остались в квоте попытки.
+    # 200, ключ есть, ответ есть. Может, даже остались в квоте попытки.
     json = response.json()
     accountType = json["accountType"]
     dailyQuota = json["dailyQuota"]["value"]
@@ -142,33 +139,7 @@ def d(*args):
 
 
 # --------------------------- debug functions ---------------------------
-
-def get_media_data(media, isUpdate=False):
-  ''' отображает данные для search media - Movie|TV_Show'''
-  m = "\nmedia:\n"
-  m += ".media.primary_agent : %s\n" % media.primary_agent
-  m += ".media.primary_metadata : %s\n" % media.primary_metadata
-  m += ".media.guid : %s\n" % media.guid
-  m += ".media.filename : %s\n" % media.filename
-  m += ".media.parent_metadata : %s\n" % media.parent_metadata
-  # 
-  m += ".media.tree : %s\n" % media.tree
-  m += ".media.id : %s\n" % media.id
-  m += ".media.hash : %s\n" % media.hash
-  m += ".media.originally_available_at : %s\n" % media.originally_available_at
-  if hasattr(media, 'season'):       # if TV_Show
-    m += ".media.parentGUID : %s\n" % media.parentGUID    # Movie has no the attribute
-    #m += "TV_Show. : %s\n" % 
-    pass
-  else:                        # Movie
-    m += "Movie.media.name : %s\n" % media.name
-    m += "Movie.media.openSubtitlesHash : %s\n" % media.openSubtitlesHash
-    m += "Movie.media.year : %s\n" % media.year
-    m += "Movie.media.duration : %s\n" % media.duration
-    #m += "movie. : %s\n" % 
-  return m
-
-      
+   
 def log_timing(func):
   ''' Замер времени выполнения функции, декоратор, миллисекунды'''
   def wrapper(*args, **kwargs):
@@ -208,6 +179,8 @@ def getMilliseconds(dt):
   return int(seconds)               #     milliseconds   
 
 
+# --------------------------- log decoration functions ---------------------------
+
 def pp_json(json, lev=0):
   '''Pretty print json'''
   res = ""
@@ -229,3 +202,27 @@ def pp_json(json, lev=0):
       res += ("%s%s: %s\n" % (trail, key, json[key]))
   return res
 
+def get_media_data(media, isUpdate=False):
+  ''' отображает данные для search media - Movie|TV_Show'''
+  m = "\nmedia:\n"
+  m += ".media.primary_agent : %s\n" % media.primary_agent
+  m += ".media.primary_metadata : %s\n" % media.primary_metadata
+  m += ".media.guid : %s\n" % media.guid
+  m += ".media.filename : %s\n" % media.filename
+  m += ".media.parent_metadata : %s\n" % media.parent_metadata
+  # 
+  m += ".media.tree : %s\n" % media.tree
+  m += ".media.id : %s\n" % media.id
+  m += ".media.hash : %s\n" % media.hash
+  m += ".media.originally_available_at : %s\n" % media.originally_available_at
+  if hasattr(media, 'season'):       # if TV_Show
+    m += ".media.parentGUID : %s\n" % media.parentGUID    # Movie has no the attribute
+    #m += "TV_Show. : %s\n" % 
+    pass
+  else:                        # Movie
+    m += "Movie.media.name : %s\n" % media.name
+    m += "Movie.media.openSubtitlesHash : %s\n" % media.openSubtitlesHash
+    m += "Movie.media.year : %s\n" % media.year
+    m += "Movie.media.duration : %s\n" % media.duration
+    #m += "movie. : %s\n" % 
+  return m

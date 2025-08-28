@@ -53,6 +53,12 @@
     "default":"false"
   },
   {
+    "id": "desc_load_votes",
+    "label": "Описание: загружать отзывы",
+    "type":"bool",
+    "default":"true"
+  }, 
+  {
     "id":"trace",
     "label":"Включить подробную отладку",
     "type":"bool",
