@@ -7,9 +7,11 @@
 ![CI][release-image]
 [![][version-image]][changelog-url]
 [![Release date][release-date-image]][release-url]
+[![GitHub issues][issues-opened]][issue-url]
+[![GitHub Pull Requests][pr-image]][pr-url]
 [![][version-beta-image]][changelog-url]
 [![][license-image]][license-url]
-[![GitHub issues][issues-opened]][issue-url]
+
 
 # Почему и зачем.
 В первую очередь хочу выразить искреннюю благодарность и восхищение Artem Mirotin aka [@amirotin](https://github.com/amirotin), Aleksey Ganuta aka [@Jenstel](https://github.com/Jenstel) и Vladimir Sharapov aka @EvelRus, которые являются авторами плагина для Plex Media Server (PMS) [Kinopoisk.bundle](https://github.com/Jenstel/Kinopoisk.bundle).</br>
@@ -239,6 +241,8 @@ This project is released under the [GPLv3 License][license-url].
 [issues-opened]: https://img.shields.io/github/issues/lugovskovp/Kinopoisk3.bundle
 [issue-url]: https://github.com/lugovskovp/Kinopoisk3.bundle/issues
 
+[pr-url]: https://github.com/lugovskovp/Kinopoisk3.bundle/pulls
+[pr-image]: https://img.shields.io/github/issues-pr/lugovskovp/Kinopoisk3.bundle.svg
 
 
 -----------
