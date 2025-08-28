@@ -22,6 +22,16 @@ def ValidatePrefs():
     Thread.CreateTimer(UpdateInterval, Updater.auto_update_thread, core=Core, pref=Prefs)  # type: ignore
 
 
+@handler(prefix='/applications/KinoPoiskUnoficial', name='KinoPoiskUnoficial ({})'.format(VER)) # type: ignore 
+def main():
+    """
+    Create the main plug-in ``handler``.
+
+    This is responsible for displaying the plug-in in the plug-ins menu. Since we are using the ``@handler`` decorator,
+    and since Plex removed menu's from plug-ins, this method does not need to perform any other function.
+    """
+    pass
+
 ##################################################################
 
 class KinoPoiskUnoficialAgent(Agent.Movies): # type: ignore
