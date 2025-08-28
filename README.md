@@ -169,7 +169,7 @@ sudo git clone https://github.com/lugovskovp/Kinopoisk3.bundle.git
 sudo chown -R plex:plex Kinopoisk3.bundle/
 sudo systemctl restart plexmediaserver
 ```
-На примере Synology DSM | XPEnology DSM (спасибо @Demidovant)
+На примере Synology DSM | XPEnology DSM (спасибо [@Demidovant](https://github.com/Demidovant))
 ```
 # распаковать latest версию в /volume1/PlexMediaServer/AppData/Plex Media Server/Plug-ins/Kinopoisk3.bundle
 chown -R PlexMediaServer:PlexMediaServer "/volume1/PlexMediaServer/AppData/Plex Media Server/Plug-ins/Kinopoisk3.bundle"
