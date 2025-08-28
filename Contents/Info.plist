@@ -2,12 +2,56 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>Russia</string>
 	<key>CFBundleIdentifier</key>
-		<string>com.plexapp.plugins.kinopoisk3</string>
-        <key>PlexAgentAttributionText</key>
+	<string>com.plexapp.plugins.kinopoisk3</string>
+	<key>PlexAgentAttributionText</key>
         <string>
-            &lt;b&gt;Кинопоиск3&lt;/b&gt; &lt;br&gt;
-			Агент PlexMediaServer для получения информации о Кинофильмах и Сериалах&lt;br&gt;с русского сайта
+        <![CDATA[
+			<style>
+                @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css");
+            </style>
+            <style>
+                div.center {
+                    text-align: center;
+                }
+            </style>
+
+            <div class="center">
+                <h1>Кинопоиск3</h1>
+            </div>
+            <br>
+			<div class="center">
+			Плагин Plex Media Server - агент для заполнения метаданных Кинофильмов и Сериалов информацией
+			с русского сайта <a href="http://kinopoiskapiunofficial.tech/">Kinopoisk API Unofficial</a>
+			<br>
+			<br>
+			Страница плагина на GitHub <a href="https://github.com/lugovskovp/Kinopoisk3.bundle">Kinopoisk3</a>
+            <br>
+			</div>
+            <br>
+            <table>
+                <tr>
+                    <td><i class="fa fa-fw fa-question-circle"></i> Документация:</td>
+                    <td>| <i class="fas fa-fw fa-file-lines"></i> <a href="https://github.com/lugovskovp/Kinopoisk3.bundle#" target="_blank">Docs</a></td>
+                </tr>
+            </table>
+            <br>
+            <div class="center">
+                <i class="fab fa-fw fa-python" style="font-size:80px;"></i>
+            </div>
+
+            <script>
+                <!-- Custom Javascript here -->
+            </script>
+        ]]>
+        </string>
+
+        <key>PlexAgentAttributionText_old</key>
+        <string>
+            &lt;h1&gt;Кинопоиск3&lt;/h1&gt; &lt;br&gt;
+			Агент Plex Media Server для получения информации о Кинофильмах и Сериалах&lt;br&gt;с русского сайта
             &lt;a href=&quot;http://kinopoiskapiunofficial.tech/&quot;&gt;Kinopoisk API Unofficial&lt;/a&gt;.
             &lt;br&gt;&lt;br&gt;
 			&lt;br&gt;&lt;br&gt;
