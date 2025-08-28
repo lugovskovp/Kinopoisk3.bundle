@@ -1,3 +1,15 @@
+# [1.9.0-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.9.0-beta.1...v1.9.0-beta.2) (2025-08-28)
+
+
+### Bug Fixes
+
+* упс, мелкая ошибка-опечатка ([5f84c2a](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/5f84c2a4f3fedeabd737e5607b4c51d82bbce420))
+
+
+### Features
+
+* +Загружать отзывы по значению настройки. ([982a26f](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/982a26fb95c0d7c9e9570ce0369f576e434e43e1))
+
 # [1.9.0-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.8.1-beta.2...v1.9.0-beta.1) (2025-08-28)
 
 
