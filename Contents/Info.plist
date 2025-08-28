@@ -47,16 +47,6 @@
             </script>
         ]]>
         </string>
-
-        <key>PlexAgentAttributionText_old</key>
-        <string>
-            &lt;h1&gt;Кинопоиск3&lt;/h1&gt; &lt;br&gt;
-			Агент Plex Media Server для получения информации о Кинофильмах и Сериалах&lt;br&gt;с русского сайта
-            &lt;a href=&quot;http://kinopoiskapiunofficial.tech/&quot;&gt;Kinopoisk API Unofficial&lt;/a&gt;.
-            &lt;br&gt;&lt;br&gt;
-			&lt;br&gt;&lt;br&gt;
-			GitHub страница плагина: &lt;a href=&quot;https://github.com/lugovskovp/Kinopoisk3.bundle&quot;&gt;Kinopoisk3&lt;/a&gt;.
-        </string>
 	<key>PlexClientPlatforms</key>
 	<string>*</string>
 	<key>PlexFrameworkVersion</key>
