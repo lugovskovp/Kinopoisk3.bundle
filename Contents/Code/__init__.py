@@ -635,7 +635,7 @@ def load_reviews(metadata):
   
   # Описание: загружать отзывы
   if not Prefs['desc_load_votes']: # type: ignore
-    d(f"Обзоры не загружать (настройка Описание: загружать отзывы = false)")
+    d(u"Обзоры не загружать (настройка Описание: загружать отзывы = false)")
     metadata.reviews.clear()
     return
 
