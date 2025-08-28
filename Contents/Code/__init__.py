@@ -632,6 +632,13 @@ def load_reviews(metadata):
   ''' обзоры с кинопоиска '''
   #d("-------------------update:load_reviews - start")
   #msStart = getMilliseconds(Datetime.Now())  # '2025-01-25 12:41:53.921000' 
+  
+  # Описание: загружать отзывы
+  if not Prefs['desc_load_votes']: # type: ignore
+    d(f"Обзоры не загружать (настройка Описание: загружать отзывы = false)")
+    metadata.reviews.clear()
+    return
+
   reviews_dict = get_json(API_BASE_URL + FILM_REVIEW % metadata.id)
   if not reviews_dict:
     return            # нечего время терять
