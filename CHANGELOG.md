@@ -1,3 +1,10 @@
+# [1.9.0-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.8.1-beta.2...v1.9.0-beta.1) (2025-08-28)
+
+
+### Features
+
+* Добавил отображение плагина в Управлять-Плагины [#26](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/26) [#27](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/27) ([fdd09a8](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/fdd09a845f9660dd2deb35b46fc618af6ca4dfa0))
+
 ## [1.8.1-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.8.1-beta.1...v1.8.1-beta.2) (2025-07-20)
 
 
