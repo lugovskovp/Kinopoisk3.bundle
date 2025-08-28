@@ -138,7 +138,7 @@ R&D:
 
 ## Latest версия
 Скачать актуальную **стабильную** версию [Kinopoisk3.bundle](https://github.com/lugovskovp/Kinopoisk3.bundle/releases/latest) <- вот именно по этой ссылке. (Раздел Assets).
-Для использования beta версии совершенно точно не подходят, никаких гарантий, что вообще заработает, или будет работат где-то правильно.
+Для использования beta версии совершенно точно не подходят, никаких гарантий, что вообще заработает, или будет работать хоть где-то правильно.
 Плагин в активной доработке, практически почти каждый коммит автоматически генерит новую версию, поэтому в настройках (см.[Настройки](https://github.com/lugovskovp/Kinopoisk3.bundle/tree/master#настройки)) рекомендую включить автообновление на стабильную версию.
 
 ## Распаковка в папку плагинов
@@ -159,7 +159,7 @@ R&D:
 * '/raid0/data/PLEX_CONFIG/Plex Media Server/'                               # Thecus Plex community
 * '/Volume1/Plex/Library/Application Support/Plex Media Server'              # TOS 5.0 | TOS 6.0
 ```
-Как пример, у меня на NAS TOS 6.0, плагин расположен по пути '/Volume1/Plex/Library/Application Support/Plex Media Server/Plug-ins/Kinopoisk3.bundle'
+Как пример, у меня на NAS TOS 6.0, плагин расположен по пути ```'/Volume1/Plex/Library/Application Support/Plex Media Server/Plug-ins/Kinopoisk3.bundle'```
 <img src="https://github.com/lugovskovp/Kinopoisk3.bundle/blob/master/pix/plugin_path.png" alt="Пример расположения плагина">
 
 ## Установка и права в unix ОС
@@ -171,7 +171,7 @@ sudo git clone https://github.com/lugovskovp/Kinopoisk3.bundle.git
 sudo chown -R plex:plex Kinopoisk3.bundle/
 sudo systemctl restart plexmediaserver
 ```
-На примере Synology DSM | XPEnology DSM (спасибо [@Demidovant](https://github.com/Demidovant))
+На примере Synology DSM | XPEnology DSM (спасибо [@Demidovant](https://github.com/Demidovant)), пользователь - PlexMediaServer.
 ```
 # распаковать latest версию в /volume1/PlexMediaServer/AppData/Plex Media Server/Plug-ins/Kinopoisk3.bundle
 chown -R PlexMediaServer:PlexMediaServer "/volume1/PlexMediaServer/AppData/Plex Media Server/Plug-ins/Kinopoisk3.bundle"
@@ -234,7 +234,7 @@ synopkg restart PlexMediaServer
 <img src="https://github.com/lugovskovp/Kinopoisk3.bundle/blob/master/pix/pref-search-1.png" alt="Первая буква и оригинальное имя">
 
 На следующем скрине вид, где настройки отображения типа и отображения оригинального наименования = false, чекбоксы без галочек.
-Зато активны настройки "отображать страну произодства" (если несколько, то только первая будет видна,но добавится многоточие) и жанр.
+Зато активны настройки "отображать страну произодства" (если несколько, то только первая страна будет видна, но добавится многоточие) и жанр.
 <img src="https://github.com/lugovskovp/Kinopoisk3.bundle/blob/master/pix/pref-search-2.png" alt="Страна производства и жанр">
 
 #### Описание: 
@@ -250,7 +250,7 @@ synopkg restart PlexMediaServer
 
 #### Канал обновления (none - отключение автообновления) 
 Выбрать или **none** или **stable**. Не выбирайте beta.
-Если выбрано **stable** плагин автоматически загрузит новую версию с github и автоматически же обновится. Рекомендованное значение.
+Если выбрано **stable** плагин автоматически загрузит новую версию с github с канала latest и автоматически же обновится. Рекомендованное значение.
 
 #### Интервал проверки обновлений (в минутах)
 Периодичность проверки опубликования новой версии на github.
