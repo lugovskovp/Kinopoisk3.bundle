@@ -1,3 +1,17 @@
+# [1.9.0](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.8.1...v1.9.0) (2025-08-28)
+
+
+### Bug Fixes
+
+* Настройка, установка, запуск - отлажено на свежеустановленном Plex [#26](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/26) ([312041c](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/312041cf3e375641b27895fe7aedbe545602dcbb))
+* упс, мелкая ошибка-опечатка ([5f84c2a](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/5f84c2a4f3fedeabd737e5607b4c51d82bbce420))
+
+
+### Features
+
+* +Загружать отзывы по значению настройки. ([982a26f](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/982a26fb95c0d7c9e9570ce0369f576e434e43e1))
+* Добавил отображение плагина в Управлять-Плагины [#26](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/26) [#27](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/27) ([fdd09a8](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/fdd09a845f9660dd2deb35b46fc618af6ca4dfa0))
+
 # [1.9.0-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.9.0-beta.1...v1.9.0-beta.2) (2025-08-28)
 
 
