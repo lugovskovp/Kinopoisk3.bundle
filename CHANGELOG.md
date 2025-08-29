@@ -1,3 +1,15 @@
+# [1.10.0](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.9.0...v1.10.0) (2025-08-29)
+
+
+### Bug Fixes
+
+* переименована настройка desc_load_reviews ([255a372](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/255a37263c3d9d01f571111fc0c991f7c3ebf2eb))
+
+
+### Features
+
+* При автосопоставлении отбрасывать S0x после наименования. [#25](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/25) ([7dc6e3a](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/7dc6e3afcfbb6cc5cae456fa395eeaf7e862714e))
+
 # [1.10.0-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.9.0...v1.10.0-beta.1) (2025-08-29)
 
 
