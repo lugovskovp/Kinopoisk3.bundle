@@ -1,3 +1,10 @@
+# [1.9.0-beta.4](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.9.0-beta.3...v1.9.0-beta.4) (2025-08-29)
+
+
+### Features
+
+* При автосопоставлении отбрасывать S0x после наименования. [#25](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/25) ([7dc6e3a](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/7dc6e3afcfbb6cc5cae456fa395eeaf7e862714e))
+
 # [1.9.0-beta.3](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.9.0-beta.2...v1.9.0-beta.3) (2025-08-29)
 
 
