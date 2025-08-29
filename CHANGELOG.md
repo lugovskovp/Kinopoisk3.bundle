@@ -1,3 +1,10 @@
+# [1.9.0-beta.3](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.9.0-beta.2...v1.9.0-beta.3) (2025-08-29)
+
+
+### Bug Fixes
+
+* переименована настройка desc_load_reviews ([255a372](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/255a37263c3d9d01f571111fc0c991f7c3ebf2eb))
+
 # [1.9.0-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.9.0-beta.1...v1.9.0-beta.2) (2025-08-28)
 
 
