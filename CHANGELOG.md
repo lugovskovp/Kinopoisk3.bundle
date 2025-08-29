@@ -1,16 +1,17 @@
-# [1.9.0-beta.4](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.9.0-beta.3...v1.9.0-beta.4) (2025-08-29)
 
-
-### Features
-
-* При автосопоставлении отбрасывать S0x после наименования. [#25](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/25) ([7dc6e3a](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/7dc6e3afcfbb6cc5cae456fa395eeaf7e862714e))
-
-# [1.9.0-beta.3](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.9.0-beta.2...v1.9.0-beta.3) (2025-08-29)
+# [1.9.0](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.8.1...v1.9.0) (2025-08-28)
 
 
 ### Bug Fixes
 
-* переименована настройка desc_load_reviews ([255a372](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/255a37263c3d9d01f571111fc0c991f7c3ebf2eb))
+* Настройка, установка, запуск - отлажено на свежеустановленном Plex [#26](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/26) ([312041c](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/312041cf3e375641b27895fe7aedbe545602dcbb))
+* упс, мелкая ошибка-опечатка ([5f84c2a](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/5f84c2a4f3fedeabd737e5607b4c51d82bbce420))
+
+
+### Features
+
+* +Загружать отзывы по значению настройки. ([982a26f](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/982a26fb95c0d7c9e9570ce0369f576e434e43e1))
+* Добавил отображение плагина в Управлять-Плагины [#26](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/26) [#27](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/27) ([fdd09a8](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/fdd09a845f9660dd2deb35b46fc618af6ca4dfa0))
 
 # [1.9.0-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.9.0-beta.1...v1.9.0-beta.2) (2025-08-28)
 
