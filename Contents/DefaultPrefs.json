@@ -53,7 +53,7 @@
     "default":"false"
   },
   {
-    "id": "desc_load_votes",
+    "id": "desc_load_reviews",
     "label": "Описание: загружать отзывы",
     "type":"bool",
     "default":"true"
