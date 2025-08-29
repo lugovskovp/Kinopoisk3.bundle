@@ -187,7 +187,8 @@ class Updater(object):
 
     self.unstage()
     self.cleanup()
-
+    self.core.log.log(u"==========================\nUpdater: update to version %s successful ended" % self.update_version)
+    
     return True
     
     
