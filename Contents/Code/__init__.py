@@ -110,7 +110,8 @@ class KinoPoiskUnoficialAgent(Agent.Movies): # type: ignore
         load_staff(metadata)
       @task # type: ignore
       def upd_reviews(metadata=metadata):    
-        load_reviews(metadata)
+        if Prefs['desc_load_reviews']: # type: ignore  
+          load_reviews(metadata)
       @task # type: ignore
       def upd_meta(metadata=metadata):
         load_metadata(metadata, valid_poster0)
@@ -183,9 +184,7 @@ class KinoPoiskUnoficialAgent(Agent.TV_Shows): # type: ignore
       return
     d("\n\n ---------- %s.UPDATE start: m.id=%s tokenQuota=%s" % (self.name, metadata.id, HaveToken))
     d( 'media.all_parts parts: %s' % media.all_parts()[0] )     # MediaPart
-    # 'MediaPart' object has no attribute  filename name path
-    d( 'media.all_parts[0] size: %s' % media.all_parts()[0] )
-    d( 'media.all_parts[0] size: %s' % media.all_parts()[0].size )
+    # 'MediaPart' object has no attribute  filename name path     d( 'media.all_parts[0] size: %s' % media.all_parts()[0].size )
     d( 'media.all_parts seasons: %s' % media.seasons ) 
     valid_posters = []
     valid_poster0 = []

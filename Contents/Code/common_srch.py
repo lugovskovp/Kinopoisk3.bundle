@@ -14,6 +14,7 @@ class srch_params():
   isManual      = False
   titles        = []      # массив str из 1 или 2 элементов, 0-имя, 1-транскрибированное имя
   year          = 0       # год выпуска - из формы поиска
+  season        = 0       # если сериал - то еще и сезон запомним
   
   def __init__(self, media, manual):
     self.isAgentMovies = False if hasattr(media, 'season') else True
@@ -24,9 +25,14 @@ class srch_params():
     self.titles = []
     self.titles.append(media.name if self.isAgentMovies else media.show)    # self.titles[0]
     search_year = 0
-    Log("File %s, manual = %s" % (media.name, manual))    # type: ignore
+    Log("File %s, manual = %s" % (media.name, self.isManual))    # type: ignore
+    # сезон из файла пригодится в любом случае
+    if not self.isAgentMovies:
+      r = re.search("^(.*)\sS([0-3]\d)", self.titles[0])  # https://regex101.com/r/x53ZOY/1
+      if r:
+        self.season = int(r.group(2))         # S03 -> season = 3
     #if not manual:
-    if not manual:    
+    if not self.isManual:    
       # т.е. значение - не из строки поиска, а из media.year, media.id, media.name
       self.titles[0] = re.sub(r'_', ' ', self.titles[0])     # в наименовании _ заменяем на пробелы
       self.titles[0] = re.sub(r'\.', ' ', self.titles[0])    # in result . to ' '
@@ -36,6 +42,12 @@ class srch_params():
         self.titles[0] = r.group(1).strip()   # год извлекается
         search_year = int(r.group(2))           # что слева года - имя
         Log("Regexp search_year = %s, search_title = '%s'" % (search_year, self.titles[0])) # type: ignore
+      # 25 [Feature request] Сериалы. При автосопоставлении отбрасывать S0x после наименования. #25
+      if not self.isAgentMovies:
+        r = re.search("^(.*)\sS([0-3]\d)", self.titles[0])  # https://regex101.com/r/x53ZOY/1
+        if r:
+          self.titles[0] = r.group(1).strip()   #наименование без S02
+          self.season = int(r.group(2))         # S03 -> season = 3
       # если имя уже русскими буквами - не добавляем ничего
       search_ru = translit2ru(self.titles[0])  # наименование часто транслитерируется англ. буквами
       if self.titles[0] != search_ru:
