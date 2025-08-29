@@ -1,15 +1,18 @@
 # -*- coding: utf-8 -*-
 # coding=utf-8
 
-# find in \Contents\Library\Shared
 import requests             # [а к нему еще chardet, urllib3, certifi, idna]      # type: ignore 
-import traceback            # для get_json()
 
+# from common_upd import load_distribution, load_episodes, load_gallery, load_metadata, load_reviews, load_staff # общие для апдейта в классах
 
 # константы ===============================================================================
-# 
+
 NAME = u'Кинопоиск3' # % VER
 VER = '0.0.1'
+PREFIX = '/video/kino'
+TITLE = 'Агент Кинопоиск Unofficial'
+ART = 'art-default.png'
+ICON = 'icon-default.png'
 version_path = Core.storage.join_path(Core.bundle_path, 'Contents', 'VERSION') # type: ignore
 if Core.storage.file_exists(version_path):                                    # type: ignore
   str_version = Core.storage.load(version_path)                               # type: ignore
@@ -33,35 +36,16 @@ FILM_STAFF        = '/api/v1/staff?filmId=%s'
 FILM_REVIEW       = '/api/v2.2/films/%s/reviews?page=1&order=DATE_DESC'
 SERIAL_SEASONS    = '/api/v2.2/films/%s/seasons'
 
+# scoring
 UNKNOWN_YEAR = 1900
+MAX_VALID_YEAR  = 2035
 SCORE_WEIGHT_NAME = 80
 SCORE_WEIGHT_YEAR = 15  # 100 - SCORE_WEIGHT_NAME
 SCORE_WEIGH_JANRE = 5
 
-PREFIX = '/video/kino'
-TITLE = 'Агент Кинопоиск Unofficial'
-ART = 'art-default.png'
-ICON = 'icon-default.png'
+
 
 # ===============================================================================
-
-def get_json(url):
-  headers={
-      'Accept': 'application/json',
-      'X-API-KEY': Prefs['api_key'], # type: ignore
-      'User-Agent' : 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.2; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0)'
-      }
-  try:
-    rj = requests.get(url, headers=headers).json()   # data = r.content  # Content of response
-  except:
-    Log("\n\n err::Except in get_json - requests.get(url=%s)" % url)      # type: ignore
-    Log(traceback.format_exc())                                           # type: ignore
-    return                 # в случае ошибки, вернуть пустую строку
-  if 'message' in rj:    # признак ошибки
-    Log("\n\n err::Попытка поиска без ключа: %s" % rj['message'])         # type: ignore
-    return rj
-  return rj
-
 
 def APItokenRemains():
   '''
@@ -106,79 +90,8 @@ def APItokenRemains():
         remains = dailyQuota - used
     Log(u"APItokenRemains:: accountType:%s remains:%s" % (accountType, remains))                  # type: ignore
   return remains
-
-     
-    
-def lev_ratio(s1, s2):
-  '''levR  = abs( Util.LevenshteinDistance(search_title.lower(), foundTitle.lower()) )'''
-  distance = Util.LevenshteinDistance(s1, s2) # type: ignore
-  max_len = float(max([ len(s1), len(s2) ]))
-  s1 = s1.lower()
-  s2 = s2.lower()
-  ratio = 0.0
-  try:
-    ratio = float(1 - (distance/max_len))
-  except:
-    pass
-  return ratio
-
-
-def lev_score(nameRu, nameEn, title):
-  # scoring по имени
-  lev = max(lev_ratio(title, nameRu), lev_ratio(title, nameEn))     # levR if levR > levE else levE
-  score = int(SCORE_WEIGHT_NAME * lev)  # тут score max = SCORE_WEIGHT_NAME
-  return score
-
-
-def d(*args):
-  '''Включить подробную отладку'''
-  if Prefs['trace']: # type: ignore
-    args = list(args)
-    args[0] = '     #### %s' % args[0]
-    Log('\n'.join(map(str, args)))  # type: ignore
-
-
-# --------------------------- debug functions ---------------------------
-   
-def log_timing(func):
-  ''' Замер времени выполнения функции, декоратор, миллисекунды'''
-  def wrapper(*args, **kwargs):
-      # "Действие перед выполнением функции"
-      msStart = getMilliseconds(Datetime.Now()) # type: ignore
-      func_name = ("%s" % func).split(" ")[1] #- тут имя функции 
-      # strArgs (<__code__.KinoPoiskUnoficialAgent object at 0x00000000049466d0>, 
-      # MediaContainer(art=None, noHistory=False, title1=None, title2=None, replaceParent=False), 
-      # <Framework.api.agentkit.TV_Show object at 0x00000000046680d0>, ru)
-      strArgs = ', '.join(map(str, list(args)))
-      d("<<<<<<< start::%s (%s)" % (func_name, args[1]))   #strArgs
-      func(*args, **kwargs)
-      # ("Действие после выполнения функции")
-      d(">>>>>>> end::%s, duration=%s\n"  % (func_name, (getMilliseconds(Datetime.Now()) - msStart))) # type: ignore
-  return wrapper
-
-
-def getMilliseconds(dt):
-  ''' Только миллисекунды, в полночь - тыква'''
-  # dt waiting as '2025-01-25 12:41:53.921000'
-  strDt = "%s" % dt                 # to str
-  arrDt = strDt.split(" ")          # ["2025-01-25", "12:41:53.921000"]
-  if len(arrDt) != 2:               # err
-    return
-  strTime = arrDt[1]                # 12:41:53.921000
-  arrTime = strTime.split(":")      # ["12", "41", "53.921000"]
-  arrTime.reverse()                 # ["53.921000", "41", "12"]
-  sec = arrTime[0].split(".")       #  ["53", "921000"]
-  arrTime[0] = sec[0]               # ["53", "41", "12"]
-  if len(arrTime) != 3:             # err   проверку на 3 - и выйти, если не так.
-    return
-  seconds = 0
-  for i in range(0, 3):
-    seconds += int(arrTime[i]) * (60**i)
-  seconds = seconds * 1000          # milliseconds
-  seconds += int(sec[1])/1000       # 921000 -> 921 
-  return int(seconds)               #     milliseconds   
-
-
+  
+  
 # --------------------------- log decoration functions ---------------------------
 
 def pp_json(json, lev=0):
@@ -201,6 +114,8 @@ def pp_json(json, lev=0):
     else:
       res += ("%s%s: %s\n" % (trail, key, json[key]))
   return res
+
+
 
 def get_media_data(media, isUpdate=False):
   ''' отображает данные для search media - Movie|TV_Show'''
