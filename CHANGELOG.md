@@ -1,35 +1,26 @@
-# [1.10.0-beta.4](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.10.0-beta.3...v1.10.0-beta.4) (2025-08-30)
-
 
 ### Features
 
 * добавлена настройка Поиск: для сериалов убирать из результатов F:фильм и V:видео done [#49](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/49) ([47b76a6](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/47b76a6ddaa27fbc6f60af505e7feaace5794f8c))
 
-# [1.10.0-beta.3](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.10.0-beta.2...v1.10.0-beta.3) (2025-08-30)
-
-
 ### Bug Fixes
-
 * начинать поиск, только если есть достаточно попыток - REQUEST_QTY_SEARCH_MIN ([77f9996](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/77f999616e4c3933618eeda9d4b8329f3c861dd4))
-
-# [1.10.0-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.10.0-beta.1...v1.10.0-beta.2) (2025-08-30)
-
-
-### Bug Fixes
 
 * Минимальный интервал проверки новой версии - UPDATE_INTERVAL_MIN ([fc1352c](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/fc1352c453d3978ca2a950f86d7d437dfcaf462e))
 
-# [1.10.0-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.9.0...v1.10.0-beta.1) (2025-08-29)
+* переименована настройка desc_load_reviews ([255a372](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/255a37263c3d9d01f571111fc0c991f7c3ebf2eb))
 
+
+# [1.10.0](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.9.0...v1.10.0) (2025-08-29)
+
+### Features
+
+* При автосопоставлении отбрасывать S0x после наименования. [#25](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/25) ([7dc6e3a](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/7dc6e3afcfbb6cc5cae456fa395eeaf7e862714e))
 
 ### Bug Fixes
 
 * переименована настройка desc_load_reviews ([255a372](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/255a37263c3d9d01f571111fc0c991f7c3ebf2eb))
 
-
-### Features
-
-* При автосопоставлении отбрасывать S0x после наименования. [#25](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/25) ([7dc6e3a](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/7dc6e3afcfbb6cc5cae456fa395eeaf7e862714e))
 
 # [1.9.0](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.8.1...v1.9.0) (2025-08-28)
 
