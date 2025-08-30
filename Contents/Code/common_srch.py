@@ -179,9 +179,6 @@ def srch_and_score(srch, finded, results):
         yscore = int(0.8 * SCORE_WEIGHT_YEAR)
       else:
         #
-        #d(u"Search year = %s, Finded year = %s." % (srch.year, finded_year))
-        d(srch.year)
-        d(finded_year)
         delta = abs(srch.year - finded_year)
         if delta >= MAX_DELTA_YEAR:
           yscore = 0    # too big delta
