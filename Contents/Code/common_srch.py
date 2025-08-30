@@ -109,21 +109,14 @@ def srch_and_score(srch, finded, results):
     except: 
       i = 0
     if 'films' in resp_json and i:
-      for movie in resp_json['films']:
+      # [Feature] Настройка - для сериалов при поиске не показывать найденные фильмы #49
+      films_list = resp_json['films']
+      if not srch.isAgentMovies and Prefs["showOnlySerials"]:  # type: ignore
+        films_list = list(filter(lambda x: x['type'] in ['TV_SERIES', 'MINI_SERIES', 'TV_SHOW'], resp_json['films']))
+      # И теперь пройти по каждому
+      for movie in films_list:
         # А нет ли этого id уже в найденых?
         if not movie['filmId'] in finded_id:  # "searchFilmsCountResult" - wonka : 18, вонка : 15
-          # получить тип найденного фильма
-          try:
-            movie_type = movie['type']
-          except: 
-            movie_type = "NO_TYPE"
-          # [Feature] Настройка - для сериалов при поиске не показывать найденные фильмы #49
-          '''if not srch.isAgentMovies and Prefs["showOnlySerials"] and movie_type not in ['TV_SERIES', 'MINI_SERIES', 'TV_SHOW' ]:   # type: ignore
-            w("srch_and_score: В результаты НЕ добавлен %s:%s (showOnlySerials)" % (movie['id'], movie['nameRu']) )
-          else:
-          # иначе добавляем в результат
-            finded_id.append(movie['filmId'])
-            finded['films'].append(movie) '''
           # добавляем в результат
           finded_id.append(movie['filmId'])
           finded['films'].append(movie)

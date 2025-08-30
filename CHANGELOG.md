@@ -1,4 +1,27 @@
-## [1.11.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.11.1...v1.11.2) (2025-08-30)
+## [1.11.3-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.11.2...v1.11.3-beta.1) (2025-08-30)
+
+
+### Bug Fixes
+
+* Bug3 fix ([b7f2406](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/b7f24067205ddc2bb52026a19f63f20ee9ffce8e))
+* refactor ([1272aa6](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/1272aa6958c9b7091b0331beefe7cf5fbffc6cf4))
+
+## [1.11.2-beta.3](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.11.2-beta.2...v1.11.2-beta.3) (2025-08-30)
+
+
+### Bug Fixes
+
+* refactor ([1272aa6](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/1272aa6958c9b7091b0331beefe7cf5fbffc6cf4))
+
+## [1.11.2-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.11.2-beta.1...v1.11.2-beta.2) (2025-08-30)
+
+
+### Bug Fixes
+
+* Bug3 fix ([b7f2406](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/b7f24067205ddc2bb52026a19f63f20ee9ffce8e))
+
+## [1.11.2-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.11.1...v1.11.2-beta.1) (2025-08-30)
+
 
 
 ### Bug Fixes
