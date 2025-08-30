@@ -3,9 +3,10 @@
 
 from common_srch import srch_params, srch_and_score, srch_mkres       # общие для поиска в классах
 from common_upd import load_distribution, load_episodes, load_gallery, load_metadata, load_reviews, load_staff # общие для апдейта в классах
-from config import NAME, VER, LANGUAGES, UPDATE_INTERVAL_MIN, REQUEST_QTY_SEARCH_MIN, APItokenRemains    # константы
+from config import NAME, VER, LANGUAGES, UPDATE_INTERVAL_MIN, REQUEST_QTY_SEARCH_MIN    # константы
 from debug import d, w, log_timing
 from updater import Updater   
+from utils import APItokenRemains
 
               
 ##################################################################

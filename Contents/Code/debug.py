@@ -68,3 +68,54 @@ def getMilliseconds(dt):
   seconds = seconds * 1000          # milliseconds
   seconds += int(sec[1])/1000       # 921000 -> 921 
   return int(seconds)               #     milliseconds   
+
+
+# ----UNUSED----------------------- log decoration functions ---------------------------
+
+def pp_json(json, lev=0):
+  '''Pretty print json'''
+  res = ""
+  if not isinstance(json, dict):    # это может быть и list
+    return "--%s-- Это не dict JSON !!!" % json
+  trail = ""
+  for i in range(0, lev):
+    trail += "  "
+  for key in json:
+    val = json[key]
+    if isinstance(val, list):
+      res += "%s%s:[\n" % (trail, key)
+      lev += 1
+      for i, el in enumerate(val):
+        res += trail
+        res += pp_json(val[i], lev)
+      res += "%s]\n" % trail
+    else:
+      res += ("%s%s: %s\n" % (trail, key, json[key]))
+  return res
+
+
+
+def get_media_data(media, isUpdate=False):
+  ''' отображает данные для search media - Movie|TV_Show'''
+  m = "\nmedia:\n"
+  m += ".media.primary_agent : %s\n" % media.primary_agent
+  m += ".media.primary_metadata : %s\n" % media.primary_metadata
+  m += ".media.guid : %s\n" % media.guid
+  m += ".media.filename : %s\n" % media.filename
+  m += ".media.parent_metadata : %s\n" % media.parent_metadata
+  # 
+  m += ".media.tree : %s\n" % media.tree
+  m += ".media.id : %s\n" % media.id
+  m += ".media.hash : %s\n" % media.hash
+  m += ".media.originally_available_at : %s\n" % media.originally_available_at
+  if hasattr(media, 'season'):       # if TV_Show
+    m += ".media.parentGUID : %s\n" % media.parentGUID    # Movie has no the attribute
+    #m += "TV_Show. : %s\n" % 
+    pass
+  else:                        # Movie
+    m += "Movie.media.name : %s\n" % media.name
+    m += "Movie.media.openSubtitlesHash : %s\n" % media.openSubtitlesHash
+    m += "Movie.media.year : %s\n" % media.year
+    m += "Movie.media.duration : %s\n" % media.duration
+    #m += "movie. : %s\n" % 
+  return m
