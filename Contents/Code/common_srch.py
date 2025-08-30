@@ -105,7 +105,7 @@ def srch_and_score(srch, finded, results):
       continue
     try:
       i = resp_json['searchFilmsCountResult']
-      d(u"---- По [%s] найдено %s фильмов" % (title, i))
+      d(u"---- По [%s] всего найдено %s фильмов" % (title, i))
     except: 
       i = 0
     if 'films' in resp_json and i:
@@ -120,10 +120,10 @@ def srch_and_score(srch, finded, results):
           # [Feature] Настройка - для сериалов при поиске не показывать найденные фильмы #49
           if not srch.isAgentMovies and Prefs["showOnlySerials"] and movie_type not in ['TV_SERIES', 'MINI_SERIES', 'TV_SHOW' ]:   # type: ignore
             w("srch_and_score: В результаты НЕ добавлен %s:%s (showOnlySerials)" % (movie['id'], movie['nameRu']) )
-            continue
-          #
-          finded_id.append(movie['filmId'])
-          finded['films'].append(movie)
+          else:
+          # иначе добавляем в результат
+            finded_id.append(movie['filmId'])
+            finded['films'].append(movie)
   d("==== Итог: %s фильмов" % len(finded['films']))  # Итого - 14
 
   #   2. Скоринг
@@ -184,6 +184,8 @@ def srch_and_score(srch, finded, results):
       else:
         #
         #d(u"Search year = %s, Finded year = %s." % (srch.year, finded_year))
+        d(srch.year)
+        d(finded_year)
         delta = abs(srch.year - finded_year)
         if delta >= MAX_DELTA_YEAR:
           yscore = 0    # too big delta
