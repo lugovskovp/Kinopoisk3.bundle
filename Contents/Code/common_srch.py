@@ -85,61 +85,6 @@ class srch_params():
     str_search += "]"
     return str_search
 
-# log_timing funcs ------------------------------------------------------------------- 
-#@log_timing  #очень много в лог    
-def srch_mkres(srch, finded, results):      # >>>>>>> end::srch_mkres, duration=15
-  d("\n---------------------- начинаем формировать отображение найденного")
-  if len(finded['films']) == 0:
-    # ничего не найдено
-    return
-  for i, movie in enumerate(finded['films']):
-    # формирование строк меню
-    id = movie["filmId"]        #MUST be
-    title = ""
-    if Prefs['showTypes']:                # type: ignore # Отображать тип: F:фильм, M:многосерийный, V:видео, S:сериал, T:tv-шоу
-      b=''
-      TypeFinded = {'FILM':'F', 'VIDEO':'V', 'TV_SERIES':'S', 'MINI_SERIES':'M', 'TV_SHOW':'T'}
-      try:
-        b = TypeFinded[movie['type']]     # подставить букву, соответствующую типу
-      except: pass
-      if b:                               # если не упал в эксепшн
-         title += u"%s: " % b
-    if Prefs['show2names']:             # type: ignore # "В найденных отображать и русское наименование, и английское"
-      if 'nameRu' in movie:
-        title += movie['nameRu']
-      if len(title) > 0 and 'nameEn' in movie:
-        title += '/'
-      if 'nameEn' in movie:
-        title += movie['nameEn']
-    else:
-      title = movie['nameRu'] if 'nameRu' in movie else movie['nameEn']
-    if Prefs['showCountry']:             # type: ignore #"В найденных отображать страну произодства"
-      if 'countries' in movie and len(movie['countries']) > 0:
-        title = title + ' [%s' % movie['countries'][0]['country']
-        if len(movie['countries']) > 1:
-          title += ',..]'
-        else:
-          title += ']'
-    if Prefs['showGenre']:                # type: ignore #"В найденных отображать жанр (первый, если несколько)"
-      if 'genres' in movie:
-        try:
-          title = title + ' %s' % movie['genres'][0]['genre']
-        except: pass
-    if Prefs['showDescr']:                # type: ignore #"В найденных отображать первое предложение описания"
-      if 'description' in movie:
-        title = title + ' %s' % movie['description'].split(".")[0]
-    year = int(movie['year'][:4]) if movie['year'].isdigit() else UNKNOWN_YEAR
-    lang = 'ru' if 'nameRu' in movie else 'en'    # вот такой гадкий хардкод
-    score = movie['score']
-    d("======= %02i: %i : %s" % (i, score, title))
-    AppendSearchResult(results=results,
-                      id = id,
-                      name = title,
-                      year = year,
-                      score = score,
-                      lang = lang)
-    
-
 #@log_timing  #очень много в лог
 def srch_and_score(srch, finded, results):
   #   1. поиск по элементам массива названий и добавление в результаты без пересечения 
@@ -154,7 +99,7 @@ def srch_and_score(srch, finded, results):
       if 'message' in resp_json:
         # Проблема: {"message":"You don't have permissions. See https://kinopoiskapiunofficial.tech"}
         AppendSearchResult(results=results, id=0, score=100, name=(u"Поиск без ключа? https://kinopoiskapiunofficial.tech"), lang='ru')
-        d(u"\nsrch_and_score: Попытка поиска без ключа. %s" % resp_json["message"])
+        w(u"\nsrch_and_score: Ошибка при получении. %s" % resp_json["message"])
         return
     if resp_json is None:
       continue
@@ -165,7 +110,18 @@ def srch_and_score(srch, finded, results):
       i = 0
     if 'films' in resp_json and i:
       for movie in resp_json['films']:
+        # А нет ли этого id уже в найденых?
         if not movie['filmId'] in finded_id:  # "searchFilmsCountResult" - wonka : 18, вонка : 15
+          # получить тип найденного фильма
+          try:
+            movie_type = movie['type']
+          except: 
+            movie_type = "NO_TYPE"
+          # [Feature] Настройка - для сериалов при поиске не показывать найденные фильмы #49
+          if not srch.isAgentMovies and Prefs["showOnlySerials"] and movie_type not in ['TV_SERIES', 'MINI_SERIES', 'TV_SHOW' ]:   # type: ignore
+            w("srch_and_score: В результаты НЕ добавлен %s:%s (showOnlySerials)" % (movie['id'], movie['nameRu']) )
+            continue
+          #
           finded_id.append(movie['filmId'])
           finded['films'].append(movie)
   d("==== Итог: %s фильмов" % len(finded['films']))  # Итого - 14
@@ -175,7 +131,7 @@ def srch_and_score(srch, finded, results):
     d("\n---------------------- начинаем score-инг: дистанция левенштейна, год")
     for movie in finded['films']:# 
       movie['score'] = 0
-      d("%s" % srch.str_titles)
+      d("srch_and_score:score: %s" % srch.str_titles)
       # скорининг:   по type - [ 'FILM', 'VIDEO', 'TV_SERIES', 'MINI_SERIES', 'TV_SHOW' ]
       finded_type = ''
       vscore_ratio = 0.0
@@ -237,6 +193,62 @@ def srch_and_score(srch, finded, results):
       movie['score'] = movie['score'] + yscore
       d(" SUM score:%i [%s]" % (movie['score'], srch.str_titles)) 
      
+
+
+#@log_timing  #очень много в лог    
+def srch_mkres(srch, finded, results):      # >>>>>>> end::srch_mkres, duration=15
+  d("\n---------------------- начинаем формировать отображение найденного")
+  if len(finded['films']) == 0:
+    # ничего не найдено
+    return
+  for i, movie in enumerate(finded['films']):
+    # формирование строк меню
+    id = movie["filmId"]        #MUST be
+    title = ""
+    if Prefs['showTypes']:                # type: ignore # Отображать тип: F:фильм, M:многосерийный, V:видео, S:сериал, T:tv-шоу
+      b=''
+      TypeFinded = {'FILM':'F', 'VIDEO':'V', 'TV_SERIES':'S', 'MINI_SERIES':'M', 'TV_SHOW':'T'}
+      try:
+        b = TypeFinded[movie['type']]     # подставить букву, соответствующую типу
+      except: pass
+      if b:                               # если не упал в эксепшн
+         title += u"%s: " % b
+    if Prefs['show2names']:             # type: ignore # "В найденных отображать и русское наименование, и английское"
+      if 'nameRu' in movie:
+        title += movie['nameRu']
+      if len(title) > 0 and 'nameEn' in movie:
+        title += '/'
+      if 'nameEn' in movie:
+        title += movie['nameEn']
+    else:
+      title = movie['nameRu'] if 'nameRu' in movie else movie['nameEn']
+    if Prefs['showCountry']:             # type: ignore #"В найденных отображать страну произодства"
+      if 'countries' in movie and len(movie['countries']) > 0:
+        title = title + ' [%s' % movie['countries'][0]['country']
+        if len(movie['countries']) > 1:
+          title += ',..]'
+        else:
+          title += ']'
+    if Prefs['showGenre']:                # type: ignore #"В найденных отображать жанр (первый, если несколько)"
+      if 'genres' in movie:
+        try:
+          title = title + ' %s' % movie['genres'][0]['genre']
+        except: pass
+    if Prefs['showDescr']:                # type: ignore #"В найденных отображать первое предложение описания"
+      if 'description' in movie:
+        title = title + ' %s' % movie['description'].split(".")[0]
+    year = int(movie['year'][:4]) if movie['year'].isdigit() else UNKNOWN_YEAR
+    lang = 'ru' if 'nameRu' in movie else 'en'    # вот такой гадкий хардкод
+    score = movie['score']
+    d("======= %02i: %i : %s" % (i, score, title))
+    AppendSearchResult(results=results,
+                      id = id,
+                      name = title,
+                      year = year,
+                      score = score,
+                      lang = lang)
+    
+
 
 
 

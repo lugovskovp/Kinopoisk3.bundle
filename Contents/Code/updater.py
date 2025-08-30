@@ -1,7 +1,7 @@
 # coding=utf-8
 from os.path import split as split_path
 import shutil, time
-from config import UPDATER_REPO, UPDATER_STABLE_URL, UPDATER_BETA_URL, UPDATER_ARCHIVE_URL, MIN_UPDATE_INTERVAL
+from config import UPDATER_REPO, UPDATER_STABLE_URL, UPDATER_BETA_URL, UPDATER_ARCHIVE_URL, UPDATE_INTERVAL_MIN
 
 
 class Updater(object):
@@ -37,8 +37,8 @@ class Updater(object):
       core.storage.save_data_item('error_update', str(e))
       core.log.error("Updaterr:auto_update_thread::err %s." % str(e))     # type: ignore
     UpdateInterval = int(Prefs['update_interval'])      # type: ignore
-    if MIN_UPDATE_INTERVAL > UpdateInterval:
-      UpdateInterval = MIN_UPDATE_INTERVAL
+    if UPDATE_INTERVAL_MIN > UpdateInterval:
+      UpdateInterval = UPDATE_INTERVAL_MIN
     UpdateInterval = UpdateInterval * 60
     
     UpdateInterval = int(Prefs['update_interval'] or 1)*60       # type: ignore

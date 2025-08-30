@@ -5,7 +5,8 @@
 import requests             # [а к нему еще chardet, urllib3, certifi, idna]      # type: ignore 
 import traceback            # для get_json()
 
-
+from config import API_BASE_URL
+from debug import d, w, log_timing
 
 # -------------------------------------------------------------
 
@@ -19,6 +20,51 @@ def AppendSearchResult(results, id, name=None, year=-1, score=0, lang=None):
   return
 
 # -------------------------------------------    
+def APItokenRemains():
+  '''
+  Return False if token err happened
+  Return int - Qty remains dailyQuota for use.
+  #/api/v1/api_keys/{apiKey}  #получить данные об api key 
+  '''
+  valid = False
+  key = Prefs['api_key']                                                                # type: ignore
+  url = '%s/api/v1/api_keys/%s' % (API_BASE_URL, key)
+  headers={
+    'Accept': 'application/json',
+    'X-API-KEY': key, # type: ignore
+    'User-Agent' : 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.2; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0)'
+    }
+  try:
+    response = requests.get(url, headers=headers)  # data = r.content  # Content of response
+  except:
+    pass
+  status_code = response.status_code
+  d(u"APItokenRemains::response code:%s json:%s" % (status_code, response.json()))                  # type: ignore
+  if status_code != 200:
+    # что-то пошло не так
+    #status_code == 401:    You don't have permissions There are not valid token  
+    #status_code == 402:    You exceeded the quota.
+    #status_code == 429:    Rate limit exceeded
+    w("APItokenRemains::ERROR %s: %s" % (status_code, response.json()["message"]))                  # type: ignore
+    return False
+  else:
+    # 200, ключ есть, ответ есть. Может, даже остались в квоте попытки.
+    json = response.json()
+    accountType = json["accountType"]
+    dailyQuota = json["dailyQuota"]["value"]
+    used = json["dailyQuota"]["used"]
+    if accountType == 'UNLIMITED':
+      remains = 1000
+    else:
+      if used >= dailyQuota:
+        w(u"APItokenRemains::exceeded quota:%s used:%s" % (dailyQuota, used))                   # type: ignore
+        return False    #You exceeded the quota. You have sent 517 request, but available 500 per day
+      else:
+        remains = dailyQuota - used
+    Log(u"APItokenRemains:: accountType:%s remains:%s" % (accountType, remains))                  # type: ignore
+  return remains
+
+
 def translit2ru(text):
   '''Замена транслита русскими буквами'''
   multiple_letters = {u'sch': u'щ', u'sh': u'ш', u'zh': u'ж', u'ts': u'ц',

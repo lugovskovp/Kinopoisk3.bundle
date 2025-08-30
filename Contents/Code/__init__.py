@@ -3,9 +3,10 @@
 
 from common_srch import srch_params, srch_and_score, srch_mkres       # общие для поиска в классах
 from common_upd import load_distribution, load_episodes, load_gallery, load_metadata, load_reviews, load_staff # общие для апдейта в классах
-from config import NAME, VER, LANGUAGES, APItokenRemains              # константы
+from config import NAME, VER, LANGUAGES, UPDATE_INTERVAL_MIN, REQUEST_QTY_SEARCH_MIN    # константы
 from debug import d, w, log_timing
 from updater import Updater   
+from utils import APItokenRemains
 
               
 ##################################################################
@@ -17,19 +18,22 @@ def Start():
     
 def ValidatePrefs():
   ''' This function is called when the user modifies their preferences.'''
-  UpdateInterval = int(Prefs['update_interval'] or 1)*60       # type: ignore
+  # update interval must be more than 10 minutes
+  UpdateInterval = int(Prefs['update_interval'] or UPDATE_INTERVAL_MIN)*60          # type: ignore
+  # starting update check
   Chanel = Prefs['update_channel']                                # type: ignore
-  Log('ValidatePrefs: update chanel=%s, interval=%i sec' % (Chanel, UpdateInterval))  # type: ignore
-  if Chanel != 'none':                            # type: ignore
+  d(u"ValidatePrefs: start: update chanel=%s, interval=%i sec" % (Chanel, UpdateInterval))  # type: ignore
+  if Chanel != 'none':                                  
     Thread.CreateTimer(UpdateInterval, Updater.auto_update_thread, core=Core, pref=Prefs)  # type: ignore
+  d(u"ValidatePrefs: end.")
 
 
 @handler(prefix='/applications/KinoPoiskUnoficial', name='KinoPoiskUnoficial ({})'.format(VER)) # type: ignore 
 def main():
     """
-    Create the main plug-in ``handler``.
-    Эта функция единственно для существования в меню настроек иконки плагина.
-    Т.к. декоратор ``@handler`` используется, в самой функции достаточно pass.
+    Создаёт plug-in ``handler``.
+    Единственно для существования в меню настроек иконки плагина.
+    Т.к. используется декоратор ``@handler`` , в самой функции достаточно pass.
     """
     pass
 
@@ -68,6 +72,9 @@ class KinoPoiskUnoficialAgent(Agent.Movies): # type: ignore
     HaveToken = APItokenRemains()
     if not HaveToken:
       w(u">>>SEARCH STOPPED: has no valid key or not remains daily attempts")                  # type: ignore
+      return
+    if HaveToken < REQUEST_QTY_SEARCH_MIN:
+      w(u">>>SEARCH STOPPED: Не хватит реквестов в ключе - осталось всего %i" % HaveToken)                  # type: ignore
       return
     #    3 - Поиск и скоринг
     finded = {'films':[]}        # найденные 'films'
@@ -162,6 +169,9 @@ class KinoPoiskUnoficialAgent(Agent.TV_Shows): # type: ignore
     HaveToken = APItokenRemains()
     if not HaveToken:
       w(u">>>SEARCH STOPPED: has no valid key or not remains daily attempts")                  # type: ignore
+      return
+    if HaveToken < REQUEST_QTY_SEARCH_MIN:
+      w(u">>>SEARCH STOPPED: Не хватит реквестов в ключе - осталось всего %i" % HaveToken)                  # type: ignore
       return
     #    3 - Поиск и скоринг
     finded = {'films':[]}        # найденные 'films'
