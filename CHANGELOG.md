@@ -1,3 +1,10 @@
+## [1.11.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.11.0...v1.11.1) (2025-08-30)
+
+
+### Bug Fixes
+
+* Bugfix. Опечатка в коде, сериалы с Prefs["showOnlySerials"] роняли систему. ([d27a59e](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/d27a59e950a2c9302990324f7fb854b4b88274c8))
+
 ## [1.11.1-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.11.0...v1.11.1-beta.1) (2025-08-30)
 
 
