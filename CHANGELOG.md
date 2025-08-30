@@ -1,3 +1,10 @@
+# [1.10.0-beta.3](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.10.0-beta.2...v1.10.0-beta.3) (2025-08-30)
+
+
+### Bug Fixes
+
+* начинать поиск, только если есть достаточно попыток - REQUEST_QTY_SEARCH_MIN ([77f9996](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/77f999616e4c3933618eeda9d4b8329f3c861dd4))
+
 # [1.10.0-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.10.0-beta.1...v1.10.0-beta.2) (2025-08-30)
 
 
