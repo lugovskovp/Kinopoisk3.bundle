@@ -1,9 +1,18 @@
 # [1.11.0-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.11.0-beta.1...v1.11.0-beta.2) (2025-08-30)
 
-
 ### Bug Fixes
 
 * Bugfix. Опечатка в коде, сериалы с Prefs["showOnlySerials"] роняли систему. ([d27a59e](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/d27a59e950a2c9302990324f7fb854b4b88274c8))
+
+# [1.11.0](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.10.0...v1.11.0) (2025-08-30)
+
+* Минимальный интервал проверки новой версии - UPDATE_INTERVAL_MIN ([fc1352c](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/fc1352c453d3978ca2a950f86d7d437dfcaf462e))
+* начинать поиск, только если есть достаточно попыток - REQUEST_QTY_SEARCH_MIN ([77f9996](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/77f999616e4c3933618eeda9d4b8329f3c861dd4))
+
+
+### Features
+
+* добавлена настройка Поиск: для сериалов убирать из результатов F:фильм и V:видео done [#49](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/49) ([47b76a6](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/47b76a6ddaa27fbc6f60af505e7feaace5794f8c))
 
 # [1.11.0-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.10.0...v1.11.0-beta.1) (2025-08-30)
 
