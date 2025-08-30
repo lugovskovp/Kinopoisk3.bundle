@@ -1,3 +1,10 @@
+# [1.10.0-beta.4](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.10.0-beta.3...v1.10.0-beta.4) (2025-08-30)
+
+
+### Features
+
+* добавлена настройка Поиск: для сериалов убирать из результатов F:фильм и V:видео done [#49](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/49) ([47b76a6](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/47b76a6ddaa27fbc6f60af505e7feaace5794f8c))
+
 # [1.10.0-beta.3](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.10.0-beta.2...v1.10.0-beta.3) (2025-08-30)
 
 
