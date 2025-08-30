@@ -36,6 +36,7 @@ FILM_REVIEW       = '/api/v2.2/films/%s/reviews?page=1&order=DATE_DESC'
 SERIAL_SEASONS    = '/api/v2.2/films/%s/seasons'
 
 # scoring
+MAX_DELTA_YEAR = 25 / 1 # вся бОльшая дельта - бессчысленна для скоринга
 UNKNOWN_YEAR = 1900     # значение неизвестного года
 MAX_VALID_YEAR  = 2035  # максимально допустимый год производства
 SCORE_WEIGHT_NAME = 80  # % веса имени - при полном совпадении с найденным - 80

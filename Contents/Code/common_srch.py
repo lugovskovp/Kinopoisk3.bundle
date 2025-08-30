@@ -105,7 +105,7 @@ def srch_and_score(srch, finded, results):
       continue
     try:
       i = resp_json['searchFilmsCountResult']
-      d(u"---- По [%s] найдено %s фильмов" % (title, i))
+      d(u"---- По [%s] всего найдено %s фильмов" % (title, i))
     except: 
       i = 0
     if 'films' in resp_json and i:
@@ -120,10 +120,10 @@ def srch_and_score(srch, finded, results):
           # [Feature] Настройка - для сериалов при поиске не показывать найденные фильмы #49
           if not srch.isAgentMovies and Prefs["showOnlySerials"] and movie_type not in ['TV_SERIES', 'MINI_SERIES', 'TV_SHOW' ]:   # type: ignore
             w("srch_and_score: В результаты НЕ добавлен %s:%s (showOnlySerials)" % (movie['id'], movie['nameRu']) )
-            continue
-          #
-          finded_id.append(movie['filmId'])
-          finded['films'].append(movie)
+          else:
+          # иначе добавляем в результат
+            finded_id.append(movie['filmId'])
+            finded['films'].append(movie)
   d("==== Итог: %s фильмов" % len(finded['films']))  # Итого - 14
 
   #   2. Скоринг
@@ -134,7 +134,7 @@ def srch_and_score(srch, finded, results):
       d("srch_and_score:score: %s" % srch.str_titles)
       # скорининг:   по type - [ 'FILM', 'VIDEO', 'TV_SERIES', 'MINI_SERIES', 'TV_SHOW' ]
       finded_type = ''
-      vscore_ratio = 0.0
+      vscore_ratio = 0 / 1
       try:
         finded_type = movie['type']
       except: pass
@@ -142,14 +142,14 @@ def srch_and_score(srch, finded, results):
         if finded_type == 'FILM':
           vscore_ratio = 1
         elif finded_type in ['TV_SHOW', 'VIDEO']:
-          vscore_ratio = 0.8
+          vscore_ratio = 8 / 10
         elif finded_type == 'MINI_SERIES':
-          vscore_ratio = 0.3
+          vscore_ratio = 3 / 10
       else:       # srch.isAgentMovies == false
         if finded_type  in ['TV_SERIES', 'MINI_SERIES']:
           vscore_ratio = 1
         elif finded_type == 'TV_SHOW':
-          vscore_ratio = 0.8
+          vscore_ratio = 8 / 10
       vscore = int(SCORE_WEIGH_JANRE * vscore_ratio)
       d("type score:%i %f [%s]" % (vscore, vscore_ratio, finded_type))
       movie['score'] = movie['score'] + vscore 
@@ -183,8 +183,10 @@ def srch_and_score(srch, finded, results):
         yscore = int(0.8 * SCORE_WEIGHT_YEAR)
       else:
         #
+        #d(u"Search year = %s, Finded year = %s." % (srch.year, finded_year))
+        d(srch.year)
+        d(finded_year)
         delta = abs(srch.year - finded_year)
-        MAX_DELTA_YEAR = 25.0
         if delta >= MAX_DELTA_YEAR:
           yscore = 0    # too big delta
         else:
