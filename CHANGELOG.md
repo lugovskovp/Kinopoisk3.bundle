@@ -1,3 +1,10 @@
+# [1.10.0-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.10.0-beta.1...v1.10.0-beta.2) (2025-08-30)
+
+
+### Bug Fixes
+
+* Минимальный интервал проверки новой версии - UPDATE_INTERVAL_MIN ([fc1352c](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/fc1352c453d3978ca2a950f86d7d437dfcaf462e))
+
 # [1.10.0-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.9.0...v1.10.0-beta.1) (2025-08-29)
 
 
