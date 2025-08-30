@@ -13,6 +13,7 @@ PREFIX = '/video/kino'
 TITLE = 'Агент Кинопоиск Unofficial'
 ART = 'art-default.png'
 ICON = 'icon-default.png'
+
 version_path = Core.storage.join_path(Core.bundle_path, 'Contents', 'VERSION') # type: ignore
 if Core.storage.file_exists(version_path):                                    # type: ignore
   str_version = Core.storage.load(version_path)                               # type: ignore
@@ -24,7 +25,7 @@ UPDATER_REPO = 'lugovskovp'
 UPDATER_STABLE_URL = 'https://api.github.com/repos/%s/Kinopoisk3.bundle/releases/latest'
 UPDATER_BETA_URL = 'https://api.github.com/repos/%s/Kinopoisk3.bundle/tags?per_page=1'
 UPDATER_ARCHIVE_URL = 'https://github.com/%s/Kinopoisk3.bundle/archive/refs/tags/'
-MIN_UPDATE_INTERVAL = 2
+UPDATE_INTERVAL_MIN = 10    # MINIMAL INTERVAL = 10min
 
 # URLS      FILM_xxxx - для функций получения инфо с кинопоиска для update
 API_BASE_URL      = 'https://kinopoiskapiunofficial.tech'
