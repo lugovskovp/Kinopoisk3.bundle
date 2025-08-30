@@ -6,7 +6,7 @@ import requests             # [а к нему еще chardet, urllib3, certifi, 
 import traceback            # для get_json()
 
 from config import API_BASE_URL
-from debug import d, w, log_timing
+from debug import d, w            #, log_timing
 
 # -------------------------------------------------------------
 
