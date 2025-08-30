@@ -20,6 +20,8 @@ if Core.storage.file_exists(version_path):                                    # 
   VER = str_version.split()[0]
 LANGUAGES = [Locale.Language.Russian, Locale.Language.English, Locale.Language.NoLanguage]  # type: ignore # [Locale.Language.Russian, Locale.Language.English, Locale.Language.NoLanguage,]
 
+REQUEST_QTY_SEARCH_MIN = 20   # при поиске должно оставаться не менее
+
 # Update vars
 UPDATER_REPO = 'lugovskovp'
 UPDATER_STABLE_URL = 'https://api.github.com/repos/%s/Kinopoisk3.bundle/releases/latest'
@@ -67,13 +69,13 @@ def APItokenRemains():
   except:
     pass
   status_code = response.status_code
-  Log(u"APItokenRemains::response code:%s json:%s" % (status_code, response.json()))                  # type: ignore
+  d(u"APItokenRemains::response code:%s json:%s" % (status_code, response.json()))                  # type: ignore
   if status_code != 200:
     # что-то пошло не так
     #status_code == 401:    You don't have permissions There are not valid token  
     #status_code == 402:    You exceeded the quota.
     #status_code == 429:    Rate limit exceeded
-    Log("APItokenRemains::ERROR %s: %s" % (status_code, response.json()["message"]))                  # type: ignore
+    w("APItokenRemains::ERROR %s: %s" % (status_code, response.json()["message"]))                  # type: ignore
     return False
   else:
     # 200, ключ есть, ответ есть. Может, даже остались в квоте попытки.
@@ -85,7 +87,7 @@ def APItokenRemains():
       remains = 1000
     else:
       if used >= dailyQuota:
-        Log(u"APItokenRemains::exceeded quota:%s used:%s" % (dailyQuota, used))                   # type: ignore
+        w(u"APItokenRemains::exceeded quota:%s used:%s" % (dailyQuota, used))                   # type: ignore
         return False    #You exceeded the quota. You have sent 517 request, but available 500 per day
       else:
         remains = dailyQuota - used
