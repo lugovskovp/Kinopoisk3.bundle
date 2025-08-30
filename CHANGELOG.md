@@ -3,6 +3,7 @@
 
 ### Bug Fixes
 
+
 * Bugfix ([2ac25bc](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/2ac25bcd641754a4a5a9c04205efcfcc018f61f3))
 
 ## [1.11.1-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.11.1-beta.1...v1.11.1-beta.2) (2025-08-30)
@@ -12,8 +13,10 @@
 
 * Bugfix ([61321d5](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/61321d564bd44c8722ac61443298496d2a31b655))
 
-## [1.11.1-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.11.0...v1.11.1-beta.1) (2025-08-30)
+* Bugfix. Опечатка в коде, сериалы с Prefs["showOnlySerials"] роняли систему. ([d27a59e](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/d27a59e950a2c9302990324f7fb854b4b88274c8))
 
+## [1.11.1-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.11.0...v1.11.1-beta.1) (2025-08-30)
+## [1.11.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.11.0...v1.11.1) (2025-08-30)
 
 ### Bug Fixes
 
