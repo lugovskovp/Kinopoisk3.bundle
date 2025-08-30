@@ -1,3 +1,10 @@
+## [1.11.4-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.11.3...v1.11.4-beta.1) (2025-08-30)
+
+
+### Bug Fixes
+
+* Проверка semver ([c02a9f6](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/c02a9f6f91161391c2830be1472f237cb6443d3d))
+
 ## [1.11.3-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.11.3-beta.1...v1.11.3-beta.2) (2025-08-30)
 ## [1.11.3](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.11.2...v1.11.3) (2025-08-30)
 
