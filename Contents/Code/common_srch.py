@@ -123,7 +123,7 @@ def srch_and_score(srch, finded, results):
           else:
           # иначе добавляем в результат
             finded_id.append(movie['filmId'])
-            finded['films'].append(movie)'''
+            finded['films'].append(movie) '''
           # добавляем в результат
           finded_id.append(movie['filmId'])
           finded['films'].append(movie)
