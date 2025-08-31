@@ -1,9 +1,16 @@
-## [1.11.4](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.11.3...v1.11.4) (2025-08-30)
+## [1.11.5-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.11.4...v1.11.5-beta.1) (2025-08-31)
 
 
 ### Bug Fixes
 
-* Проверка semver ([c02a9f6](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/c02a9f6f91161391c2830be1472f237cb6443d3d))
+* test2 ([ccdc30f](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/ccdc30fb27f7117c880f8491b4297c97ec6769c1))
+
+## [1.11.4-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.11.4-beta.1...v1.11.4-beta.2) (2025-08-30)
+
+
+### Bug Fixes
+
+* test2 ([ccdc30f](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/ccdc30fb27f7117c880f8491b4297c97ec6769c1))
 
 ## [1.11.4-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.11.3...v1.11.4-beta.1) (2025-08-30)
 
