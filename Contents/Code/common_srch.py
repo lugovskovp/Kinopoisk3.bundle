@@ -190,7 +190,7 @@ def srch_and_score(srch, finded, results):
      
 
 
-#@log_timing  #очень много в лог    
+#@log_timing  #очень много в лог     
 def srch_mkres(srch, finded, results):      # >>>>>>> end::srch_mkres, duration=15
   d("\n---------------------- начинаем формировать отображение найденного")
   if len(finded['films']) == 0:
