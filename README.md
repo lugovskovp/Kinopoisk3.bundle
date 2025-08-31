@@ -8,7 +8,7 @@
 [![][version-image]][changelog-url]
 [![Release date][release-date-image]][release-url]
 [![GitHub issues][issues-opened]][issue-url]
-<!-- [![GitHub Pull Requests][pr-image]][pr-url] -->
+<!-- [![GitHub Pull Requests][pr-image]][pr-url] --> 
 [![][version-beta-image]][changelog-url]
 [![][license-image]][license-url]
 
