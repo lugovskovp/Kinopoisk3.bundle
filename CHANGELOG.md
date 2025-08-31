@@ -1,3 +1,10 @@
+## [1.11.6-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.11.5...v1.11.6-beta.1) (2025-08-31)
+
+
+### Bug Fixes
+
+* something ([9e36119](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/9e36119d55ae7807939b2ea38556f9ea5663a082))
+
 ## [1.11.5](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.11.4...v1.11.5) (2025-08-31)
 
 
