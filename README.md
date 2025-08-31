@@ -1,5 +1,5 @@
 > [!CAUTION]
-> БЕТА, РЕЛИЗА ЕЩЕ НЕ БЫЛО
+> <h2>БЕТА, РЕЛИЗА ЕЩЕ НЕ БЫЛО</h2>
 <!-- https://github.com/orgs/community/discussions/16925 -->
 
 # Кинопоиск3 - плагин для Plex Media Server (PMS)
