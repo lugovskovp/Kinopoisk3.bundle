@@ -14,6 +14,10 @@
 
 
 # Почему и зачем
+<details>
+<summary>Вместо многих слов</summary>
+<img src="https://github.com/lugovskovp/Kinopoisk3.bundle/blob/master/pix/about_srch.png" alt="Пример">
+</details>
 В первую очередь хочу выразить искреннюю благодарность и восхищение Artem Mirotin aka [@amirotin](https://github.com/amirotin), Aleksey Ganuta aka [@Jenstel](https://github.com/Jenstel) и Vladimir Sharapov aka @EvelRus, которые являются авторами плагина для Plex Media Server (PMS) [Kinopoisk.bundle](https://github.com/Jenstel/Kinopoisk.bundle).</br>
 Увы, последнее обновление которого - март 2021, и изменения в API kinopoiskapiunofficial.tech сделали этот плагин малопригодным для использования.</br>
 ## Назначение
