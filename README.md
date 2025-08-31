@@ -8,9 +8,9 @@
 [![][version-image]][changelog-url]
 [![Release date][release-date-image]][release-url]
 [![GitHub issues][issues-opened]][issue-url]
-<!-- [![GitHub Pull Requests][pr-image]][pr-url] --> 
 [![][version-beta-image]][changelog-url]
 [![][license-image]][license-url]
+<!-- [![GitHub Pull Requests][pr-image]][pr-url] --> 
 
 
 # Почему и зачем
@@ -19,7 +19,8 @@
 <img src="https://github.com/lugovskovp/Kinopoisk3.bundle/blob/master/pix/about_srch.png" alt="Пример">
 </details>
 В первую очередь хочу выразить искреннюю благодарность и восхищение Artem Mirotin aka [@amirotin](https://github.com/amirotin), Aleksey Ganuta aka [@Jenstel](https://github.com/Jenstel) и Vladimir Sharapov aka @EvelRus, которые являются авторами плагина для Plex Media Server (PMS) [Kinopoisk.bundle](https://github.com/Jenstel/Kinopoisk.bundle).</br>
-Увы, последнее обновление которого - март 2021, и изменения в API kinopoiskapiunofficial.tech сделали этот плагин малопригодным для использования.</br>
+Увы, последнее обновление которого осталось в марте 2021, последующие изменения в API kinopoiskapiunofficial.tech сделали этот плагин малопригодным для использования.</br>
+
 ## Назначение
 Плагин для [Plex Media Server (PMS)](https://www.plex.tv/) - медиасервера для NAS - позволяющий получить метаданные для файлов фильмов и сериалов через  [неофициальное API](https://kinopoiskapiunofficial.tech/) к информации по фильмам и сериалам сайта [Кинопоиск](https://www.kinopoisk.ru/).
 Данная реализация архитектурно более проста, чем [Kinopoisk.bundle](https://github.com/Jenstel/Kinopoisk.bundle), здесь Кинопоиск единственный источник данных.</br>
@@ -253,9 +254,11 @@ synopkg restart PlexMediaServer
 - Описание: отображать рейтинг Кинопоиск
 - Описание: отображать рейтинг IMDB
 - Описание: загружать отзывы
+- Описание: добавить ссылки на кинопоиск и IMDB
 
 <details>
 <summary>Внешний вид действия настроек на описание</summary>
+Примечаение: Увы, Plex не позволяет добавлять сторонние ссылки, поэтому "ссылки на кинопоиск и IMDB" используемы только на компьютере - выделение мышкой в браузере и копипаст. 
 <img src="https://github.com/lugovskovp/Kinopoisk3.bundle/blob/master/pix/pref-show-1.png" alt="Описание">
 </details>
 

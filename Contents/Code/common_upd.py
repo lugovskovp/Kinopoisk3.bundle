@@ -69,6 +69,12 @@ def load_metadata(metadata, valid_names):
   try:
     summary_add += movie_data.get('description')
   except:  pass
+  #[Feature request] ссылка на инфо о фильме на кинопоиск #32
+  if Prefs['desc_add_links']: # type: ignore
+    summary_add += "\n" + movie_data.get('webUrl') + "\n"
+    if movie_data.get('imdbId'):
+      summary_add += 'https://www.imdb.com/title/' + movie_data.get('imdbId') + '/'
+  # Всё, что сложилось - в описание
   metadata.summary = summary_add
   
   ## rating     A float between 0 and 10 specifying the movie’s rating.

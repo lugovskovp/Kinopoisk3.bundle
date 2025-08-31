@@ -65,6 +65,12 @@
     "default":"true"
   }, 
   {
+    "id": "desc_add_links",
+    "label": "Описание: добавить ссылки на кинопоиск и IMDB",
+    "type":"bool",
+    "default":"false"
+  }, 
+  {
     "id":"trace",
     "label":"Включить подробную отладку",
     "type":"bool",
