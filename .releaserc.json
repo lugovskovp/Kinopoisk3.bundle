@@ -4,8 +4,7 @@
       {
         "name": "beta",
         "prerelease": true
-      },
-      "main"
+      }
     ],
     "ci":false,
     "plugins":[
