@@ -18,13 +18,14 @@ def Start():
     
 def ValidatePrefs():
   ''' This function is called when the user modifies their preferences.'''
-  # update interval must be more than 10 minutes
-  UpdateInterval = int(Prefs['update_interval'] or UPDATE_INTERVAL_MIN)*60          # type: ignore
-  # starting update check
+  # UpdateInterval = int(Prefs['update_interval'] or UPDATE_INTERVAL_MIN)*60          # type: ignore
+  # При старте плагина - проверить обновления и обновить. #64
   Chanel = Prefs['update_channel']                                # type: ignore
-  d(u"ValidatePrefs: start: update chanel=%s, interval=%i sec" % (Chanel, UpdateInterval))  # type: ignore
   if Chanel != 'none':                                  
-    Thread.CreateTimer(UpdateInterval, Updater.auto_update_thread, core=Core, pref=Prefs)  # type: ignore
+    d(u"ValidatePrefs: Immediatle update, chanel=%s" % (Chanel))
+    Thread.CreateTimer(0, Updater.auto_update_thread, core=Core, pref=Prefs)  # type: ignore
+  else:
+    d(u"ValidatePrefs: NO update: chanel=%s, interval=%i sec" % (Chanel))  # type: ignore
   d(u"ValidatePrefs: end.")
 
 

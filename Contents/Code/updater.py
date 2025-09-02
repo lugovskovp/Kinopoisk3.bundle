@@ -28,8 +28,9 @@ class Updater(object):
   @classmethod
   def auto_update_thread(cls, core, pref):
     Log("Updaterr:auto_update_thread:: chanel: %s." % pref['update_channel'])     # type: ignore
-    
+    # "c:\Program Files\Plex\Plex Media Server\Resources\Plug-ins-46083195d\Framework.bundle\Contents\Resources\Versions\2\Python\Framework\components\runtime.py" 
     try:
+      core.log.debug("Updaterr:auto_update_thread:try")
       cls(core, pref['update_channel'], UPDATER_REPO).checker()
       core.storage.remove_data_item('error_update')
       #c:\Users\plugo\AppData\Local\Plex Media Server\Plug-in Support\Data\com.plexapp.plugins.kinopoisk3\DataItems\
@@ -40,7 +41,6 @@ class Updater(object):
     if UPDATE_INTERVAL_MIN > UpdateInterval:
       UpdateInterval = UPDATE_INTERVAL_MIN
     UpdateInterval = UpdateInterval * 60
-    
     UpdateInterval = int(Prefs['update_interval'] or 1)*60       # type: ignore
     core.runtime.create_timer(UpdateInterval, Updater.auto_update_thread, True, core.sandbox, True, core=core, pref=pref)
         
@@ -69,7 +69,7 @@ class Updater(object):
           if not self.update_version:
             self.core.log.debug('Updater checker: Unsuccessful trying get tag info for channel %s' % self.channel)
             return
-          else:
+          elif self.channel == 'stable':
             self.core.log.debug(u'Updater:checker: Github version for channel %s = %s' % (self.channel, self.update_version))     # type: ignore
             current_version = ''
             if self.core.storage.file_exists(self.version_path):
@@ -80,8 +80,8 @@ class Updater(object):
                 self.core.log.debug('Updater:checker: Current version is actual')
                 return
             self.install_zip_from_url(self.archive_url + self.update_version + ".zip")  
-              
             return
+          else: pass
         except Exception as e:
           self.core.log.error('Updater:checker: Something goes wrong with updater: %s', e, exc_info=True)
           raise
