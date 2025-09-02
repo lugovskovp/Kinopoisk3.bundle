@@ -1,14 +1,16 @@
-# [1.12.0](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.11.7...v1.12.0) (2025-08-31)
+## [1.12.1-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.12.0...v1.12.1-beta.1) (2025-09-02)
 
 
 ### Bug Fixes
 
-* добавил картинку - пример поиска ([a728967](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/a728967fbf90b5b7236f72a9e324b4e85ae795ca))
+* Updater debug messages err ([44a7110](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/44a71105bdc7c1a6b8180a789e0928a329c50474))
 
+# [1.12.1-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.12.0-beta.1...v1.12.0-beta.2) (2025-09-02)
 
-### Features
+### Bug Fixes
 
-* ссылка на инфо о фильме на кинопоиск [#32](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/32) ([d3b3f42](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/d3b3f42ee899e1c8d87048c066ddad0ff506b2cd))
+* Updater debug messages err ([44a7110](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/44a71105bdc7c1a6b8180a789e0928a329c50474))
+
 
 # [1.12.0-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.11.8-beta.1...v1.12.0-beta.1) (2025-08-31)
 

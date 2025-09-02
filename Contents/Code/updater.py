@@ -67,15 +67,15 @@ class Updater(object):
           else:
             self.update_version = reduce(dict.get, {'name'}, git_data)     # type: ignore
           if not self.update_version:
-            self.core.log.debug('Updater checker: Unsuccessful trying get tag info for channel %s', self.channel)
+            self.core.log.debug('Updater checker: Unsuccessful trying get tag info for channel %s' % self.channel)
             return
           else:
-            self.core.log.debug('Updater:checker: Github version for channel %s = %s', self.channel, self.update_version)     # type: ignore
+            self.core.log.debug(u'Updater:checker: Github version for channel %s = %s' % (self.channel, self.update_version))     # type: ignore
             current_version = ''
             if self.core.storage.file_exists(self.version_path):
               current_version = self.core.storage.load(self.version_path)
               current_version = str.split(current_version)[0]
-              self.core.log.debug('Updater:checker: Current actual version "%s" vs "%s"', current_version, self.update_version)
+              self.core.log.debug(u'Updater:checker: Current actual version "%s" vs "%s"' % (current_version, self.update_version))
             if current_version == self.update_version:
                 self.core.log.debug('Updater:checker: Current version is actual')
                 return
