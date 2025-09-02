@@ -1,3 +1,10 @@
+## [1.12.3-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.12.3-beta.1...v1.12.3-beta.2) (2025-09-02)
+
+
+### Bug Fixes
+
+* При старте плагина - проверить обновления и обновить. [#64](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/64) ([3eff1ce](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/3eff1ceccc06607d4bd4258b0688e60d336d3c74))
+
 ## [1.12.3-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.12.2...v1.12.3-beta.1) (2025-09-02)
 
 
