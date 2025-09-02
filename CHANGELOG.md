@@ -1,9 +1,14 @@
+
 ## [1.12.1-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.12.1-beta.1...v1.12.1-beta.2) (2025-09-02)
+
 
 
 ### Bug Fixes
 
 * Updater ([3ed7efc](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/3ed7efcc6512a6eec6683df2ad0b0522a83b10d7))
+
+* Updater debug messages err ([44a7110](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/44a71105bdc7c1a6b8180a789e0928a329c50474))
+
 
 ## [1.12.1-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.12.0...v1.12.1-beta.1) (2025-09-02)
 
