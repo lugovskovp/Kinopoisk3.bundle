@@ -24,7 +24,7 @@ jobs:
           contents: write       # to be able to publish a GitHub release
           pull-requests: write  # to be able to comment on released pull requests
           issues: write         # to be able to comment on released issues
-        # Skip running release workflow on forks
+        #  Skip running release workflow on forks
         if: github.repository_owner == 'lugovskovp'
         steps:
         - name: Checkout
