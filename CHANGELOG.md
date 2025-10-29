@@ -1,3 +1,10 @@
+## [1.12.5-beta.3](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.12.5-beta.2...v1.12.5-beta.3) (2025-10-29)
+
+
+### Bug Fixes
+
+* ci ([037195c](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/037195c06162049e03447202d6094d6b3118614a))
+
 ## [1.12.5-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.12.5-beta.1...v1.12.5-beta.2) (2025-10-29)
 
 
