@@ -3,29 +3,29 @@
 
 from common_srch import srch_params, srch_and_score, srch_mkres       # общие для поиска в классах
 from common_upd import load_distribution, load_episodes, load_gallery, load_metadata, load_reviews, load_staff # общие для апдейта в классах
-from config import NAME, VER, LANGUAGES, UPDATE_INTERVAL_MIN, REQUEST_QTY_SEARCH_MIN    # константы
+from config import NAME, VER, LANGUAGES, REQUEST_QTY_SEARCH_MIN    # константы UPDATE_INTERVAL_MIN, 
 from debug import d, w, log_timing
 from updater import Updater   
 from utils import APItokenRemains
 
               
-##################################################################
+#################################################################
 def Start():
-  Log("\n\n========== START %s %s =============" % (NAME, VER)) # type: ignore 
-  HTTP.CacheTime = 0                                  # type: ignore #CACHE_1HOUR
-  ValidatePrefs()                 # start autoupdate
+  Log("\n\n========== START %s %s =============" % (NAME, VER))   # type: ignore 
+  HTTP.CacheTime = 0                                              # type: ignore #CACHE_1HOUR
+  ValidatePrefs()                                                 # start autoupdate
     
     
 def ValidatePrefs():
   ''' This function is called when the user modifies their preferences.'''
-  # UpdateInterval = int(Prefs['update_interval'] or UPDATE_INTERVAL_MIN)*60          # type: ignore
   # При старте плагина - проверить обновления и обновить. #64
-  Chanel = Prefs['update_channel']                                # type: ignore
+  Chanel = Prefs['update_channel']                                            # type: ignore
+  UpdateInterval = int(Prefs['update_interval'] or UPDATE_INTERVAL_MIN)*60          # type: ignore
   if Chanel != 'none':                                  
     d(u"ValidatePrefs: Immediatle update, chanel=%s" % (Chanel))
     Thread.CreateTimer(0, Updater.auto_update_thread, core=Core, pref=Prefs)  # type: ignore
   else:
-    d(u"ValidatePrefs: NO update: chanel=%s, interval=%i sec" % (Chanel))  # type: ignore
+    d(u"ValidatePrefs: NO updates: chanel=%s, interval=%i sec" % (Chanel, UpdateInterval))     # type: ignore
   d(u"ValidatePrefs: end.")
 
 
