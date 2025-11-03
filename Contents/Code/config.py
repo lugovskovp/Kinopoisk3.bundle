@@ -16,7 +16,8 @@ if Core.storage.file_exists(version_path):                                     #
   str_version = Core.storage.load(version_path)                                # type: ignore
   VER = str_version.split()[0]
 
-REQUEST_QTY_SEARCH_MIN = 20   # при старте поиска должно оставаться не менее Х запросов
+# при старте поиска должно оставаться не менее Х неиспользованных запросов
+REQUEST_QTY_SEARCH_MIN = 20   
 
 # Update vars
 UPDATER_REPO = 'lugovskovp'
