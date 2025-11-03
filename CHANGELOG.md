@@ -1,3 +1,10 @@
+## [1.12.7](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.12.6...v1.12.7) (2025-11-03)
+
+
+### Bug Fixes
+
+* beta into master ([61fb33a](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/61fb33a4084b15865bef485ca38af353f0a59d33))
+
 ## [1.12.6](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.12.5...v1.12.6) (2025-10-29)
 
 
