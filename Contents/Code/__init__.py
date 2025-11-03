@@ -6,7 +6,7 @@ from common_upd import load_distribution, load_episodes, load_gallery, load_meta
 from config import NAME, VER, LANGUAGES, REQUEST_QTY_SEARCH_MIN    # константы UPDATE_INTERVAL_MIN, 
 from debug import d, w, log_timing
 from updater import Updater   
-from utils import APItokenRemains
+from utils import APItokenRemains, getGUIDs
 
               
 #################################################################
@@ -97,7 +97,13 @@ class KinoPoiskUnoficialAgent(Agent.Movies): # type: ignore
       w(u">>>UPDATE STOPPED: has no valid key or not remains daily attempts")                  # type: ignore
       return    
     Log("\n\n ---------- %s.UPDATE start: m.id=%s tokenQuota=%s" % (self.name, metadata.id, HaveToken))          # type: ignore
-    Log("\n metadata-metadata type: %s %s " % (metadata.title, metadata.year)) # type: ignore
+    
+    Log('Guids:%s' %  media.guid)        # type: ignore
+    Guids = getGUIDs(media.guid)
+    if not Guids['kpId']:
+      media.guid = media.guid + 'kp' + metadata.id
+
+    Log("metadata-metadata title(year): %s (%s) " % (metadata.title, metadata.year)) # type: ignore
     # Log("\n media-MediaTree id: %s, tree: %s, name" % (media.id, media.tree, media.name))
 
     valid_posters = []
@@ -122,8 +128,8 @@ class KinoPoiskUnoficialAgent(Agent.Movies): # type: ignore
         if Prefs['desc_load_reviews']: # type: ignore  
           load_reviews(metadata)
       @task # type: ignore
-      def upd_meta(metadata=metadata):
-        load_metadata(metadata, valid_poster0)
+      def upd_meta(metadata=metadata, media=media):
+        load_metadata(metadata, media, valid_poster0)
         media.title = metadata.title        # в media - надо вернуть наименование выбранного фильма - заменив текущее из поиска
       @task # type: ignore
       def upd_distribution(metadata=metadata):
@@ -195,6 +201,15 @@ class KinoPoiskUnoficialAgent(Agent.TV_Shows): # type: ignore
       w(u">>>UPDATE STOPPED: has no valid key or not remains daily attempts")                  # type: ignore
       return
     d("\n\n ---------- %s.UPDATE start: m.id=%s tokenQuota=%s" % (self.name, metadata.id, HaveToken))
+    
+    Log('Guids:%s' %  media.guid)      # type: ignore
+    Guids = getGUIDs(media.guid)
+    if not Guids['kpId']:
+      media.guid = media.guid + 'kp' + metadata.id
+
+    Log("metadata-metadata type: %s %s " % (metadata.title, metadata.year)) # type: ignore
+    # Log("\n media-MediaTree id: %s, tree: %s, name" % (media.id, media.tree, media.name))
+    
     d( 'media.all_parts parts: %s' % media.all_parts()[0] )     # MediaPart
     # 'MediaPart' object has no attribute  filename name path     d( 'media.all_parts[0] size: %s' % media.all_parts()[0].size )
     d( 'media.all_parts seasons: %s' % media.seasons ) 
@@ -221,8 +236,8 @@ class KinoPoiskUnoficialAgent(Agent.TV_Shows): # type: ignore
         if Prefs['desc_load_reviews']: # type: ignore  
           load_reviews(metadata)
       @task # type: ignore
-      def upd_meta(metadata=metadata):
-        load_metadata(metadata, valid_poster0)
+      def upd_meta(metadata=metadata, media=media):
+        load_metadata(metadata, media, valid_poster0)
         '''if hasattr(media, 'show'):     # в media - надо вернуть наименование выбранного фильма - заменив текущее из поиска
           media.show = metadata.title
         else:
@@ -235,8 +250,9 @@ class KinoPoiskUnoficialAgent(Agent.TV_Shows): # type: ignore
     valid_names = valid_poster0 + valid_posters
     #metadata.posters.validate_keys(valid_names)
     #metadata.art.validate_keys(valid_arts)
-    media.thumb = valid_names[0]
-    
+    if len(valid_names) > 0:
+      media.thumb = valid_names[0]
+    d(" ************* KinoPoiskUnnoficialAgent serial.UPDATE.end\n")
   
 
 

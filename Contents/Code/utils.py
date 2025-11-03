@@ -4,6 +4,7 @@
 # find in \Contents\Library\Shared
 import requests             # [а к нему еще chardet, urllib3, certifi, idna]      # type: ignore 
 import traceback            # для get_json()
+import re
 
 from config import API_BASE_URL
 from debug import d, w            #, log_timing
@@ -81,6 +82,18 @@ def translit2ru(text):
       text = text.replace(en_let, ru_let) # replace simple letters
   return text.encode("utf-8")  
 
+
+def getGUIDs(guid):
+  ''' возвращает dict с kpId и imdbId'''
+  guids = { 'kpId' : '',
+           'imdbId' : ''}
+  kpSearch = re.search('(kp(\d*))', guid)
+  if kpSearch and kpSearch.group(2):
+    guids['kpId'] = kpSearch.group(2)
+  imdbSearch = re.search('(tt(\d*))', guid)
+  if imdbSearch and imdbSearch.group(1):
+    guids['imdbId'] = imdbSearch.group(1)  
+  return guids
 
 
 def get_json(url):

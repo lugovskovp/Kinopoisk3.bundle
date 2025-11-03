@@ -5,11 +5,11 @@ import requests             # [а к нему еще chardet, urllib3, certifi, 
 
 from config import API_BASE_URL, FILM_DETAILS, FILM_DISTRIBUTION, FILM_POSTERS, FILM_REVIEW, FILM_STAFF, SERIAL_SEASONS
 from debug import d, w, log_timing
-from utils import get_json
+from utils import get_json, getGUIDs
 
 
 @log_timing  
-def load_metadata(metadata, valid_names):
+def load_metadata(metadata, media, valid_names):
   #
   d("-------------------update:load_metadata id=%s title=%s" % (metadata.id, metadata.title))
   #msStart = getMilliseconds(Datetime.Now())
@@ -18,7 +18,21 @@ def load_metadata(metadata, valid_names):
   movie_data = get_json(API_BASE_URL + FILM_DETAILS % metadata.id)
   if not movie_data or not metadata.id:
     return
-  # TODO добавить   "imdbId": "tt0379786",
+  
+  # добавить   "imdbId": "tt0379786",
+  # now media.guid like :kp722886:
+  Guids = getGUIDs(media.guid)
+  if not Guids['imdbId']:
+    if movie_data.get('imdbId'):
+        imdbIdguid = movie_data.get('imdbId')
+        if imdbIdguid:
+          media.guid = media.guid + imdbIdguid
+  Log(getGUIDs(media.guid))    # type: ignore
+  '''
+  "Guid": [{"id": "imdb://tt0499549"},
+           {"id": "tmdb://19995"},
+           {"id": "tvdb://165"}]
+  '''
 
   #   title                     = Template.String()
   repls = (u' (видео)', u' (ТВ)', u' (мини-сериал)', u' (сериал)')
@@ -86,6 +100,31 @@ def load_metadata(metadata, valid_names):
     try:
       metadata.rating = float('ratingKinopoisk')
     except:  pass 
+  '''
+  "Rating": [
+          {
+            "image": "imdb://image.rating",
+            "type": "audience",
+            "value": 7.9
+          },
+          {
+            "image": "rottentomatoes://image.rating.ripe",
+            "type": "critic",
+            "value": 8.1
+          },
+          {
+            "image": "rottentomatoes://image.rating.upright",
+            "type": "audience",
+            "value": 8.2
+          },
+          {
+            "image": "themoviedb://image.rating",
+            "type": "audience",
+            "value": 7.582
+          }
+        ]
+  '''
+
 
   #   trivia                    = Template.String()   A string containing trivia about the movie.
   #   quotes                    = Template.String()
