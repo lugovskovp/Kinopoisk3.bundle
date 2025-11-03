@@ -62,7 +62,7 @@ class Updater(object):
       if req:
         git_data = self.core.data.json.from_string(req.content)
         try:
-          if self.channel == 'beta':                                #stable - obj, beta - [obj]
+          if self.channel == 'beta':                                   #stable - obj, beta - [obj]
             self.update_version = reduce(dict.get, {'name'}, git_data[0])     # type: ignore
           else:
             self.update_version = reduce(dict.get, {'name'}, git_data)     # type: ignore

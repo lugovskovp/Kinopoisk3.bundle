@@ -1,9 +1,24 @@
-## [1.12.5-beta.3](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.12.5-beta.2...v1.12.5-beta.3) (2025-10-29)
+## [1.12.7](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.12.6...v1.12.7) (2025-11-03)
+
+
+### Bug Fixes
+
+* beta into master ([61fb33a](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/61fb33a4084b15865bef485ca38af353f0a59d33))
+
+## [1.12.6](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.12.5...v1.12.6) (2025-10-29)
 
 
 ### Bug Fixes
 
 * ci ([037195c](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/037195c06162049e03447202d6094d6b3118614a))
+
+## [1.12.5](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.12.4...v1.12.5) (2025-10-29)
+
+
+### Bug Fixes
+
+* release.yml to master ([9e01165](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/9e0116519bf2b07aa5fdcacaa52de750768a962e))
+* try beta ahead ([04438aa](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/04438aab95d0fdc8df428d9d2ede91a8a9608e65))
 
 ## [1.12.5-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.12.5-beta.1...v1.12.5-beta.2) (2025-10-29)
 
