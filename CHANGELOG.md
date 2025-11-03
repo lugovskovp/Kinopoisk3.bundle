@@ -1,3 +1,10 @@
+# [1.13.0-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.12.7...v1.13.0-beta.1) (2025-11-03)
+
+
+### Features
+
+* add imdb id in media.guid [Feature request] добавляется id imdb|tmdb в guid ([65e4d03](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/65e4d0366992fe4e2e1c610c0f56ba8a760eb252)), closes [#33](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/33)
+
 ## [1.12.7](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.12.6...v1.12.7) (2025-11-03)
 
 
