@@ -1,3 +1,10 @@
+# [1.13.0-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.13.0-beta.1...v1.13.0-beta.2) (2025-11-18)
+
+
+### Bug Fixes
+
+* Если неофициаьный кинопоиск не в сети - в логе отразить. ([bb1db71](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/bb1db71df2fc409bdbf70134cd3b3520d0f72723))
+
 # [1.13.0-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.12.7...v1.13.0-beta.1) (2025-11-03)
 
 
