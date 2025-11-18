@@ -2,13 +2,13 @@
 # coding=utf-8
 
 from common_srch import srch_params, srch_and_score, srch_mkres       # общие для поиска в классах
-from common_upd import load_distribution, load_episodes, load_gallery, load_metadata, load_reviews, load_staff # общие для апдейта в классах
-from config import NAME, VER, LANGUAGES, REQUEST_QTY_SEARCH_MIN    # константы UPDATE_INTERVAL_MIN, 
+from common_upd import load_distribution, load_episodes, load_gallery, load_metadata, load_reviews, load_staff, resurrectMetadataId # общие для апдейта в классах
+from config import NAME, VER, LANGUAGES, REQUEST_QTY_SEARCH_MIN, UNKNOWN_YEAR    # константы UPDATE_INTERVAL_MIN, 
 from debug import d, w, log_timing
 from updater import Updater   
 from utils import APItokenRemains, getGUIDs
 
-              
+
 #################################################################
 def Start():
   Log("\n\n========== START %s %s =============" % (NAME, VER))   # type: ignore 
@@ -103,7 +103,18 @@ class KinoPoiskUnoficialAgent(Agent.Movies): # type: ignore
     if not Guids['kpId']:
       media.guid = media.guid + 'kp' + metadata.id
 
-    Log("metadata-metadata title(year): %s (%s) " % (metadata.title, metadata.year)) # type: ignore
+    # AttributeError: 'TV_Show' object has no attribute 'year'
+    # Log("metadata-metadata title(year): %s (%s) " % (metadata.title, metadata.year)) # type: ignore
+    # Check if 'year' attribute exists
+    t = ''
+    if hasattr(metadata, 'title'):
+      t = metadata.title
+    y = UNKNOWN_YEAR
+    if hasattr(metadata, 'year'):
+      y = metadata.year
+    Log("metadata-metadata title(year): %s (%s) " % (t, y)) # type: ignore
+    del t
+    del y
     # Log("\n media-MediaTree id: %s, tree: %s, name" % (media.id, media.tree, media.name))
 
     valid_posters = []
@@ -168,7 +179,13 @@ class KinoPoiskUnoficialAgent(Agent.TV_Shows): # type: ignore
   @log_timing  
   def search(self, results, media, lang, manual=False):
     '''
-    manual = [True|False]
+    manual = [True|False] p.36: manual – A boolean value identifying whether the search was issued auto
+    atically during scanning, or manually by the user (in order to fix an  incorrect match) - БРЕХНЯ
+    ВСЕГДА False. 
+    Поэтому отлавливать 
+    srch.match_type:
+    Fix match - либо при автосопоставлении, либо первое предложение при открытии "Сопоставить"
+    New match - это вручную, с вкладки "Опции поиска"
     '''
     #   1 - Подготовка параметров поиска
     srch = srch_params(media, manual)
@@ -190,7 +207,7 @@ class KinoPoiskUnoficialAgent(Agent.TV_Shows): # type: ignore
 
 
   @log_timing  
-  def update(self, metadata, media, lang):
+  def update(self, metadata, media, lang):    # def update(self, metadata, media, lang, force)
     # В search media - Movie|TV_Show, а вот в update media это Framework.api.agentkit.MediaTree
     '''
     Framework.api.agentkit.MediaTree 
@@ -202,17 +219,34 @@ class KinoPoiskUnoficialAgent(Agent.TV_Shows): # type: ignore
       return
     d("\n\n ---------- %s.UPDATE start: m.id=%s tokenQuota=%s" % (self.name, metadata.id, HaveToken))
     
-    Log('Guids:%s' %  media.guid)      # type: ignore
+    # если Prefs["showSerialSeasons"]: восстановить (id, seasonNum)
+    Season2set = ''
+    if Prefs["showSerialSeasons"]:                      # type: ignore
+      # Восстановить metadata.id
+      RealId, Season2set = resurrectMetadataId(metadata.id)
+      media.guid = 'com.plexapp.plugins.kinopoisk3://%s?lang=ru' % RealId
+      d('Guid:%s' %  media.guid)      # type: ignore
+      # восстановить metadata.id
+      metadata.id = RealId
+      
+      # -----------------------------------------------------
+      
+      # -----------------------------------------------------
+    #
     Guids = getGUIDs(media.guid)
     if not Guids['kpId']:
-      media.guid = media.guid + 'kp' + metadata.id
-
-    Log("metadata-metadata type: %s %s " % (metadata.title, metadata.year)) # type: ignore
-    # Log("\n media-MediaTree id: %s, tree: %s, name" % (media.id, media.tree, media.name))
-    
-    d( 'media.all_parts parts: %s' % media.all_parts()[0] )     # MediaPart
-    # 'MediaPart' object has no attribute  filename name path     d( 'media.all_parts[0] size: %s' % media.all_parts()[0].size )
-    d( 'media.all_parts seasons: %s' % media.seasons ) 
+      media.guid = media.guid + '&kp' + metadata.id
+    try:
+      y = metadata.year 
+    except:
+      y = UNKNOWN_YEAR
+    Log("metadata-metadata title: %s y:%s " % (metadata.title, y)) # type: ignore
+    # 
+    if len(media.all_parts()) > 0:
+      d( 'media.all_parts parts: %s' % media.all_parts()[0] )     # MediaPart
+      # 'MediaPart' object has no attribute  filename name path     d( 'media.all_parts[0] size: %s' % media.all_parts()[0].size )
+    if hasattr(media, 'seasons'):
+      d( 'media.all_parts seasons: %s' % media.seasons ) 
     valid_posters = []
     valid_poster0 = []
     valid_arts = []   
