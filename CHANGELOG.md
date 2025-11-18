@@ -1,3 +1,10 @@
+# [1.13.0-beta.3](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.13.0-beta.2...v1.13.0-beta.3) (2025-11-18)
+
+
+### Bug Fixes
+
+* Валился на отсутствующем year у сериала ([beff1e6](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/beff1e6f0d744c0669e6baf5ea8ac1372c8b22f2))
+
 # [1.13.0-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.13.0-beta.1...v1.13.0-beta.2) (2025-11-18)
 
 
