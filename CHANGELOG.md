@@ -1,3 +1,10 @@
+# [1.13.0-beta.4](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.13.0-beta.3...v1.13.0-beta.4) (2025-11-21)
+
+
+### Bug Fixes
+
+* add season choice stage 0 ([61c3da6](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/61c3da618c2ca647f7c31c783dc3aa6f95a1b246))
+
 # [1.13.0-beta.3](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.13.0-beta.2...v1.13.0-beta.3) (2025-11-18)
 
 
