@@ -122,4 +122,11 @@ def get_json(url):
   return rj
 
 
-
+def resurrectMetadataId(id):
+  ''' при выборе Prefs["showSerialSeasons"]: восстановить (id, seasonNum)'''
+  sea = ''
+  res = (id, sea)
+  r = re.search('S(\d*):(\d*)', id)
+  if r and r.group(2):
+    res = (r.group(2), int(r.group(1)))
+  return res

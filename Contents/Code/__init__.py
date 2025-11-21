@@ -2,11 +2,11 @@
 # coding=utf-8
 
 from common_srch import srch_params, srch_and_score, srch_mkres       # общие для поиска в классах
-from common_upd import load_distribution, load_episodes, load_gallery, load_metadata, load_reviews, load_staff, resurrectMetadataId # общие для апдейта в классах
+from common_upd import load_distribution, load_episodes, load_gallery, load_metadata, load_reviews, load_staff # общие для апдейта в классах
 from config import NAME, VER, LANGUAGES, REQUEST_QTY_SEARCH_MIN, UNKNOWN_YEAR    # константы UPDATE_INTERVAL_MIN, 
 from debug import d, w, log_timing
 from updater import Updater   
-from utils import APItokenRemains, getGUIDs
+from utils import APItokenRemains, getGUIDs, resurrectMetadataId
 
 
 #################################################################
@@ -240,7 +240,7 @@ class KinoPoiskUnoficialAgent(Agent.TV_Shows): # type: ignore
       y = metadata.year 
     except:
       y = UNKNOWN_YEAR
-    Log("metadata-metadata title: %s y:%s " % (metadata.title, y)) # type: ignore
+    Log("metadata-metadata title: %s y:%s" % (metadata.title, y)) # type: ignore
     # 
     if len(media.all_parts()) > 0:
       d( 'media.all_parts parts: %s' % media.all_parts()[0] )     # MediaPart
@@ -251,6 +251,10 @@ class KinoPoiskUnoficialAgent(Agent.TV_Shows): # type: ignore
     valid_poster0 = []
     valid_arts = []   
     media.thumb = ""
+    
+    # load_metadata(metadata, media, valid_poster0)
+    # load_episodes(metadata, media, Season2set)
+    # return
 
     @parallelize    # type: ignore # load_gallery posters, duration=3523, load_gallery arts, duration=4383, update, duration=4389
     def parallel_update():
@@ -279,7 +283,7 @@ class KinoPoiskUnoficialAgent(Agent.TV_Shows): # type: ignore
         media.title = metadata.title        # в media - надо вернуть наименование выбранного фильма - заменив текущее из поиска
       @task # type: ignore
       def upd_episodes(metadata=metadata):
-        load_episodes(metadata, media)
+        load_episodes(metadata, media, Season2set)
     # параллельная работа окончена, все задачи завершены
     valid_names = valid_poster0 + valid_posters
     #metadata.posters.validate_keys(valid_names)

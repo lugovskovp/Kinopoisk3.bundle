@@ -4,7 +4,7 @@ import re, datetime
 import requests             # [а к нему еще chardet, urllib3, certifi, idna]      # type: ignore 
 
 from config import API_BASE_URL, FILM_DETAILS, FILM_DISTRIBUTION, FILM_POSTERS, FILM_REVIEW, FILM_STAFF, SERIAL_SEASONS
-from debug import d, w, log_timing
+from debug import d, w, log_timing, inspect_obj
 from utils import get_json, getGUIDs
 
 
@@ -173,39 +173,48 @@ def load_metadata(metadata, media, valid_names):
 
 
 @log_timing
-def load_episodes(metadata, media):
+def load_episodes(metadata, media, Season2set):
+  '''
+  metadata - from search
+  media - from scan agent
+  Season2set - int, season for setting
+  '''
   seasons_json = get_json(API_BASE_URL + SERIAL_SEASONS % metadata.id)
-  #seasons_json = get_json(API_BASE_URL + SERIAL_SEASONS % 464963)   # 464963 - Игра престолов
+  #seasons_json = get_json(API_BASE_URL + SERIAL_SEASONS % 464963)   # kpid = 464963 - Игра престолов
   if not seasons_json:
     return
   if 'message' in seasons_json:
-    d(u"\nsrch_and_score: Попытка поиска без ключа. %s" % seasons_json["message"])
+    d(u"\nsrch_and_score: Попытка поиска без ключа? %s" % seasons_json["message"])
     return
+  
+  
   #seasons_qty = seasons_json.get('total')
   for season_num, season_data in enumerate(seasons_json.get('items'), 1):    # 1,2...
+    d("Try process season_num %s in json" % season_num)
     if season_num not in media.seasons:      
-      continue
+        continue
     # отлично, есть локальные файлы из сезонов из найденного сезона
+    Log("есть локальные файлы из season_num %s" % season_num)      # type: ignore
     for episode_num, episode_data in enumerate(season_data.get('episodes'), 1):
-      # по каждой серии
+      # по каждой серии   =Season2set or 
       s_num = episode_data.get('seasonNumber')
       e_num = episode_data.get('episodeNumber')
+      Log("Эпизод %s сезона %s" % (e_num, s_num))      # type: ignore
       episode = metadata.seasons[s_num].episodes[e_num]
       episode.title = ''
       episode.originally_available_at = None
       episode.summary = ''
       #
-      title = episode_data.get('nameRu') 
-      if not title:
-        title = ''
-      titleE = episode_data.get('nameEn')
-      if not titleE:
-        titleE = ''
+      title = episode_data.get('nameRu') or ''
+      titleE = episode_data.get('nameEn') or ''
+      d("title:%s, titleE:%s" % (title, titleE))
+      if not title and titleE:
+        title = titleE
       else:
-        if title:
-          title = title + ' / '
-      episode.title = title + titleE
-      dat = episode_data.get('releaseDate')
+        if titleE:
+          title = title + ' / ' + titleE
+      episode.title = title
+      dat = episode_data.get('releaseDate') or ''
       if dat:
         episode.originally_available_at = datetime.datetime.strptime(dat, "%Y-%m-%d").date()
       episode.summary = episode_data.get('synopsis')
