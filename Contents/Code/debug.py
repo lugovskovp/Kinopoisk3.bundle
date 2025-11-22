@@ -45,17 +45,25 @@ def w(*args):
   args[0] = '   ^^^^ %s' % str(args[0])
   strargs = '\n'.join(map(str, args))
   Core.log.warning(strargs)   # type: ignore   
+
   
-def inspect_obj(var):
-  '''Logging all members of var'''
+#def Scan(path, files, mediaList, subdirs):
+#Scan for SageTV TV Shows
+
+def inspect_obj(var, fullinfo=False):
+  '''Logging all members of var, fullinfo - show startwith __'''
   callers_local_vars = inspect.currentframe().f_back.f_locals.items()
   # return [var_name for var_name, var_val in callers_local_vars if var_val is var]
   call_var_name = ''
   for var_name, var_val in callers_local_vars:
     if var_val is var:
       call_var_name = var_name
-  Core.log.debug("\n\n!!! Start inspect '%s'" % call_var_name)      # type: ignore   
+  Core.log.debug("\n\n!!! Start inspect '%s'" % call_var_name)      # type: ignore  
+  Core.log.debug("%s:%s:%s" % (call_var_name, type(var), var))                  # type: ignore 
   for i in inspect.getmembers(var):
+    (k, v) = i
+    if not fullinfo and k.startswith("__"):
+      continue
     Core.log.debug(i)                                          # type: ignore   
   Core.log.debug("\n!!! Inspect '%s' ends.\n" % call_var_name)      # type: ignore   
 

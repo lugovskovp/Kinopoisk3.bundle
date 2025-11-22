@@ -204,7 +204,8 @@ def srch_mkres(srch, finded, results):      # >>>>>>> end::srch_mkres, duration=
     id = movie["filmId"]        #MUST be
     title = ""
     # Отображать тип: F:фильм, M:многосерийный, V:видео, S:сериал, T:tv-шоу
-    if Prefs['showTypes'] and (srch.isAgentMovies or not Prefs["showSerialSeasons"]):                # type: ignore 
+    # if Prefs['showTypes'] and (srch.isAgentMovies or not Prefs["showSerialSeasons"]): 
+    if Prefs['showTypes']:  # and srch.isAgentMovies:                # type: ignore 
       b=''
       try:
         b = TypeFinded[movie['type']]     # подставить букву, соответствующую типу
@@ -240,24 +241,24 @@ def srch_mkres(srch, finded, results):      # >>>>>>> end::srch_mkres, duration=
     score = movie['score']
     Log("score%02i:%i '%s'" % (i, score, title))    # type: ignore
 
-    # Настройка "для сериалов возможность ручного выбора сезона"
-    if not srch.isAgentMovies and Prefs["showSerialSeasons"] and srch.isManual:  # type: ignore
-      # получить количество сезонов
-      arrSeasons = getSeasonsList(id) 
-      for sNum, sYear in reversed(arrSeasons):
-        # перед заголовком ставится сезон и год типа S01-2025:
-        title1 = "%s-%s:%s" % (sNum, sYear, title)
-        id1 = "%s:%i" % (sNum, id)
-        # Log("score%02i:%i '%s'" % (i, score, title))    # type: ignore
-        Log("Manual seasons: score%02i: %i '%s %s'" % (i, score, title1, id1))    # type: ignore
-        AppendSearchResult(results=results,
-                      id = id1,
-                      name = title1,
-                      year = year,
-                      score = score,
-                      lang = lang)
-    else:
-      AppendSearchResult(results=results,
+    # # Настройка "для сериалов возможность ручного выбора сезона"
+    # if not srch.isAgentMovies and Prefs["showSerialSeasons"] and srch.isManual:  # type: ignore
+    #   # получить количество сезонов
+    #   arrSeasons = getSeasonsList(id) 
+    #   for sNum, sYear in reversed(arrSeasons):
+    #     # перед заголовком ставится сезон и год типа S01-2025:
+    #     title1 = "%s-%s:%s" % (sNum, sYear, title)
+    #     id1 = "%s:%i" % (sNum, id)
+    #     # Log("score%02i:%i '%s'" % (i, score, title))    # type: ignore
+    #     Log("Manual seasons: score%02i: %i '%s %s'" % (i, score, title1, id1))    # type: ignore
+    #     AppendSearchResult(results=results,
+    #                   id = id1,
+    #                   name = title1,
+    #                   year = year,
+    #                   score = score,
+    #                   lang = lang)
+    # else:
+    AppendSearchResult(results=results,
                       id = id,
                       name = title,
                       year = year,
@@ -267,23 +268,6 @@ def srch_mkres(srch, finded, results):      # >>>>>>> end::srch_mkres, duration=
 
 
 # -- inner ----------------------------------------------------------------------
-def getSeasonsList(kpid):
-  ''' Возвращает массив tuiples ('S01', ' 2022')'''
-  res =[]
-  seasons_json = get_json(API_BASE_URL + SERIAL_SEASONS % kpid)
-  if not seasons_json: 
-    return res
-  for season in seasons_json['items']:
-    # "releaseDate": "2024-01-02"
-    s = "S%02d" % int(season['number'])
-    y = season['episodes'][0]['releaseDate']
-    if y:
-      y = y[:4]
-    else:
-      y = '0000'
-    res.append( (s, y ) )
-  #Log("\n\n%s" % res)   # type: ignore
-  return res
 
 def lev_ratio(s1, s2):
   '''levR  = abs( Util.LevenshteinDistance(search_title.lower(), foundTitle.lower()) )'''
@@ -304,3 +288,22 @@ def lev_score(nameRu, nameEn, title):
   lev = max(lev_ratio(title, nameRu), lev_ratio(title, nameEn))     # levR if levR > levE else levE
   score = int(SCORE_WEIGHT_NAME * lev)  # тут score max = SCORE_WEIGHT_NAME
   return score
+
+# not used
+def getSeasonsList(kpid):
+  ''' Возвращает массив tuiples ('S01', ' 2022')'''
+  res =[]
+  seasons_json = get_json(API_BASE_URL + SERIAL_SEASONS % kpid)
+  if not seasons_json: 
+    return res
+  for season in seasons_json['items']:
+    # "releaseDate": "2024-01-02"
+    s = "S%02d" % int(season['number'])
+    y = season['episodes'][0]['releaseDate']
+    if y:
+      y = y[:4]
+    else:
+      y = '0000'
+    res.append( (s, y ) )
+  #Log("\n\n%s" % res)   # type: ignore
+  return res

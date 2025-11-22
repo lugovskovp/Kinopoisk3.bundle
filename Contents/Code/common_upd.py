@@ -173,11 +173,11 @@ def load_metadata(metadata, media, valid_names):
 
 
 @log_timing
-def load_episodes(metadata, media, Season2set):
+def load_episodes(metadata, media):
   '''
+  Загрузка информации о сезонах и эпизодах
   metadata - from search
   media - from scan agent
-  Season2set - int, season for setting
   '''
   seasons_json = get_json(API_BASE_URL + SERIAL_SEASONS % metadata.id)
   #seasons_json = get_json(API_BASE_URL + SERIAL_SEASONS % 464963)   # kpid = 464963 - Игра престолов
