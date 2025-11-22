@@ -1,9 +1,40 @@
-# [1.13.0](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.12.7...v1.13.0) (2025-11-03)
+## [1.13.1-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.13.0...v1.13.1-beta.1) (2025-11-22)
 
 
-### Features
+### Bug Fixes
 
-* add imdb id in media.guid [Feature request] добавляется id imdb|tmdb в guid ([65e4d03](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/65e4d0366992fe4e2e1c610c0f56ba8a760eb252)), closes [#33](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/33)
+* add season choice stage 0 ([61c3da6](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/61c3da618c2ca647f7c31c783dc3aa6f95a1b246))
+* Валился на отсутствующем year у сериала ([beff1e6](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/beff1e6f0d744c0669e6baf5ea8ac1372c8b22f2))
+* Если неофициаьный кинопоиск не в сети - в логе отразить. ([bb1db71](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/bb1db71df2fc409bdbf70134cd3b3520d0f72723))
+* Откат доработки изменения сезона из интерфейса. ([2c6c52a](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/2c6c52af929ad174800d6d05fe5afdb53e93b99a))
+
+# [1.13.0-beta.5](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.13.0-beta.4...v1.13.0-beta.5) (2025-11-22)
+
+
+### Bug Fixes
+
+* Откат доработки изменения сезона из интерфейса. ([2c6c52a](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/2c6c52af929ad174800d6d05fe5afdb53e93b99a))
+
+# [1.13.0-beta.4](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.13.0-beta.3...v1.13.0-beta.4) (2025-11-21)
+
+
+### Bug Fixes
+
+* add season choice stage 0 ([61c3da6](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/61c3da618c2ca647f7c31c783dc3aa6f95a1b246))
+
+# [1.13.0-beta.3](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.13.0-beta.2...v1.13.0-beta.3) (2025-11-18)
+
+
+### Bug Fixes
+
+* Валился на отсутствующем year у сериала ([beff1e6](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/beff1e6f0d744c0669e6baf5ea8ac1372c8b22f2))
+
+# [1.13.0-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.13.0-beta.1...v1.13.0-beta.2) (2025-11-18)
+
+
+### Bug Fixes
+
+* Если неофициаьный кинопоиск не в сети - в логе отразить. ([bb1db71](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/bb1db71df2fc409bdbf70134cd3b3520d0f72723))
 
 # [1.13.0-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.12.7...v1.13.0-beta.1) (2025-11-03)
 

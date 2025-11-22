@@ -9,23 +9,27 @@ from utils import AppendSearchResult, translit2ru, get_json
   
 class srch_params():
   ''' Просто поскладём все параметры поиска в сюда, srch_params '''
-  isAgentMovies = True    #   1. Agent.Movies или Agent.TV_Shows
-  isNewMatch    = True    #   2. Определить режим - сопоставление или исправление
-  isManual      = False
-  titles        = []      # массив str из 1 или 2 элементов, 0-имя, 1-транскрибированное имя
-  year          = 0       # год выпуска - из формы поиска
-  season        = 0       # если сериал - то еще и сезон запомним
   
   def __init__(self, media, manual):
+    # default vals
+    self.isAgentMovies = True    #   1. Agent.Movies или Agent.TV_Shows
+    self.isNewMatch    = True    #   2. Определить режим - сопоставление или исправление
+    self.isManual      = False
+    self.titles        = []      # массив str из 1 или 2 элементов, 0-имя, 1-транскрибированное имя
+    self.year          = UNKNOWN_YEAR       # год выпуска - из формы поиска
+    self.season        = 0       # если сериал - то еще и сезон запомним
+    # real vals
     self.isAgentMovies = False if hasattr(media, 'season') else True
     self.isNewMatch = media.filename is None
     # media.filename == None когда сопоставления еще не было, первый раз нажато "Сопоставить"
     # media.filename == filename, когда (Fix Incorrect Match), сразу будет сразу попытка поиска по media.name
     self.isManual = manual
+    # always Fase
+    self.isManual = self.isNewMatch
     self.titles = []
     self.titles.append(media.name if self.isAgentMovies else media.show)    # self.titles[0]
     search_year = 0
-    Log("File %s, manual = %s" % (media.name, self.isManual))    # type: ignore
+    Log("srch_params: File %s, manual = %s" % (media.name, self.isManual))    # type: ignore
     # сезон из файла пригодится в любом случае
     if not self.isAgentMovies:
       r = re.search("^(.*)\sS([0-3]\d)", self.titles[0])  # https://regex101.com/r/x53ZOY/1
@@ -187,8 +191,6 @@ def srch_and_score(srch, finded, results):
       d("year score:%i [%s::%s] delta=%s" % (yscore, srch.year, finded_year, delta))
       movie['score'] = movie['score'] + yscore
       d(" SUM score:%i [%s]" % (movie['score'], srch.str_titles)) 
-     
-
 
 #@log_timing  #очень много в лог     
 def srch_mkres(srch, finded, results):      # >>>>>>> end::srch_mkres, duration=15
@@ -196,13 +198,15 @@ def srch_mkres(srch, finded, results):      # >>>>>>> end::srch_mkres, duration=
   if len(finded['films']) == 0:
     # ничего не найдено
     return
+  TypeFinded = {'FILM':'F', 'VIDEO':'V', 'TV_SERIES':'S', 'MINI_SERIES':'M', 'TV_SHOW':'T'}
   for i, movie in enumerate(finded['films']):
     # формирование строк меню
     id = movie["filmId"]        #MUST be
     title = ""
-    if Prefs['showTypes']:                # type: ignore # Отображать тип: F:фильм, M:многосерийный, V:видео, S:сериал, T:tv-шоу
+    # Отображать тип: F:фильм, M:многосерийный, V:видео, S:сериал, T:tv-шоу
+    # if Prefs['showTypes'] and (srch.isAgentMovies or not Prefs["showSerialSeasons"]): 
+    if Prefs['showTypes']:  # and srch.isAgentMovies:                # type: ignore 
       b=''
-      TypeFinded = {'FILM':'F', 'VIDEO':'V', 'TV_SERIES':'S', 'MINI_SERIES':'M', 'TV_SHOW':'T'}
       try:
         b = TypeFinded[movie['type']]     # подставить букву, соответствующую типу
       except: pass
@@ -235,15 +239,31 @@ def srch_mkres(srch, finded, results):      # >>>>>>> end::srch_mkres, duration=
     year = int(movie['year'][:4]) if movie['year'].isdigit() else UNKNOWN_YEAR
     lang = 'ru' if 'nameRu' in movie else 'en'    # вот такой гадкий хардкод
     score = movie['score']
-    d("======= %02i: %i : %s" % (i, score, title))
+    Log("score%02i:%i '%s'" % (i, score, title))    # type: ignore
+
+    # # Настройка "для сериалов возможность ручного выбора сезона"
+    # if not srch.isAgentMovies and Prefs["showSerialSeasons"] and srch.isManual:  # type: ignore
+    #   # получить количество сезонов
+    #   arrSeasons = getSeasonsList(id) 
+    #   for sNum, sYear in reversed(arrSeasons):
+    #     # перед заголовком ставится сезон и год типа S01-2025:
+    #     title1 = "%s-%s:%s" % (sNum, sYear, title)
+    #     id1 = "%s:%i" % (sNum, id)
+    #     # Log("score%02i:%i '%s'" % (i, score, title))    # type: ignore
+    #     Log("Manual seasons: score%02i: %i '%s %s'" % (i, score, title1, id1))    # type: ignore
+    #     AppendSearchResult(results=results,
+    #                   id = id1,
+    #                   name = title1,
+    #                   year = year,
+    #                   score = score,
+    #                   lang = lang)
+    # else:
     AppendSearchResult(results=results,
                       id = id,
                       name = title,
                       year = year,
                       score = score,
                       lang = lang)
-    
-
 
 
 
@@ -251,7 +271,7 @@ def srch_mkres(srch, finded, results):      # >>>>>>> end::srch_mkres, duration=
 
 def lev_ratio(s1, s2):
   '''levR  = abs( Util.LevenshteinDistance(search_title.lower(), foundTitle.lower()) )'''
-  distance = Util.LevenshteinDistance(s1, s2) # type: ignore
+  distance = Util.LevenshteinDistance(s1, s2)             # type: ignore
   max_len = float(max([ len(s1), len(s2) ]))
   s1 = s1.lower()
   s2 = s2.lower()
@@ -268,3 +288,22 @@ def lev_score(nameRu, nameEn, title):
   lev = max(lev_ratio(title, nameRu), lev_ratio(title, nameEn))     # levR if levR > levE else levE
   score = int(SCORE_WEIGHT_NAME * lev)  # тут score max = SCORE_WEIGHT_NAME
   return score
+
+# not used
+def getSeasonsList(kpid):
+  ''' Возвращает массив tuiples ('S01', ' 2022')'''
+  res =[]
+  seasons_json = get_json(API_BASE_URL + SERIAL_SEASONS % kpid)
+  if not seasons_json: 
+    return res
+  for season in seasons_json['items']:
+    # "releaseDate": "2024-01-02"
+    s = "S%02d" % int(season['number'])
+    y = season['episodes'][0]['releaseDate']
+    if y:
+      y = y[:4]
+    else:
+      y = '0000'
+    res.append( (s, y ) )
+  #Log("\n\n%s" % res)   # type: ignore
+  return res

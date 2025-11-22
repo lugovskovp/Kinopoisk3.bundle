@@ -37,7 +37,13 @@ def APItokenRemains():
     }
   try:
     response = requests.get(url, headers=headers)  # data = r.content  # Content of response
+  except requests.ConnectionError as e:
+    # TODO ERR_CONNECTION_TIMED_OUT - get away?
+    w("OOPS!! Connection Error. Или Вы не в интернете, или http://kinopoiskapiunofficial.tech вне доступа.\n")
+    w(str(e))  
+    return False
   except:
+    return False
     pass
   status_code = response.status_code
   d(u"APItokenRemains::response code:%s json:%s" % (status_code, response.json()))                  # type: ignore
@@ -51,6 +57,8 @@ def APItokenRemains():
   else:
     # 200, ключ есть, ответ есть. Может, даже остались в квоте попытки.
     json = response.json()
+    used = 0
+    dailyQuota = 0
     accountType = json["accountType"]
     dailyQuota = json["dailyQuota"]["value"]
     used = json["dailyQuota"]["used"]
@@ -114,4 +122,11 @@ def get_json(url):
   return rj
 
 
-
+def resurrectMetadataId(id):
+  ''' при выборе Prefs["showSerialSeasons"]: восстановить (id, seasonNum)'''
+  sea = ''
+  res = (id, sea)
+  r = re.search('S(\d*):(\d*)', id)
+  if r and r.group(2):
+    res = (r.group(2), int(r.group(1)))
+  return res
