@@ -1,3 +1,10 @@
+# [1.13.0-beta.5](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.13.0-beta.4...v1.13.0-beta.5) (2025-11-22)
+
+
+### Bug Fixes
+
+* Откат доработки изменения сезона из интерфейса. ([2c6c52a](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/2c6c52af929ad174800d6d05fe5afdb53e93b99a))
+
 # [1.13.0-beta.4](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.13.0-beta.3...v1.13.0-beta.4) (2025-11-21)
 
 
