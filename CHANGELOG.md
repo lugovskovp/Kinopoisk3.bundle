@@ -1,3 +1,13 @@
+## [1.13.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.13.0...v1.13.1) (2025-11-22)
+
+
+### Bug Fixes
+
+* add season choice stage 0 ([61c3da6](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/61c3da618c2ca647f7c31c783dc3aa6f95a1b246))
+* Валился на отсутствующем year у сериала ([beff1e6](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/beff1e6f0d744c0669e6baf5ea8ac1372c8b22f2))
+* Если неофициаьный кинопоиск не в сети - в логе отразить. ([bb1db71](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/bb1db71df2fc409bdbf70134cd3b3520d0f72723))
+* Откат доработки изменения сезона из интерфейса. ([2c6c52a](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/2c6c52af929ad174800d6d05fe5afdb53e93b99a))
+
 ## [1.13.1-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.13.0...v1.13.1-beta.1) (2025-11-22)
 
 
