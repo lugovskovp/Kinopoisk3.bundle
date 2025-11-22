@@ -3,7 +3,7 @@
 import re
 
 from config import *  #KEYWORD_SEARCH, API_BASE_URL, UNKNOWN_YEAR, MAX_VALID_YEAR, SCORE_WEIGH_JANRE, SCORE_WEIGHT_NAME, SCORE_WEIGHT_YEAR
-from debug import d, w, log_timing
+from debug import d, w  #, log_timing
 from utils import AppendSearchResult, translit2ru, get_json
 
   
