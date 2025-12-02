@@ -1,3 +1,10 @@
+## [1.13.1-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.13.1-beta.1...v1.13.1-beta.2) (2025-12-02)
+
+
+### Bug Fixes
+
+* [#50](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/50) доработана работа с json в поиске ([a5e6b97](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/a5e6b97e55d7dac54458158c6dd77d3d8e168c96))
+
 ## [1.13.1-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.13.0...v1.13.1-beta.1) (2025-11-22)
 
 
