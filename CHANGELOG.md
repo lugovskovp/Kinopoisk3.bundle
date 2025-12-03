@@ -1,3 +1,10 @@
+## [1.13.1-beta.4](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.13.1-beta.3...v1.13.1-beta.4) (2025-12-03)
+
+
+### Bug Fixes
+
+* @semantic-release/git@latest ([fdfc690](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/fdfc690370adee86f88a2074ec5ab6d30dde3336))
+
 ## [1.13.1-beta.3](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.13.1-beta.2...v1.13.1-beta.3) (2025-12-03)
 
 
