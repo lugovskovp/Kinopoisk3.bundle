@@ -1,3 +1,10 @@
+## [1.13.2-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.13.2-beta.1...v1.13.2-beta.2) (2025-12-04)
+
+
+### Bug Fixes
+
+* [#50](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/50) load_metadata ([cb06105](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/cb06105f5cbec02254b250d59d263a6e49cd8234))
+
 ## [1.13.1-beta.4](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.13.1-beta.3...v1.13.1-beta.4) (2025-12-03)
 
 
