@@ -1,3 +1,20 @@
+# [1.14.0](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.13.1...v1.14.0) (2025-12-04)
+
+
+### Bug Fixes
+
+* [#50](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/50) load_episodes load_distribution load_staff load_reviews load_gallery ([7d20be6](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/7d20be666ebf2af6b7309d91b8c395272fe3d5a3))
+* [#50](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/50) load_metadata ([cb06105](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/cb06105f5cbec02254b250d59d263a6e49cd8234))
+* [#50](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/50) доработана работа с json в поиске ([a5e6b97](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/a5e6b97e55d7dac54458158c6dd77d3d8e168c96))
+* @semantic-release/git@latest ([fdfc690](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/fdfc690370adee86f88a2074ec5ab6d30dde3336))
+* after tests ([fab886d](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/fab886da0733bbfc664a492bb61680ad42d29b63))
+* doc ([1feb042](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/1feb0427cfd2e7522364e0bf0d42b87c83e6de13))
+
+
+### Features
+
+* doc из readme убрал, что релиза еще не было. Таки всё, релиз. ([9482e4f](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/9482e4f3ec979f9b3ffdf69719e79fbbce62ebb0))
+
 # [1.14.0-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.13.2-beta.4...v1.14.0-beta.1) (2025-12-04)
 
 
