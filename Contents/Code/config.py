@@ -40,6 +40,7 @@ SERIAL_SEASONS    = '/api/v2.2/films/%s/seasons'
 MAX_DELTA_YEAR = 25 / 1 # вся бОльшая дельта - бессчысленна для скоринга
 UNKNOWN_YEAR = 1900     # значение неизвестного года
 MAX_VALID_YEAR  = 2035  # максимально допустимый год производства
+MAX_POSTERS_QTY   = 20
 SCORE_WEIGHT_NAME = 80  # % веса имени - при полном совпадении с найденным - 80
 SCORE_WEIGHT_YEAR = 15  # % веса года
 SCORE_WEIGH_JANRE = 5   # % веса типа фильма (для фильмов и сериалов в [ 'FILM', 'VIDEO', 'TV_SERIES', 'MINI_SERIES', 'TV_SHOW' ])

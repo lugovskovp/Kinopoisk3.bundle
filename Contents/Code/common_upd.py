@@ -3,8 +3,9 @@
 import re, datetime
 import requests             # [а к нему еще chardet, urllib3, certifi, idna]      # type: ignore 
 
-from config import API_BASE_URL, FILM_DETAILS, FILM_DISTRIBUTION, FILM_POSTERS, FILM_REVIEW, FILM_STAFF, SERIAL_SEASONS, UNKNOWN_YEAR
-from debug import d, log_timing       # w,, inspect_obj
+from config import API_BASE_URL, FILM_DETAILS, FILM_DISTRIBUTION, FILM_POSTERS, FILM_REVIEW, FILM_STAFF
+from config import SERIAL_SEASONS, UNKNOWN_YEAR, MAX_POSTERS_QTY
+from debug import d, w, log_timing       #  inspect_obj
 from utils import get_json, getGUIDs
 
 
@@ -83,9 +84,9 @@ def load_metadata(metadata, media, valid_names):
   metadata.summary = summary_add
   
   ## rating     A float between 0 and 10 specifying the movie’s rating.
-  metadata.rating = float(movie_data.get('ratingImdb', 0))
+  metadata.rating = float(movie_data.get('ratingImdb', '') or 0)
   if metadata.rating == 0:
-    metadata.rating = float('ratingKinopoisk', 0) 
+    metadata.rating = float(movie_data.get('ratingKinopoisk', '') or 0)
   '''
   "Rating": [
           {
@@ -114,12 +115,16 @@ def load_metadata(metadata, media, valid_names):
   #   trivia                    = Template.String()   A string containing trivia about the movie.
   #   quotes                    = Template.String()
   #   content_rating            = Template.String()
-  metadata.content_rating = movie_data.get('ratingMpaa', '').upper()
-  if not metadata.content_rating:
+  metadata.content_rating = movie_data.get('ratingMpaa', '')
+  if metadata.content_rating:
+    metadata.content_rating = metadata.content_rating.upper()
+  else:
     metadata.content_rating = movie_data.get('ratingAgeLimits', '')
-  metadata.content_rating_age = movie_data.get('ratingAgeLimits', 0)
-  if metadata.content_rating_age:
-    metadata.content_rating_age = int(metadata.content_rating_age.replace('age', ''))
+  # 'TV_Show' object has no attribute named 'content_rating_age'
+  if isAgentMovies:
+    metadata.content_rating_age = movie_data.get('ratingAgeLimits', 0)
+    if metadata.content_rating_age:
+      metadata.content_rating_age = int(metadata.content_rating_age.replace('age', ''))
 
   #   countries                 = Template.Set(Template.String())
   if 'country' in movie_data:
@@ -162,33 +167,31 @@ def load_episodes(metadata, media):
     d(u"\nsrch_and_score: Попытка поиска без ключа? %s" % seasons_json["message"])
     return
   
-  
   #seasons_qty = seasons_json.get('total')
-  for season_num, season_data in enumerate(seasons_json.get('items'), 1):    # 1,2...
+  for season_num, season_data in enumerate(seasons_json.get('items', []), 1):    # 1,2...
     d("Try process season_num %s in json" % season_num)
     if season_num not in media.seasons:      
         continue
     # отлично, есть локальные файлы из сезонов из найденного сезона
     Log("есть локальные файлы из season_num %s" % season_num)      # type: ignore
-    for episode_num, episode_data in enumerate(season_data.get('episodes'), 1):
+    for episode_num, episode_data in enumerate(season_data.get('episodes', []), 1):
       # по каждой серии   =Season2set or 
-      s_num = episode_data.get('seasonNumber')
-      e_num = episode_data.get('episodeNumber')
+      s_num = episode_data.get('seasonNumber', '')
+      e_num = episode_data.get('episodeNumber', '')
+      if not (s_num and e_num):
+        w('OOPS! Эпизод %s сезона %s' % (e_num, s_num))
+        continue
       Log("Эпизод %s сезона %s" % (e_num, s_num))      # type: ignore
       episode = metadata.seasons[s_num].episodes[e_num]
       episode.title = ''
       episode.originally_available_at = None
       episode.summary = ''
       #
-      title = episode_data.get('nameRu') or ''
-      titleE = episode_data.get('nameEn') or ''
-      d("title:%s, titleE:%s" % (title, titleE))
-      if not title and titleE:
-        title = titleE
-      else:
-        if titleE:
-          title = title + ' / ' + titleE
+      title = episode_data.get('nameRu', '') or episode_data.get('nameEn', '')
+      if episode_data.get('nameRu', '') and episode_data.get('nameEn', ''):
+        title += ' / ' + episode_data.get('nameEn', '')
       episode.title = title
+      #
       dat = episode_data.get('releaseDate') or ''
       if dat:
         episode.originally_available_at = datetime.datetime.strptime(dat, "%Y-%m-%d").date()
@@ -206,11 +209,13 @@ def load_distribution(metadata):
     return
   #[ LOCAL, COUNTRY_SPECIFIC, PREMIERE, ALL, WORLD_PREMIER ], subType : [ CINEMA, DVD, DIGITAL, BLURAY ] 
   for data in movie_data:
-    if data.get('type') == 'ALL':
-      metadata.originally_available_at = Datetime.ParseDate((data.get('date')).replace('00.', '01.'), '%Y-%m-%d').date()  # type: ignore
+    if data.get('type', '') == 'ALL':
+      dat = data.get('date', '')
+      if dat:
+        metadata.originally_available_at = Datetime.ParseDate(dat.replace('00.', '01.'), '%Y-%m-%d').date()  # type: ignore
       #   studio                    = Template.String() A string specifying the movie’s studio.
-      for comp in data.get('companies'):
-        metadata.studio = comp.get('name')  # so, only last like highlander  1981-12-02  Studio updated
+      for comp in data.get('companies', []):
+        metadata.studio = comp.get('name', '')  # so, only last like highlander  1981-12-02  Studio updated
   # d("===================update:load_distribution end, Duration=%s\n"  % (getMilliseconds(Datetime.Now()) - msStart))
     
   
@@ -243,10 +248,10 @@ def load_staff(metadata):
       @task # type: ignore
       def upd_member(metadata = metadata,
                      member = member):
-        prof = member.get('professionKey')
+        prof = member.get('professionKey', '')
         name = member.get('nameRu') if member.get('nameRu') else member.get('nameEn')
         url = member.get('posterUrl')
-        role_description = member.get('description')
+        role_description = member.get('description', '')
         if prof == 'DIRECTOR' and isAgentMovies:
           if name:
             director = metadata.directors.new()
@@ -284,7 +289,7 @@ def load_reviews(metadata):
   
   # Описание: загружать отзывы
   if not Prefs['desc_load_reviews']: # type: ignore
-    d(u"Обзоры не загружать (настройка Описание: загружать отзывы = false)")
+    d(u"Отзывы не загружать (настройка Описание: загружать отзывы = false)")
     metadata.reviews.clear()
     return
 
@@ -294,7 +299,7 @@ def load_reviews(metadata):
   @parallelize  # type: ignore
   def upd_reviews():
     metadata.reviews.clear()
-    for item in reviews_dict.get('items'):
+    for item in reviews_dict.get('items', []):
       @task # type: ignore
       def add_review(item = item,
                      metadata = metadata):
@@ -358,7 +363,7 @@ def load_gallery(metadata, valid_names, IsNeedPosters = True):
           art_dict = load_dict('STILL')
           if art_dict['total'] == 0:
             #тут рыбы нет, ну вообще нет
-            d("load_gallery: nothing %s finded")
+            w("load_gallery: nothing %s finded")
             return
 
   d("film='%s' id = %s, find total: %s" % (metadata.title, metadata.id, art_dict['total']))  
@@ -366,10 +371,10 @@ def load_gallery(metadata, valid_names, IsNeedPosters = True):
   @parallelize   # type: ignore
   def upd_posters():
     pref_max = int(Prefs['poster_limit'])         # type: ignore
-    max_posters = pref_max if pref_max else 30    # ну вот захардкодил 30 как 'очень много'
-    for i, mov in enumerate(art_dict.get('items')):
-      image_url = mov.get('imageUrl')
-      thumb_url = mov.get('previewUrl')
+    max_posters = pref_max if pref_max else MAX_POSTERS_QTY   # MAX_POSTERS_QTY как 'очень много'
+    for i, mov in enumerate(art_dict.get('items', [])):
+      image_url = mov.get('imageUrl', '')
+      thumb_url = mov.get('previewUrl', '')
       @task  # type: ignore # Create a task for updating poster
       def upd_poster( i=i, 
                       image_url=image_url, 
