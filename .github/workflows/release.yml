@@ -34,16 +34,17 @@ jobs:
             fetch-depth: 0
     
         - name: Release
-          uses: cycjimmy/semantic-release-action@v4
+          # uses: cycjimmy/semantic-release-action@v4
+          uses: cycjimmy/semantic-release-action@v6
           with:
             semantic_version: 24
             #@semantic-release/exec
             extra_plugins: |
                 @semantic-release/changelog@v6
-                @semantic-release/git@v10
+                @semantic-release/git@latest
                 conventional-changelog-eslint@3.0.9
                 conventional-changelog-conventionalcommits@5.0.0
-                @semantic-release/exec@v7
+                @semantic-release/exec@latest
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

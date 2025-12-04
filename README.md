@@ -1,5 +1,3 @@
-> [!CAUTION]
-> <h2>БЕТА, РЕЛИЗА ЕЩЕ НЕ БЫЛО</h2>
 <!-- https://github.com/orgs/community/discussions/16925 -->
 
 # Кинопоиск3 - плагин для Plex Media Server (PMS)
@@ -22,6 +20,7 @@
 Увы, последнее обновление которого осталось в марте 2021, последующие изменения в API kinopoiskapiunofficial.tech сделали этот плагин малопригодным для использования.</br>
 - [Проверка kinopoiskapiunofficial online](https://2ip.io/a/kinopoiskapiunofficial.tech/)
 -[еще одно апи](https://api.poiskkino.dev/documentation)
+
 
 ## Назначение
 Плагин для [Plex Media Server (PMS)](https://www.plex.tv/) - медиасервера для NAS - позволяющий получить метаданные для файлов фильмов и сериалов через  [неофициальное API](https://kinopoiskapiunofficial.tech/) к информации по фильмам и сериалам сайта [Кинопоиск](https://www.kinopoisk.ru/).

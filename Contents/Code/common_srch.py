@@ -3,7 +3,7 @@
 import re
 
 from config import *  #KEYWORD_SEARCH, API_BASE_URL, UNKNOWN_YEAR, MAX_VALID_YEAR, SCORE_WEIGH_JANRE, SCORE_WEIGHT_NAME, SCORE_WEIGHT_YEAR
-from debug import d, w, log_timing
+from debug import d, w  #, log_timing
 from utils import AppendSearchResult, translit2ru, get_json
 
   
@@ -89,6 +89,7 @@ class srch_params():
     str_search += "]"
     return str_search
 
+
 #@log_timing  #очень много в лог
 def srch_and_score(srch, finded, results):
   #   1. поиск по элементам массива названий и добавление в результаты без пересечения 
@@ -107,22 +108,19 @@ def srch_and_score(srch, finded, results):
         return
     if resp_json is None:
       continue
-    try:
-      i = resp_json['searchFilmsCountResult']
-      d(u"---- По [%s] всего найдено %s фильмов" % (title, i))
-    except: 
-      i = 0
+    i = resp_json.get('searchFilmsCountResult', '0')
+    d(u"---- По [%s] всего найдено %s фильмов" % (title, i))
     if 'films' in resp_json and i:
       # [Feature] Настройка - для сериалов при поиске не показывать найденные фильмы #49
-      films_list = resp_json['films']
+      films_list = resp_json.get('films')
       if not srch.isAgentMovies and Prefs["showOnlySerials"]:  # type: ignore
-        films_list = list(filter(lambda x: x['type'] in ['TV_SERIES', 'MINI_SERIES', 'TV_SHOW'], resp_json['films']))
+        films_list = list(filter(lambda x: x.get('type') in ['TV_SERIES', 'MINI_SERIES', 'TV_SHOW'], resp_json.get('films')))
       # И теперь пройти по каждому
       for movie in films_list:
         # А нет ли этого id уже в найденых?
-        if not movie['filmId'] in finded_id:  # "searchFilmsCountResult" - wonka : 18, вонка : 15
+        if not movie.get('filmId') in finded_id:  # "searchFilmsCountResult" - wonka : 18, вонка : 15
           # добавляем в результат
-          finded_id.append(movie['filmId'])
+          finded_id.append(movie.get('filmId'))
           finded['films'].append(movie)
   d("==== Итог: %s фильмов" % len(finded['films']))  # Итого - 14
 
@@ -131,13 +129,10 @@ def srch_and_score(srch, finded, results):
     d("\n---------------------- начинаем score-инг: дистанция левенштейна, год")
     for movie in finded['films']:# 
       movie['score'] = 0
-      d("srch_and_score:score: %s" % srch.str_titles)
+      # d("srch_and_score:score: %s" % srch.str_titles)
       # скорининг:   по type - [ 'FILM', 'VIDEO', 'TV_SERIES', 'MINI_SERIES', 'TV_SHOW' ]
-      finded_type = ''
       vscore_ratio = 0 / 1
-      try:
-        finded_type = movie['type']
-      except: pass
+      finded_type = movie.get('type', '')
       if srch.isAgentMovies:
         if finded_type == 'FILM':
           vscore_ratio = 1
@@ -151,33 +146,29 @@ def srch_and_score(srch, finded, results):
         elif finded_type == 'TV_SHOW':
           vscore_ratio = 8 / 10
       vscore = int(SCORE_WEIGH_JANRE * vscore_ratio)
-      d("type score:%i %f [%s]" % (vscore, vscore_ratio, finded_type))
+      #d("type score:%i %f [%s]" % (vscore, vscore_ratio, finded_type))
       movie['score'] = movie['score'] + vscore 
 
       # скорининг: дистанция левенштейна
-      nameRu = ''
-      nameEn = ''
-      try:
-        nameRu = movie['nameRu']
-      except: pass
-      try:
-        nameEn = movie['nameEn']
-      except: pass
+      nameRu = movie.get('nameRu', '')
+      nameEn = movie.get('nameEn', '')
       lscor = 0         # levenstain score
       # для каждого варианта написания - ищем максимальное совпадение с найденным
       for title in srch.titles:
-        curr_lscor = lev_score(nameRu, nameEn, title)
+        levR = lev_ratio(title, nameRu) if nameRu else 0
+        levE = lev_ratio(title, nameEn) if nameEn else 0
+        curr_lscor = int(SCORE_WEIGHT_NAME * max(levR, levE)) 
         if curr_lscor > lscor:
           lscor = curr_lscor
-      d("name score:%i [%s|%s]" % (lscor, nameRu, nameEn))
+      #d("name score:%i [%s|%s]" % (lscor, nameRu, nameEn))
       movie['score'] = movie['score'] + lscor
     
       # скорининг: год
       finded_year = UNKNOWN_YEAR
       delta = -1
-      try:
-        finded_year = int(movie['year'][:4]) if movie['year'].isdigit() else UNKNOWN_YEAR
-      except: pass
+      year = movie.get('year')
+      if year.isdigit():
+        finded_year = int(year[:4])
       if srch.year == UNKNOWN_YEAR or finded_year == UNKNOWN_YEAR:
         #
         yscore = int(0.8 * SCORE_WEIGHT_YEAR)
@@ -186,11 +177,13 @@ def srch_and_score(srch, finded, results):
         delta = abs(srch.year - finded_year)
         if delta >= MAX_DELTA_YEAR:
           yscore = 0    # too big delta
+          w("Too big year delta, score year=0 : srch:%s find:%s" % (srch.year, finded_year))
         else:
-          yscore = int(SCORE_WEIGHT_YEAR * (1 - delta/MAX_DELTA_YEAR))
-      d("year score:%i [%s::%s] delta=%s" % (yscore, srch.year, finded_year, delta))
+          yscore = int(SCORE_WEIGHT_YEAR * (1.0 - float(delta)/float(MAX_DELTA_YEAR)))  # https://stackoverflow.com/questions/21316968/integer-division-in-python-2-and-python-3
+      #d("year score:%i [%s::%s] delta=%s" % (yscore, srch.year, finded_year, delta))
       movie['score'] = movie['score'] + yscore
-      d(" SUM score:%i [%s]" % (movie['score'], srch.str_titles)) 
+      #d(" SUM score:%i [%s]" % (movie['score'], srch.str_titles)) 
+
 
 #@log_timing  #очень много в лог     
 def srch_mkres(srch, finded, results):      # >>>>>>> end::srch_mkres, duration=15
@@ -201,10 +194,9 @@ def srch_mkres(srch, finded, results):      # >>>>>>> end::srch_mkres, duration=
   TypeFinded = {'FILM':'F', 'VIDEO':'V', 'TV_SERIES':'S', 'MINI_SERIES':'M', 'TV_SHOW':'T'}
   for i, movie in enumerate(finded['films']):
     # формирование строк меню
-    id = movie["filmId"]        #MUST be
+    id = movie.get("filmId")        #MUST be
     title = ""
     # Отображать тип: F:фильм, M:многосерийный, V:видео, S:сериал, T:tv-шоу
-    # if Prefs['showTypes'] and (srch.isAgentMovies or not Prefs["showSerialSeasons"]): 
     if Prefs['showTypes']:  # and srch.isAgentMovies:                # type: ignore 
       b=''
       try:
@@ -212,52 +204,38 @@ def srch_mkres(srch, finded, results):      # >>>>>>> end::srch_mkres, duration=
       except: pass
       if b:                               # если не упал в эксепшн
          title += u"%s: " % b
+    # "В найденных отображать и русское наименование, и английское"
     if Prefs['show2names']:             # type: ignore # "В найденных отображать и русское наименование, и английское"
-      if 'nameRu' in movie:
-        title += movie['nameRu']
-      if len(title) > 0 and 'nameEn' in movie:
-        title += '/'
-      if 'nameEn' in movie:
-        title += movie['nameEn']
+      tt = movie.get('nameRu', '')
+      if tt and 'nameEn' in movie:
+        tt += '/'
+      tt += movie.get('nameEn', '')
+      title += tt
     else:
-      title = movie['nameRu'] if 'nameRu' in movie else movie['nameEn']
-    if Prefs['showCountry']:             # type: ignore #"В найденных отображать страну произодства"
+      title += movie['nameRu'] if 'nameRu' in movie else movie.get('nameEn')
+    #"В найденных отображать страну произодства"
+    if Prefs['showCountry']:             # type: ignore 
       if 'countries' in movie and len(movie['countries']) > 0:
         title = title + ' [%s' % movie['countries'][0]['country']
         if len(movie['countries']) > 1:
           title += ',..]'
         else:
           title += ']'
-    if Prefs['showGenre']:                # type: ignore #"В найденных отображать жанр (первый, если несколько)"
+    #"В найденных отображать жанр (первый, если несколько)"
+    if Prefs['showGenre']:                # type: ignore 
       if 'genres' in movie:
         try:
           title = title + ' %s' % movie['genres'][0]['genre']
         except: pass
-    if Prefs['showDescr']:                # type: ignore #"В найденных отображать первое предложение описания"
+    #"В найденных отображать первое предложение описания"
+    if Prefs['showDescr']:                # type: ignore 
       if 'description' in movie:
         title = title + ' %s' % movie['description'].split(".")[0]
-    year = int(movie['year'][:4]) if movie['year'].isdigit() else UNKNOWN_YEAR
+    year = int(movie['year'][:4]) if movie.get('year').isdigit() else UNKNOWN_YEAR
     lang = 'ru' if 'nameRu' in movie else 'en'    # вот такой гадкий хардкод
     score = movie['score']
-    Log("score%02i:%i '%s'" % (i, score, title))    # type: ignore
+    Log("score_%02i=%i '%s'" % (i, score, title))    # type: ignore
 
-    # # Настройка "для сериалов возможность ручного выбора сезона"
-    # if not srch.isAgentMovies and Prefs["showSerialSeasons"] and srch.isManual:  # type: ignore
-    #   # получить количество сезонов
-    #   arrSeasons = getSeasonsList(id) 
-    #   for sNum, sYear in reversed(arrSeasons):
-    #     # перед заголовком ставится сезон и год типа S01-2025:
-    #     title1 = "%s-%s:%s" % (sNum, sYear, title)
-    #     id1 = "%s:%i" % (sNum, id)
-    #     # Log("score%02i:%i '%s'" % (i, score, title))    # type: ignore
-    #     Log("Manual seasons: score%02i: %i '%s %s'" % (i, score, title1, id1))    # type: ignore
-    #     AppendSearchResult(results=results,
-    #                   id = id1,
-    #                   name = title1,
-    #                   year = year,
-    #                   score = score,
-    #                   lang = lang)
-    # else:
     AppendSearchResult(results=results,
                       id = id,
                       name = title,
@@ -281,29 +259,3 @@ def lev_ratio(s1, s2):
   except:
     pass
   return ratio
-
-
-def lev_score(nameRu, nameEn, title):
-  # scoring по имени
-  lev = max(lev_ratio(title, nameRu), lev_ratio(title, nameEn))     # levR if levR > levE else levE
-  score = int(SCORE_WEIGHT_NAME * lev)  # тут score max = SCORE_WEIGHT_NAME
-  return score
-
-# not used
-def getSeasonsList(kpid):
-  ''' Возвращает массив tuiples ('S01', ' 2022')'''
-  res =[]
-  seasons_json = get_json(API_BASE_URL + SERIAL_SEASONS % kpid)
-  if not seasons_json: 
-    return res
-  for season in seasons_json['items']:
-    # "releaseDate": "2024-01-02"
-    s = "S%02d" % int(season['number'])
-    y = season['episodes'][0]['releaseDate']
-    if y:
-      y = y[:4]
-    else:
-      y = '0000'
-    res.append( (s, y ) )
-  #Log("\n\n%s" % res)   # type: ignore
-  return res
