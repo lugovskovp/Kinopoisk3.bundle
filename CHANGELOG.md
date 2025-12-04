@@ -1,3 +1,10 @@
+# [1.14.0-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.13.2-beta.4...v1.14.0-beta.1) (2025-12-04)
+
+
+### Features
+
+* doc из readme убрал, что релиза еще не было. Таки всё, релиз. ([9482e4f](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/9482e4f3ec979f9b3ffdf69719e79fbbce62ebb0))
+
 ## [1.13.2-beta.4](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.13.2-beta.3...v1.13.2-beta.4) (2025-12-04)
 
 
