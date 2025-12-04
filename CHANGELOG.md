@@ -1,3 +1,10 @@
+## [1.13.2-beta.3](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.13.2-beta.2...v1.13.2-beta.3) (2025-12-04)
+
+
+### Bug Fixes
+
+* [#50](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/50) load_episodes load_distribution load_staff load_reviews load_gallery ([7d20be6](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/7d20be666ebf2af6b7309d91b8c395272fe3d5a3))
+
 ## [1.13.2-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.13.2-beta.1...v1.13.2-beta.2) (2025-12-04)
 
 
