@@ -129,7 +129,7 @@ def srch_and_score(srch, finded, results):
     d("\n---------------------- начинаем score-инг: дистанция левенштейна, год")
     for movie in finded['films']:# 
       movie['score'] = 0
-      d("srch_and_score:score: %s" % srch.str_titles)
+      # d("srch_and_score:score: %s" % srch.str_titles)
       # скорининг:   по type - [ 'FILM', 'VIDEO', 'TV_SERIES', 'MINI_SERIES', 'TV_SHOW' ]
       vscore_ratio = 0 / 1
       finded_type = movie.get('type', '')

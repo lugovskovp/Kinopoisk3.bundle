@@ -122,9 +122,9 @@ def load_metadata(metadata, media, valid_names):
     metadata.content_rating = movie_data.get('ratingAgeLimits', '')
   # 'TV_Show' object has no attribute named 'content_rating_age'
   if isAgentMovies:
-    metadata.content_rating_age = movie_data.get('ratingAgeLimits', 0)
-    if metadata.content_rating_age:
-      metadata.content_rating_age = int(metadata.content_rating_age.replace('age', ''))
+    val = movie_data.get('ratingAgeLimits', 0)
+    if val:
+      metadata.content_rating_age = int(val.replace('age', ''))
 
   #   countries                 = Template.Set(Template.String())
   if 'country' in movie_data:
