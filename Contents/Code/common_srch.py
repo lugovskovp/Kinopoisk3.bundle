@@ -146,7 +146,7 @@ def srch_and_score(srch, finded, results):
         elif finded_type == 'TV_SHOW':
           vscore_ratio = 8 / 10
       vscore = int(SCORE_WEIGH_JANRE * vscore_ratio)
-      d("type score:%i %f [%s]" % (vscore, vscore_ratio, finded_type))
+      #d("type score:%i %f [%s]" % (vscore, vscore_ratio, finded_type))
       movie['score'] = movie['score'] + vscore 
 
       # скорининг: дистанция левенштейна
@@ -160,7 +160,7 @@ def srch_and_score(srch, finded, results):
         curr_lscor = int(SCORE_WEIGHT_NAME * max(levR, levE)) 
         if curr_lscor > lscor:
           lscor = curr_lscor
-      d("name score:%i [%s|%s]" % (lscor, nameRu, nameEn))
+      #d("name score:%i [%s|%s]" % (lscor, nameRu, nameEn))
       movie['score'] = movie['score'] + lscor
     
       # скорининг: год
@@ -180,9 +180,9 @@ def srch_and_score(srch, finded, results):
           w("Too big year delta, score year=0 : srch:%s find:%s" % (srch.year, finded_year))
         else:
           yscore = int(SCORE_WEIGHT_YEAR * (1.0 - float(delta)/float(MAX_DELTA_YEAR)))  # https://stackoverflow.com/questions/21316968/integer-division-in-python-2-and-python-3
-      d("year score:%i [%s::%s] delta=%s" % (yscore, srch.year, finded_year, delta))
+      #d("year score:%i [%s::%s] delta=%s" % (yscore, srch.year, finded_year, delta))
       movie['score'] = movie['score'] + yscore
-      d(" SUM score:%i [%s]" % (movie['score'], srch.str_titles)) 
+      #d(" SUM score:%i [%s]" % (movie['score'], srch.str_titles)) 
 
 
 #@log_timing  #очень много в лог     
@@ -234,7 +234,7 @@ def srch_mkres(srch, finded, results):      # >>>>>>> end::srch_mkres, duration=
     year = int(movie['year'][:4]) if movie.get('year').isdigit() else UNKNOWN_YEAR
     lang = 'ru' if 'nameRu' in movie else 'en'    # вот такой гадкий хардкод
     score = movie['score']
-    Log("score%02i:%i '%s'" % (i, score, title))    # type: ignore
+    Log("score_%02i=%i '%s'" % (i, score, title))    # type: ignore
 
     AppendSearchResult(results=results,
                       id = id,

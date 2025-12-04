@@ -3,8 +3,8 @@
 import re, datetime
 import requests             # [а к нему еще chardet, urllib3, certifi, idna]      # type: ignore 
 
-from config import API_BASE_URL, FILM_DETAILS, FILM_DISTRIBUTION, FILM_POSTERS, FILM_REVIEW, FILM_STAFF, SERIAL_SEASONS
-from debug import d, w, log_timing, inspect_obj
+from config import API_BASE_URL, FILM_DETAILS, FILM_DISTRIBUTION, FILM_POSTERS, FILM_REVIEW, FILM_STAFF, SERIAL_SEASONS, UNKNOWN_YEAR
+from debug import d, log_timing       # w,, inspect_obj
 from utils import get_json, getGUIDs
 
 
@@ -18,7 +18,6 @@ def load_metadata(metadata, media, valid_names):
   movie_data = get_json(API_BASE_URL + FILM_DETAILS % metadata.id)
   if not movie_data or not metadata.id:
     return
-  
   # добавить   "imdbId": "tt0379786",
   # now media.guid like :kp722886:
   Guids = getGUIDs(media.guid)
@@ -36,70 +35,57 @@ def load_metadata(metadata, media, valid_names):
 
   #   title                     = Template.String()
   repls = (u' (видео)', u' (ТВ)', u' (мини-сериал)', u' (сериал)')
-  title = reduce(lambda a, kv: a.replace(kv, ''), repls, movie_data.get('nameRu')) # type: ignore
+  title = reduce(lambda a, kv: a.replace(kv, ''), repls, movie_data.get('nameRu', '')) # type: ignore
   metadata.title = title
 
   if isAgentMovies:
     #   year                      = Template.Integer()
-    if movie_data.get('year'):
-      metadata.year = int(movie_data.get('year'))
-    else:
-      metadata.year = ''
-    if metadata.year == 0:
-      metadata.year = ''
+    metadata.year = movie_data.get('year', str(UNKNOWN_YEAR))
     
     #   originally_available_at   = Template.Date()   A dateobject specifying the movie’s original release date.
     #   tagline                   = Template.String()
-    metadata.tagline = movie_data.get('slogan')
-    
+    metadata.tagline = movie_data.get('slogan', '')
   #   summary                   = Template.String()
   summary_add = ''
   # "Описание: отображать слоган фильма"
   if Prefs['desc_show_slogan']: # type: ignore
-    val = movie_data.get('shortDescription')
+    val = movie_data.get('shortDescription', '')
     if val:
       summary_add += "%s\n" % val
-      d(u"   Девиз = %s" % summary_add)
+      d(u"desc_show_slogan:   Девиз = %s" % summary_add)
   #  "Описание: отображать рейтинг Кинопоиск"
   if Prefs['desc_rating_kp']: # type: ignore
-    val = movie_data.get('ratingKinopoisk')
+    val = movie_data.get('ratingKinopoisk', '')
     if val:
       summary_add += u'КиноПоиск: %s' % val
-      val1 = movie_data.get('ratingKinopoiskVoteCount')
+      val1 = movie_data.get('ratingKinopoiskVoteCount', '')
       if val1:
         summary_add += ' (%s)' % val1
-      d(u"   'КиноПоиск: %s(%s) " % (val, val1))
+      d(u"desc_rating_kp:   'КиноПоиск: %s(%s) " % (val, val1))
       summary_add += '\n'
   # "Описание: отображать рейтинг IMDB"
   if Prefs['desc_rating_imdb']: # type: ignore
-    val = movie_data.get('ratingImdb')
+    val = movie_data.get('ratingImdb', '')
     if val:
       summary_add += u'IMDB: %s' % val
-      val1 = movie_data.get('ratingImdbVoteCount')
+      val1 = movie_data.get('ratingImdbVoteCount', '')
       if val1:
         summary_add += ' (%s)' % val1
       summary_add += '\n'
   #
-  try:
-    summary_add += movie_data.get('description')
-  except:  pass
+  summary_add += movie_data.get('description', '')
   #[Feature request] ссылка на инфо о фильме на кинопоиск #32
-  if Prefs['desc_add_links']: # type: ignore
-    summary_add += "\n" + movie_data.get('webUrl') + "\n"
-    if movie_data.get('imdbId'):
+  if Prefs['desc_add_links']:       # type: ignore
+    summary_add += "\n" + movie_data.get('webUrl', '') + "\n"
+    if movie_data.get('imdbId', ''):
       summary_add += 'https://www.imdb.com/title/' + movie_data.get('imdbId') + '/'
   # Всё, что сложилось - в описание
   metadata.summary = summary_add
   
   ## rating     A float between 0 and 10 specifying the movie’s rating.
-  metadata.rating = 0.0
-  try:
-    metadata.rating = float(movie_data.get('ratingImdb'))
-  except:  pass
+  metadata.rating = float(movie_data.get('ratingImdb', 0))
   if metadata.rating == 0:
-    try:
-      metadata.rating = float('ratingKinopoisk')
-    except:  pass 
+    metadata.rating = float('ratingKinopoisk', 0) 
   '''
   "Rating": [
           {
@@ -125,52 +111,41 @@ def load_metadata(metadata, media, valid_names):
         ]
   '''
 
-
   #   trivia                    = Template.String()   A string containing trivia about the movie.
   #   quotes                    = Template.String()
   #   content_rating            = Template.String()
-  val = movie_data.get('ratingMpaa')
-  if val:
-    metadata.content_rating = val.upper()
-  else:
-    val = movie_data.get('ratingAgeLimits')
-    metadata.content_rating = val
-  #   content_rating_age        = Template.Integer()
-  try:
-    metadata.content_rating_age = int(movie_data.get('ratingAgeLimits').replace('age', '') or 0)
-  except:  pass
+  metadata.content_rating = movie_data.get('ratingMpaa', '').upper()
+  if not metadata.content_rating:
+    metadata.content_rating = movie_data.get('ratingAgeLimits', '')
+  metadata.content_rating_age = movie_data.get('ratingAgeLimits', 0)
+  if metadata.content_rating_age:
+    metadata.content_rating_age = int(metadata.content_rating_age.replace('age', ''))
+
   #   countries                 = Template.Set(Template.String())
-  countries = []
-  for country in movie_data.get('countries'):
-    countries.append(country.get('country'))
-  metadata.countries = countries
+  if 'country' in movie_data:
+    metadata.countries =[]
+    for country in movie_data.get('countries'):
+      metadata.countries.append(country.get('country'), '')
   
   #   chapters                  = Template.Set(Chapter()) 
   ##  original_title       A string specifying the movie’s original title.
-  val = movie_data.get('nameOriginal') 
-  metadata.original_title = val if val else movie_data.get('nameEn')
+  val = movie_data.get('nameOriginal', '') 
+  metadata.original_title = val if val else movie_data.get('nameEn', '')
   
   ## genres        A set of strings specifying the movie’s genre  
-  genres = []
-  for genre in movie_data.get('genres'):
-      genres.append(genre.get('genre'))
-  metadata.genres = genres       
+  arr = []
+  for genre in movie_data.get('genres', []):
+    arr.append(genre.get('genre', ''))
+  metadata.genres = arr
   
   ## posters     A container of proxy objects representing the movie’s posters. See below for information about proxy objects.
-  
-  try:
-    d("   === load meta start posterUrlPreview %s" % movie_data.get('posterUrlPreview'))
-    #c "c:\Users\plugo\AppData\Local\Plex Media Server\Plug-ins\MoviePosterDB.bundle\Contents\Code\__init__.py" 
-    image_url = movie_data.get('posterUrl')
-    thumb_url = movie_data.get('posterUrlPreview')
-    #metadata.posters[image_url] = Proxy.Preview(HTTP.Request(thumb_url), sort_order=0)
+  d("   === load meta start posterUrlPreview %s" % movie_data.get('posterUrlPreview'))
+  image_url = movie_data.get('posterUrl', '')
+  thumb_url = movie_data.get('posterUrlPreview', '')
+  if image_url and thumb_url:
     metadata.posters[image_url] = Proxy.Preview(requests.get(thumb_url).content, sort_order=0) # type: ignore
     valid_names.append(image_url)
-    #metadata.posters.validate_keys(valid_names)  #только после ВСЕХ posters
-  except:    pass
-  # d("===================update:load_meta end, Duration=%s\n"  % (getMilliseconds(Datetime.Now()) - msStart))
-  ## themes    A container of proxy objects representing the movie’s theme music. 
-
+    
 
 @log_timing
 def load_episodes(metadata, media):
