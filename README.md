@@ -1,6 +1,6 @@
 <!-- https://github.com/orgs/community/discussions/16925 -->
 
-# Кинопоиск3 - плагин для Plex Media Server (PMS)
+# Кинопоиск3 - плагин Агент для Plex Media Server (PMS)
 <!-- https://shields.io/badges/git-hub-release -->
 ![CI][release-image]
 [![][version-image]][changelog-url]
@@ -13,13 +13,24 @@
 
 # Почему и зачем
 <details>
-<summary>Вместо многих слов</summary>
+<summary>Вместо многих слов - нажать мышкой на данную строку - ...-&gt;</summary>
 <img src="https://github.com/lugovskovp/Kinopoisk3.bundle/blob/master/pix/about_srch.png" alt="Пример">
 </details>
 В первую очередь хочу выразить искреннюю благодарность и восхищение Artem Mirotin aka [@amirotin](https://github.com/amirotin), Aleksey Ganuta aka [@Jenstel](https://github.com/Jenstel) и Vladimir Sharapov aka @EvelRus, которые являются авторами плагина для Plex Media Server (PMS) [Kinopoisk.bundle](https://github.com/Jenstel/Kinopoisk.bundle).</br>
 Увы, последнее обновление которого осталось в марте 2021, последующие изменения в API kinopoiskapiunofficial.tech сделали этот плагин малопригодным для использования.</br>
 - [Проверка kinopoiskapiunofficial online](https://2ip.io/a/kinopoiskapiunofficial.tech/)
 -[еще одно апи](https://api.poiskkino.dev/documentation)
+
+
+## Plex scanner + Plex agent.
+Управление медиаколлекциями в PMS реализовано совместной последовательной работой двух сущностей: Plex scanner и Plex agent. 
+
+### Plex scanner
+Сканнер  собирает информацию из файлов (крайне редко - из наименований директорий) на диске пользователя - наименование, год выпуска, номер сезона и серии у сериала, тип медиа, длительность и т.п. Если в наименовании файла эпизода сериала нет последовательности типа S01E02 или s01.e02 (для второй серии первого сезона), считается, что этот эпизод относится к первому сезону - даже если несколько папок содержат 1, 2 и т.п. эпизоды. В настройках библиотеки сканнер по-умолчанию это Plex Movie Scanner или Plex Series Scanner.
+
+### Plex agent.
+Агент, используя информацию уже собранную сканнером, производит поиск в интернете и сопоставление найденной информации ранее уже созданному сканнером объъекту. </br>
+И вот данный плагин является именно агентом.
 
 
 ## Назначение
@@ -76,28 +87,28 @@
 Кроме того, что реализовано для метаданных в фильмах, для сериалов плагин еще и:
 
 <details>
-<summary>Умеет работать с несколькими сезонами</summary>
+<summary>Умеет работать с несколькими сезонами ...-&gt;</summary>
 <img src="https://github.com/lugovskovp/Kinopoisk3.bundle/blob/master/pix/ser_2_seasones.png" alt="Несколько сезонов сериала">
 </details>
 
 <details>
-<summary>Отображает наименования отдельных серий</summary>
+<summary>Отображает наименования отдельных серий ...-&gt;</summary>
 <img src="https://github.com/lugovskovp/Kinopoisk3.bundle/blob/master/pix/ser_ser_names.png" alt="В списке серий сезона - наименования серий">
 </details>
 
 <details>
-<summary>Подробная информация и синопсис каждой серии</summary>
+<summary>Подробная информация и синопсис каждой серии ...-&gt;</summary>
 <img src="https://github.com/lugovskovp/Kinopoisk3.bundle/blob/master/pix/ser_one_serie.png" alt="Подробная информация о каждой серии">
 </details>
 
 <details>
-<summary>Загружает список актеров</summary>
+<summary>Загружает список актеров ...-&gt;</summary>
 Что мне НЕ нравится - в кружках фото от кинопоиска режет головы.
 <img src="https://github.com/lugovskovp/Kinopoisk3.bundle/blob/master/pix/ser_actors.png" alt="Актерский состав">
 </details>
 
 <details>
-<summary>Многопоточно грузит постеры и фоны</summary>
+<summary>Многопоточно грузит постеры и фоны ...-&gt;</summary>
 По умолчанию назначается первый попавшийся, но в настройках можно выбрать и другой.
 <img src="https://github.com/lugovskovp/Kinopoisk3.bundle/blob/master/pix/ser_posters.png" alt="Постеры и фоны">
 </details>
@@ -186,7 +197,7 @@ synopkg restart PlexMediaServer
 ```
 
 <details>
-<summary>После рестарта может случиться так, что плагин не виден в интерфейсе Plex.</summary>
+<summary>После рестарта может случиться так, что плагин не виден в интерфейсе Plex. ...-&gt;</summary>
 Может помочь "Настройки - Управлять - Очистка пакетов"
 <img src="https://github.com/lugovskovp/Kinopoisk3.bundle/blob/master/pix/clear.png" alt="Настройки - Управлять - Очистка пакетов">
 </details>
@@ -238,13 +249,13 @@ synopkg restart PlexMediaServer
 
 <details>
 <summary>Первая буква на скрине - "отображать тип: F:фильм, M:многосерийный, V:видео, S:сериал, T:tv-шоу"
-Через слеш - "отображать не только русское наименование, но еще и английское"</summary>
+Через слеш - "отображать не только русское наименование, но еще и английское" ...-&gt;</summary>
 <img src="https://github.com/lugovskovp/Kinopoisk3.bundle/blob/master/pix/pref-search-1.png" alt="Первая буква и оригинальное имя">
 </details>
 
 <details>
 <summary>На следующем скрине вид, где настройки отображения типа и отображения оригинального наименования = false, чекбоксы без галочек.
-Зато активны настройки "отображать страну произодства" (если несколько, то только первая страна будет видна, но добавится многоточие) и жанр.</summary>
+Зато активны настройки "отображать страну произодства" (если несколько, то только первая страна будет видна, но добавится многоточие) и жанр. ...-&gt;</summary>
 <img src="https://github.com/lugovskovp/Kinopoisk3.bundle/blob/master/pix/pref-search-2.png" alt="Страна производства и жанр">
 </details>
 
@@ -258,7 +269,7 @@ synopkg restart PlexMediaServer
 - Описание: добавить ссылки на кинопоиск и IMDB
 
 <details>
-<summary>Внешний вид действия настроек на описание</summary>
+<summary>Внешний вид действия настроек на описание ...-&gt;</summary>
 Примечаение: Увы, Plex не позволяет добавлять сторонние ссылки, поэтому "ссылки на кинопоиск и IMDB" используемы только на компьютере - выделение мышкой в браузере и копипаст. 
 <img src="https://github.com/lugovskovp/Kinopoisk3.bundle/blob/master/pix/pref-show-1.png" alt="Описание">
 </details>
