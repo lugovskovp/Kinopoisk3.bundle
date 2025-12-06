@@ -1,3 +1,10 @@
+# [1.14.0-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.14.0-beta.1...v1.14.0-beta.2) (2025-12-06)
+
+
+### Bug Fixes
+
+* updater log сообщение об успешном завершении обновления. ([917310a](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/917310a48da7cefad67f63376830d75d5c50e883))
+
 # [1.14.0-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.13.2-beta.4...v1.14.0-beta.1) (2025-12-04)
 
 
