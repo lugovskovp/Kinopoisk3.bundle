@@ -35,7 +35,13 @@ def load_metadata(metadata, media, valid_names):
   '''
 
   #   title                     = Template.String()
-  ru_name = movie_data.get('nameRu', '')
+  '''
+  5170232
+  "nameRu": null,
+  "nameEn": null,
+  "nameOriginal": "Trigger",
+  '''
+  ru_name = movie_data.get('nameRu', '') or movie_data.get('nameEn', '') or movie_data.get('nameOriginal', '')
   if ru_name:
     repls = (u' (видео)', u' (ТВ)', u' (мини-сериал)', u' (сериал)')
     title = reduce(lambda a, kv: a.replace(kv, ''), repls, ru_name) # type: ignore
