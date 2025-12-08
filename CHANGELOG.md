@@ -1,3 +1,10 @@
+## [1.14.1-beta.4](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.14.1-beta.3...v1.14.1-beta.4) (2025-12-08)
+
+
+### Bug Fixes
+
+* не всегда есть русское название movie_data.get('nameRu', '') ([c84560d](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/c84560d20457505fd8af05e37287c3ee2ea55d17))
+
 ## [1.14.1-beta.3](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.14.1-beta.2...v1.14.1-beta.3) (2025-12-08)
 
 
