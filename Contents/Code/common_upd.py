@@ -23,8 +23,8 @@ def load_metadata(metadata, media, valid_names):
   # now media.guid like :kp722886:
   Guids = getGUIDs(media.guid)
   if not Guids['imdbId']:
-    if movie_data.get('imdbId'):
-        imdbIdguid = movie_data.get('imdbId')
+    if movie_data.get('imdbId', ''):
+        imdbIdguid = movie_data.get('imdbId', '')
         if imdbIdguid:
           media.guid = media.guid + imdbIdguid
   Log(getGUIDs(media.guid))    # type: ignore
@@ -35,9 +35,11 @@ def load_metadata(metadata, media, valid_names):
   '''
 
   #   title                     = Template.String()
-  repls = (u' (видео)', u' (ТВ)', u' (мини-сериал)', u' (сериал)')
-  title = reduce(lambda a, kv: a.replace(kv, ''), repls, movie_data.get('nameRu', '')) # type: ignore
-  metadata.title = title
+  ru_name = movie_data.get('nameRu', '')
+  if ru_name:
+    repls = (u' (видео)', u' (ТВ)', u' (мини-сериал)', u' (сериал)')
+    title = reduce(lambda a, kv: a.replace(kv, ''), repls, ru_name) # type: ignore
+    metadata.title = title
 
   if isAgentMovies:
     #   year                      = Template.Integer()

@@ -151,8 +151,8 @@ def srch_and_score(srch, finded, results):
 
       # скоринг: для российских фильмов +1 Россия
       if 'countries' in movie and len(movie['countries']) > 0:
-        for ctr in movie['countries']:
-          if ctr['country'] == 'Россия':
+        for cntr in movie['countries']:
+          if cntr['country'] == 'Россия':
             movie['score'] = movie['score'] + SCORE_WEIGHT_RUSSIA 
         
       # скорининг: дистанция левенштейна
