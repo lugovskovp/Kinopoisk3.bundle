@@ -23,8 +23,8 @@ def load_metadata(metadata, media, valid_names):
   # now media.guid like :kp722886:
   Guids = getGUIDs(media.guid)
   if not Guids['imdbId']:
-    if movie_data.get('imdbId'):
-        imdbIdguid = movie_data.get('imdbId')
+    if movie_data.get('imdbId', ''):
+        imdbIdguid = movie_data.get('imdbId', '')
         if imdbIdguid:
           media.guid = media.guid + imdbIdguid
   Log(getGUIDs(media.guid))    # type: ignore
@@ -35,9 +35,17 @@ def load_metadata(metadata, media, valid_names):
   '''
 
   #   title                     = Template.String()
-  repls = (u' (видео)', u' (ТВ)', u' (мини-сериал)', u' (сериал)')
-  title = reduce(lambda a, kv: a.replace(kv, ''), repls, movie_data.get('nameRu', '')) # type: ignore
-  metadata.title = title
+  '''
+  5170232
+  "nameRu": null,
+  "nameEn": null,
+  "nameOriginal": "Trigger",
+  '''
+  ru_name = movie_data.get('nameRu', '') or movie_data.get('nameEn', '') or movie_data.get('nameOriginal', '')
+  if ru_name:
+    repls = (u' (видео)', u' (ТВ)', u' (мини-сериал)', u' (сериал)')
+    title = reduce(lambda a, kv: a.replace(kv, ''), repls, ru_name) # type: ignore
+    metadata.title = title
 
   if isAgentMovies:
     #   year                      = Template.Integer()
@@ -168,13 +176,18 @@ def load_episodes(metadata, media):
     return
   
   #seasons_qty = seasons_json.get('total')
-  for season_num, season_data in enumerate(seasons_json.get('items', []), 1):    # 1,2...
+  for season_data in seasons_json.get('items', []):
+    season_num = str(season_data.get('number', 0))
     d("Try process season_num %s in json" % season_num)
     if season_num not in media.seasons:      
         continue
     # отлично, есть локальные файлы из сезонов из найденного сезона
-    Log("есть локальные файлы из season_num %s" % season_num)      # type: ignore
-    for episode_num, episode_data in enumerate(season_data.get('episodes', []), 1):
+    ep_qty = len(season_data.get('episodes', []))
+    Log("есть локальные файлы для %s эпизодов season_num %s" % (ep_qty, season_num))      # type: ignore
+    curr_sea = metadata.seasons[str(season_num)]
+    curr_sea.summary = u'Сезон %s (эпизодов %s)' % (season_num, ep_qty)
+    d(metadata.seasons[season_num].summary)
+    for episode_data in season_data.get('episodes', []):
       # по каждой серии   =Season2set or 
       s_num = episode_data.get('seasonNumber', '')
       e_num = episode_data.get('episodeNumber', '')
@@ -190,13 +203,17 @@ def load_episodes(metadata, media):
       title = episode_data.get('nameRu', '') or episode_data.get('nameEn', '')
       if episode_data.get('nameRu', '') and episode_data.get('nameEn', ''):
         title += ' / ' + episode_data.get('nameEn', '')
-      episode.title = title
+      if title:
+        episode.title = title
       #
-      dat = episode_data.get('releaseDate') or ''
+      dat = episode_data.get('releaseDate', '')
       if dat:
         episode.originally_available_at = datetime.datetime.strptime(dat, "%Y-%m-%d").date()
-      episode.summary = episode_data.get('synopsis')
-      d("%s:%s %s  %s" % (season_num, episode_num, dat, episode.title))
+      #
+      episode.summary = episode_data.get('synopsis', '')
+      d("s%se%s %s  %s" % (s_num, e_num, dat, episode.title))
+      
+
 
     
 @log_timing  

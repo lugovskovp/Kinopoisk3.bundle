@@ -1,19 +1,43 @@
-# [1.14.0](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.13.1...v1.14.0) (2025-12-04)
+# [1.15.0-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.14.1-beta.4...v1.15.0-beta.1) (2025-12-08)
 
 
 ### Bug Fixes
 
-* [#50](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/50) load_episodes load_distribution load_staff load_reviews load_gallery ([7d20be6](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/7d20be666ebf2af6b7309d91b8c395272fe3d5a3))
-* [#50](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/50) load_metadata ([cb06105](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/cb06105f5cbec02254b250d59d263a6e49cd8234))
-* [#50](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/50) доработана работа с json в поиске ([a5e6b97](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/a5e6b97e55d7dac54458158c6dd77d3d8e168c96))
-* @semantic-release/git@latest ([fdfc690](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/fdfc690370adee86f88a2074ec5ab6d30dde3336))
-* after tests ([fab886d](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/fab886da0733bbfc664a492bb61680ad42d29b63))
-* doc ([1feb042](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/1feb0427cfd2e7522364e0bf0d42b87c83e6de13))
+* интересно девки пляшут: 5321393 Инспектор гаврилов находит по ключевым словам, но не находит по filmid ([9d27b45](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/9d27b45192b1e231b24509afa66eed186260312e))
 
 
 ### Features
 
-* doc из readme убрал, что релиза еще не было. Таки всё, релиз. ([9482e4f](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/9482e4f3ec979f9b3ffdf69719e79fbbce62ebb0))
+* [#46](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/46) [#44](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/44) ([06e2d93](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/06e2d93f97c8e39a8accb7e38c637b7cf7a139ee))
+
+## [1.14.1-beta.4](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.14.1-beta.3...v1.14.1-beta.4) (2025-12-08)
+
+
+### Bug Fixes
+
+* не всегда есть русское название movie_data.get('nameRu', '') ([c84560d](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/c84560d20457505fd8af05e37287c3ee2ea55d17))
+
+## [1.14.1-beta.3](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.14.1-beta.2...v1.14.1-beta.3) (2025-12-08)
+
+
+### Bug Fixes
+
+* 'Liubopytnaya', 'лиубопытная' ([b2632e7](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/b2632e713f2cc3ffbb014ef624c8a4833bc6ecb4))
+* SCORE_WEIGHT_RUSSIA ([a2a697f](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/a2a697fb154d905935fd9dd93688748615b33da7))
+
+## [1.14.1-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.14.1-beta.1...v1.14.1-beta.2) (2025-12-06)
+
+
+### Bug Fixes
+
+* readme ([eb4e9f2](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/eb4e9f2b6389b4fecf0aabdc4389f53585bb3795))
+
+# [1.14.0-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.14.0-beta.1...v1.14.0-beta.2) (2025-12-06)
+
+
+### Bug Fixes
+
+* updater log сообщение об успешном завершении обновления. ([917310a](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/917310a48da7cefad67f63376830d75d5c50e883))
 
 # [1.14.0-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.13.2-beta.4...v1.14.0-beta.1) (2025-12-04)
 

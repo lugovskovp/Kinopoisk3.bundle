@@ -149,6 +149,12 @@ def srch_and_score(srch, finded, results):
       #d("type score:%i %f [%s]" % (vscore, vscore_ratio, finded_type))
       movie['score'] = movie['score'] + vscore 
 
+      # скоринг: для российских фильмов +1 Россия
+      if 'countries' in movie and len(movie['countries']) > 0:
+        for cntr in movie['countries']:
+          if cntr['country'] == 'Россия':
+            movie['score'] = movie['score'] + SCORE_WEIGHT_RUSSIA 
+        
       # скорининг: дистанция левенштейна
       nameRu = movie.get('nameRu', '')
       nameEn = movie.get('nameEn', '')
@@ -194,7 +200,9 @@ def srch_mkres(srch, finded, results):      # >>>>>>> end::srch_mkres, duration=
   TypeFinded = {'FILM':'F', 'VIDEO':'V', 'TV_SERIES':'S', 'MINI_SERIES':'M', 'TV_SHOW':'T'}
   for i, movie in enumerate(finded['films']):
     # формирование строк меню
-    id = movie.get("filmId")        #MUST be
+    id = movie.get("filmId", '')        #MUST be
+    if not id:
+      continue
     title = ""
     # Отображать тип: F:фильм, M:многосерийный, V:видео, S:сериал, T:tv-шоу
     if Prefs['showTypes']:  # and srch.isAgentMovies:                # type: ignore 

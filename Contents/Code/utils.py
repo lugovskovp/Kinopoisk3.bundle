@@ -41,16 +41,19 @@ def get_json(url):
   except:
     Core.log.error("Какая-то ошибка, но не Connection Error.")  # type: ignore
     return False
-  rj = response.json()
-  if not (rj or rj.get('message') or response.status_code != '200'):
-    # что-то пошло не так
-    #status_code == 401:    You don't have permissions There are not valid token  
-    #status_code == 402:    You exceeded the quota.
-    #status_code == 429:    Rate limit exceeded
-    Core.log.error("Не, ну точно ошибка %s: %s" % (response.status_code, rj.get('message')))  # type: ignore
-    Core.log.error("APItokenRemains::ERROR %s: %s" % (status_code, response.json().get("message")))    # type: ignore
+  if response.status_code == 200:
+    # best way - go away
+    return  response.json()
+  # -------------- что-то пошло не так
+  if response.status_code == 404:
+    Core.log.error("404, не найден %s" % (url))  # type: ignore
     return False
-  return rj
+  #status_code == 401:    You don't have permissions There are not valid token  
+  #status_code == 402:    You exceeded the quota.
+  #status_code == 429:    Rate limit exceeded
+  Core.log.error("Не, ну точно ошибка %s в %s" % (response.status_code, url))  # type: ignore
+  Core.log.error("Описание ошибки %s: %s" % (response.status_code, response.content))  # type: ignore
+  return False
 
 
 def APItokenRemains():
@@ -59,11 +62,14 @@ def APItokenRemains():
   Return int - Qty remains dailyQuota for use.
   #/api/v1/api_keys/{apiKey}  #получить данные об api key 
   '''
-  valid = False
   url = '%s/api/v1/api_keys/%s' % (API_BASE_URL, Prefs['api_key'] )  # type: ignore
   json = get_json(url)
+  # if not json:
+  #   # returned false
+  #   return False
   BIG_VALUE = 1000
-  dq = json.get("dailyQuota")
+  d(json)
+  dq = json.get("dailyQuota", '')
   if not dq:
     w(u"APItokenRemains:: wrwre are not daylyQuoya in json")      
     return False
@@ -85,8 +91,8 @@ def APItokenRemains():
 
 def translit2ru(text):
   '''Замена транслита русскими буквами'''
-  multiple_letters = {u'sch': u'щ', u'sh': u'ш', u'zh': u'ж', u'ts': u'ц',
-                      u'ch': u'ч', u'yu': u'ю', u'ya': u'я', u'yo': u'ё'}
+  multiple_letters = {u'sch': u'щ', u'sh': u'ш', u'zh': u'ж', u'ts': u'ц', u'ch': u'ч',
+                      u'yu': u'ю', u'iu': u'ю', u'ya': u'я', u'ia': u'я', u'yo': u'ё'} # +[[ 'Liubopytnaya', 'лиубопытная']]
   single_letters = {u'a': u'а',  u'b': u'б',  u'v': u'в',  u'g': u'г',  u'd': u'д', 
                       u'e': u'е',  u'z': u'з',  u'i': u'и',  u'j': u'й',  u'k': u'к', 
                       u'l': u'л',  u'm': u'м',  u'n': u'н',  u'o': u'о',  u'p': u'п', 
