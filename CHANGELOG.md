@@ -1,3 +1,10 @@
+## [1.15.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.15.1...v1.15.2) (2025-12-08)
+
+
+### Bug Fixes
+
+* updater self.core.log.debug ([9a42f83](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/9a42f831ecc94df9c044d6bbad43ff84eab11801))
+
 ## [1.15.2-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.15.1...v1.15.2-beta.1) (2025-12-08)
 
 
