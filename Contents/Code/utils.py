@@ -41,16 +41,18 @@ def get_json(url):
   except:
     Core.log.error("Какая-то ошибка, но не Connection Error.")  # type: ignore
     return False
-  if response.status_code == '200':
+  if response.status_code == 200:
     # best way - go away
     return  response.json()
   # -------------- что-то пошло не так
+  if response.status_code == 404:
+    Core.log.error("404, не найден %s" % (url))  # type: ignore
+    return False
   #status_code == 401:    You don't have permissions There are not valid token  
   #status_code == 402:    You exceeded the quota.
   #status_code == 429:    Rate limit exceeded
-  rj = response.json()
-  Core.log.error("Не, ну точно ошибка %s: %s" % (response.status_code, rj['message']))  # type: ignore
-  Core.log.error("APItokenRemains::ERROR %s: %s" % (status_code, rj['message']))    # type: ignore
+  Core.log.error("Не, ну точно ошибка %s в %s" % (response.status_code, url))  # type: ignore
+  Core.log.error("Описание ошибки %s: %s" % (response.status_code, response.content))  # type: ignore
   return False
 
 
@@ -62,8 +64,12 @@ def APItokenRemains():
   '''
   url = '%s/api/v1/api_keys/%s' % (API_BASE_URL, Prefs['api_key'] )  # type: ignore
   json = get_json(url)
+  # if not json:
+  #   # returned false
+  #   return False
   BIG_VALUE = 1000
-  dq = json.get("dailyQuota")
+  d(json)
+  dq = json.get("dailyQuota", '')
   if not dq:
     w(u"APItokenRemains:: wrwre are not daylyQuoya in json")      
     return False
