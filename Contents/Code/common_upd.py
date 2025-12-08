@@ -81,7 +81,7 @@ def load_metadata(metadata, media, valid_names):
       if val1:
         summary_add += ' (%s)' % val1
       summary_add += '\n'
-  #
+  # 
   summary_add += (movie_data.get('description', '') or u'')
   #[Feature request] ссылка на инфо о фильме на кинопоиск #32
   if Prefs['desc_add_links']:       # type: ignore
