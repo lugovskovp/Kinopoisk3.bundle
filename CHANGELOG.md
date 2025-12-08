@@ -1,3 +1,15 @@
+# [1.15.0-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.14.1-beta.4...v1.15.0-beta.1) (2025-12-08)
+
+
+### Bug Fixes
+
+* интересно девки пляшут: 5321393 Инспектор гаврилов находит по ключевым словам, но не находит по filmid ([9d27b45](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/9d27b45192b1e231b24509afa66eed186260312e))
+
+
+### Features
+
+* [#46](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/46) [#44](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/44) ([06e2d93](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/06e2d93f97c8e39a8accb7e38c637b7cf7a139ee))
+
 ## [1.14.1-beta.4](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.14.1-beta.3...v1.14.1-beta.4) (2025-12-08)
 
 
