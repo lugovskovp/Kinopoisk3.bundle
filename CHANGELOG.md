@@ -1,10 +1,16 @@
-## [1.15.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.15.0...v1.15.1) (2025-12-08)
+## [1.15.2-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.15.1...v1.15.2-beta.1) (2025-12-08)
 
 
 ### Bug Fixes
 
-* s ([91c4edf](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/91c4edfb6ce8860081d416400f47b19977a814b2))
-* summary_add += (movie_data.get('description', '') or u'') ([2b98400](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/2b98400ea57e04c87cb341442faf8e6454cf148b))
+* updater self.core.log.debug ([9a42f83](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/9a42f831ecc94df9c044d6bbad43ff84eab11801))
+
+## [1.15.1-beta.3](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.15.1-beta.2...v1.15.1-beta.3) (2025-12-08)
+
+
+### Bug Fixes
+
+* updater self.core.log.debug ([9a42f83](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/9a42f831ecc94df9c044d6bbad43ff84eab11801))
 
 ## [1.15.1-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.15.1-beta.1...v1.15.1-beta.2) (2025-12-08)
 
