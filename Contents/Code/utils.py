@@ -41,16 +41,17 @@ def get_json(url):
   except:
     Core.log.error("Какая-то ошибка, но не Connection Error.")  # type: ignore
     return False
+  if response.status_code == '200':
+    # best way - go away
+    return  response.json()
+  # -------------- что-то пошло не так
+  #status_code == 401:    You don't have permissions There are not valid token  
+  #status_code == 402:    You exceeded the quota.
+  #status_code == 429:    Rate limit exceeded
   rj = response.json()
-  if not (rj or rj.get('message') or response.status_code != '200'):
-    # что-то пошло не так
-    #status_code == 401:    You don't have permissions There are not valid token  
-    #status_code == 402:    You exceeded the quota.
-    #status_code == 429:    Rate limit exceeded
-    Core.log.error("Не, ну точно ошибка %s: %s" % (response.status_code, rj.get('message')))  # type: ignore
-    Core.log.error("APItokenRemains::ERROR %s: %s" % (status_code, response.json().get("message")))    # type: ignore
-    return False
-  return rj
+  Core.log.error("Не, ну точно ошибка %s: %s" % (response.status_code, rj['message']))  # type: ignore
+  Core.log.error("APItokenRemains::ERROR %s: %s" % (status_code, rj['message']))    # type: ignore
+  return False
 
 
 def APItokenRemains():
@@ -59,7 +60,6 @@ def APItokenRemains():
   Return int - Qty remains dailyQuota for use.
   #/api/v1/api_keys/{apiKey}  #получить данные об api key 
   '''
-  valid = False
   url = '%s/api/v1/api_keys/%s' % (API_BASE_URL, Prefs['api_key'] )  # type: ignore
   json = get_json(url)
   BIG_VALUE = 1000
