@@ -85,8 +85,8 @@ def APItokenRemains():
 
 def translit2ru(text):
   '''Замена транслита русскими буквами'''
-  multiple_letters = {u'sch': u'щ', u'sh': u'ш', u'zh': u'ж', u'ts': u'ц',
-                      u'ch': u'ч', u'yu': u'ю', u'ya': u'я', u'yo': u'ё'}
+  multiple_letters = {u'sch': u'щ', u'sh': u'ш', u'zh': u'ж', u'ts': u'ц', u'ch': u'ч',
+                      u'yu': u'ю', u'iu': u'ю', u'ya': u'я', u'ia': u'я', u'yo': u'ё'} # +[[ 'Liubopytnaya', 'лиубопытная']]
   single_letters = {u'a': u'а',  u'b': u'б',  u'v': u'в',  u'g': u'г',  u'd': u'д', 
                       u'e': u'е',  u'z': u'з',  u'i': u'и',  u'j': u'й',  u'k': u'к', 
                       u'l': u'л',  u'm': u'м',  u'n': u'н',  u'o': u'о',  u'p': u'п', 
