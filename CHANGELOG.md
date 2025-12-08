@@ -1,3 +1,11 @@
+## [1.14.1-beta.3](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.14.1-beta.2...v1.14.1-beta.3) (2025-12-08)
+
+
+### Bug Fixes
+
+* 'Liubopytnaya', 'лиубопытная' ([b2632e7](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/b2632e713f2cc3ffbb014ef624c8a4833bc6ecb4))
+* SCORE_WEIGHT_RUSSIA ([a2a697f](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/a2a697fb154d905935fd9dd93688748615b33da7))
+
 ## [1.14.1-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.14.1-beta.1...v1.14.1-beta.2) (2025-12-06)
 
 
