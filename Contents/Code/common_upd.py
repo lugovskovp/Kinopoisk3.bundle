@@ -22,7 +22,7 @@ def load_metadata(metadata, media, valid_names):
   # добавить   "imdbId": "tt0379786",
   # now media.guid like :kp722886:
   Guids = getGUIDs(media.guid)
-  if not Guids['imdbId']:
+  if not 'imdbId' in Guids:
     if movie_data.get('imdbId', ''):
         imdbIdguid = movie_data.get('imdbId', '')
         if imdbIdguid:
@@ -82,7 +82,7 @@ def load_metadata(metadata, media, valid_names):
         summary_add += ' (%s)' % val1
       summary_add += '\n'
   #
-  summary_add += movie_data.get('description', '')
+  summary_add += (movie_data.get('description', '') or u'')
   #[Feature request] ссылка на инфо о фильме на кинопоиск #32
   if Prefs['desc_add_links']:       # type: ignore
     summary_add += "\n" + movie_data.get('webUrl', '') + "\n"
