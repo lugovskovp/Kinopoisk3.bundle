@@ -136,12 +136,12 @@ class KinoPoiskUnoficialAgent(Agent.Movies): # type: ignore
         load_staff(metadata)
       @task # type: ignore
       def upd_reviews(metadata=metadata):    
-        if Prefs['desc_load_reviews']: # type: ignore  
+        if Prefs['desc_load_reviews']:    # type: ignore  
           load_reviews(metadata)
       @task # type: ignore
       def upd_meta(metadata=metadata, media=media):
         load_metadata(metadata, media, valid_poster0)
-        media.title = metadata.title        # в media - надо вернуть наименование выбранного фильма - заменив текущее из поиска
+        media.title = metadata.title       # в media - надо вернуть наименование выбранного фильма - заменив текущее из поиска
       @task # type: ignore
       def upd_distribution(metadata=metadata):
         load_distribution(metadata)

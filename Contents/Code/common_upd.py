@@ -218,21 +218,69 @@ def load_episodes(metadata, media):
     
 @log_timing  
 def load_distribution(metadata):
+  '''
+  WORLD_PREMIER - мировая премьево в первую очередь
+  "type": "COUNTRY_SPECIFIC", "country": {
+        "country": "Россия" - если нет мировой премьеры
+  "type": "ALL", "subType": "BLURAY" "subType": "DVD" - в третью очередь
+  "type": "PREMIERE" - в последнюю, 4-ю очередь
+  
+  '''
   #https://www.kinopoisk.ru/film/5405057/studio/
   # d("-------------------update:load_distribution - start")
   ## msStart = getMilliseconds(Datetime.Now())
+  d('load_distribution: start')
   movie_data = get_json(API_BASE_URL + FILM_DISTRIBUTION % metadata.id).get('items')
   if not movie_data:
     return
   #[ LOCAL, COUNTRY_SPECIFIC, PREMIERE, ALL, WORLD_PREMIER ], subType : [ CINEMA, DVD, DIGITAL, BLURAY ] 
+  items = {"word_premier": {},  # WORLD_PREMIER
+           "country_rus": {},   # COUNTRY_SPECIFIC Россия
+           "all": {},           # all
+           "premiere" : {}}     # PREMIERE
+  item_result = {}
+  # проход по всем найденым результатам
   for data in movie_data:
-    if data.get('type', '') == 'ALL':
-      dat = data.get('date', '')
-      if dat:
-        metadata.originally_available_at = Datetime.ParseDate(dat.replace('00.', '01.'), '%Y-%m-%d').date()  # type: ignore
-      #   studio                    = Template.String() A string specifying the movie’s studio.
-      for comp in data.get('companies', []):
-        metadata.studio = comp.get('name', '')  # so, only last like highlander  1981-12-02  Studio updated
+    d_type = data.get('type', '')
+    if d_type == 'WORLD_PREMIER':
+      items["word_premier"] = data
+    elif d_type == 'COUNTRY_SPECIFIC':
+      data_country = data.get('country', '')
+      country = data_country.get('country', '')
+      if country == 'Россия':
+        items["country_rus"] = data
+    elif d_type == 'ALL':
+      items["all"] = data           # любой вариант (последний) - в plex всё равно нет поля, куда записать
+    elif d_type == 'PREMIERE':  
+      items["premiere"] = data      # любой вариант (последний) - в plex всё равно нет поля, куда записать
+  # а теперь выбрать из 4-х вариантов
+  if items["word_premier"]:
+    item_result = items["word_premier"]
+    d("distribution: WORLD_PREMIER")
+  elif items["country_rus"]:
+    item_result = items["country_rus"]
+    d("distribution: COUNTRY_SPECIFIC - Russia")
+  elif items["all"]:
+    item_result = items["all"]
+    d("distribution: ALL")
+  elif items["premiere"]:
+    item_result = items["premiere"]
+    d("distribution: PREMIERE")
+  # а теперь заполняем 
+  d(item_result)
+  if item_result:
+    dat = item_result.get('date', '')
+    if dat:
+      d("raw_date: %s" % dat)
+      # metadata.originally_available_at = Datetime.ParseDate(dat.replace('00.', '01.'), '%Y-%m-%d').date()  # type: ignore
+      # прибавить день для правильного отображения в plex
+      metadata.originally_available_at = Datetime.ParseDate(dat, '%Y-%m-%d').date() + Datetime.Delta(days=1)        # type: ignore
+      d("meta_date: %s" % metadata.originally_available_at)
+    #   studio                    = Template.String() A string specifying the movie’s studio.
+    metadata.studio = ''
+    for comp in item_result.get('companies', []):
+      metadata.studio = comp.get('name', '')  # so, only last like highlander  1981-12-02  Studio updated
+  d('load_distribution: end')
   # d("===================update:load_distribution end, Duration=%s\n"  % (getMilliseconds(Datetime.Now()) - msStart))
     
   
