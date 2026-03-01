@@ -1,3 +1,10 @@
+## [1.15.3](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.15.2...v1.15.3) (2026-03-01)
+
+
+### Bug Fixes
+
+* [#78](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/78) Дата премьеры - мировая, если такой нет - то в России, если и такой нет - выпуска на ДВД, если и такой нет - то премьера хоть где-то ([58d9598](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/58d959843e19d68425ffce2b779f2ae10e5a52df))
+
 ## [1.15.3-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.15.2...v1.15.3-beta.1) (2026-03-01)
 
 
