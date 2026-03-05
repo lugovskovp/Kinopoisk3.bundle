@@ -1,3 +1,10 @@
+## [1.15.4-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.15.4-beta.1...v1.15.4-beta.2) (2026-03-05)
+
+
+### Bug Fixes
+
+* баг, исключение при отсутствующем ключе ([f268999](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/f268999d35266982076458b9f1d0fb76ae0db9f0))
+
 ## [1.15.4-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.15.3...v1.15.4-beta.1) (2026-03-05)
 
 
