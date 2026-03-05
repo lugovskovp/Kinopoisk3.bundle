@@ -49,12 +49,13 @@ class KinoPoiskUnoficialAgent(Agent.Movies): # type: ignore
   primary_provider  = True  # могут быть выбраны в качестве основного источника метаданных
   fallback_agent    = False # идентификатор другого агента для использования в качестве резервного
   #     contributes_to идентификаторы первичных агентов, которым агент может передавать вторичные данные
-  contributes_to    = ['com.plexapp.plugins.kinopoisk3', 'com.plexapp.agents.local']
+  accepts_from      = ['com.plexapp.agents.localmedia'] # ['com.plexapp.agents.local'] 
+  contributes_to    = ['com.plexapp.agents.kinopoisk3']
   # contributes_to    = ['com.plexapp.plugins.kinopoisk3', 'com.plexapp.agents.local', 'com.plexapp.agents.themoviedb', 'com.plexapp.agents.imdb'] 
   # contributes_to    = ['com.plexapp.plugins.kinopoisk3', 'com.plexapp.agents.themoviedb']
   languages         = LANGUAGES  #languages=[['ru', 'en', 'xn']]
   #     accepts_from идентификаторы агентов, которые могут добавлять вторичные данные к первичным данным, предоставляемым этим агентом
-  accepts_from      = ['com.plexapp.plugins.kinopoisk3', 'com.plexapp.agents.local'] 
+  #accepts_from      = ['com.plexapp.plugins.kinopoisk3', 'com.plexapp.agents.local'] 
   agent_type        = 'Movies'
   
      
@@ -169,10 +170,9 @@ class KinoPoiskUnoficialAgent(Agent.TV_Shows): # type: ignore
   name              = '%s (%s) Serials' % (NAME, VER) 
   primary_provider  = True 
   fallback_agent    = False 
-  # contributes_to    = ['com.plexapp.plugins.kinopoisk3', 'com.plexapp.agents.local']
-  # contributes_to    = ['com.plexapp.plugins.kinopoisk3', 'com.plexapp.agents.local', 'com.plexapp.agents.themoviedb', 'com.plexapp.agents.imdb'] 
+  accepts_from      = ['com.plexapp.agents.localmedia'] # ['com.plexapp.agents.local'] 
+  contributes_to    = ['com.plexapp.agents.kinopoisk3']
   languages         = LANGUAGES  #languages=['ru', 'en', 'xn']
-  #accepts_from      = ['com.plexapp.agents.localmedia'] 
   agent_type        = 'TV_Shows'
 
 

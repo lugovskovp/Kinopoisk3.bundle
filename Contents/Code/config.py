@@ -9,7 +9,9 @@ PREFIX = '/video/kino'
 TITLE = u'Агент Кинопоиск Unofficial'
 ART = 'art-default.png'
 ICON = 'icon-default.png'
-LANGUAGES = [Locale.Language.Russian, Locale.Language.English, Locale.Language.NoLanguage]  # type: ignore # [Locale.Language.Russian, Locale.Language.English, Locale.Language.NoLanguage,]
+LANGUAGES = [Locale.Language.Russian,     # type: ignore
+             Locale.Language.English,     # type: ignore
+             Locale.Language.NoLanguage]  # type: ignore # [Locale.Language.Russian, Locale.Language.English, Locale.Language.NoLanguage,]
 # значение версии взять из файла VERSION
 version_path = Core.storage.join_path(Core.bundle_path, 'Contents', 'VERSION') # type: ignore
 if Core.storage.file_exists(version_path):                                     # type: ignore

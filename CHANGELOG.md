@@ -1,9 +1,16 @@
-## [1.15.3](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.15.2...v1.15.3) (2026-03-01)
+## [1.15.4-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.15.3...v1.15.4-beta.1) (2026-03-05)
 
 
 ### Bug Fixes
 
-* [#78](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/78) Дата премьеры - мировая, если такой нет - то в России, если и такой нет - выпуска на ДВД, если и такой нет - то премьера хоть где-то ([58d9598](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/58d959843e19d68425ffce2b779f2ae10e5a52df))
+* com.plexapp.plugins.kinopoisk3 -> com.plexapp.agents.kinopoisk3 ([f5f5fcf](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/f5f5fcf67ef39c234aa459e6124319982d54e8b9))
+
+## [1.15.3-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.15.3-beta.1...v1.15.3-beta.2) (2026-03-05)
+
+
+### Bug Fixes
+
+* com.plexapp.plugins.kinopoisk3 -> com.plexapp.agents.kinopoisk3 ([f5f5fcf](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/f5f5fcf67ef39c234aa459e6124319982d54e8b9))
 
 ## [1.15.3-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.15.2...v1.15.3-beta.1) (2026-03-01)
 
