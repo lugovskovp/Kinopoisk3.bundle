@@ -1,3 +1,10 @@
+## [1.15.4](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.15.3...v1.15.4) (2026-03-05)
+
+
+### Bug Fixes
+
+* com.plexapp.plugins.kinopoisk3 -> com.plexapp.agents.kinopoisk3 ([f5f5fcf](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/f5f5fcf67ef39c234aa459e6124319982d54e8b9))
+
 ## [1.15.4-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.15.3...v1.15.4-beta.1) (2026-03-05)
 
 
