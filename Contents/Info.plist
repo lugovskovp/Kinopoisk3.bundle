@@ -2,10 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+    <key>CFBundleIdentifier</key>
+	<string>com.plexapp.agents.kinopoisk3</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>Russia</string>
-	<key>CFBundleIdentifier</key>
-	<string>com.plexapp.plugins.kinopoisk3</string>
 	<key>PlexAgentAttributionText</key>
         <string>
         <![CDATA[
