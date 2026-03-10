@@ -1,3 +1,10 @@
+# [1.16.0-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.15.4-beta.2...v1.16.0-beta.1) (2026-03-10)
+
+
+### Features
+
+* Изменено внутреннее наименование агента, доработана документация. [#77](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/77) ([45abdd7](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/45abdd72f97e348941d7d4e3d3e58d4126ba12dd))
+
 ## [1.15.4-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.15.4-beta.1...v1.15.4-beta.2) (2026-03-05)
 
 
