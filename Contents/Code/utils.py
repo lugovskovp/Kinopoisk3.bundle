@@ -46,7 +46,13 @@ def get_json(url):
     return  response.json()
   # -------------- что-то пошло не так
   if response.status_code == 404:
-    Core.log.error("404, не найден %s" % (url))  # type: ignore
+    Core.log.error("HTTP error 404, не найден %s" % (url))  # type: ignore
+    return False
+  if response.status_code == 401:
+    Core.log.error("HTTP error 401, не позволено: не найден валидный токен")  # type: ignore
+    return False
+  if response.status_code == 402:
+    Core.log.error("HTTP error 402, дневная квота исчерпана")  # type: ignore
     return False
   #status_code == 401:    You don't have permissions There are not valid token  
   #status_code == 402:    You exceeded the quota.
@@ -64,6 +70,8 @@ def APItokenRemains():
   '''
   url = '%s/api/v1/api_keys/%s' % (API_BASE_URL, Prefs['api_key'] )  # type: ignore
   json = get_json(url)
+  if not json:
+    return False
   # if not json:
   #   # returned false
   #   return False
