@@ -22,8 +22,7 @@ def AppendSearchResult(results, id, name=None, year=-1, score=0, lang=None):
 # -------------------------------------------    
 def get_json(url):
   ''' Получить json 
-  
-  url - URL с endpoint и параметрами 
+    url - URL с endpoint и параметрами 
   '''
   ApiKey = Prefs['api_key']   # type: ignore
   headers = {
