@@ -1,16 +1,21 @@
-# [1.16.0-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.15.4-beta.2...v1.16.0-beta.1) (2026-03-10)
+# [1.16.0](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.15.4...v1.16.0) (2026-03-10)
+
+
+### Bug Fixes
+
+* баг, исключение при отсутствующем ключе ([f268999](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/f268999d35266982076458b9f1d0fb76ae0db9f0))
 
 
 ### Features
 
 * Изменено внутреннее наименование агента, доработана документация. [#77](https://github.com/lugovskovp/Kinopoisk3.bundle/issues/77) ([45abdd7](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/45abdd72f97e348941d7d4e3d3e58d4126ba12dd))
 
-## [1.15.4-beta.2](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.15.4-beta.1...v1.15.4-beta.2) (2026-03-05)
+## [1.15.4](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.15.3...v1.15.4) (2026-03-05)
 
 
 ### Bug Fixes
 
-* баг, исключение при отсутствующем ключе ([f268999](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/f268999d35266982076458b9f1d0fb76ae0db9f0))
+* com.plexapp.plugins.kinopoisk3 -> com.plexapp.agents.kinopoisk3 ([f5f5fcf](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/f5f5fcf67ef39c234aa459e6124319982d54e8b9))
 
 ## [1.15.4-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.15.3...v1.15.4-beta.1) (2026-03-05)
 
