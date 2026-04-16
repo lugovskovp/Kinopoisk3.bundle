@@ -39,7 +39,7 @@ def get_json(url):
     Core.log.error(str(e))  # type: ignore   
     return False
   except:
-    Core.log.error("Какая-то ошибка, но не Connection Error.")  # type: ignore
+    Core.log.error("Какая-то ошибка, но не Connection Error:")  # type: ignore
     return False
   if response.status_code == 200:
     # best way - go away
