@@ -1,3 +1,10 @@
+## [1.16.1-beta.1](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.16.0...v1.16.1-beta.1) (2026-04-16)
+
+
+### Bug Fixes
+
+* проверка git actions ([5c8e977](https://github.com/lugovskovp/Kinopoisk3.bundle/commit/5c8e9774b2b55809ea95a840c4609378082d7ead))
+
 # [1.16.0](https://github.com/lugovskovp/Kinopoisk3.bundle/compare/v1.15.4...v1.16.0) (2026-03-10)
 
 
