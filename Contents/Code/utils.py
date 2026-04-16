@@ -21,7 +21,7 @@ def AppendSearchResult(results, id, name=None, year=-1, score=0, lang=None):
 
 # -------------------------------------------    
 def get_json(url):
-  ''' Полоучить json 
+  ''' Получить json 
   
   url - URL с endpoint и параметрами 
   '''
@@ -70,7 +70,7 @@ def APItokenRemains():
   '''
   url = '%s/api/v1/api_keys/%s' % (API_BASE_URL, Prefs['api_key'] )  # type: ignore
   json = get_json(url)
-  if not json:
+  if not json or json == 'False':
     return False
   # if not json:
   #   # returned false
